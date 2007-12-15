@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+		<config>src/main/resources/edu/ienpop/persistence/config/DataAccessObjects.xml</config>
+		<config>src/main/resources/edu/ienpop/persistence/config/DataSource.xml</config>
+		<config>src/main/resources/edu/ienpop/persistence/config/SessionFactory.xml</config>
+		<config>src/main/resources/DataSourceAppCtx.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[Persistence Config Set]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/DataSourceAppCtx.xml</config>
+				<config>src/main/resources/edu/ienpop/persistence/config/DataAccessObjects.xml</config>
+				<config>src/main/resources/edu/ienpop/persistence/config/DataSource.xml</config>
+				<config>src/main/resources/edu/ienpop/persistence/config/SessionFactory.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

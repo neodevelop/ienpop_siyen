@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="edu.ienpop.model.CursoXCertificar" table="curso_x_certificar">
+		<id name="id" column="idCursoXCertificar">
+			<generator class="increment"/>
+		</id>
+		<property name="fechaInicio" insert="false"/>
+		<property name="fechaHoraRegistro" insert="false"/>
+		<property name="idPuerto" insert="false"/>
+		<property name="idTipoCurso" insert="false"/>
+		<property name="idUsuario" insert="false"/>
+		<property name="idStatusCurso" insert="false"/>
+		<set name="alumnos" table="alumno_x_certificar" lazy="false">
+			<key column="idCursoXCertificar"/>
+			<one-to-many class="edu.ienpop.model.AlumnoXCertificar"/>
+		</set>
+	</class>
+</hibernate-mapping>
