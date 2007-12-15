@@ -1,0 +1,25 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN"
+    "http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+
+<dwr>
+	<allow>
+		<!-- Agregamos los servicios que vamos a exponer para DWR-->
+		<create javascript="UsuarioService" creator="spring">
+			<param name="beanName" value="usuarioService"></param>
+			<include method="isValidUsuario"/>
+		</create>
+		<create javascript="CursoXCertificarService" creator="spring">
+			<param name="beanName" value="cursoXCertificarService"></param>
+		</create>
+		<create javascript="LlaveService" creator="spring">
+			<param name="beanName" value="llaveService"></param>
+		</create>
+		<!-- Agregamos la excepcion -->
+		<convert match="edu.ienpop.services.BusinessException" converter="exception"></convert>
+		<convert match="java.lang.IllegalArgumentException" converter="exception"></convert>
+		<!-- Hacemos accesible toda la estructura del modelo para DWR en todas las clases -->
+		<convert match="edu.ienpop.model.*" converter="bean"></convert>
+		<convert match="java.util.Calendar" converter="bean"></convert>
+	</allow>
+</dwr>
