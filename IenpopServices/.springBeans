@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+		<config>src/main/resources/ServicesAppCtx.xml</config>
+		<config>src/main/resources/edu/ienpop/services/config/TxManager.xml</config>
+		<config>src/main/resources/edu/ienpop/services/config/Services.xml</config>
+		<config>src/main/resources/edu/ienpop/services/config/AOPconfig.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[Service Config Set]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/ServicesAppCtx.xml</config>
+				<config>src/main/resources/edu/ienpop/services/config/AOPconfig.xml</config>
+				<config>src/main/resources/edu/ienpop/services/config/Services.xml</config>
+				<config>src/main/resources/edu/ienpop/services/config/TxManager.xml</config>
+				<config>/IenpopPersistence/src/main/resources/DataSourceAppCtx.xml</config>
+				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataAccessObjects.xml</config>
+				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataSource.xml</config>
+				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/SessionFactory.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
