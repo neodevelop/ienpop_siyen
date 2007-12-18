@@ -10,13 +10,13 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<value>
-				classpath:edu/ienpop/persistence/config/development.properties
+				classpath:edu/ienpop/persistence/environment/development.properties
 			</value>
 			<!--value>
-				classpath:edu/ienpop/persistence/config/testing.properties
+				classpath:edu/ienpop/persistence/environment/testing.properties
 			</value-->
 			<!--value>
-				classpath:edu/ienpop/persistence/config/production.properties
+				classpath:edu/ienpop/persistence/environment/production.properties
 			</value-->
 		</property>
 	</bean>
