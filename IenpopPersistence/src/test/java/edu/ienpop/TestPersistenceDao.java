@@ -27,7 +27,7 @@ public class TestPersistenceDao extends AbstractDependencyInjectionSpringContext
 
 	@SuppressWarnings("unchecked")
 	public void testDao(){
-		Usuario usuario = (Usuario)dao.getByPK(Usuario.class, "XXX");
+		Usuario usuario = (Usuario)dao.getByPK(Usuario.class, "JUANG");
 		System.out.println(ToStringBuilder.reflectionToString(usuario));
 		Set<CatalogoPuerto> puertos = usuario.getPuertos(); 
 		for(CatalogoPuerto puerto:puertos){
