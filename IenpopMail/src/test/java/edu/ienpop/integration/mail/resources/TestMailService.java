@@ -37,8 +37,12 @@ public class TestMailService extends
 		mailService.sendMailWithAttach("jjuan.reyes@synergyj.com", "Mensaje con documento adjunto...", "Notificación de informe", attach);
 	}
 	
-	public void testMail4() throws MessagingException{
+	public void _testMail4() throws MessagingException{
 		FileSystemResource attach = new FileSystemResource("/home/ubuntu/Imágenes/carbonite.jpg");
 		mailService.sendMailWithInline("jjuan.reyes@synergyj.com", "Mensaje con documento adjunto...", "Notificación de informe", attach);
+	}
+	
+	public void testMail5() throws MessagingException{
+		
 	}
 }
