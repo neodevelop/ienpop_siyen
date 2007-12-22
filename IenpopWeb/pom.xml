@@ -12,7 +12,7 @@
 		<repository>
 			<id>LocalRepo</id>
 			<name>LocalRepo</name>
-			<url>http://localhost/maven2</url>
+			<url>http://inspiron600m/maven2</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -32,6 +32,11 @@
 		<dependency>
 			<groupId>edu.ienpop</groupId>
 			<artifactId>IenpopServices</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.ienpop</groupId>
+			<artifactId>IenpopMail</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<!-- SPRING FRAMEWORK -->
@@ -132,6 +137,16 @@
 			<version>2.3.8</version>
 		</dependency>
 		<dependency>
+			<groupId>poi</groupId>
+			<artifactId>poi-2.5.1-final</artifactId>
+			<version>20040804</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.4</version>
@@ -151,6 +166,12 @@
 			<groupId>org.getahead</groupId>
 			<artifactId>dwr</artifactId>
 			<version>2.0.2</version>
+		</dependency>
+		<!-- JAVA MAIL-->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 		</dependency>
 	</dependencies>
 	<build>

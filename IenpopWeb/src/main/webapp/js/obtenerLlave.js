@@ -44,5 +44,18 @@ function obtenerCursosSinLlave(){
 }
 
 function generarLlave(idCursoXCertificar){
-	alert(idCursoXCertificar);
+	//alert(idCursoXCertificar.substring(5));
+	var email = document.obtenerCursos.email.value;
+	dwr.engine.beginBatch();
+	LlaveService.generateLlaveXCurso(idCursoXCertificar.substring(5),function(llave){
+		alert(llave+" "+email);
+		var model = $H({ llaveCertificacion:llave });
+		MailService.sendMailWithVelocityEngine(email, model, "Solicitud de certificación","mail/EnvioLlaveCertificacion.ftl",function(){
+			alert("La información para certificar el curso ha sido enviada por correo...");
+		});
+	});
+	obtenerCursosSinLlave();
+	dwr.engine.endBatch({
+		errorHandler:function(errorString, exception) { alert(errorString+" - "+exception); }
+	});
 }
