@@ -11,6 +11,7 @@ public class IndexController extends AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		//Solo un redireccionamiento
 		return new ModelAndView("main");
 	}
 
