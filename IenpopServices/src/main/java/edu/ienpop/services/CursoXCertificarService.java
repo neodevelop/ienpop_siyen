@@ -2,6 +2,7 @@ package edu.ienpop.services;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import edu.ienpop.model.AlumnoXCertificar;
@@ -14,5 +15,6 @@ public interface CursoXCertificarService {
 	void addAlumnosACursoXCertificar(long idCursoXCertificar,Set alumnosXCertificar) throws BusinessException;
 	void changeAlumnoACursoXCertificar(AlumnoXCertificar alumnoXCertificar) throws BusinessException;
 	Set getAlumnosDeCursoXCertificar(Long idCursoXCertificar) throws BusinessException;
-	List getCursosXCertificarSinLlave(String[] idUsuario,String[] idPuerto);
+	List getCursosXCertificarSinLlave(String[] idUsuario,String[] idPuerto)  throws BusinessException;
+	Map getMyMap() throws BusinessException;
 }

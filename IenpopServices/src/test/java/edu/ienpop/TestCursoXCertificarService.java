@@ -93,7 +93,7 @@ public class TestCursoXCertificarService extends
 		cursoXCertificarService.addAlumnoACursoXCertificar(18, alumno);
 		cursoXCertificarService.removeAlumnoACursoXCertificar(18, alumno);
 	}
-	public void testCursoXCertificar5(){
+	public void testCursoXCertificar5() throws BusinessException{
 		String[] usuarios = {"JUANG"};
 		String[] puertos = {"ACG","ATL","DF"};
 		@SuppressWarnings("unused")
