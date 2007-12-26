@@ -13,6 +13,7 @@ public class Usuario implements Serializable{
 	private String nombre;
 	private int tipoUsuario;
 	private String numOficio;
+	private String email;
 	private Set puertos;
 	public Set getPuertos() {
 		return puertos;
@@ -49,6 +50,12 @@ public class Usuario implements Serializable{
 	}
 	public void setTipoUsuario(int tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
