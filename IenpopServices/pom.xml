@@ -8,6 +8,12 @@
 	<version>1.0</version>
 	<name>IenpopServices</name>
 	<url>http://maven.apache.org</url>
+	<repositories>
+		<repository>
+			<id>Red Local</id>
+			<url>http://inspiron600m/maven2</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- JUNIT -->
 		<dependency>
