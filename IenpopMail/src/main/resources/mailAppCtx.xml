@@ -38,6 +38,6 @@
 	
 	<!-- FREEMARKER ENGINE FOR MAIL -->
 	<bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-		<property name="templateLoaderPath" value="classpath:/edu/ienpop/"/>
+		<property name="templateLoaderPath" value="classpath:/edu/ienpop/mvc/view/"/>
 	</bean>
 </beans>
