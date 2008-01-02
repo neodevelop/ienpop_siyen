@@ -7,4 +7,7 @@
 		<property name="persistenceService" ref="persistenceService"/>
 		<property name="catalogoService" ref="catalogoService"/>
 	</bean>
+	<bean name="/certificados.ienpop" class="edu.ienpop.mvc.controller.CertificadosController">
+		<property name="persistenceService" ref="persistenceService"/>
+	</bean>
 </beans>

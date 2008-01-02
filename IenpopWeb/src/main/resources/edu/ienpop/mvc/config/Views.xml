@@ -9,4 +9,8 @@
 		<property name="exposeSpringMacroHelpers" value="true"/>
 		<property name="url" value="sistema.ftl"/>
 	</bean>
+	<bean id="certificados" class="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="url" value="certificados.ftl"/>
+	</bean>
 </beans>
