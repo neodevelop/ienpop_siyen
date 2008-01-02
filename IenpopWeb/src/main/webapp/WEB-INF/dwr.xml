@@ -18,6 +18,9 @@
 		<create javascript="MailService" creator="spring">
 			<param name="beanName" value="mailService"></param>
 		</create>
+		<create javascript="CursoService" creator="spring">
+			<param name="beanName" value="cursoService"></param>
+		</create>
 		<!-- Agregamos la excepcion -->
 		<convert match="edu.ienpop.services.BusinessException" converter="exception"></convert>
 		<convert match="java.lang.IllegalArgumentException" converter="exception"></convert>
