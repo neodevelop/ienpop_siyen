@@ -28,6 +28,7 @@
 				document.nuevoCurso.fechaInicioCurso.disabled=true;
 				document.nuevoCurso.idPuerto.disabled=true;
 				document.nuevoCurso.idTipoCurso.disabled=true;
+				document.nuevoCurso.crear.disabled=true;
 			});
 			dwr.engine.endBatch({
 				errorHandler:function(errorString, exception) { alert(errorString+" - "+exception); }
@@ -120,6 +121,7 @@
 		document.nuevoCurso.fechaInicioCurso.disabled=false;
 		document.nuevoCurso.idPuerto.disabled=false;
 		document.nuevoCurso.idTipoCurso.disabled=false;
+		document.nuevoCurso.crear.disabled=false;
 		document.nuevoCurso.reset();
 		dwr.util.removeAllRows("alumnosBody", { filter:function(tr) {
       				return (tr.id != "pattern");
