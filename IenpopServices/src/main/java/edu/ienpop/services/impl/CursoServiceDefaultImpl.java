@@ -61,7 +61,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException{
+	public long addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException{
 		// TODO Auto-generated method stub
 		//Obtenemos el curso por certificar
 		CursoXCertificar cursoXCertificar = (CursoXCertificar)getPersistenceService().findById(CursoXCertificar.class, (long)idCursoXCertificar);
@@ -126,6 +126,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		getPersistenceService().updateEntity(cursoXCertificar);
 		//Guardamos los cambios
 		getPersistenceService().updateEntity(curso);
+		return curso.getId();
 	}
 
 	@SuppressWarnings("unchecked")
