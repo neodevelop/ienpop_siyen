@@ -31,7 +31,7 @@ public class TestCursoService extends
 			cursoService=(CursoService)applicationContext.getBean("cursoService");;
 	}
 
-	public void testCursoService() throws BusinessException{
+	public void _testCursoService() throws BusinessException{
 		cursoService.addCursoCertificado(18, "IST5¡T036EPY¿+Q?R37K");
 	}
 	

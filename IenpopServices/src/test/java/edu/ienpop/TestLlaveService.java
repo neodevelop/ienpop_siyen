@@ -1,7 +1,9 @@
 package edu.ienpop;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
+import edu.ienpop.model.LlaveCertificacion;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.LlaveService;
 
@@ -28,8 +30,8 @@ public class TestLlaveService extends
 	}
 	
 	public void testLlaveService2() throws BusinessException{
-		//LlaveCertificacion llave = llaveService.isValidaLlave("T+?YPY1?6+WYÑ1ET/8UT",18);
-		//System.out.println(ToStringBuilder.reflectionToString(llave));
+		LlaveCertificacion llave = llaveService.isValidaLlave("AP#J33¡T¡D$NVC!K*J&%",2);
+		System.out.println(ToStringBuilder.reflectionToString(llave));
 	}
 
 }
