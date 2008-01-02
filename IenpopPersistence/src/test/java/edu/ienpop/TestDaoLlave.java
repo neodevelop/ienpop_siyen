@@ -38,7 +38,7 @@ public class TestDaoLlave extends AbstractDependencyInjectionSpringContextTests 
 		//dao.update(llave);
 	}
 	
-	public void testDao2() throws InterruptedException{
+	public void _testDao2() throws InterruptedException{
 		Thread.sleep(2000);
 		LlaveCertificacion llave = (LlaveCertificacion)dao.getByPK(LlaveCertificacion.class, new Long(11));
 		llave.setFechaUtilizacion(Calendar.getInstance().getTime());
