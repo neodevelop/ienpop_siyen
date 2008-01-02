@@ -14,11 +14,11 @@
 	</tr>
 </table>
 <table width="100%">
-	<thead>
-		<tr class="columnTables">
-			<th>Curso</td>
-			<th>Fecha de Inicio</td>
-			<th>Participantes</th>
+	<thead height="20">
+		<tr class="columnTables" height="20">
+			<th height="20">Curso</td>
+			<th>Inicio</td>
+			<th>Alumnos</th>
 			<th>Generar llave</th>
 		</tr>
 	</thead>
