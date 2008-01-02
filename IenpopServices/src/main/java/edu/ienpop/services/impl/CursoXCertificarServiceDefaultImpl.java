@@ -2,17 +2,14 @@ package edu.ienpop.services.impl;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import edu.ienpop.dao.CursoDao;
 import edu.ienpop.model.AlumnoXCertificar;
 import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.model.CursoXCertificar;
-import edu.ienpop.model.Usuario;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CursoXCertificarService;
 import edu.ienpop.services.PersistenceService;
@@ -98,13 +95,12 @@ public class CursoXCertificarServiceDefaultImpl implements
 		return getCursoDao().getCursoXCertificarPorCriteria(cursoCriteria);
 	}
 
-	@SuppressWarnings("unchecked")
-	public Map getMyMap() throws BusinessException {
-		Map model =  new HashMap();
-		Usuario usuario =  (Usuario)getPersistenceService().findById(Usuario.class, "JUANG");
-		model.put("llaveCertificacion", "0123456789abcdefghti");
-		model.put("usuario",usuario);
-		return model;
+	public List getCursosXCertificarConLlave(String[] idUsuario, String[] idPuerto) throws BusinessException {
+		CursoCriteria cursoCriteria = new CursoCriteria();
+		cursoCriteria.setIdStatusCurso(CursoCriteria.ABIERTO);
+		cursoCriteria.setIdUsuario(idUsuario);
+		cursoCriteria.setIdPuerto(idPuerto);
+		return getCursoDao().getCursoXCertificarPorCriteria(cursoCriteria);
 	}
 
 }
