@@ -29,6 +29,7 @@ function obtenerCursosSinLlave(){
 			var daym=cursoXCertificar.fechaInicio.getDate();
 			var year=cursoXCertificar.fechaInicio.getYear();
 			year+=1900;
+			month++;daym++;
 			var fechaCursoXCertificar = daym+"/"+month+"/"+year;
 			dwr.util.setValue("fechaInicioCursoXCertificar"+thisIdCursoXCertificar, fechaCursoXCertificar);
 			dwr.util.setValue("noParticipantesCursoXCertificar"+thisIdCursoXCertificar, alumnosCursoXCertificar.length);
