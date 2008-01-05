@@ -13,4 +13,8 @@
 		<property name="exposeSpringMacroHelpers" value="true"/>
 		<property name="url" value="certificados.ftl"/>
 	</bean>
+	<bean id="constancias" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/certificado.jasper"/>
+		<property name="reportDataKey" value="alumnos"/>
+	</bean>
 </beans>
