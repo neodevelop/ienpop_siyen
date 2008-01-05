@@ -29,7 +29,7 @@ function obtenerCursosConLlave(){
 			var daym=cursoAprobado.fechaInicio.getDate();
 			var year=cursoAprobado.fechaInicio.getYear();
 			year+=1900;
-			month++;daym++;
+			month++;//daym++;
 			var fechaCursoAprobado = daym+"/"+month+"/"+year;
 			dwr.util.setValue("fechaCursoAprobado"+thisIdCursoAprobado, fechaCursoAprobado);
 			//alert(fechaCursoAprobado);
@@ -51,8 +51,8 @@ function comprobarLlave(idCursoAprobado){
 	//alert("Curso: "+idCursoCertificado+" Llave: "+token);
 	dwr.engine.beginBatch();
 	CursoService.addCursoCertificado(idCursoCertificado,token,function(idCurso){
-		alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
-		window.open("certificados.ienpop?noCurso=1000", "_blank", "width=800,height=600");
+		//alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
+		window.open("certificados.ienpop?idCurso="+idCurso, "_blank", "width=800,height=600");
 		obtenerCursosConLlave();
 	});
 	dwr.engine.endBatch({
