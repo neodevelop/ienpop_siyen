@@ -43,11 +43,12 @@ public class CertificadosController extends AbstractController {
 		CatalogoPuerto puerto = (CatalogoPuerto)getPersistenceService().findById(CatalogoPuerto.class, curso.getIdPuerto());
 		CatalogoCurso tipoCurso = (CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class, curso.getIdTipoCurso());
 		Map model = new HashMap();
-		model.put("idCurso", idCurso);
+		//model.put("idCurso", idCurso);
 		model.put("curso",curso);
 		model.put("puerto",puerto);
 		model.put("tipoCurso",tipoCurso);
 		model.put("alumnos", curso.getAlumnos());
+		model.put("format", "pdf");
 		return new ModelAndView("constancias",model);
 	}
 
