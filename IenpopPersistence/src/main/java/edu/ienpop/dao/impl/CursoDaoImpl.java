@@ -3,6 +3,7 @@ package edu.ienpop.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -33,6 +34,7 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 				&& cursoCriteria.getFechaHasta() != null)
 			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
 					.getFechaDesde(), cursoCriteria.getFechaHasta()));
+		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
 
@@ -59,6 +61,7 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 				&& cursoCriteria.getFechaHasta() != null)
 			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
 					.getFechaDesde(), cursoCriteria.getFechaHasta()));
+		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
 

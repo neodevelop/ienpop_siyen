@@ -3,6 +3,7 @@ package edu.ienpop.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -27,6 +28,7 @@ public class AlumnoDaoImpl extends HibernateTemplate implements AlumnoDao {
 			criteria.add(Restrictions.eq("idStatusAlumno", alumnoCriteria.getIdStatusAlumno()));
 		if(alumnoCriteria.getFechaDesde()!=null && alumnoCriteria.getFechaHasta()!=null)
 			criteria.add(Restrictions.between("fechaHoraRegistro", alumnoCriteria.getFechaDesde(),alumnoCriteria.getFechaHasta()));
+		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
 
@@ -42,6 +44,7 @@ public class AlumnoDaoImpl extends HibernateTemplate implements AlumnoDao {
 			criteria.add(Restrictions.eq("idStatusAlumno", alumnoCriteria.getIdStatusAlumno()));
 		if(alumnoCriteria.getFechaDesde()!=null && alumnoCriteria.getFechaHasta()!=null)
 			criteria.add(Restrictions.between("fechaHoraRegistro", alumnoCriteria.getFechaDesde(),alumnoCriteria.getFechaHasta()));
+		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
 
