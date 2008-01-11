@@ -4,8 +4,8 @@
 <beans>
 
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="mail.ingenieriahs.com"/>
-		<property name="username" value="jreyes@ingenieriahs.com"/>
+		<property name="host" value="mail.ienpop.net"/>
+		<property name="username" value="siyen@ienpop.net"/>
 		<property name="password" value="volleyball"/>
 		<property name="javaMailProperties">
 			<props>
@@ -15,7 +15,7 @@
 	</bean>
 	
 	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
-		<property name="from" value="jreyes@ingenieriahs.com"/>
+		<property name="from" value="siyen@ienpop.net"/>
 		<property name="subject" value="IENPOP - SIYEN: Información del sistema"/>
 	</bean>
 	

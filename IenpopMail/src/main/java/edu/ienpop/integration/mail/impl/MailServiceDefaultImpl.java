@@ -84,7 +84,7 @@ public class MailServiceDefaultImpl implements MailService {
 				mimeMessage.setRecipient(Message.RecipientType.TO,
 						new InternetAddress(email));
 				mimeMessage.setFrom(new InternetAddress(
-						"jreyes@ingenieriahs.com"));
+						"siyen@ienpop.net"));
 				mimeMessage.setSubject(subject);
 				mimeMessage.setText(message);
 			}
@@ -101,7 +101,7 @@ public class MailServiceDefaultImpl implements MailService {
 
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 		helper.setTo(email);
-		helper.setFrom("jreyes@ingenieriahs.com");
+		helper.setFrom("siyen@ienpop.net");
 		helper.setText(message);
 		helper.setSubject(subject);
 		helper.addAttachment(attach.getFilename(), attach);
@@ -115,7 +115,7 @@ public class MailServiceDefaultImpl implements MailService {
 
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 		helper.setTo(email);
-		helper.setFrom("jreyes@ingenieriahs.com");
+		helper.setFrom("siyen@ienpop.net");
 		helper.setSubject(subject);
 		helper.setText(message, true);
 		helper.addInline("identifier1", inline);
@@ -131,7 +131,7 @@ public class MailServiceDefaultImpl implements MailService {
 						true);
 				Template myTemplate = getConfiguration().getTemplate(template);
 				message.setTo(email);
-				message.setFrom("jreyes@ingenieriahs.com");
+				message.setFrom("siyen@ienpop.net");
 				message.setSubject(subject);
 				String text = FreeMarkerTemplateUtils
 						.processTemplateIntoString(myTemplate, model);
@@ -148,7 +148,7 @@ public class MailServiceDefaultImpl implements MailService {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(email);
 				message.setSubject(subject);
-				message.setFrom("jreyes@ingenieriahs.com");
+				message.setFrom("siyen@ienpop.net");
 				String text = VelocityEngineUtils.mergeTemplateIntoString(
 						velocityEngine, template, model);
 				message.setText(text, true);
