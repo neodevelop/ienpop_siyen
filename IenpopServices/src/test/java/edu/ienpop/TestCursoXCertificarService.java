@@ -93,10 +93,15 @@ public class TestCursoXCertificarService extends
 		cursoXCertificarService.addAlumnoACursoXCertificar(18, alumno);
 		cursoXCertificarService.removeAlumnoACursoXCertificar(18, alumno);
 	}
-	public void testCursoXCertificar5() throws BusinessException{
+	public void _testCursoXCertificar5() throws BusinessException{
 		String[] usuarios = {"JUANG"};
 		String[] puertos = {"ACG","ATL","DF"};
 		@SuppressWarnings("unused")
 		List cursos = cursoXCertificarService.getCursosXCertificarSinLlave(usuarios, puertos);
+	}
+	
+	public void testCursoXCertificar6() throws BusinessException{
+		AlumnoXCertificar alumno = (AlumnoXCertificar)persistenceService.findById(AlumnoXCertificar.class, new Long(176));
+		cursoXCertificarService.removeAlumnoACursoXCertificar(61, alumno);
 	}
 }
