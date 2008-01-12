@@ -42,7 +42,7 @@ public class LlaveServiceDefaultImpl implements LlaveService {
 			throw new BusinessException("Este curso ya tiene asignada una llave...");
 		}
 		int LONG = 20;
-		String CHARACTERS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789+-/*!#$%&?";
+		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-/*!#$%&?";
 		String llave = "";
 		double seed;
 		int number;
