@@ -105,11 +105,16 @@
 	}
 	function borrarAlumnoXCertificar(idAlumnoXCertificar){
 		//alert(idAlumnoXCertificar);
-		var alumnoXCertificar = alumnosXCertificarCache[idAlumnoXCertificar.substring(6)];
+		var alumnoXCertificarBorrar = alumnosXCertificarCache[idAlumnoXCertificar.substring(6)];
 		dwr.engine.beginBatch();
-		if (confirm("Estás seguro de borrar a " + alumnoXCertificar.nombreCompleto + "?")) {
-			CursoXCertificarService.removeAlumnoACursoXCertifcar(dwr.util.getValue("idCursoXCertificar"),alumnoXCertificar,function(){ });
-			llenarTablaAlumnosXCertificar();
+		if (confirm("Estás seguro de borrar a " + alumnoXCertificarBorrar.nombreCompleto + "?")) {
+			//alert(dwr.util.getValue("idCursoXCertificar"));
+			//alert(alumnoXCertificarBorrar);
+			//alert(alumnosXCertificarCache);
+			CursoXCertificarService.removeAlumnoACursoXCertificar(dwr.util.getValue("idCursoXCertificar"),alumnoXCertificarBorrar,function(){
+				//alert("Ha borrado...");
+				llenarTablaAlumnosXCertificar();
+			});
 		}
 		dwr.engine.endBatch({
 				errorHandler:function(errorString, exception) { alert(errorString+" - "+exception); }
