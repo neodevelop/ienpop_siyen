@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.CatalogoPuerto;
 import edu.ienpop.model.Curso;
+import edu.ienpop.model.Usuario;
 import edu.ienpop.services.CursoService;
 import edu.ienpop.services.PersistenceService;
 
@@ -42,11 +43,13 @@ public class CertificadosController extends AbstractController {
 		System.out.println(ToStringBuilder.reflectionToString(curso));
 		CatalogoPuerto puerto = (CatalogoPuerto)getPersistenceService().findById(CatalogoPuerto.class, curso.getIdPuerto());
 		CatalogoCurso tipoCurso = (CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class, curso.getIdTipoCurso());
+		Usuario usuario = (Usuario)getPersistenceService().findById(Usuario.class, curso.getIdUsuario());
 		Map model = new HashMap();
 		//model.put("idCurso", idCurso);
 		model.put("curso",curso);
 		model.put("puerto",puerto);
 		model.put("tipoCurso",tipoCurso);
+		model.put("usuario",usuario);
 		model.put("alumnos", curso.getAlumnos());
 		model.put("format", "pdf");
 		return new ModelAndView("constancias",model);
