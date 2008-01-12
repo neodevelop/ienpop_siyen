@@ -18,7 +18,7 @@ public class CursoXCertificarServiceDefaultImpl implements
 		CursoXCertificarService {
 
 	private PersistenceService persistenceService;
-	private CursoDao cursoDao;
+	private CursoDao cursoDao; 
 	
 	public CursoDao getCursoDao() {
 		return cursoDao;
