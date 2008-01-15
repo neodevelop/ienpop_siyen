@@ -25,7 +25,7 @@ public class IenpopMessageListener implements MessageListener{
 				throw new RuntimeException("Error al obtener el mensaje", e);
 			}
 		}else{
-			log.debug("Se recibio un mensaje que noe s de texto...");
+			log.debug("Se recibio un mensaje que no es de texto...");
 		}
 	}
 

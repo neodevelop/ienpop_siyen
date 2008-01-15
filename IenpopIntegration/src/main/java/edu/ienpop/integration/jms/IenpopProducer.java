@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
+import edu.ienpop.model.Usuario;
+
 public class IenpopProducer {
 	private JmsTemplate jmsTemplate;
 	private Destination destination;
@@ -38,5 +40,22 @@ public class IenpopProducer {
 				return textMessage;
 			}
 		});
+	}
+	
+	public void generarLLaveQueue(long idCursoXCertificar,String email){
+		final String message = idCursoXCertificar+"|"+email;
+		log.debug("Enviando el mensaje para certificación ...");
+		this.jmsTemplate.send(this.getDestination(), new MessageCreator(){
+			public Message createMessage(Session session) throws JMSException {
+				TextMessage textMessage = session.createTextMessage();
+				textMessage.setText(message);
+				textMessage.setStringProperty("tipo", "generacionLlave");
+				return textMessage;
+			}
+		});
+	}
+	
+	public void notificarAcceso(Usuario usuario){
+		
 	}
 }

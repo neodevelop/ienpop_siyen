@@ -24,5 +24,9 @@ public class TestMessageProducer extends AbstractDependencyInjectionSpringContex
 	public void testProducer(){
 		producer.sendMessage();
 	}
+	
+	public void testProducer2(){
+		producer.generarLLaveQueue(1, "jreyes@ienpop.net");
+	}
 
 }
