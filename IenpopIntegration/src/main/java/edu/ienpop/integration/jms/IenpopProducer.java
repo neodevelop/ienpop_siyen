@@ -56,6 +56,6 @@ public class IenpopProducer {
 	}
 	
 	public void notificarAcceso(Usuario usuario){
-		
+		//Pendiente
 	}
 }
