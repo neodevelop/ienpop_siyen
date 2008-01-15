@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
-	<configExtensions>
-		<configExtension>xml</configExtension>
-	</configExtensions>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.2.v200712142013]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
 	<configs>
 		<config>src/main/resources/ServicesAppCtx.xml</config>
 		<config>src/main/resources/edu/ienpop/services/config/TxManager.xml</config>

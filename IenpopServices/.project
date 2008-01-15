@@ -3,7 +3,6 @@
 	<name>IenpopServices</name>
 	<comment></comment>
 	<projects>
-		<project>IenpopPersistence</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
