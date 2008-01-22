@@ -13,8 +13,7 @@
 <script src="js/obtenerLlave.js"></script>
 <script src="js/imprimir.js"></script>
 <script type='text/javascript' src='/IenpopWeb/dwr/interface/CursoXCertificarService.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/interface/LlaveService.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/interface/MailService.js'></script>
+<script type='text/javascript' src='/IenpopWeb/dwr/interface/IenpopProducer.js'></script>
 <script type='text/javascript' src='/IenpopWeb/dwr/interface/CursoService.js'></script>
 <script type='text/javascript' src='/IenpopWeb/dwr/engine.js'></script>
 <script type='text/javascript' src='/IenpopWeb/dwr/util.js'></script>
