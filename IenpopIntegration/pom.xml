@@ -20,19 +20,19 @@
 			<groupId>edu.ienpop</groupId>
 			<artifactId>IenpopPersistence</artifactId>
 			<version>1.0</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>edu.ienpop</groupId>
 			<artifactId>IenpopServices</artifactId>
 			<version>1.0</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>edu.ienpop</groupId>
 			<artifactId>IenpopMail</artifactId>
 			<version>1.0</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<!-- SPRING FRAMEWORK -->
 		<dependency>
@@ -99,13 +99,13 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.2</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.2</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
