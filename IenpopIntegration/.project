@@ -3,6 +3,9 @@
 	<name>IenpopIntegration</name>
 	<comment></comment>
 	<projects>
+		<project>IenpopMail</project>
+		<project>IenpopPersistence</project>
+		<project>IenpopServices</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
