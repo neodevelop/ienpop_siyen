@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.2.v200712142013]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<configs>
+		<config>src/main/resources/IntegrationAppCtx.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[Integration Config Set]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>/IenpopMail/src/main/resources/mailAppCtx.xml</config>
+				<config>/IenpopPersistence/src/main/resources/DataSourceAppCtx.xml</config>
+				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataAccessObjects.xml</config>
+				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataSource.xml</config>
+				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/SessionFactory.xml</config>
+				<config>/IenpopServices/src/main/resources/edu/ienpop/services/config/AOPconfig.xml</config>
+				<config>/IenpopServices/src/main/resources/edu/ienpop/services/config/Services.xml</config>
+				<config>/IenpopServices/src/main/resources/edu/ienpop/services/config/TxManager.xml</config>
+				<config>/IenpopServices/src/main/resources/ServicesAppCtx.xml</config>
+				<config>src/main/resources/IntegrationAppCtx.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
