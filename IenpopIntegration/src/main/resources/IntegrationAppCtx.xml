@@ -24,6 +24,9 @@
 	</bean>
 	
 	<bean id="messageListener" class="edu.ienpop.integration.jms.IenpopMessageListener">
+		<property name="mailService" ref="mailService"/>
+		<property name="llaveService" ref="llaveService"/>
+		<property name="persistenceService" ref="persistenceService"/>
 	</bean>
 	
 	<bean id="ienpopProducer" class="edu.ienpop.integration.jms.IenpopProducer">
