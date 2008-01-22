@@ -10,6 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 import edu.ienpop.model.Usuario;
 
 public class IenpopProducer {
@@ -29,21 +32,21 @@ public class IenpopProducer {
 		this.jmsTemplate = jmsTemplate;
 	}
 	
-	public void sendMessage(){
-		final String message = "Mensaje de envío del IENPOP.";
+	public void sendMessage(String m){
+		final String message = m;
 		log.debug("Enviando el mensaje...");
 		this.jmsTemplate.send(this.getDestination(), new MessageCreator(){
 			public Message createMessage(Session session) throws JMSException {
 				TextMessage textMessage = session.createTextMessage();
 				textMessage.setText(message);
-				textMessage.setStringProperty("tipo", "tipo1");
+				textMessage.setStringProperty("tipo", "test");
 				return textMessage;
 			}
 		});
 	}
 	
 	public void generarLLaveQueue(long idCursoXCertificar,String email){
-		final String message = idCursoXCertificar+"|"+email;
+		final String message = idCursoXCertificar+" "+email;
 		log.debug("Enviando el mensaje para certificación ...");
 		this.jmsTemplate.send(this.getDestination(), new MessageCreator(){
 			public Message createMessage(Session session) throws JMSException {
@@ -56,6 +59,16 @@ public class IenpopProducer {
 	}
 	
 	public void notificarAcceso(Usuario usuario){
-		//Pendiente
+		XStream xstream = new XStream(new DomDriver());
+		final String xml = xstream.toXML(usuario);
+		log.debug("Enviando el mensaje para notificación ...");
+		this.jmsTemplate.send(this.getDestination(), new MessageCreator(){
+			public Message createMessage(Session session) throws JMSException {
+				TextMessage textMessage = session.createTextMessage();
+				textMessage.setText(xml);
+				textMessage.setStringProperty("tipo", "notificacion");
+				return textMessage;
+			}
+		});
 	}
 }
