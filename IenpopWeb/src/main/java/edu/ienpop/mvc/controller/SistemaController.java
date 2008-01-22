@@ -10,6 +10,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import edu.ienpop.integration.jms.IenpopProducer;
 import edu.ienpop.model.Usuario;
 import edu.ienpop.services.CatalogoService;
 import edu.ienpop.services.PersistenceService;
@@ -17,7 +18,7 @@ import edu.ienpop.services.PersistenceService;
 public class SistemaController extends AbstractController {
 
 	PersistenceService persistenceService;
-
+	IenpopProducer ienpopProducer;
 	CatalogoService catalogoService;
 
 	public CatalogoService getCatalogoService() {
@@ -53,8 +54,17 @@ public class SistemaController extends AbstractController {
 			model
 					.put("catalogoCursos", getCatalogoService()
 							.getCatalogoCurso());
+			ienpopProducer.notificarAcceso(usuario);
 			return new ModelAndView("sistema", model);
 		}
+	}
+
+	public IenpopProducer getIenpopProducer() {
+		return ienpopProducer;
+	}
+
+	public void setIenpopProducer(IenpopProducer ienpopProducer) {
+		this.ienpopProducer = ienpopProducer;
 	}
 
 }

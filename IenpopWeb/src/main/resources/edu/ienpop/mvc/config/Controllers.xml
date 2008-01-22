@@ -6,6 +6,7 @@
 	<bean name="/sistema.ienpop" class="edu.ienpop.mvc.controller.SistemaController">
 		<property name="persistenceService" ref="persistenceService"/>
 		<property name="catalogoService" ref="catalogoService"/>
+		<property name="ienpopProducer" ref="ienpopProducer"/>
 	</bean>
 	<bean name="/certificados.ienpop" class="edu.ienpop.mvc.controller.CertificadosController">
 		<property name="cursoService" ref="cursoService"/>
