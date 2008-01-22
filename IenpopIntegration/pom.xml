@@ -1,12 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.ienpop</groupId>
-  <artifactId>IenpopIntegration</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0</version>
-  <name>IenpopIntegration</name>
-  <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.ienpop</groupId>
+	<artifactId>IenpopIntegration</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+	<name>IenpopIntegration</name>
+	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!--  PRUEBAS UNITARIAS -->
 		<dependency>
@@ -163,6 +164,13 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-core</artifactId>
 			<version>5.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- XStream -->
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
