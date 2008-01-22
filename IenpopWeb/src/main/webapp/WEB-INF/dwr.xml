@@ -12,11 +12,8 @@
 		<create javascript="CursoXCertificarService" creator="spring">
 			<param name="beanName" value="cursoXCertificarService"></param>
 		</create>
-		<create javascript="LlaveService" creator="spring">
-			<param name="beanName" value="llaveService"></param>
-		</create>
-		<create javascript="MailService" creator="spring">
-			<param name="beanName" value="mailService"></param>
+		<create javascript="IenpopProducer" creator="spring">
+			<param name="beanName" value="ienpopProducer"></param>
 		</create>
 		<create javascript="CursoService" creator="spring">
 			<param name="beanName" value="cursoService"></param>
