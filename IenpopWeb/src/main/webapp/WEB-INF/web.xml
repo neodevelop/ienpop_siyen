@@ -12,6 +12,7 @@
 			classpath*:/DataSourceAppCtx.xml
 			classpath*:/ServicesAppCtx.xml
 			classpath*:/mailAppCtx.xml
+			classpath*:/IntegrationAppCtx.xml
 		</param-value>
 	</context-param>
 
