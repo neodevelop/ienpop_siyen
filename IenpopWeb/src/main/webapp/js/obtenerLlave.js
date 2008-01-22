@@ -48,12 +48,8 @@ function generarLlave(idCursoXCertificar){
 	//alert(idCursoXCertificar.substring(5));
 	var email = document.obtenerCursos.email.value;
 	dwr.engine.beginBatch();
-	LlaveService.generateLlaveXCurso(idCursoXCertificar.substring(5),function(llave){
-		//alert(llave+" "+email);
-		//var model = $H({ llaveCertificacion:llave });
-		MailService.sendMailWithEngine(email, {llaveCertificacion:llave}, "Solicitud de certificación","mail/SendKey.ftl",function(){
-			alert("La información para certificar el curso ha sido enviada por correo...");
-		});
+	IenpopProducer.generarLLaveQueue(idCursoXCertificar.substring(5),email,function(llave){
+		alert("La información para certificar el curso ha sido enviada por correo...");
 	});
 	obtenerCursosSinLlave();
 	dwr.engine.endBatch({
