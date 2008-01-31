@@ -24,22 +24,25 @@
           	</table>
           	<table width="100%" border="0" cellspaciing="2">
           		<tr>
-          			<td>Desde:</td>
-          			<td>Desde:</td>
-          			<td>Desde:</td>
-          			<td>Desde:</td>
+          			<td class="myLabel">Desde:</td>
+          			<td><input type="text" readonly="true" id="desde" name="desde" onfocus="return showCalendar('desde', '%d-%m-%Y', '24', true);"><br></td>
+          			<td class="myLabel">Hasta:</td>
+          			<td><input type="text" readonly="true" id="hasta" name="hasta" onfocus="return showCalendar('hasta', '%d-%m-%Y', '24', true);"><br></td>
           		</tr>
-          	</table>
-	
-	<br>
-	<br>Hasta:<input type="text" readonly="true" id="hasta" name="hasta" onfocus="return showCalendar('hasta', '%d-%m-%Y', '24', true);"><br>
-	<br>En:<select name="idPuerto" id="idPuerto">
+          		<tr>
+          			<td class="myLabel">En:</td>
+          			<td>
+          			<select name="idPuerto" id="idPuerto">
           			<#list usuario.puertos as puerto>
 						<option value="${puerto.idPuerto?default('')}">${puerto.puerto?default('')}, ${puerto.estado?default('')}</option>
 					</#list>
-          		</select>
-	<br>No.Oficio: <input type="no" name="no" id="no"/>
-	<br><input type="button" name="generar" value="Generar" />
+          			</select>
+          			</td>
+          			<td class="myLabel">No.Oficio:</td>
+          			<td><input type="no" name="no" id="no"/></td>
+          		</tr>
+          	</table>
+		<center><input type="button" name="generar" value="Generar" class="inputButton" /></center>
 	
 		</td>
           <td background="img/formulario_r4_c17.jpg">&nbsp;</td>
