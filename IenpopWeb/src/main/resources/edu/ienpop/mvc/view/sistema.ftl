@@ -12,11 +12,11 @@
 <script src="js/nuevoCurso.js"></script>
 <script src="js/obtenerLlave.js"></script>
 <script src="js/imprimir.js"></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/interface/CursoXCertificarService.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/interface/IenpopProducer.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/interface/CursoService.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/engine.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/util.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoXCertificarService.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/IenpopProducer.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoService.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/engine.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/util.js'></script>
 <script language="javascript" src="js/calendar.js"></script>
 <script language="javascript" src="js/calendar-es.js"></script>
 <script language="javascript" src="js/calendar-setup.js"></script>
