@@ -12,4 +12,7 @@
 		<property name="cursoService" ref="cursoService"/>
 		<property name="persistenceService" ref="persistenceService"/>
 	</bean>
+	<bean name="/reverso.ienpop" class="edu.ienpop.mvc.controller.ReversoController">
+		<property name="llaveService" ref="llaveService"/>
+	</bean>
 </beans>

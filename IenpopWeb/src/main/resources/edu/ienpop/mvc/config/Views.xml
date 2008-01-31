@@ -18,4 +18,9 @@
 		<property name="reportDataKey" value="alumnos"/>
 		<property name="formatKey" value="format"/>
 	</bean>
+	<bean id="reverso" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/reverso.jasper"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
 </beans>
