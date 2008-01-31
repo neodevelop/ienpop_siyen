@@ -85,4 +85,12 @@ public class LlaveServiceDefaultImpl implements LlaveService {
 		}
 	}
 
+	public LlaveCertificacion getLlavebyIdCurso(long IdCursoXCertificar) throws BusinessException {
+		return (LlaveCertificacion)getLlaveDao().getLlaveByIdCurso(IdCursoXCertificar);
+	}
+
+	public LlaveCertificacion getLlavebyToken(String token) throws BusinessException {
+		return (LlaveCertificacion)getLlaveDao().getLlaveByLlave(token);
+	}
+
 }
