@@ -2,9 +2,9 @@
 <html>
 <head>
 <title>.: IENPOP - SIYEN :.</title>
-<script type='text/javascript' src='/IenpopWeb/dwr/interface/UsuarioService.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/engine.js'></script>
-<script type='text/javascript' src='/IenpopWeb/dwr/util.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/UsuarioService.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/engine.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/util.js'></script>
 <script type='text/javascript'>
 	function errHandler(msg) {
 		dwr.util.setValue("myMessage",msg);
