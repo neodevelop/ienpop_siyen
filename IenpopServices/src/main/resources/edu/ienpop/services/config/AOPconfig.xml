@@ -21,9 +21,23 @@
 	</aop:config>
 	
 	<aop:config>
+		<aop:pointcut id="lazyThrowsPointcut" expression="execution(* edu.ienpop.dao.*.*(..))"/>
+		<aop:aspect id="lazyThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="lazyThrowsPointcut" throwing="lazyException" method="doRecoveryActionLazy"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
 		<aop:pointcut id="jdbcGenericThrowsPointcut" expression="execution(* edu.ienpop.services.*.*(..))"/>
 		<aop:aspect id="jdbcGenericThrowsAspect" ref="serviceThrowsAdvice">
 			<aop:after-throwing pointcut-ref="jdbcGenericThrowsPointcut" throwing="jdbcException" method="doRecoveryActionGenericJDBC"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="netConnectionThrowsPointcut" expression="execution(* edu.ienpop.integration.jms.*.*(..))"/>
+		<aop:aspect id="netConnectionThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="netConnectionThrowsPointcut" throwing="jmsException" method="doRecoveryActionNetConnection"/>
 		</aop:aspect>
 	</aop:config>
 	
