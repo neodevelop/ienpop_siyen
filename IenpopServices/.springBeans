@@ -10,6 +10,7 @@
 		<config>src/main/resources/edu/ienpop/services/config/TxManager.xml</config>
 		<config>src/main/resources/edu/ienpop/services/config/Services.xml</config>
 		<config>src/main/resources/edu/ienpop/services/config/AOPconfig.xml</config>
+		<config>src/main/resources/IntegrationAppCtx.xml</config>
 	</configs>
 	<configSets>
 		<configSet>
@@ -25,6 +26,8 @@
 				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataAccessObjects.xml</config>
 				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataSource.xml</config>
 				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/SessionFactory.xml</config>
+				<config>src/main/resources/IntegrationAppCtx.xml</config>
+				<config>/IenpopMail/src/main/resources/mailAppCtx.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
