@@ -17,7 +17,10 @@
 		UsuarioService.isValidUsuario(username,password,
 		function(usuarioValido){
 			//dwr.util.setValue("myMessage",usuarioValido);
-			login.submit();
+			if(usuarioValido==true){
+				login.action="sistema.ienpop";
+				login.submit();
+			}
 		});
 	}
 </script>
@@ -39,7 +42,7 @@
       <tr>
         <td width="218">&nbsp;</td>
         <td width="337" height="169" background="img/login_blue.gif">
-		<form action="sistema.ienpop" name="login" method="post">
+		<form name="login" method="post">
 		<table width="100%" border="0">
           <tr>
             <td width="10%">&nbsp;</td>
@@ -52,13 +55,13 @@
               <tr>
                 <td class="myLabel">Usuario:</td>
                 <td><label>
-                  <input type="text" id="usuario" name="usuario">
+                  <input type="text" id="usuario" name="usuario" onkeydown="DWRUtil.onReturn(event, validarUsuario)">
                 </label></td>
               </tr>
               <tr>
                 <td class="myLabel">Contrase&ntilde;a:</td>
                 <td><label>
-                  <input type="password" id="password">
+                  <input type="password" id="password" onkeydown="DWRUtil.onReturn(event, validarUsuario)">
                 </label></td>
               </tr>
             </table></td>
