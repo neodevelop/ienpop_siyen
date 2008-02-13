@@ -16,7 +16,7 @@
 		<property name="idUsuario" insert="false"/>
 		<property name="idStatusCurso" insert="false"/>
 		<property name="idLlave" insert="false"/>
-		<set name="alumnos" table="alumno" inverse="true" lazy="false" order-by="idAlumno">
+		<set name="alumnos" table="alumno" inverse="true" order-by="idAlumno">
 			<key column="idCurso"/>
 			<one-to-many class="edu.ienpop.model.Alumno"/>
 		</set>
