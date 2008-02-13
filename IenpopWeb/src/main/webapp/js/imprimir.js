@@ -52,8 +52,8 @@ function comprobarLlave(idCursoAprobado){
 	dwr.engine.beginBatch();
 	CursoService.addCursoCertificado(idCursoCertificado,token,function(idCurso){
 		//alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
-		window.open("certificados.ienpop?idCurso="+idCurso, "_blank", "width=800,height=600");
 		window.open("reverso.ienpop?llave="+token, "_blank", "width=800,height=600");
+		window.open("certificados.ienpop?idCurso="+idCurso, "_blank", "width=800,height=600");
 		obtenerCursosConLlave();
 	});
 	dwr.engine.endBatch({
