@@ -13,4 +13,5 @@ public interface CursoService {
 	List getInformeMensual(int mes, int anio) throws BusinessException;
 	List getInformeXTipoLibreta(int mes, int anio, String libreta, String idPuerto) throws BusinessException;
 	long addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException;
+	String getIdTipoCursoById(String idCurso) throws BusinessException;
 }

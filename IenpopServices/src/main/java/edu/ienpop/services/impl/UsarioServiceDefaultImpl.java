@@ -22,7 +22,7 @@ public class UsarioServiceDefaultImpl implements UsuarioService {
 		if(bdPassword==null)
 			throw new BusinessException("El usuario no existe...");
 		if(!bdPassword.equals(password))
-			throw new BusinessException("La contrase√±a es incorrecta...");
+			throw new BusinessException("La contraseña es incorrecta...");
 		return true;
 	}
 
