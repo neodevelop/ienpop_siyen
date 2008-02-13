@@ -14,11 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import edu.ienpop.model.LlaveCertificacion;
+import edu.ienpop.services.CursoService;
 import edu.ienpop.services.LlaveService;
 
 public class ReversoController extends AbstractController {
 
 	LlaveService llaveService;
+	CursoService cursoService;
 	Logger log = Logger.getLogger(this.getClass());
 	
 	public LlaveService getLlaveService() {
@@ -33,19 +35,27 @@ public class ReversoController extends AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		//long idCurso = ServletRequestUtils.getLongParameter(request, "idCurso");
 		String llave = ServletRequestUtils.getStringParameter(request, "llave");
-		//log.debug("IdCurso: "+idCurso);
-		//LlaveCertificacion llave = getLlaveService().getLlavebyIdCurso(idCurso);
+		String idCurso = ServletRequestUtils.getStringParameter(request, "idCurso");
 		LlaveCertificacion llaveCertificacion = getLlaveService().getLlavebyToken(llave);
+		String idTipoCurso = getCursoService().getIdTipoCursoById(idCurso);
 		List list = new ArrayList();
 		list.add(llaveCertificacion);
-		//log.debug(ToStringBuilder.reflectionToString(llave));
 		log.debug("La llave es: "+llave);
+		log.debug("El idCurso es: "+idCurso);
+		log.debug("El idTipoCurso es: "+idTipoCurso);
 		Map model = new HashMap();
 		model.put("llaves", list);
 		model.put("format", "pdf");
-		return new ModelAndView("reverso",model);
+		return new ModelAndView(idTipoCurso,model);
+	}
+
+	public CursoService getCursoService() {
+		return cursoService;
+	}
+
+	public void setCursoService(CursoService cursoService) {
+		this.cursoService = cursoService;
 	}
 
 }
