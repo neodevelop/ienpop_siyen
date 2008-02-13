@@ -5,4 +5,5 @@
 	<import resource="edu/ienpop/mvc/config/ViewResolver.xml"/>
 	<import resource="edu/ienpop/mvc/config/Controllers.xml"/>
 	<import resource="edu/ienpop/mvc/config/Views.xml"/>
+	<import resource="edu/ienpop/mvc/config/Reversos.xml"/>
 </beans>
