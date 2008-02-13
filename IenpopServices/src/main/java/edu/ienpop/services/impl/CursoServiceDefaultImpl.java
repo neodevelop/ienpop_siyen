@@ -201,4 +201,8 @@ public class CursoServiceDefaultImpl implements CursoService {
 			return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
+	public String getIdTipoCursoById(String idCurso) throws BusinessException {
+		return getCursoDao().getTipoCursoByIdCurso(idCurso);
+	}
+
 }
