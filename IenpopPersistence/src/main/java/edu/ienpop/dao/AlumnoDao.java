@@ -6,6 +6,6 @@ import edu.ienpop.model.AlumnoCriteria;
 
 
 public interface AlumnoDao {
-	public List getAlumnosPorCriteria(AlumnoCriteria alumnoCriteria);
-	public List getAlumnosXCertificarPorCriteria(AlumnoCriteria alumnoCriteria);
+	List getAlumnosPorCriteria(AlumnoCriteria alumnoCriteria);
+	List getAlumnosXCertificarPorCriteria(AlumnoCriteria alumnoCriteria);
 }

@@ -13,10 +13,15 @@ public interface CursoDao {
 	 * @param cursoCriteria
 	 * @return java.util.List
 	 */
-	public List getCursosPorCriteria(CursoCriteria cursoCriteria);
+	List getCursosPorCriteria(CursoCriteria cursoCriteria);
 	/**
 	 * @param cursoCriteria
 	 * @return java.util.List
 	 */
-	public List getCursoXCertificarPorCriteria(CursoCriteria cursoCriteria);
+	List getCursoXCertificarPorCriteria(CursoCriteria cursoCriteria);
+	/**
+	 * @param idCurso
+	 * @return String
+	 */
+	String getTipoCursoByIdCurso(String idCurso);
 }
