@@ -24,7 +24,7 @@ public class TestUsuarioService extends
 	}
 	
 	public void testService() throws BusinessException{
-		System.out.println(usuarioService.isValidUsuario("BORDA", "COCO"));
+		System.out.println(usuarioService.isValidUsuario("JUANG", "JUANG"));
 	}
 
 }

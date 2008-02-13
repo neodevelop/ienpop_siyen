@@ -9,7 +9,7 @@ import edu.ienpop.services.ErrorService;
 public class TestThrowsAdvice extends
 		AbstractDependencyInjectionSpringContextTests {
 
-	ErrorService errorService;
+	//ErrorService errorService;
 	CatalogoService catalogoService;
 	protected String[] getConfigLocations() {
 		// TODO Auto-generated method stub
@@ -20,8 +20,8 @@ public class TestThrowsAdvice extends
 	protected void onSetUp() throws Exception {
 		// TODO Auto-generated method stub
 		super.onSetUp();
-		if(errorService==null)
-			errorService=(ErrorService)applicationContext.getBean("errorService");
+		//if(errorService==null)
+		//	errorService=(ErrorService)applicationContext.getBean("errorService");
 		if(catalogoService==null)
 			catalogoService=(CatalogoService)applicationContext.getBean("catalogoService");
 	}

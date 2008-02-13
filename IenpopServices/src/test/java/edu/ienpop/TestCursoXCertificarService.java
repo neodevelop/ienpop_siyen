@@ -42,15 +42,15 @@ public class TestCursoXCertificarService extends
 		curso.setIdPuerto("ACG");
 		curso.setIdTipoCurso("PATRON_DE_YATE_III");
 		curso.setIdUsuario("JUANG");
-		//cursoXCertificarService.createNuevoCurso(curso);
+		cursoXCertificarService.createNuevoCurso(curso);
 	}
 	
 	public void _testCursoXCertificarService2() throws BusinessException{
 		AlumnoXCertificar alumno = new AlumnoXCertificar();
 		alumno.setFechaHoraRegistro(Calendar.getInstance().getTime());
 		alumno.setNombreCompleto("MANITO1");
-		//alumno.setObservaciones("NADA");
-		//cursoXCertificarService.addAlumnoACursoXCertifcar(18, alumno);
+		alumno.setObservaciones("NADA");
+		cursoXCertificarService.addAlumnoACursoXCertificar(79, alumno);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -73,7 +73,7 @@ public class TestCursoXCertificarService extends
 		alumnos.add(alumno);
 		alumnos.add(alumno2);
 		alumnos.add(alumno3);
-		//cursoXCertificarService.addAlumnosACursoXCertifcar(18, alumnos);
+		cursoXCertificarService.addAlumnosACursoXCertificar(79, alumnos);
 	}
 	
 	public void _testCursoXCertificar4() throws BusinessException{
@@ -90,8 +90,8 @@ public class TestCursoXCertificarService extends
 		alumno.setFechaHoraRegistro(Calendar.getInstance().getTime());
 		alumno.setNombreCompleto("MANITO1");
 		alumno.setObservaciones("NADA");
-		cursoXCertificarService.addAlumnoACursoXCertificar(18, alumno);
-		cursoXCertificarService.removeAlumnoACursoXCertificar(18, alumno);
+		cursoXCertificarService.addAlumnoACursoXCertificar(79, alumno);
+		cursoXCertificarService.removeAlumnoACursoXCertificar(79, alumno);
 	}
 	public void _testCursoXCertificar5() throws BusinessException{
 		String[] usuarios = {"JUANG"};
@@ -100,8 +100,14 @@ public class TestCursoXCertificarService extends
 		List cursos = cursoXCertificarService.getCursosXCertificarSinLlave(usuarios, puertos);
 	}
 	
-	public void testCursoXCertificar6() throws BusinessException{
+	public void _testCursoXCertificar6() throws BusinessException{
 		AlumnoXCertificar alumno = (AlumnoXCertificar)persistenceService.findById(AlumnoXCertificar.class, new Long(176));
 		cursoXCertificarService.removeAlumnoACursoXCertificar(61, alumno);
+	}
+	
+	public void testCursoXCertificar7() throws BusinessException{
+		AlumnoXCertificar alumno = (AlumnoXCertificar)persistenceService.findById(AlumnoXCertificar.class, new Long(176));
+		CursoXCertificar curso = (CursoXCertificar)persistenceService.findById(CursoXCertificar.class, new Long(79));
+		curso.getAlumnos().add(alumno);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 import edu.ienpop.model.CursoCriteria;
@@ -48,8 +47,8 @@ public class TestCursoService extends
 	@SuppressWarnings("unchecked")
 	public void testCursoService2() throws BusinessException{
 		//cursoService.generateCertificadosXCurso(111902);
-		GregorianCalendar cal1 = new GregorianCalendar(2007,4,4);
-		GregorianCalendar cal2 = new GregorianCalendar(2007,4,8);
+		GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
+		GregorianCalendar cal2 = new GregorianCalendar(2008,0,30);
 		CursoCriteria cursoCriteria =  new CursoCriteria();
 		cursoCriteria.setIdPuerto(new String[]{"ACG"});
 		cursoCriteria.setIdStatusCurso(2);
@@ -57,7 +56,7 @@ public class TestCursoService extends
 		cursoCriteria.setFechaHasta(cal2.getTime());
 		List<CursoXCertificar> cursos = cursoService.getCursosXStatus(cursoCriteria);
 		for(CursoXCertificar curso:cursos){
-			System.out.println(ToStringBuilder.reflectionToString(curso));
+			System.out.println(curso.getId());
 		}
 	}
 }
