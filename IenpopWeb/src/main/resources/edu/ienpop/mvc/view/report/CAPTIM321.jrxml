@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="CAPTIM321"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="792"
+		 pageHeight="612"
+		 columnWidth="732"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+
+	<field name="llave" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="572"  isSplitAllowed="true" >
+				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="7"
+						y="548"
+						width="163"
+						height="22"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="barcode-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch" pen="None" fill="Solid" />
+					<imageExpression class="java.awt.Image"><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$F{llave},false,false,null,0,0)]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement
+						x="443"
+						y="509"
+						width="283"
+						height="58"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[INSTITUCIÓN EDUCATIVA AUTORIZADA POR LA SCT/DGMM  OFICIO 109.202.0582003 DEL 16 DE ABRIL DE 2003 ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="50"
+						y="9"
+						width="295"
+						height="395"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[
+
+Introducción.
+Compás magnético y girocompás.
+Rumbos
+Navegación de estima, costera.
+Sistemas de balizamiento.
+Equipos del puente de mando.
+Sistemas de gobierno.
+Ordenes a la caña.
+Desarrollo de las guardias.
+
+Luces principales.
+Tipos de embarcaciones.
+Señales fónicas
+Reglas de rumbo y gobierno 
+Código internacional de señales.
+
+Mantenimiento y arranche
+Escalas.
+Guindolas y balsas.
+Compartimentos.
+Levantamiento de pesos
+Pinturas y preparación de superficies.
+Sistema de apertura y cierre de escotillas.
+Maniobras y partes de los Winches  
+Cabuyería
+
+Procedimientos de emergencia, señales de alarma
+Señales de emergencia
+Comunicación interna, radio comunicación
+Prevención de la contaminación]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="355"
+						y="7"
+						width="284"
+						height="25"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[STCW78/95, CAPITULO II, SECCION A-II/4
+COMPETENCIA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="355"
+						y="32"
+						width="97"
+						height="15"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONPETENCE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="355"
+						y="47"
+						width="366"
+						height="236"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[
+
+STEER THE SHIP AND CUMPLY WITH HELM ORDERS ALSO IN THE ENGLISH LANGUAGE
+
+
+KEEP A PROPER LOOKOUT BY SIGHT AND HEARING
+
+CONTRIBUTE TO MONITORING AND CONTROLLING A SAFE WATCH
+
+
+OPERATE EMERGENCY EQUIPMENT AND APPLY EMERGENCY PROCEDURES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="355"
+						y="288"
+						width="366"
+						height="101"
+						key="staticText-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
+					</textElement>
+				<text><![CDATA[THIS CONSTANCY IS VALID ACCOMPANIED BY A VALID MERCHANT MARINERS’ ENDORSEMENT, CERTIFICATE OR DOCUMENT ISSUED BY MEXICO MARITIME ADMINISTRATION UNDER THE PROVISION OF THE STCW78, AS AMENDED IN 1995, RULE I/2.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="434"
+						width="732"
+						height="64"
+						key="staticText-7"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[CONSTANCY OF STANDAR OF COMPETENCE OF  RATING FORMING PART OF NAVIGATIONAL WATCH, HELMSMAN TO PERFORM THE NAVIGATION FUNCTION AT THE SUPPORT LEVEL. INSTRUCTION COMPLETED UNDER THE PROVISIONS OF THE INTERNATIONAL CONVENTION ON STANDARDS OF TRAINING, CERTIFICATION AND WATCHKEEPING FOR SEAFARERS 1978, AS AMENDED IN 1995, SECTION A-II/4 ACCORDANCE WITH THE METHODS FOR DEMOSTRATING COMPETENCE SPECIFIED IN THE TABLE A-II/4
+MEXICO MERCHANT MARINE GENERAL DIRECTION CONSTANCY APROVAL 109.403.0530 (26.I.99)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="7"
+						y="7"
+						width="250"
+						height="15"
+						key="staticText-8"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONTENIDO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="28"
+						y="9"
+						width="295"
+						height="380"
+						key="staticText-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[
+Navegación.
+
+
+
+
+
+
+
+
+
+Precaución de abordajes.
+
+
+
+
+
+Guardias de timonel.
+
+
+
+
+
+
+
+
+
+Gestión de la seguridad
+
+
+
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="355"
+						y="47"
+						width="366"
+						height="178"
+						key="staticText-10"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<text><![CDATA[GOBERNAR EL BUQUE Y CUMPLIR LAS ORDENES DADAS AL TIMONEL Y TAMBIEN SI SE DAN EN INGLES.
+
+
+REALIZAR DEBIDAMENTE EL SERVICIO DE VIGILANCIA CON LA VISTA Y EL OIDO
+
+CONTRIBUIR A LA VIGILANCIA Y EL CONTROL DE UNA GUARDIA SEGURA
+
+UTILIZAR EL EQUIPO DE EMERGENCIA Y APLICAR PROCEDIMIENTOS DE EMERGENCIA
+]]></text>
+				</staticText>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

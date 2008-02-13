@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="CAPASOC3236"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="792"
+		 pageHeight="612"
+		 columnWidth="732"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+
+	<field name="llave" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="572"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="357"
+						y="75"
+						width="304"
+						height="275"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Maniobras.
+
+
+
+
+Legislación    Marítima.
+
+
+
+Contaminación y responsabilidad social
+
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="436"
+						y="506"
+						width="283"
+						height="58"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[INSTITUCIÓN EDUCATIVA AUTORIZADA POR LA SCT/DGMM  OFICIO 109.202.0582003 DEL 16 DE ABRIL DE 2003 ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="378"
+						y="75"
+						width="304"
+						height="205"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[
+Fondeo. Atranque y desatraque
+Remolque
+Mal  tiempo
+Entrada a dique
+
+Documentos de abordo
+Autoridades Marítimas
+Despachos.
+
+Tipos de emergencia
+Procedimientos de emergencia
+Prácticas de seguridad y relaciones humanas a bordo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="66"
+						y="51"
+						width="284"
+						height="383"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[
+
+
+Forma de la tierra. Líneas principales.
+Latitud y longitud. Situaciones
+Cartas de navegación. Rumbos
+Equipo utilizado en la navegación
+Compás magnético y girocompás. Tablilla de desvíos.
+
+Corrección de la aguja magnética por la polar.
+Velocidad
+Situación por estima
+
+Astros, sus movimientos.
+Ortos y ocasos
+Estaciones del año
+Marea
+Orientación astronómica
+
+Radar, ronda, sonar
+Navegación por satélite.
+
+Tabla de mareas. Derroteros. Lista de faros
+
+Prevención del tiempo
+Reportes meteorológicos, su interpretación.
+Vientos fuertes locales.
+Forma de evitar los ciclones.
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="44"
+						y="51"
+						width="284"
+						height="352"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONTENIDO
+
+Navegación.
+
+
+
+
+
+Navegación  de Estima
+
+
+
+Navegación astronómica
+
+
+
+
+
+Ayuda electrónica a la Navegación.
+
+
+Publicaciones.
+
+Meteorología.
+
+]]></text>
+				</staticText>
+				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="9"
+						y="541"
+						width="163"
+						height="22"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="barcode-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch" pen="None" fill="Solid" />
+					<imageExpression class="java.awt.Image"><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$F{llave},false,false,null,0,0)]]></imageExpression>
+				</image>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
