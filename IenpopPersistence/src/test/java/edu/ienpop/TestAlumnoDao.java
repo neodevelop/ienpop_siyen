@@ -29,7 +29,7 @@ public class TestAlumnoDao extends AbstractDependencyInjectionSpringContextTests
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void _testAlumnoDao(){
+	public void testAlumnoDao(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		//alumnoCriteria.setId(new Long(33919));
 		//alumnoCriteria.setNumeroControl("II033919");

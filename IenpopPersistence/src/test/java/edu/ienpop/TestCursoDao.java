@@ -39,8 +39,8 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		//criteria.setIdLlave(new Long(12));
 		criteria.setIdTipoCurso(new String[] {"PATRON_DE_YATE_III","﻿CAPACO3234"});
 		criteria.setIdStatusCurso(4);
-		criteria.setFechaDesde(new GregorianCalendar(2007,6,15).getTime());
-		criteria.setFechaHasta(new GregorianCalendar(2007,6,30).getTime());
+		criteria.setFechaDesde(new GregorianCalendar(2008,1,1).getTime());
+		criteria.setFechaHasta(new GregorianCalendar(2008,1,10).getTime());
 		List cursos = cursoDao.getCursosPorCriteria(criteria);
 		for(Iterator it = cursos.iterator();it.hasNext();){
 			Curso curso = (Curso)it.next();
@@ -59,8 +59,8 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		//criteria.setIdLlave(new Long(12));
 		criteria.setIdTipoCurso(new String[]{"FAMBT1","PATRON_DE_YATE_III"});
 		criteria.setIdStatusCurso(2);
-		criteria.setFechaDesde(new GregorianCalendar(2007,6,24).getTime());
-		criteria.setFechaHasta(new GregorianCalendar(2007,6,26).getTime());
+		criteria.setFechaDesde(new GregorianCalendar(2008,1,1).getTime());
+		criteria.setFechaHasta(new GregorianCalendar(2008,1,10).getTime());
 		List cursos = cursoDao.getCursoXCertificarPorCriteria(criteria);
 		for(Iterator it = cursos.iterator();it.hasNext();){
 			CursoXCertificar curso = (CursoXCertificar)it.next();

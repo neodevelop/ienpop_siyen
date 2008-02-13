@@ -47,8 +47,10 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 	
 	public void _testDao2(){
 		Alumno alumnoNuevo = new Alumno();
+		Curso curso = (Curso)dao.getByPK(Curso.class, new Long(111893));
 		alumnoNuevo.setFechaHoraRegistro(Calendar.getInstance().getTime());
-		alumnoNuevo.setIdCurso(111897);
+		//alumnoNuevo.setIdCurso(111893);
+		alumnoNuevo.setCurso(curso);
 		alumnoNuevo.setIdStatusAlumno(2);
 		alumnoNuevo.setNombreCompleto("JUAN LUIS CALDERON ARREDONDO");
 		dao.save(alumnoNuevo);
@@ -58,7 +60,8 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 	
 	@SuppressWarnings("unchecked")
 	public void _testDao3(){
-		Curso nuevoCurso = (Curso)dao.getByPK(Curso.class, new Long(111898));
+		Curso nuevoCurso = new Curso(); 
+		nuevoCurso = (Curso)dao.getByPK(Curso.class, new Long(111893));
 		
 		Alumno alumnoNuevo = new Alumno();
 		alumnoNuevo.setFechaHoraRegistro(Calendar.getInstance().getTime());
@@ -96,22 +99,22 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 		alumnos.add(alumnoNuevo3);
 		nuevoCurso.setAlumnos(alumnos);
 		
-		dao.update(nuevoCurso);
+		//dao.update(nuevoCurso);
 	}
 	
-	public void testDao4(){
-		Curso curso = (Curso)dao.getByPK(Curso.class, new Long(111898));
+	public void _testDao4(){
+		Curso curso = (Curso)dao.getByPK(Curso.class, new Long(111893));
 		System.out.println(ToStringBuilder.reflectionToString(curso));
 		Set set = curso.getAlumnos();
 		for(Iterator it=set.iterator();it.hasNext();){
 			Alumno alumno = (Alumno)it.next();
-			System.out.println(ToStringBuilder.reflectionToString(alumno));
+			System.out.println(alumno.getId());
 		}
 	}
 	
-	public void _testDao11(){
+	public void testDao11(){
 		Alumno alumno = (Alumno)dao.getByPK(Alumno.class, new Long(33924));
-		System.out.println(ToStringBuilder.reflectionToString(alumno));
-		System.out.println(ToStringBuilder.reflectionToString(alumno.getCurso()));
+		System.out.println(alumno.getId());
+		System.out.println(alumno.getIdCurso());
 	}
 }
