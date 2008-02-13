@@ -48,21 +48,20 @@ public class SistemaController extends AbstractController {
 		String idUsuario = ServletRequestUtils.getStringParameter(request,
 				"usuario", "none");
 		if (idUsuario.equals("none")) {
-			model.put("error", "La sesi—n ha expirado o el ingreso fue incorrecto...");
-			return new ModelAndView("main",model);
+			model.put("error",
+					"La sesi—n ha expirado o el ingreso fue incorrecto...");
+			return new ModelAndView("main", model);
 		} else {
-			Usuario usuario = (Usuario) getPersistenceService().findById(
-					Usuario.class, idUsuario);
-			model.put("usuario", usuario);
-			model
-					.put("catalogoCursos", getCatalogoService()
-							.getCatalogoCurso());
-			try{
+			try {
+				Usuario usuario = (Usuario) getPersistenceService().findById(
+						Usuario.class, idUsuario);
+				model.put("usuario", usuario);
+				model.put("catalogoCursos", getCatalogoService()
+						.getCatalogoCurso());
 				ienpopProducer.notificarAcceso(usuario);
-			}catch(BusinessException e){
-				model.put("error", "Error de comunicaciones con el servidor...");
-				log.debug("Error de comunicaci—n:"+e.getMessage());
-				return new ModelAndView("main",model);
+			} catch (BusinessException e) {
+				model.put("error", "Error de comunicaciones...");
+				return new ModelAndView("main", model);
 			}
 			return new ModelAndView("sistema", model);
 		}
