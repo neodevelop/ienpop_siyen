@@ -14,5 +14,6 @@
 	</bean>
 	<bean name="/reverso.ienpop" class="edu.ienpop.mvc.controller.ReversoController">
 		<property name="llaveService" ref="llaveService"/>
+		<property name="cursoService" ref="cursoService"/>
 	</bean>
 </beans>
