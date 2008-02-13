@@ -8,13 +8,13 @@
 	<version>2.0</version>
 	<name>IenpopWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<repositories>
+	<!--repositories>
 		<repository>
 			<id>LocalRepo</id>
 			<name>LocalRepo</name>
 			<url>http://inspiron600m/maven2</url>
 		</repository>
-	</repositories>
+	</repositories-->
 	<dependencies>
 		<!-- JUNIT -->
 		<dependency>
@@ -195,7 +195,19 @@
 		<dependency>
 			<groupId>jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>2.0.3</version>
+			<version>2.0.4</version>
+		</dependency>
+		<!-- iReport para Barcode -->
+		<dependency>
+			<groupId>ireport</groupId>
+			<artifactId>ireport</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<!-- Barbecue para Barcode -->
+		<dependency>
+			<groupId>net.sourceforge</groupId>
+			<artifactId>barbecue</artifactId>
+			<version>1.1</version>
 		</dependency>
 	</dependencies>
 	<build>
