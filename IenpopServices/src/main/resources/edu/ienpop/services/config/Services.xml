@@ -26,7 +26,7 @@
 		<property name="llaveDao" ref="llaveDao"/>
 	</bean>
 	
-	<bean id="usuarioService" class="edu.ienpop.services.impl.UsarioServiceDefaultImpl">
+	<bean id="usuarioService" class="edu.ienpop.services.impl.UsuarioServiceDefaultImpl">
 		<property name="usuarioDao" ref="usuarioDao"/>
 	</bean>
 	
