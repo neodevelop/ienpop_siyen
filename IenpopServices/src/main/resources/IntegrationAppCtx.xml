@@ -29,7 +29,7 @@
 		<property name="persistenceService" ref="persistenceService"/>
 	</bean>
 	
-	<bean id="ienpopProducer" class="edu.ienpop.integration.jms.impl.IenpopProducerImpl">
+	<bean id="ienpopProducer" class="edu.ienpop.integration.jms.impl.IenpopProducer">
 		<property name="destination" ref="destination" />
 		<property name="jmsTemplate" ref="jmsTemplate" />
 	</bean>
