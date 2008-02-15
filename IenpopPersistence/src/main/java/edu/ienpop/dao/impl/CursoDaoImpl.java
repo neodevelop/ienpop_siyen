@@ -67,7 +67,7 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 	}
 
 	public String getTipoCursoByIdCurso(String idCurso) {
-		String sql = "select idTipoCurso from Curso where idCurso=:idCurso";
+		String sql = "select t.idTipoCurso from Curso c left join c.tipoCurso t  where idCurso=:idCurso";
 		Query query = getSession().createQuery(sql);
 		query.setString("idCurso", idCurso);
 		return (String)query.uniqueResult();

@@ -33,7 +33,7 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 			cursoDao=(CursoDao)applicationContext.getBean("cursoDao");
 	}
 	
-	public void testCursoDao(){
+	public void _testCursoDao(){
 		CursoCriteria criteria = new CursoCriteria();
 		//criteria.setId(new Long(111902));
 		//criteria.setIdLlave(new Long(12));
@@ -53,7 +53,7 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		}
 	}
 	
-	public void testCursoDao2(){
+	public void _testCursoDao2(){
 		CursoCriteria criteria = new CursoCriteria();
 		//criteria.setId(new Long(18));
 		//criteria.setIdLlave(new Long(12));
@@ -71,5 +71,9 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 				System.out.println("\t"+ToStringBuilder.reflectionToString(alumno));
 			}
 		}
+	}
+	
+	public void testCursoDao3(){
+		assertEquals("CAPACO3234", cursoDao.getTipoCursoByIdCurso("111894"));
 	}
 }
