@@ -81,8 +81,6 @@ public class CursoServiceDefaultImpl implements CursoService {
 		Calendar fechaFin = Calendar.getInstance();
 		fechaFin.set(fechaInicio.get(Calendar.YEAR), fechaInicio.get(Calendar.MONTH), fechaInicio.get(Calendar.DATE));
 		fechaFin.add(Calendar.DATE, catalogoCurso.getDuracion()-1);
-		//Lo guardamos
-		getPersistenceService().createEntity(curso);
 		//Le asignamos sus propiedades y sus calculos de fecha
 		curso.setFechaInicio(cursoXCertificar.getFechaInicio());
 		curso.setFechaHoraRegistro(Calendar.getInstance().getTime());
@@ -92,6 +90,8 @@ public class CursoServiceDefaultImpl implements CursoService {
 		curso.setIdUsuario(cursoXCertificar.getIdUsuario());
 		curso.setIdLlave(llaveCertificacion.getId());
 		curso.setIdStatusCurso(3);
+		//Lo guardamos
+		getPersistenceService().createEntity(curso);
 		//Actualizamos el uso de la llave
 		llaveCertificacion.setFechaUtilizacion(Calendar.getInstance().getTime());
 		llaveCertificacion.setIdStatusLlave(1);
