@@ -2,13 +2,14 @@ package edu.ienpop.integration.jms;
 
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
+import edu.ienpop.integration.jms.impl.IenpopProducer;
 import edu.ienpop.model.Usuario;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.PersistenceService;
 
 public class TestMessageProducer extends AbstractDependencyInjectionSpringContextTests {
 
-	IenpopProducerInterface producer;
+	IenpopProducer producer;
 	PersistenceService service;
 	
 	@Override
@@ -22,7 +23,7 @@ public class TestMessageProducer extends AbstractDependencyInjectionSpringContex
 		// TODO Auto-generated method stub
 		super.onSetUp();
 		if(producer==null){
-			producer=(IenpopProducerInterface)applicationContext.getBean("ienpopProducer");
+			producer=(IenpopProducer)applicationContext.getBean("ienpopProducer");
 		}
 		if(service==null){
 			service=(PersistenceService)applicationContext.getBean("persistenceService");
