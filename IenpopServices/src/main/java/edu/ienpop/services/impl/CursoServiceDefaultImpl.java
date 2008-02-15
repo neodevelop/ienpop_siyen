@@ -88,7 +88,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		curso.setFechaHoraRegistro(Calendar.getInstance().getTime());
 		curso.setFechaFin(fechaFin.getTime());
 		curso.setIdPuerto(cursoXCertificar.getIdPuerto());
-		curso.setIdTipoCurso(cursoXCertificar.getIdTipoCurso());
+		curso.setTipoCurso((CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class,cursoXCertificar.getIdTipoCurso()));
 		curso.setIdUsuario(cursoXCertificar.getIdUsuario());
 		curso.setIdLlave(llaveCertificacion.getId());
 		curso.setIdStatusCurso(3);
