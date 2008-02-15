@@ -4,7 +4,7 @@ import edu.ienpop.dao.UsuarioDao;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.UsuarioService;
 
-public class UsarioServiceDefaultImpl implements UsuarioService {
+public class UsuarioServiceDefaultImpl implements UsuarioService {
 
 	UsuarioDao usuarioDao;
 	
@@ -24,6 +24,10 @@ public class UsarioServiceDefaultImpl implements UsuarioService {
 		if(!bdPassword.equals(password))
 			throw new BusinessException("La contrase–a es incorrecta...");
 		return true;
+	}
+
+	public String getNombreDelusuario(String usuario) throws BusinessException {
+		return getUsuarioDao().getNombreUsuario(usuario);
 	}
 
 }
