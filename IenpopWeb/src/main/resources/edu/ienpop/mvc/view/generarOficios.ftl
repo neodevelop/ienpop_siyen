@@ -1,4 +1,5 @@
 <form action="#" name="generarOficio">
+	<input type="hidden" id="idUsuario" name="idUsuario" value="${usuario.idUsuario}"/>
 	<center>
       <table width="675" border="0" cellspacing="0" cellpadding="0">
         <tr>	
@@ -18,11 +19,18 @@
           		<tr>
           			<td class="myLabel">Dirigido a:</td>
           			<td>
-          				<input type="text" name="dirigido" id="dirigido" size="60"/>
+          				<input type="text" name="dirigido" id="dirigido" size="50"/>
+          			</td>
+          			<td class="myLabel">Vista para imprimir:</td>
+          			<td class="myLabel">
+          				<select name="formato">
+          					<option value="html">Navegador en Web</option>
+          					<option value="pdf">PDF</option>
+          				</select>
           			</td>
           		</tr>
           	</table>
-          	<table width="100%" border="0" cellspaciing="2">
+          	<table width="100%" border="0" cellspacing="2">
           		<tr>
           			<td class="myLabel">Desde:</td>
           			<td><input type="text" readonly="true" id="desde" name="desde" onfocus="return showCalendar('desde', '%d-%m-%Y', '24', true);"><br></td>
@@ -42,7 +50,7 @@
           			<td><input type="no" name="no" id="no"/></td>
           		</tr>
           	</table>
-		<center><input type="button" name="generar" value="Generar" class="inputButton" /></center>
+		<center><input type="button" name="generar" value="Generar" class="inputButton" onclick="mostrarOficio()"/></center>
 	
 		</td>
           <td background="img/formulario_r4_c17.jpg">&nbsp;</td>
