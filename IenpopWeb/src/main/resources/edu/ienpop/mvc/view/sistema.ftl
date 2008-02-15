@@ -12,6 +12,7 @@
 <script src="js/nuevoCurso.js"></script>
 <script src="js/obtenerLlave.js"></script>
 <script src="js/imprimir.js"></script>
+<script src="js/generarOficios.js"></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoXCertificarService.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/IenpopProducer.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoService.js'></script>
