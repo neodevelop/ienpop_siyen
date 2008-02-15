@@ -13,11 +13,10 @@ import org.springframework.jms.core.MessageCreator;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-import edu.ienpop.integration.jms.IenpopProducer;
 import edu.ienpop.model.Usuario;
 import edu.ienpop.services.BusinessException;
 
-public class IenpopProducerImpl implements IenpopProducer{
+public class IenpopProducer{
 	private JmsTemplate jmsTemplate;
 	private Destination destination;
 	Logger log = Logger.getLogger(this.getClass());

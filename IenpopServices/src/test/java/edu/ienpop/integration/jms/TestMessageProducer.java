@@ -8,7 +8,7 @@ import edu.ienpop.services.PersistenceService;
 
 public class TestMessageProducer extends AbstractDependencyInjectionSpringContextTests {
 
-	IenpopProducer producer;
+	IenpopProducerInterface producer;
 	PersistenceService service;
 	
 	@Override
@@ -22,7 +22,7 @@ public class TestMessageProducer extends AbstractDependencyInjectionSpringContex
 		// TODO Auto-generated method stub
 		super.onSetUp();
 		if(producer==null){
-			producer=(IenpopProducer)applicationContext.getBean("ienpopProducer");
+			producer=(IenpopProducerInterface)applicationContext.getBean("ienpopProducer");
 		}
 		if(service==null){
 			service=(PersistenceService)applicationContext.getBean("persistenceService");
