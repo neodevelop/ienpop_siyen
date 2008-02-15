@@ -31,8 +31,8 @@
 				<config>src/main/resources/edu/ienpop/mvc/config/ViewResolver.xml</config>
 				<config>src/main/resources/edu/ienpop/mvc/config/Views.xml</config>
 				<config>src/main/resources/WebAppCtx.xml</config>
-				<config>/IenpopIntegration/src/main/resources/IntegrationAppCtx.xml</config>
 				<config>/IenpopMail/src/main/resources/mailAppCtx.xml</config>
+				<config>/IenpopServices/src/main/resources/IntegrationAppCtx.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
