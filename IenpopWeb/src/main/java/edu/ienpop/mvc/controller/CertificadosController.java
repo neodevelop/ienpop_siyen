@@ -42,7 +42,8 @@ public class CertificadosController extends AbstractController {
 		Curso curso =  getCursoService().generateCertificadosXCurso(idCurso);
 		System.out.println(ToStringBuilder.reflectionToString(curso));
 		CatalogoPuerto puerto = (CatalogoPuerto)getPersistenceService().findById(CatalogoPuerto.class, curso.getIdPuerto());
-		CatalogoCurso tipoCurso = (CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class, curso.getIdTipoCurso());
+		//CatalogoCurso tipoCurso = (CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class, curso.getIdTipoCurso());
+		CatalogoCurso tipoCurso = curso.getTipoCurso();
 		Usuario usuario = (Usuario)getPersistenceService().findById(Usuario.class, curso.getIdUsuario());
 		Map model = new HashMap();
 		//model.put("idCurso", idCurso);
