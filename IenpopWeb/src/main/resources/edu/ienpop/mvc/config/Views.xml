@@ -23,4 +23,13 @@
 		<property name="reportDataKey" value="llaves"/>
 		<property name="formatKey" value="format"/>
 	</bean>
+	<bean id="oficio" class="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="url" value="oficio.ftl"/>
+	</bean>
+	<bean id="oficioPdf" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/oficio.jrxml"/>
+		<property name="reportDataKey" value="cursos"/>
+		<property name="formatKey" value="format"/>
+	</bean>
 </beans>

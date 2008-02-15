@@ -16,4 +16,9 @@
 		<property name="llaveService" ref="llaveService"/>
 		<property name="cursoService" ref="cursoService"/>
 	</bean>
+	<bean name="/oficio.ienpop" class="edu.ienpop.mvc.controller.OficioController">
+		<property name="cursoService" ref="cursoService"/>
+		<property name="persistenceService" ref="persistenceService"/>
+		<property name="usuarioService" ref="usuarioService"/>
+	</bean>
 </beans>
