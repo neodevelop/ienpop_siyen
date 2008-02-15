@@ -14,4 +14,11 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao {
 		return (String)query.uniqueResult();
 	}
 
+	public String getNombreUsuario(String username) {
+		String sql = "Select u.nombre from Usuario u where idUsuario=:username";
+		Query query = getSession().createQuery(sql);
+		query.setString("username", username);
+		return (String)query.uniqueResult();
+	}
+
 }
