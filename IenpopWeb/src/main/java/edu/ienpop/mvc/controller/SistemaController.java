@@ -11,7 +11,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import edu.ienpop.integration.jms.IenpopProducer;
+import edu.ienpop.integration.jms.impl.IenpopProducer;
 import edu.ienpop.model.Usuario;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CatalogoService;
