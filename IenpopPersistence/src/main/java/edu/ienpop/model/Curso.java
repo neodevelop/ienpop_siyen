@@ -14,12 +14,53 @@ public class Curso extends Persistent{
 	private Date fechaFin;
 	private Date fechaHoraRegistro;
 	private String idPuerto;
-	private String idTipoCurso;
+	private CatalogoCurso tipoCurso;
 	private String idUsuario;
 	private int idStatusCurso;
 	private long idLlave;
 	private Set alumnos;
-	
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+	public Date getFechaHoraRegistro() {
+		return fechaHoraRegistro;
+	}
+	public void setFechaHoraRegistro(Date fechaHoraRegistro) {
+		this.fechaHoraRegistro = fechaHoraRegistro;
+	}
+	public String getIdPuerto() {
+		return idPuerto;
+	}
+	public void setIdPuerto(String idPuerto) {
+		this.idPuerto = idPuerto;
+	}
+	public CatalogoCurso getTipoCurso() {
+		return tipoCurso;
+	}
+	public void setTipoCurso(CatalogoCurso tipoCurso) {
+		this.tipoCurso = tipoCurso;
+	}
+	public String getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	public int getIdStatusCurso() {
+		return idStatusCurso;
+	}
+	public void setIdStatusCurso(int idStatusCurso) {
+		this.idStatusCurso = idStatusCurso;
+	}
 	public long getIdLlave() {
 		return idLlave;
 	}
@@ -32,47 +73,7 @@ public class Curso extends Persistent{
 	public void setAlumnos(Set alumnos) {
 		this.alumnos = alumnos;
 	}
-	public Date getFechaFin() {
-		return fechaFin;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-	public String getIdPuerto() {
-		return idPuerto;
-	}
-	public void setIdPuerto(String idPuerto) {
-		this.idPuerto = idPuerto;
-	}
-	public int getIdStatusCurso() {
-		return idStatusCurso;
-	}
-	public void setIdStatusCurso(int idStatusCurso) {
-		this.idStatusCurso = idStatusCurso;
-	}
-	public String getIdTipoCurso() {
-		return idTipoCurso;
-	}
-	public void setIdTipoCurso(String idTipoCurso) {
-		this.idTipoCurso = idTipoCurso;
-	}
-	public String getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(String idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-	public Date getFechaHoraRegistro() {
-		return fechaHoraRegistro;
-	}
-	public void setFechaHoraRegistro(Date fechaHoraRegistro) {
-		this.fechaHoraRegistro = fechaHoraRegistro;
-	}
-	
 }

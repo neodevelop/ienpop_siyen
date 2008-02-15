@@ -9,6 +9,7 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 import edu.ienpop.dao.Dao;
 import edu.ienpop.model.Alumno;
+import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.Curso;
 
 public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
@@ -37,7 +38,7 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 		fechaFin.add(Calendar.DATE, 2);
 		nuevoCurso.setFechaFin(fechaFin.getTime());
 		nuevoCurso.setIdPuerto("ATS");
-		nuevoCurso.setIdTipoCurso("INICIA1");
+		nuevoCurso.setTipoCurso((CatalogoCurso)dao.getByPK(CatalogoCurso.class, "INICIA1"));
 		nuevoCurso.setFechaHoraRegistro(Calendar.getInstance().getTime());
 		nuevoCurso.setIdUsuario("JUANG");
 		nuevoCurso.setIdStatusCurso(3);

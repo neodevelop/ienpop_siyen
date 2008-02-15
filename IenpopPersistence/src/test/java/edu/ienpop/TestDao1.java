@@ -53,7 +53,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 			Curso curso = (Curso) it.next();
 			System.out.println(curso.getId());
 			System.out.println(curso.getIdUsuario());
-			System.out.println(curso.getIdTipoCurso());
+			System.out.println(ToStringBuilder.reflectionToString(curso.getTipoCurso()));
 		}
 	}
 
