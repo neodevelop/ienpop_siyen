@@ -35,7 +35,7 @@
 	</aop:config>
 	
 	<aop:config>
-		<aop:pointcut id="netConnectionThrowsPointcut" expression="execution(* edu.ienpop.integration.jms.*.*(..))"/>
+		<aop:pointcut id="netConnectionThrowsPointcut" expression="execution(* edu.ienpop.integration.jms.impl..*(..))"/>
 		<aop:aspect id="netConnectionThrowsAspect" ref="serviceThrowsAdvice">
 			<aop:after-throwing pointcut-ref="netConnectionThrowsPointcut" throwing="jmsException" method="doRecoveryActionNetConnection"/>
 		</aop:aspect>
