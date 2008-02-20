@@ -173,6 +173,13 @@
 			<version>5.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- OpenMQ -->
+		<dependency>
+			<groupId>openmq</groupId>
+			<artifactId>openmq</artifactId>
+			<version>4.1</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- XStream -->
 		<dependency>
 			<groupId>xstream</groupId>
