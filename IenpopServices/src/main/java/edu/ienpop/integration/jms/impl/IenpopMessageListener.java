@@ -25,12 +25,11 @@ import edu.ienpop.services.LlaveService;
 import edu.ienpop.services.PersistenceService;
 
 public class IenpopMessageListener implements MessageListener {
-
 	MailService mailService;
 	LlaveService llaveService;
 	PersistenceService persistenceService;
 	Logger log = Logger.getLogger(this.getClass());
-
+	
 	@SuppressWarnings("unchecked")
 	public void onMessage(Message message) {
 		if (message instanceof TextMessage) {
@@ -116,5 +115,4 @@ public class IenpopMessageListener implements MessageListener {
 	public void setPersistenceService(PersistenceService persistenceService) {
 		this.persistenceService = persistenceService;
 	}
-
 }
