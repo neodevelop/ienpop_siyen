@@ -3,10 +3,6 @@
 	<name>IenpopWeb</name>
 	<comment></comment>
 	<projects>
-		<project>IenpopIntegration</project>
-		<project>IenpopMail</project>
-		<project>IenpopPersistence</project>
-		<project>IenpopServices</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
