@@ -218,4 +218,10 @@
 		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95.jrxml"/>
 		<property name="formatKey" value="format"/>
 	</bean>
+	
+	<bean id="CAPMAY313" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="reportDataKey" value="llaves"/>
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMAY313.jrxml"/>
+		<property name="formatKey" value="format"/>
+	</bean>
 </beans>
