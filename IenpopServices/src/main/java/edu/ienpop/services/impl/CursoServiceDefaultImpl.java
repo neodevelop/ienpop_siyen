@@ -213,6 +213,8 @@ public class CursoServiceDefaultImpl implements CursoService {
 	public Curso getCursoByTokenCertificado(String token)
 			throws BusinessException {
 		LlaveCertificacion llave = getLlaveService().getLlavebyToken(token);
+		if(llave==null)
+			throw new BusinessException("El c—digo es invalido...");
 		Curso curso = getCursoDao().getCursoByIdLlaveCertificada(llave.getId());
 		return curso;
 	}
