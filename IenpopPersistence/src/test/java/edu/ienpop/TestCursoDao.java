@@ -73,7 +73,11 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		}
 	}
 	
-	public void testCursoDao3(){
+	public void _testCursoDao3(){
 		assertEquals("CAPACO3234", cursoDao.getTipoCursoByIdCurso("111894"));
+	}
+	
+	public void testCursoDao4(){
+		cursoDao.getCursoByIdLlaveCertificada(53L);
 	}
 }

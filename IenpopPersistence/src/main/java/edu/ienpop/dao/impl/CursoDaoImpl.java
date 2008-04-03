@@ -73,4 +73,11 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 		return (String)query.uniqueResult();
 	}
 
+	public Curso getCursoByIdLlaveCertificada(long id) {
+		String sql = "from Curso c where c.idLlave=:id";
+		Query query = getSession().createQuery(sql);
+		query.setLong("id", id);
+		return (Curso)query.uniqueResult();
+	}
+
 }

@@ -2,6 +2,7 @@ package edu.ienpop.dao;
 
 import java.util.List;
 
+import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
 
 /**
@@ -24,4 +25,10 @@ public interface CursoDao {
 	 * @return String
 	 */
 	String getTipoCursoByIdCurso(String idCurso);
+	
+	/**
+	 * @param token
+	 * @return {@link Curso}
+	 */
+	Curso getCursoByIdLlaveCertificada(long id);
 }
