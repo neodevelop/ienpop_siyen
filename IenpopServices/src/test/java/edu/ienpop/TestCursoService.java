@@ -45,7 +45,7 @@ public class TestCursoService extends
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void testCursoService2() throws BusinessException{
+	public void _testCursoService2() throws BusinessException{
 		//cursoService.generateCertificadosXCurso(111902);
 		GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
 		GregorianCalendar cal2 = new GregorianCalendar(2008,0,30);
@@ -58,5 +58,9 @@ public class TestCursoService extends
 		for(CursoXCertificar curso:cursos){
 			System.out.println(curso.getId());
 		}
+	}
+	
+	public void testCursoService3() throws BusinessException{
+		cursoService.getCursoByTokenCertificado("2BVKRIPVC3GS5P6SA21U");
 	}
 }

@@ -150,6 +150,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return curso;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getInformeMensual(int mes, int anio) throws BusinessException {
 		Calendar fechaDesde = Calendar.getInstance();
 		fechaDesde.set(anio, mes-1, 1);
@@ -163,6 +164,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getInformeXTipoLibreta(int mes, int anio, String libreta,
 			String idPuerto) throws BusinessException {
 		Calendar fechaDesde = Calendar.getInstance();
@@ -179,6 +181,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getOficio(Date fechaInicio, Date fechaFin,
 			String idPuerto) throws BusinessException {
 		if(idPuerto==null)
@@ -191,6 +194,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getCursosXStatus(CursoCriteria cursoCriteria) throws BusinessException {
 		if(cursoCriteria.getIdPuerto()==null)
 			throw new BusinessException("No se ha especificado un puerto, posiblemente expiró la sesión o el valor es incorrecto...");
@@ -204,6 +208,13 @@ public class CursoServiceDefaultImpl implements CursoService {
 
 	public String getIdTipoCursoById(String idCurso) throws BusinessException {
 		return getCursoDao().getTipoCursoByIdCurso(idCurso);
+	}
+
+	public Curso getCursoByTokenCertificado(String token)
+			throws BusinessException {
+		LlaveCertificacion llave = getLlaveService().getLlavebyToken(token);
+		Curso curso = getCursoDao().getCursoByIdLlaveCertificada(llave.getId());
+		return curso;
 	}
 
 }
