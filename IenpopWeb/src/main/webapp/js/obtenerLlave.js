@@ -24,13 +24,14 @@ function obtenerCursosSinLlave(){
 				}
 			}
 			//dwr.util.setValue("tipoCursoXCertificar"+thisIdCursoXCertificar, cursoXCertificar.idTipoCurso);
-			var day=cursoXCertificar.fechaInicio.getDay();
-			var month=cursoXCertificar.fechaInicio.getMonth();
-			var daym=cursoXCertificar.fechaInicio.getDate();
-			var year=cursoXCertificar.fechaInicio.getYear();
-			year+=1900;
-			month++;//daym++;
-			var fechaCursoXCertificar = daym+"/"+month+"/"+year;
+			//var day=cursoXCertificar.fechaInicio.getDay();
+			//var month=cursoXCertificar.fechaInicio.getMonth();
+			//var daym=cursoXCertificar.fechaInicio.getDate();
+			//var year=cursoXCertificar.fechaInicio.getYear();
+			//year+=1900;
+			//month++;//daym++;
+			//var fechaCursoXCertificar = daym+"/"+month+"/"+year;
+			var fechaCursoXCertificar = fechaConFormato(cursoXCertificar.fechaInicio);
 			dwr.util.setValue("fechaInicioCursoXCertificar"+thisIdCursoXCertificar, fechaCursoXCertificar);
 			dwr.util.setValue("noParticipantesCursoXCertificar"+thisIdCursoXCertificar, alumnosCursoXCertificar.length);
 			$("patternCursoXCertificar" + thisIdCursoXCertificar).style.display = "table-row";
@@ -55,4 +56,15 @@ function generarLlave(idCursoXCertificar){
 	dwr.engine.endBatch({
 		errorHandler:function(errorString, exception) { alert(errorString+" - "+exception); }
 	});
+}
+
+function fechaConFormato(fecha){
+	var day=fecha.getDay();
+	var month=fecha.getMonth();
+	var daym=fecha.getDate();
+	var year=fecha.getYear();
+	year+=1900;
+	month++;//daym++;
+	var fechaFormateada = daym+"/"+month+"/"+year;
+	return fechaFormateada;
 }
