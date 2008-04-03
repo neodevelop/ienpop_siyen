@@ -1,3 +1,1 @@
-<%
-	response.sendRedirect("index.ienpop");
-%>
+<jsp:forward page="index.ienpop"/>
