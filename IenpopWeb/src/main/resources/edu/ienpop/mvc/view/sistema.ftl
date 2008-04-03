@@ -13,6 +13,7 @@
 <script src="js/obtenerLlave.js"></script>
 <script src="js/imprimir.js"></script>
 <script src="js/generarOficios.js"></script>
+<script src="js/validarCertificado.js"></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoXCertificarService.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/IenpopProducer.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoService.js'></script>
@@ -83,7 +84,7 @@
 
 						<ul class="tabbed_images" id="tabs_example_3">
 							<li><a href="#image_1"><img src="img/nuevo_curso.jpg" border="0"></a></li>
-							<li><a href="#image_2"><img src="img/modificar_curso.jpg" border="0"></a></li>
+							<li><a href="#image_2"><img src="img/validar.jpg" border="0"></a></li>
 							<li><a href="#image_3"><img src="img/obtener_llave.jpg" border="0"></a></li>
 							<li><a href="#image_4"><img src="img/generar_oficios.jpg" border="0"></a></li>
 							<li><a href="#image_5"><img src="img/imprimir.jpg" border="0"></a></li>
@@ -100,7 +101,7 @@
 							</div>
 							<div id="image_2">
 								<!-------------------------CONTENIDO 2------------------------------>
-            					<#include "modificarCurso.ftl">
+            					<#include "validarCertificado.ftl">
             					<!-------------------------CONTENIDO 2------------------------------>
 							</div>
 							<div id="image_3">
