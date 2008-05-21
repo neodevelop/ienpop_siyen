@@ -200,4 +200,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<scm>
+		<connection>scm:svn:http://192.168.1.253/svn/IenpopServices/</connection>
+		<developerConnection>
+			scm:svn:http://192.168.1.253/svn/IenpopServices/
+		</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://192.168.1.253/svn/IenpopServices/</url>
+	</scm>
 </project>
