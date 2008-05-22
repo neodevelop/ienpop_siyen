@@ -254,7 +254,7 @@
 			scm:svn:http://192.168.1.253/svn/IenpopWeb
 		</developerConnection>
 		<tag>HEAD</tag>
-		<url>http://192.168.1.253/svn/IenpopWeb</url>
+		<url>scm:svn:http://neodevelop:volleyball@192.168.1.253/svn/IenpopWeb</url>
 	</scm>
 </project>
 
