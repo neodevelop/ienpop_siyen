@@ -45,6 +45,7 @@ public class SistemaController extends AbstractController {
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		Map model = new HashMap();
+		String view = "sistema";
 		String idUsuario = ServletRequestUtils.getStringParameter(request,
 				"usuario", "none");
 		if (idUsuario.equals("none")) {
@@ -59,11 +60,13 @@ public class SistemaController extends AbstractController {
 				model.put("catalogoCursos", getCatalogoService()
 						.getCatalogoCurso());
 				ienpopProducer.notificarAcceso(usuario);
+				if(usuario.getTipoUsuario()==3)
+					view="jefatura";
 			} catch (BusinessException e) {
 				model.put("error", "Error de comunicaciones...");
 				return new ModelAndView("main", model);
 			}
-			return new ModelAndView("sistema", model);
+			return new ModelAndView(view, model);
 		}
 	}
 
