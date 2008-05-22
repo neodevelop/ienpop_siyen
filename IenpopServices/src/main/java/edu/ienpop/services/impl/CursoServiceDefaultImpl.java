@@ -151,15 +151,17 @@ public class CursoServiceDefaultImpl implements CursoService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List getInformeMensual(int mes, int anio) throws BusinessException {
-		Calendar fechaDesde = Calendar.getInstance();
-		fechaDesde.set(anio, mes-1, 1);
-		Calendar fechaHasta = Calendar.getInstance();
-		fechaHasta.set(anio, mes, 1);
-		fechaHasta.add(Calendar.DATE, -1);
+	public List getInformePeriodico(Date desde, Date hasta) throws BusinessException {
+		//Calendar fechaDesde = Calendar.getInstance();
+		//fechaDesde.set(anio, mes-1, 1);
+		//Calendar fechaHasta = Calendar.getInstance();
+		//fechaHasta.set(anio, mes, 1);
+		//fechaHasta.add(Calendar.DATE, -1);
 		CursoCriteria cursoCriteria =  new CursoCriteria();
-		cursoCriteria.setFechaDesde(fechaDesde.getTime());
-		cursoCriteria.setFechaHasta(fechaHasta.getTime());
+		//cursoCriteria.setFechaDesde(fechaDesde.getTime());
+		//cursoCriteria.setFechaHasta(fechaHasta.getTime());
+		cursoCriteria.setFechaDesde(desde);
+		cursoCriteria.setFechaHasta(hasta);
 		cursoCriteria.setIdStatusCurso(4);
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
@@ -177,7 +179,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		cursoCriteria.setFechaDesde(fechaDesde.getTime());
 		cursoCriteria.setFechaHasta(fechaHasta.getTime());
 		cursoCriteria.setIdTipoCurso(idTipoCursos);
-		cursoCriteria.setIdStatusCurso(4);
+		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
@@ -190,7 +192,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		cursoCriteria.setFechaDesde(fechaInicio);
 		cursoCriteria.setFechaHasta(fechaFin);
 		cursoCriteria.setIdPuerto(new String[] {idPuerto});
-		cursoCriteria.setIdStatusCurso(4);
+		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
