@@ -21,4 +21,7 @@
 		<property name="persistenceService" ref="persistenceService"/>
 		<property name="usuarioService" ref="usuarioService"/>
 	</bean>
+	<bean name="/informePeriodico.ienpop" class="edu.ienpop.mvc.controller.InformePeriodicoController">
+		<property name="cursoService" ref="cursoService"/>
+	</bean>
 </beans>
