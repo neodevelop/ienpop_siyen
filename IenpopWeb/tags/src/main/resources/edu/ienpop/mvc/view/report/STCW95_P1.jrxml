@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="STCW95_P1"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="792"
+		 pageHeight="612"
+		 columnWidth="732"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+
+	<field name="llave" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="572"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="435"
+						width="732"
+						height="62"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[CONSTANCY OF FISHING VESSEL INSTRUCTION (FVI)  COURSE COMPLETED UNDER THE PROVISIONS OF THE INTERNATIONAL CONVENTION ON STANDARDS OF TRAINING, CERTIFICATION AND WATCHKEEPING FOR FISHING VESSEL PERSONNEL, 1995, RULE 2, APPENDIX, PARAGRAPH 12, APPLICABLE TO  VESSELS LESS OF 24 MTS LENGTH. IN AREA OF EMERGENCY PROCEDURES AND SAFETY LABOR PRACTICE OF FISHING VESSEL PERSONNEL.
+MEXICO MERCHANT MARINE GENERAL DIRECTION COURSE APROVAL 109.403.0530 (26.I.99)]]></text>
+				</staticText>
+				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="22"
+						y="507"
+						width="207"
+						height="58"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="barcode-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch" pen="None" fill="Solid" />
+					<imageExpression class="java.awt.Image"><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$F{llave},false,false,null,0,0)]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement
+						x="443"
+						y="507"
+						width="283"
+						height="58"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[INSTITUCIÓN EDUCATIVA AUTORIZADA POR LA SCT/DGMM  OFICIO 109.202.0582003 DEL 16 DE ABRIL DE 2003 ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="41"
+						y="19"
+						width="684"
+						height="417"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement lineSpacing="1_1_2">
+						<font/>
+					</textElement>
+				<text><![CDATA[
+1.1. Abordajes.
+1.2. Incendios 
+1.3. Hundimientos.
+
+2.1. Importancia de los ejercicios de abandono.
+2.2. Necesidad de estar preparados para cualquier emergencia.
+2.3. Medida que procede a adoptar si hay que abandonar el buque.
+2.4. Medidas que hay que adoptar una vez en el agua y a bordo de una embarcación de supervivencia.
+2.5. Peligros para los supervivientes.
+
+3.1. Tipos de dispositivos de salvamento.
+3.2. Características e instalaciones particulares de las embarcaciones de supervivencia.
+
+4.1 Actuación necesaria después de abandonar el buque.
+4.2. Manejo de la embarcación de supervivencia con mal tiempo.
+4.3. Utilización del equipo.
+4.4. Racionamiento de víveres y de agua en las embarcaciones de supervivencia.
+
+
+
+
+
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="6"
+						y="4"
+						width="226"
+						height="15"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONTENIDO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="22"
+						y="19"
+						width="684"
+						height="404"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement lineSpacing="1_1_2">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[1. Situación de emergencia.
+
+
+
+2. Principios generales de supervivencia.
+
+
+
+
+
+3. Deberes especiales asignados a cada tripulante en el cuadro de zafarrancho (subalternos)
+
+
+4. Métodos para poner a flote las embarcaciones de supervivencia en mal tiempo.
+
+
+
+
+5. Salvamento por helicóptero
+6. Dispositivos radioeléctricos emplazados en las embarcaciones de supervivencia, incluidas las radiobalizas de localización de siniestros.
+7. Efectos de la hipotermia y prevención de esta, uso de capotas y prendas protectoras.
+8. Utilización de los botes de emergencia y salvavidas a motor para concentrar balsas salvavidas y proceder a salvamento de Supervivientes y de personas que se encuentren en el agua.
+9. Modo de varar en playa, una embarcación de supervivencia.
+]]></text>
+				</staticText>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
