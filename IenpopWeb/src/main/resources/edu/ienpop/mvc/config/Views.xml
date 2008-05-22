@@ -9,6 +9,18 @@
 		<property name="exposeSpringMacroHelpers" value="true"/>
 		<property name="url" value="sistema.ftl"/>
 	</bean>
+	<bean id="jefatura" class="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="url" value="jefatura.ftl"/>
+	</bean>
+	<bean id="informePeriodicoCursos" class="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="url" value="informePeriodicoCursos.ftl"/>
+	</bean>
+	<bean id="informePeriodicoCursosAlumnos" class="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
+		<property name="exposeSpringMacroHelpers" value="true"/>
+		<property name="url" value="informePeriodicoCursosAlumnos.ftl"/>
+	</bean>
 	<bean id="certificados" class="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
 		<property name="exposeSpringMacroHelpers" value="true"/>
 		<property name="url" value="certificados.ftl"/>
