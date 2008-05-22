@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean name="/index.ienpop" class="edu.ienpop.mvc.controller.IndexController">
+	</bean>
+	<bean name="/sistema.ienpop" class="edu.ienpop.mvc.controller.SistemaController">
+		<property name="persistenceService" ref="persistenceService"/>
+		<property name="catalogoService" ref="catalogoService"/>
+		<property name="ienpopProducer" ref="ienpopProducer"/>
+	</bean>
+	<bean name="/certificados.ienpop" class="edu.ienpop.mvc.controller.CertificadosController">
+		<property name="cursoService" ref="cursoService"/>
+		<property name="persistenceService" ref="persistenceService"/>
+	</bean>
+	<bean name="/reverso.ienpop" class="edu.ienpop.mvc.controller.ReversoController">
+		<property name="llaveService" ref="llaveService"/>
+		<property name="cursoService" ref="cursoService"/>
+	</bean>
+	<bean name="/oficio.ienpop" class="edu.ienpop.mvc.controller.OficioController">
+		<property name="cursoService" ref="cursoService"/>
+		<property name="persistenceService" ref="persistenceService"/>
+		<property name="usuarioService" ref="usuarioService"/>
+	</bean>
+</beans>
