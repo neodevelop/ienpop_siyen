@@ -13,9 +13,9 @@
 		<property name="tipoUsuario"/>
 		<property name="numOficio"/>
 		<property name="email"/>
-		<set name="puertos" table="usuario_puerto">
+		<set name="puertos" table="usuario_puerto" lazy="false">
 			<key column="idUsuario"></key>
-			<many-to-many column="idPuerto" unique="true" class="edu.ienpop.model.CatalogoPuerto"/>
+			<many-to-many column="idPuerto" unique="true" class="edu.ienpop.model.CatalogoPuerto" lazy="false"/>
 		</set>
 	</class>
 </hibernate-mapping>
