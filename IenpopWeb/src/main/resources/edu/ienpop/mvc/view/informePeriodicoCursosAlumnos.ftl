@@ -10,7 +10,22 @@
 	<center>
 	<a href="javascript:printPage()"><img src="img/imprimir.jpg" border="0"></a>
 	<br>
-	<h1>Informe de alumnos certificados del ${desde?date} al ${hasta?date}</h1>
+	<h1>Informe de alumnos certificados del ${criteria.fechaDesde?date} al ${criteria.fechaHasta?date}</h1>
+	<#if verLibretas>
+		<#if criteria.libretas?size <= 1>
+			<h2>Correspondiente a la libreta ${criteria.libretas[0]}</h2>
+		<#else>
+			<h2>Correspondiente a las libretas
+			<#list criteria.libretas as libreta>
+				${libreta}
+				<#if libreta_index != criteria.libretas?size - 1 >
+					,
+				</#if> 
+			</#list>
+			</h2>
+			<h3>Del puerto ${puerto.puerto}, ${puerto.estado}</h3>
+		</#if>
+	</#if>
 	<br>
 	<table width="100%" border="0">
 		<tr class="columnTables">
