@@ -20,6 +20,7 @@ public class CursoCriteria extends Persistent{
 	private Object[] idUsuario;
 	private int idStatusCurso;
 	private long idLlave;
+	private String[] libretas;
 	public Date getFechaDesde() {
 		return fechaDesde;
 	}
@@ -61,6 +62,12 @@ public class CursoCriteria extends Persistent{
 	}
 	public void setIdUsuario(Object[] idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+	public String[] getLibretas() {
+		return libretas;
+	}
+	public void setLibretas(String[] libretas) {
+		this.libretas = libretas;
 	}
 	
 }
