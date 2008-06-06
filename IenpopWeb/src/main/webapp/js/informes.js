@@ -8,7 +8,7 @@ function showInformePeriodico(tipo){
 	}else if(hasta==""){
 		alert("Falta indicar la fecha final...");
 	}else{
-		window.open("informePeriodico.ienpop?desde="+desde+"&hasta="+hasta+"&tipo="+tipo, "_blank", "width=800,height=600,scrollbars=yes");
+		window.open("informePeriodico.ienpop?desde="+desde+"&hasta="+hasta+"&tipo="+tipo, "_blank", "width=900,height=600,scrollbars=yes");
 	} 
 }
 
@@ -32,7 +32,7 @@ function showInformeTipoLibreta(tipo){
 	}else{
 		libreta = libreta.substr(0,libreta.length-1);
 		//alert(libreta);
-		window.open("informePeriodico.ienpop?desde="+desde+"&hasta="+hasta+"&tipo="+tipo+"&idPuerto="+idPuerto+"libreta="+libreta, "_blank", "width=800,height=600,scrollbars=yes");
+		window.open("informePeriodico.ienpop?desde="+desde+"&hasta="+hasta+"&tipo="+tipo+"&idPuerto="+idPuerto+"&libreta="+libreta, "_blank", "width=900,height=600,scrollbars=yes");
 	} 
 }
 
