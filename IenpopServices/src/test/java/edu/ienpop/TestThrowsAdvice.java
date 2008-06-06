@@ -4,7 +4,6 @@ import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CatalogoService;
-import edu.ienpop.services.ErrorService;
 
 public class TestThrowsAdvice extends
 		AbstractDependencyInjectionSpringContextTests {
