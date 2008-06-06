@@ -23,5 +23,6 @@
 	</bean>
 	<bean name="/informePeriodico.ienpop" class="edu.ienpop.mvc.controller.InformePeriodicoController">
 		<property name="cursoService" ref="cursoService"/>
+		<property name="persistenceService" ref="persistenceService"/>
 	</bean>
 </beans>
