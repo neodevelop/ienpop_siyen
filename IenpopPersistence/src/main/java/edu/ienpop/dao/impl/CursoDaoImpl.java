@@ -47,8 +47,9 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 			criteria.add(Restrictions.in("idPuerto", cursoCriteria
 					.getIdPuerto()));
 		if (cursoCriteria.getIdTipoCurso() != null)
-			criteria.add(Restrictions.in("idTipoCurso", cursoCriteria
-					.getIdTipoCurso()));
+			criteria.createCriteria("tipoCurso").add(
+					Restrictions.in("idTipoCurso", cursoCriteria
+							.getIdTipoCurso()));
 		if (cursoCriteria.getIdUsuario() != null)
 			criteria.add(Restrictions.in("idUsuario", cursoCriteria
 					.getIdUsuario()));
@@ -70,14 +71,14 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 		String sql = "select t.idTipoCurso from Curso c left join c.tipoCurso t  where idCurso=:idCurso";
 		Query query = getSession().createQuery(sql);
 		query.setString("idCurso", idCurso);
-		return (String)query.uniqueResult();
+		return (String) query.uniqueResult();
 	}
 
 	public Curso getCursoByIdLlaveCertificada(long id) {
 		String sql = "from Curso c where c.idLlave=:id";
 		Query query = getSession().createQuery(sql);
 		query.setLong("id", id);
-		return (Curso)query.uniqueResult();
+		return (Curso) query.uniqueResult();
 	}
 
 }
