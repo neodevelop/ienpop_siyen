@@ -1,11 +1,14 @@
  package edu.ienpop.services.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import org.apache.log4j.Logger;
 
 import edu.ienpop.dao.CatalogoDao;
 import edu.ienpop.dao.CursoDao;
@@ -23,6 +26,7 @@ import edu.ienpop.services.PersistenceService;
 
 public class CursoServiceDefaultImpl implements CursoService {
 
+	Logger log = Logger.getLogger(this.getClass());
 	PersistenceService persistenceService;
 	LlaveService llaveService;
 	CursoDao cursoDao;
@@ -162,7 +166,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		//cursoCriteria.setFechaHasta(fechaHasta.getTime());
 		cursoCriteria.setFechaDesde(desde);
 		cursoCriteria.setFechaHasta(hasta);
-		cursoCriteria.setIdStatusCurso(4);
+		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		return getCursoDao().getCursosPorCriteria(cursoCriteria);
 	}
 
@@ -202,6 +206,26 @@ public class CursoServiceDefaultImpl implements CursoService {
 			throw new BusinessException("No se ha especificado un puerto, posiblemente expiró la sesión o el valor es incorrecto...");
 		if(cursoCriteria.getIdStatusCurso()==0)
 			throw new BusinessException("El status del curso no es vaĺido para la búsqueda...");
+		//Recorremos las libretas para determinar los puertos a buscar
+		//Si las libretas en cirteria vienen con algo
+		if(cursoCriteria.getLibretas()!=null){
+			//Acumulador de idTipoCurso
+			List idTipoCursos = new ArrayList();
+			//Comenzamos a desplegar las libretas
+			String[] libretas = cursoCriteria.getLibretas(); 
+			for(int i=0;i<libretas.length;i++){
+				log.debug("Libreta: "+libretas[i]);
+				Object[] tipoCursos = getCatalogoDao().getGrupoCursosXLibreta(libretas[i]);
+				log.debug("Cursos de la libreta "+libretas[i]+": ");
+				//Pasamos los idTipoCurso al List para despues hacerlo array
+				for(int j=0;j<tipoCursos.length;j++){
+					log.debug(tipoCursos[j]);
+					idTipoCursos.add(tipoCursos[j]);
+				}
+			}
+			//Hacemos Array al List y lo mandamos como parametro en el criteria
+			cursoCriteria.setIdTipoCurso(idTipoCursos.toArray());
+		}
 		if(cursoCriteria.getIdStatusCurso()==CursoCriteria.NUEVO || cursoCriteria.getIdStatusCurso()==CursoCriteria.ABIERTO)
 			return getCursoDao().getCursoXCertificarPorCriteria(cursoCriteria);
 		else
