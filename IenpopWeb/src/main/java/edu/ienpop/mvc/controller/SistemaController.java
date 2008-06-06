@@ -54,8 +54,7 @@ public class SistemaController extends AbstractController {
 			return new ModelAndView("main", model);
 		} else {
 			try {
-				Usuario usuario = (Usuario) getPersistenceService().findById(
-						Usuario.class, idUsuario);
+				Usuario usuario = (Usuario) getPersistenceService().findById(Usuario.class, idUsuario);
 				model.put("usuario", usuario);
 				model.put("catalogoCursos", getCatalogoService()
 						.getCatalogoCurso());
