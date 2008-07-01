@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -16,27 +17,30 @@ public class AlumnoDaoImpl extends HibernateTemplate implements AlumnoDao {
 
 	public List getAlumnosPorCriteria(AlumnoCriteria alumnoCriteria) {
 		Criteria criteria = getSession().createCriteria(Alumno.class);
-		if(alumnoCriteria.getId()!=null)
+		if(alumnoCriteria.getId()!=null && alumnoCriteria.getId()!=0)
 				criteria.add(Restrictions.eq("id", alumnoCriteria.getId()));
-		if(alumnoCriteria.getNumeroControl()!=null)
+		if(alumnoCriteria.getNumeroControl()!=null && alumnoCriteria.getNumeroControl().length()!=0)
 			criteria.add(Restrictions.like("numeroControl", "%"+alumnoCriteria.getNumeroControl()+"%"));
-		if(alumnoCriteria.getNombreCompleto()!=null)
+		if(alumnoCriteria.getNombreCompleto()!=null && alumnoCriteria.getNombreCompleto().length()!=0)
 			criteria.add(Restrictions.like("nombreCompleto", "%"+alumnoCriteria.getNombreCompleto()+"%"));
-		if(alumnoCriteria.getIdCurso()!=0)
+		if(alumnoCriteria.getIdCurso()!=0 && alumnoCriteria.getIdCurso()!=0)
 			criteria.add(Restrictions.eq("idCurso", alumnoCriteria.getIdCurso()));
-		if(alumnoCriteria.getIdStatusAlumno()!=0)
+		if(alumnoCriteria.getIdStatusAlumno()!=0 && alumnoCriteria.getIdStatusAlumno()!=0)
 			criteria.add(Restrictions.eq("idStatusAlumno", alumnoCriteria.getIdStatusAlumno()));
-		if(alumnoCriteria.getFechaDesde()!=null && alumnoCriteria.getFechaHasta()!=null)
+		if((alumnoCriteria.getFechaDesde()!=null && alumnoCriteria.getFechaHasta()!=null))
 			criteria.add(Restrictions.between("fechaHoraRegistro", alumnoCriteria.getFechaDesde(),alumnoCriteria.getFechaHasta()));
+		
+		criteria.setFirstResult(alumnoCriteria.getFirstResult());
+		criteria.setMaxResults(AlumnoCriteria.MAX_RESULTS);
 		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
 
 	public List getAlumnosXCertificarPorCriteria(AlumnoCriteria alumnoCriteria) {
 		Criteria criteria = getSession().createCriteria(AlumnoXCertificar.class);
-		if(alumnoCriteria.getId()!=null)
+		if(alumnoCriteria.getId()!=null && alumnoCriteria.getId()!=0)
 				criteria.add(Restrictions.eq("id", alumnoCriteria.getId()));
-		if(alumnoCriteria.getNombreCompleto()!=null)
+		if(alumnoCriteria.getNombreCompleto()!=null && alumnoCriteria.getNombreCompleto().length()!=0)
 			criteria.add(Restrictions.like("nombreCompleto", "%"+alumnoCriteria.getNombreCompleto()+"%"));
 		if(alumnoCriteria.getIdCurso()!=0)
 			criteria.add(Restrictions.eq("idCursoXCertificar", alumnoCriteria.getIdCurso()));
@@ -44,8 +48,30 @@ public class AlumnoDaoImpl extends HibernateTemplate implements AlumnoDao {
 			criteria.add(Restrictions.eq("idStatusAlumno", alumnoCriteria.getIdStatusAlumno()));
 		if(alumnoCriteria.getFechaDesde()!=null && alumnoCriteria.getFechaHasta()!=null)
 			criteria.add(Restrictions.between("fechaHoraRegistro", alumnoCriteria.getFechaDesde(),alumnoCriteria.getFechaHasta()));
+		
+		criteria.setFirstResult(0);
+		criteria.setMaxResults(10);
 		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
+	}
+
+	public int getCountAlumnosPorCriteria(AlumnoCriteria alumnoCriteria) {
+		Criteria criteria = getSession().createCriteria(Alumno.class);
+		if(alumnoCriteria.getId()!=null && alumnoCriteria.getId()!=0)
+				criteria.add(Restrictions.eq("id", alumnoCriteria.getId()));
+		if(alumnoCriteria.getNumeroControl()!=null && alumnoCriteria.getNumeroControl().length()!=0)
+			criteria.add(Restrictions.like("numeroControl", "%"+alumnoCriteria.getNumeroControl()+"%"));
+		if(alumnoCriteria.getNombreCompleto()!=null && alumnoCriteria.getNombreCompleto().length()!=0)
+			criteria.add(Restrictions.like("nombreCompleto", "%"+alumnoCriteria.getNombreCompleto()+"%"));
+		if(alumnoCriteria.getIdCurso()!=0 && alumnoCriteria.getIdCurso()!=0)
+			criteria.add(Restrictions.eq("idCurso", alumnoCriteria.getIdCurso()));
+		if(alumnoCriteria.getIdStatusAlumno()!=0 && alumnoCriteria.getIdStatusAlumno()!=0)
+			criteria.add(Restrictions.eq("idStatusAlumno", alumnoCriteria.getIdStatusAlumno()));
+		if((alumnoCriteria.getFechaDesde()!=null && alumnoCriteria.getFechaHasta()!=null))
+			criteria.add(Restrictions.between("fechaHoraRegistro", alumnoCriteria.getFechaDesde(),alumnoCriteria.getFechaHasta()));
+		criteria.setProjection(Projections.rowCount());
+		//criteria.list();
+		return (Integer)criteria.uniqueResult();
 	}
 
 }
