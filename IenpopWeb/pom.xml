@@ -8,13 +8,13 @@
 	<version>2.0</version>
 	<name>IenpopWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<!--repositories>
+	<repositories>
 		<repository>
-		<id>LocalRepo</id>
-		<name>LocalRepo</name>
-		<url>http://inspiron600m/maven2</url>
+			<id>LocalRepo</id>
+			<name>LocalRepo</name>
+			<url>http://localhost/maven2</url>
 		</repository>
-		</repositories-->
+	</repositories>
 	<dependencies>
 		<!-- JUNIT -->
 		<dependency>
@@ -150,12 +150,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.4</version>
-		</dependency>
-		<dependency>
+			</dependency>
+			<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.0</version>
-		</dependency-->
+			</dependency-->
 		<!--  Spring Web Flow -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -165,7 +165,7 @@
 		<dependency>
 			<groupId>org.getahead</groupId>
 			<artifactId>dwr</artifactId>
-			<version>2.0.2</version>
+			<version>2.0.4</version>
 		</dependency>
 		<!-- JAVA MAIL-->
 		<dependency>
@@ -249,12 +249,16 @@
 		</plugins>
 	</build>
 	<scm>
-		<connection>scm:svn:http://192.168.1.253/svn/IenpopWeb</connection>
+		<connection>
+			scm:svn:http://192.168.1.253/svn/IenpopWeb
+		</connection>
 		<developerConnection>
 			scm:svn:http://192.168.1.253/svn/IenpopWeb
 		</developerConnection>
 		<tag>HEAD</tag>
-		<url>scm:svn:http://neodevelop:volleyball@192.168.1.253/svn/IenpopWeb</url>
+		<url>
+			scm:svn:http://neodevelop:volleyball@192.168.1.253/svn/IenpopWeb
+		</url>
 	</scm>
 	<developers>
 		<developer>
