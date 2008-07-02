@@ -15,9 +15,11 @@
 <script src="js/generarOficios.js"></script>
 <script src="js/validarCertificado.js"></script>
 <script src="js/informes.js"></script>
+<script src="js/busquedas.js"></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoXCertificarService.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/IenpopProducer.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/CursoService.js'></script>
+<script type='text/javascript' src='/IenpopWeb-2.0/dwr/interface/AlumnoService.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/engine.js'></script>
 <script type='text/javascript' src='/IenpopWeb-2.0/dwr/util.js'></script>
 <script language="javascript" src="js/calendar.js"></script>
