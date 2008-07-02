@@ -4,9 +4,11 @@ import java.util.Date;
 
 public class AlumnoCriteria extends Persistent{
 	private static final long serialVersionUID = 1L;
+	public static final int MAX_RESULTS = 10;
 	public static final int INSCRITO=1;
 	public static final int EVALUADO=2;
 	public static final int CERTIFICADO=3;
+	private int firstResult;
 	private String numeroControl;
 	private String nombreCompleto;
 	private long idCurso;
@@ -48,6 +50,12 @@ public class AlumnoCriteria extends Persistent{
 	}
 	public void setNumeroControl(String numeroControl) {
 		this.numeroControl = numeroControl;
+	}
+	public int getFirstResult() {
+		return firstResult;
+	}
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
 	}
 	
 }
