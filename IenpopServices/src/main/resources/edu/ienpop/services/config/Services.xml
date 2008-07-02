@@ -32,4 +32,7 @@
 	
 	<bean id="errorService" class="edu.ienpop.services.impl.ErrorServiceDefaultImpl"/>
 	
+	<bean id="alumnoService" class="edu.ienpop.services.impl.AlumnoServiceDefaultImpl">
+		<property name="alumnoDao" ref="alumnoDao"/>
+	</bean>
 </beans>
