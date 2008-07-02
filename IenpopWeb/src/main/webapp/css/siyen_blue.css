@@ -358,6 +358,18 @@ html>body #navBar li {border-bottom: none;}
 	font-size:12px;
 	text-align: right;
 }
+.myLabel2{
+	color:#333333;
+	font-family:"Trebuchet MS", Verdana, "Arial Narrow";
+	font-size:12px;
+	text-align: left;
+}
+.myCheckbox{
+	color:#334d55;
+	font-family:"Trebuchet MS", Verdana, "Arial Narrow";
+	font-size:10px;
+	
+}
 input{
 	background-color:#FFFFFF;
 	font-family:"Trebuchet MS", Verdana, "Arial Narrow";
