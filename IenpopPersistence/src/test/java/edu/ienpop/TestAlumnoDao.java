@@ -29,7 +29,7 @@ public class TestAlumnoDao extends AbstractDependencyInjectionSpringContextTests
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void testAlumnoDao(){
+	public void _testAlumnoDao(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		//alumnoCriteria.setId(new Long(33919));
 		//alumnoCriteria.setNumeroControl("II033919");
@@ -40,14 +40,26 @@ public class TestAlumnoDao extends AbstractDependencyInjectionSpringContextTests
 		}
 	}
 	@SuppressWarnings("unchecked")
-	public void testAlumnoDao2(){
+	public void _testAlumnoDao2(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
-		alumnoCriteria.setId(new Long(33919));
+		alumnoCriteria.setFirstResult(20);
+		//alumnoCriteria.setId(new Long(33919));
 		//alumnoCriteria.setNumeroControl("II033919");
 		//alumnoCriteria.setIdCurso(new Long(33919));
+		alumnoCriteria.setNombreCompleto("SARA");
 		List<Alumno> alumnos = alumnoDao.getAlumnosPorCriteria(alumnoCriteria);
 		for(Alumno alumno:alumnos){
 			System.out.println(ToStringBuilder.reflectionToString(alumno));
 		}
+	}
+	
+	public void testAlumnoDao3(){
+		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
+		alumnoCriteria.setFirstResult(0);
+		//alumnoCriteria.setId(new Long(33919));
+		//alumnoCriteria.setNumeroControl("II033919");
+		//alumnoCriteria.setIdCurso(new Long(33919));
+		alumnoCriteria.setNombreCompleto("ALUMNO");
+		System.out.println(alumnoDao.getCountAlumnosPorCriteria(alumnoCriteria));
 	}
 }
