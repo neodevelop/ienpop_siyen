@@ -13,6 +13,6 @@
 		<property name="idCurso" insert="false" update="false"/>
 		<property name="idStatusAlumno" insert="false"/>
 		<property name="fechaHoraRegistro" insert="false"/>
-		<many-to-one name="curso" column="idCurso" class="edu.ienpop.model.Curso" not-null="true" />
+		<many-to-one name="curso" column="idCurso" class="edu.ienpop.model.Curso" not-null="true" lazy="false" />
 	</class>
 </hibernate-mapping>
