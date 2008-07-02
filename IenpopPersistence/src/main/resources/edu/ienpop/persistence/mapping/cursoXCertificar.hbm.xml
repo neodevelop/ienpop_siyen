@@ -15,7 +15,7 @@
 		<property name="idUsuario" insert="false"/>
 		<property name="idStatusCurso" insert="false"/>
 		<!-- lazy=false para la carga pesada -->
-		<set name="alumnos" table="alumno_x_certificar">
+		<set name="alumnos" table="alumno_x_certificar" lazy="false">
 			<key column="idCursoXCertificar"/>
 			<one-to-many class="edu.ienpop.model.AlumnoXCertificar"/>
 		</set>
