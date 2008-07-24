@@ -15,9 +15,9 @@ public class CursoCriteria extends Persistent{
 	public static final int RECHAZADO=5;
 	private Date fechaDesde;
 	private Date fechaHasta;
-	private Object[] idPuerto;
-	private Object[] idTipoCurso;
-	private Object[] idUsuario;
+	private String[] idPuerto;
+	private String[] idTipoCurso;
+	private String[] idUsuario;
 	private int idStatusCurso;
 	private long idLlave;
 	private String[] libretas;
@@ -33,17 +33,23 @@ public class CursoCriteria extends Persistent{
 	public void setFechaHasta(Date fechaHasta) {
 		this.fechaHasta = fechaHasta;
 	}
-	public long getIdLlave() {
-		return idLlave;
-	}
-	public void setIdLlave(long idLlave) {
-		this.idLlave = idLlave;
-	}
-	public Object[] getIdPuerto() {
+	public String[] getIdPuerto() {
 		return idPuerto;
 	}
-	public void setIdPuerto(Object[] idPuerto) {
+	public void setIdPuerto(String[] idPuerto) {
 		this.idPuerto = idPuerto;
+	}
+	public String[] getIdTipoCurso() {
+		return idTipoCurso;
+	}
+	public void setIdTipoCurso(String[] idTipoCurso) {
+		this.idTipoCurso = idTipoCurso;
+	}
+	public String[] getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(String[] idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 	public int getIdStatusCurso() {
 		return idStatusCurso;
@@ -51,17 +57,11 @@ public class CursoCriteria extends Persistent{
 	public void setIdStatusCurso(int idStatusCurso) {
 		this.idStatusCurso = idStatusCurso;
 	}
-	public Object[] getIdTipoCurso() {
-		return idTipoCurso;
+	public long getIdLlave() {
+		return idLlave;
 	}
-	public void setIdTipoCurso(Object[] idTipoCurso) {
-		this.idTipoCurso = idTipoCurso;
-	}
-	public Object[] getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Object[] idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdLlave(long idLlave) {
+		this.idLlave = idLlave;
 	}
 	public String[] getLibretas() {
 		return libretas;
