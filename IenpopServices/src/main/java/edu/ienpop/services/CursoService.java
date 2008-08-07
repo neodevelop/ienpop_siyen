@@ -15,4 +15,5 @@ public interface CursoService {
 	long addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException;
 	String getIdTipoCursoById(String idCurso) throws BusinessException;
 	Curso getCursoByTokenCertificado(String token) throws BusinessException;
+	Integer getCountCursosByCriteria(CursoCriteria cursoCriteria) throws BusinessException;
 }

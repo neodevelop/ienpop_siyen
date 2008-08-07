@@ -252,4 +252,9 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return curso;
 	}
 
+	public Integer getCountCursosByCriteria(CursoCriteria cursoCriteria)
+			throws BusinessException {
+		return getCursoDao().getCountCursosPorCriteria(cursoCriteria);
+	}
+
 }
