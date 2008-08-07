@@ -8,11 +8,13 @@ public class CursoCriteria extends Persistent{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static final int MAX_RESULTS = 10;
 	public static final int NUEVO=1;
 	public static final int ABIERTO=2;
 	public static final int APROBADO=3;
 	public static final int CONCLUIDO=4;
 	public static final int RECHAZADO=5;
+	private int firstResult;
 	private Date fechaDesde;
 	private Date fechaHasta;
 	private String[] idPuerto;
@@ -68,6 +70,12 @@ public class CursoCriteria extends Persistent{
 	}
 	public void setLibretas(String[] libretas) {
 		this.libretas = libretas;
+	}
+	public int getFirstResult() {
+		return firstResult;
+	}
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
 	}
 	
 }

@@ -35,6 +35,9 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 				&& cursoCriteria.getFechaHasta() != null)
 			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
 					.getFechaDesde(), cursoCriteria.getFechaHasta()));
+		
+		criteria.setFirstResult(cursoCriteria.getFirstResult());
+		criteria.setMaxResults(CursoCriteria.MAX_RESULTS);
 		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
@@ -63,6 +66,9 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 				&& cursoCriteria.getFechaHasta() != null)
 			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
 					.getFechaDesde(), cursoCriteria.getFechaHasta()));
+		
+		criteria.setFirstResult(cursoCriteria.getFirstResult());
+		criteria.setMaxResults(CursoCriteria.MAX_RESULTS);
 		criteria.addOrder(Order.asc("id"));
 		return criteria.list();
 	}
