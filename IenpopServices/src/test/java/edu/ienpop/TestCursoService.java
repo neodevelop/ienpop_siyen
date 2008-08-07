@@ -49,7 +49,9 @@ public class TestCursoService extends
 		//GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
 		//GregorianCalendar cal2 = new GregorianCalendar(2008,7,30);
 		CursoCriteria cursoCriteria =  new CursoCriteria();
-		cursoCriteria.setIdPuerto(new String[]{"DF"});
+		cursoCriteria.setIdPuerto(new String[]{"ACG"});
+		//cursoCriteria.setIdTipoCurso(new String[]{"CAPATCO3232"," CAPMOT332_P"});
+		cursoCriteria.setLibretas(new String[]{"A","B"});
 		cursoCriteria.setIdStatusCurso(4);
 		//cursoCriteria.setFechaDesde(cal1.getTime());
 		//cursoCriteria.setFechaHasta(cal2.getTime());
