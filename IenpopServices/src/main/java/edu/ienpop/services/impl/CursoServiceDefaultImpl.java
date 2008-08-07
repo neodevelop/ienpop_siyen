@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
 
 import edu.ienpop.dao.CatalogoDao;
@@ -178,7 +179,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		Calendar fechaHasta = Calendar.getInstance();
 		fechaHasta.set(anio, mes, 1);
 		fechaHasta.add(Calendar.DATE, -1);
-		Object[] idTipoCursos = getCatalogoDao().getGrupoCursosXLibreta(libreta);
+		String[] idTipoCursos = (String[])getCatalogoDao().getGrupoCursosXLibreta(libreta);
 		CursoCriteria cursoCriteria = new CursoCriteria();
 		cursoCriteria.setFechaDesde(fechaDesde.getTime());
 		cursoCriteria.setFechaHasta(fechaHasta.getTime());
@@ -202,8 +203,12 @@ public class CursoServiceDefaultImpl implements CursoService {
 
 	@SuppressWarnings("unchecked")
 	public List getCursosXStatus(CursoCriteria cursoCriteria) throws BusinessException {
-		if(cursoCriteria.getIdPuerto()==null)
+		if(cursoCriteria.getIdPuerto()==null){
 			throw new BusinessException("No se ha especificado un puerto, posiblemente expiró la sesión o el valor es incorrecto...");
+		}else{
+			log.debug(ToStringBuilder.reflectionToString(cursoCriteria.getIdPuerto()));
+			log.debug(ToStringBuilder.reflectionToString(cursoCriteria.getIdTipoCurso()));
+		}
 		if(cursoCriteria.getIdStatusCurso()==0)
 			throw new BusinessException("El status del curso no es vaĺido para la búsqueda...");
 		//Recorremos las libretas para determinar los puertos a buscar
@@ -224,7 +229,9 @@ public class CursoServiceDefaultImpl implements CursoService {
 				}
 			}
 			//Hacemos Array al List y lo mandamos como parametro en el criteria
-			cursoCriteria.setIdTipoCurso(idTipoCursos.toArray());
+			String[] arraytipoCursos = new String[idTipoCursos.size()];
+			idTipoCursos.toArray(arraytipoCursos);
+			cursoCriteria.setIdTipoCurso(arraytipoCursos);
 		}
 		if(cursoCriteria.getIdStatusCurso()==CursoCriteria.NUEVO || cursoCriteria.getIdStatusCurso()==CursoCriteria.ABIERTO)
 			return getCursoDao().getCursoXCertificarPorCriteria(cursoCriteria);
