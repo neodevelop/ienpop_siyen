@@ -23,6 +23,14 @@ public class CursoCriteria extends Persistent{
 	private int idStatusCurso;
 	private long idLlave;
 	private String[] libretas;
+	private boolean paginado;
+
+	public boolean isPaginado() {
+		return paginado;
+	}
+	public void setPaginado(boolean paginado) {
+		this.paginado = paginado;
+	}
 	public Date getFechaDesde() {
 		return fechaDesde;
 	}

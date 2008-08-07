@@ -33,7 +33,7 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 			cursoDao=(CursoDao)applicationContext.getBean("cursoDao");
 	}
 	
-	public void _testCursoDao(){
+	public void testCursoDao(){
 		CursoCriteria criteria = new CursoCriteria();
 		//criteria.setId(new Long(111902));
 		//criteria.setIdLlave(new Long(12));
@@ -41,6 +41,7 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		criteria.setIdStatusCurso(4);
 		criteria.setFechaDesde(new GregorianCalendar(2008,1,1).getTime());
 		criteria.setFechaHasta(new GregorianCalendar(2008,1,10).getTime());
+		criteria.setPaginado(true);
 		List cursos = cursoDao.getCursosPorCriteria(criteria);
 		for(Iterator it = cursos.iterator();it.hasNext();){
 			Curso curso = (Curso)it.next();
@@ -53,7 +54,7 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		}
 	}
 	
-	public void _testCursoDao2(){
+	public void testCursoDao2(){
 		CursoCriteria criteria = new CursoCriteria();
 		//criteria.setId(new Long(18));
 		//criteria.setIdLlave(new Long(12));
@@ -61,6 +62,7 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 		criteria.setIdStatusCurso(2);
 		criteria.setFechaDesde(new GregorianCalendar(2008,1,1).getTime());
 		criteria.setFechaHasta(new GregorianCalendar(2008,1,10).getTime());
+		criteria.setPaginado(true);
 		List cursos = cursoDao.getCursoXCertificarPorCriteria(criteria);
 		for(Iterator it = cursos.iterator();it.hasNext();){
 			CursoXCertificar curso = (CursoXCertificar)it.next();
