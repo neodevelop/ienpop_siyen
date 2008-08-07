@@ -82,4 +82,15 @@ public class TestCursoDao extends AbstractDependencyInjectionSpringContextTests 
 	public void testCursoDao4(){
 		cursoDao.getCursoByIdLlaveCertificada(53L);
 	}
+	
+	public void testCursoDao5(){
+		CursoCriteria criteria = new CursoCriteria();
+		//criteria.setId(new Long(18));
+		//criteria.setIdLlave(new Long(12));
+		criteria.setIdTipoCurso(new String[]{"FAMBT1","PATRON_DE_YATE_III"});
+		criteria.setIdStatusCurso(4);
+		criteria.setFechaDesde(new GregorianCalendar(2008,1,1).getTime());
+		criteria.setFechaHasta(new GregorianCalendar(2008,3,10).getTime());
+		System.out.println("Counter:"+ cursoDao.getCountCursosPorCriteria(criteria));
+	}
 }

@@ -31,4 +31,10 @@ public interface CursoDao {
 	 * @return {@link Curso}
 	 */
 	Curso getCursoByIdLlaveCertificada(long id);
+	
+	/**
+	 * @param cursoCriteria
+	 * @return Integer
+	 */
+	Integer getCountCursosPorCriteria(CursoCriteria cursoCriteria);
 }
