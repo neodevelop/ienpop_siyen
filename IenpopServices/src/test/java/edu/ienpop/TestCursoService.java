@@ -53,6 +53,7 @@ public class TestCursoService extends
 		//cursoCriteria.setIdTipoCurso(new String[]{"CAPATCO3232"," CAPMOT332_P"});
 		cursoCriteria.setLibretas(new String[]{"A","B"});
 		cursoCriteria.setIdStatusCurso(4);
+		cursoCriteria.setPaginado(true);
 		//cursoCriteria.setFechaDesde(cal1.getTime());
 		//cursoCriteria.setFechaHasta(cal2.getTime());
 		List<Curso> cursos = cursoService.getCursosXStatus(cursoCriteria);
