@@ -28,6 +28,9 @@ public class CursoCriteria extends Persistent{
 	public boolean isPaginado() {
 		return paginado;
 	}
+	public boolean getPaginado(){
+		return paginado;
+	}
 	public void setPaginado(boolean paginado) {
 		this.paginado = paginado;
 	}
