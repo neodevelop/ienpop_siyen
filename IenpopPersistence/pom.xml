@@ -120,11 +120,21 @@
 		</plugins>
 	</build>
 	<scm>
-		<connection>scm:svn:http://192.168.1.253/svn/IenpopPersistence/</connection>
+		<connection>
+			scm:svn:http://192.168.1.253/svn/IenpopPersistence/
+		</connection>
 		<developerConnection>
 			scm:svn:http://192.168.1.253/svn/IenpopPersistence/
 		</developerConnection>
 		<tag>HEAD</tag>
 		<url>http://192.168.1.253/svn/IenpopPersistence/</url>
 	</scm>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
