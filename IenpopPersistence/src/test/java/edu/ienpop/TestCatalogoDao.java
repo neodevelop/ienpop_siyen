@@ -34,9 +34,14 @@ public class TestCatalogoDao extends AbstractDependencyInjectionSpringContextTes
 	}
 	
 	public void testDao2(){
-		String[] cursos = (String[])catalogoDao.getGrupoCursosXLibreta("A");
+		Object[] cursos = catalogoDao.getGrupoCursosXLibreta("A");
+		String[] cursosArray = new String[cursos.length];
+		for(int i=0;i<cursos.length;i++){
+			cursosArray[i] = (String)cursos[i];
+			System.out.println(cursosArray[i]);
+		}
 		CursoCriteria cursoCriteria = new CursoCriteria();
-		cursoCriteria.setIdTipoCurso(cursos);
+		cursoCriteria.setIdTipoCurso(cursosArray);
 		cursoDao.getCursoXCertificarPorCriteria(cursoCriteria);
 	}
 }
