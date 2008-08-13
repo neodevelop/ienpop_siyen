@@ -37,27 +37,27 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 			dao = (Dao) applicationContext.getBean("dao");
 	}
 
-	public void _testDao() {
-		List list = dao.getAll("Alumno");
-		for (Iterator it = list.iterator(); it.hasNext();) {
-			Alumno alumno = (Alumno) it.next();
-			System.out.println(alumno.getIdCurso());
-			System.out.println(alumno.getNombreCompleto());
-			System.out.println(alumno.getId());
-		}
+	public void testDao() {
+		//List list = dao.getAll("Alumno");
+		//for (Iterator it = list.iterator(); it.hasNext();) {
+		//	Alumno alumno = (Alumno) it.next();
+		//	System.out.println(alumno.getIdCurso());
+		//	System.out.println(alumno.getNombreCompleto());
+		//	System.out.println(alumno.getId());
+		//}
 	}
 
-	public void _testDao2() {
-		List list = dao.getAll("Curso");
-		for (Iterator it = list.iterator(); it.hasNext();) {
-			Curso curso = (Curso) it.next();
-			System.out.println(curso.getId());
-			System.out.println(curso.getIdUsuario());
-			System.out.println(ToStringBuilder.reflectionToString(curso.getTipoCurso()));
-		}
+	public void testDao2() {
+		//List list = dao.getAll("Curso");
+		//for (Iterator it = list.iterator(); it.hasNext();) {
+		//	Curso curso = (Curso) it.next();
+		//	System.out.println(curso.getId());
+		//	System.out.println(curso.getIdUsuario());
+		//	System.out.println(ToStringBuilder.reflectionToString(curso.getTipoCurso()));
+		//}
 	}
 
-	public void _testDao3() {
+	public void testDao3() {
 		Usuario usuario = new Usuario();
 		usuario = (Usuario)dao.getByPK(Usuario.class, "JUANG");
 		System.out.println(usuario.getIdUsuario());
@@ -70,7 +70,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		System.out.println(puertos.getClass().getName());
 	}
 
-	public void _testDao4() {
+	public void testDao4() {
 		List list = dao.getAll("CatalogoCurso");
 		for (Iterator it = list.iterator(); it.hasNext();) {
 			CatalogoCurso catalogoCurso = (CatalogoCurso) it.next();
@@ -79,7 +79,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 
-	public void _testDao5() {
+	public void testDao5() {
 		List list = dao.getAll("CatalogoPuerto");
 		for (Iterator it = list.iterator(); it.hasNext();) {
 			CatalogoPuerto catalogoPuerto = (CatalogoPuerto) it.next();
@@ -88,7 +88,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 
-	public void _testDao6() {
+	public void testDao6() {
 		CursoXCertificar nuevoCurso = new CursoXCertificar();
 		nuevoCurso.setIdPuerto("ACG");
 		nuevoCurso.setIdTipoCurso("CAPACO3234");
@@ -102,7 +102,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(nuevoCurso);
 	}
 
-	public void _testDao7() {
+	public void testDao7() {
 		AlumnoXCertificar alumnoNuevo = new AlumnoXCertificar();
 		alumnoNuevo.setFechaHoraRegistro(new Date());
 		alumnoNuevo.setIdCursoXCertificar(2);
@@ -113,7 +113,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void _testDao8() {
+	public void testDao8() {
 		CursoXCertificar nuevoCurso = new CursoXCertificar();
 		nuevoCurso.setIdPuerto("ACG");
 		nuevoCurso.setIdTipoCurso("CAPACO3234");
@@ -130,7 +130,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void _testDao9() {
+	public void testDao9() {
 		CursoXCertificar nuevoCurso = (CursoXCertificar) dao.getByPK(
 				CursoXCertificar.class, new Long(7));
 
@@ -170,9 +170,9 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(nuevoCurso);
 	}
 
-	public void _testDao10() {
+	public void testDao10() {
 		CursoXCertificar curso = (CursoXCertificar) dao.getByPK(
-				CursoXCertificar.class, new Long(78));
+				CursoXCertificar.class, new Long(1));
 		System.out.println(curso.getClass().getName());
 		Set set = curso.getAlumnos();
 		System.out.println(set.getClass().getName());
@@ -182,7 +182,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 
-	public void _testDao11() {
+	public void testDao11() {
 		AlumnoXCertificar alumno = (AlumnoXCertificar) dao.getByPK(
 				AlumnoXCertificar.class, new Long(5));
 		System.out.println(ToStringBuilder.reflectionToString(alumno));
