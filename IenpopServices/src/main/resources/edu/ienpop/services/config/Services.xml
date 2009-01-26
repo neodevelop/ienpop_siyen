@@ -1,38 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
-<beans>
-	<bean id="persistenceService" class="edu.ienpop.services.impl.PersistenceServiceDefaultImpl">
-		<property name="dao" ref="dao"/>
-	</bean>
-
-	<bean id="cursoXCertificarService" class="edu.ienpop.services.impl.CursoXCertificarServiceDefaultImpl">
-		<property name="persistenceService" ref="persistenceService"/>
-		<property name="cursoDao" ref="cursoDao"/>
-	</bean>
-	
-	<bean id="cursoService" class="edu.ienpop.services.impl.CursoServiceDefaultImpl">
-		<property name="persistenceService" ref="persistenceService"/>
-		<property name="llaveService" ref="llaveService"/>
-		<property name="cursoDao" ref="cursoDao"/>
-		<property name="catalogoDao" ref="catalogoDao"/>
-	</bean>
-	
-	<bean id="catalogoService" class="edu.ienpop.services.impl.CatalogoServiceDefaultImpl">
-		<property name="persistenceService" ref="persistenceService"/>
-	</bean>
-
-	<bean id="llaveService" class="edu.ienpop.services.impl.LlaveServiceDefaultImpl">
-		<property name="persistenceService" ref="persistenceService"/>
-		<property name="llaveDao" ref="llaveDao"/>
-	</bean>
-	
-	<bean id="usuarioService" class="edu.ienpop.services.impl.UsuarioServiceDefaultImpl">
-		<property name="usuarioDao" ref="usuarioDao"/>
-	</bean>
-	
-	<bean id="errorService" class="edu.ienpop.services.impl.ErrorServiceDefaultImpl"/>
-	
-	<bean id="alumnoService" class="edu.ienpop.services.impl.AlumnoServiceDefaultImpl">
-		<property name="alumnoDao" ref="alumnoDao"/>
-	</bean>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+           
+	<!-- Refactor: cambio de esquema, uso de anotaciones... -->
+	<context:component-scan base-package="edu.ienpop.services" />
 </beans>
