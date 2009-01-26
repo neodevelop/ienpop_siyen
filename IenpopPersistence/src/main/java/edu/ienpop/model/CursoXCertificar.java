@@ -3,6 +3,7 @@ package edu.ienpop.model;
 import java.util.Date;
 import java.util.Set;
 
+@SuppressWarnings("unchecked")
 public class CursoXCertificar extends Persistent{
 
 	/**

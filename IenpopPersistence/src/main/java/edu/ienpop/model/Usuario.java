@@ -3,6 +3,7 @@ package edu.ienpop.model;
 import java.io.Serializable;
 import java.util.Set;
 
+@SuppressWarnings("unchecked")
 public class Usuario implements Serializable{
 	/**
 	 * 
