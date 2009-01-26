@@ -15,7 +15,7 @@ import edu.ienpop.model.AlumnoCriteria;
 import edu.ienpop.model.AlumnoXCertificar;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"DataSourceAppCtx.xml"})
+@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
 public class TestAlumnoDao{
 
 	@Autowired
