@@ -6,15 +6,25 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import edu.ienpop.dao.AlumnoDao;
 import edu.ienpop.model.Alumno;
 import edu.ienpop.model.AlumnoCriteria;
 import edu.ienpop.model.AlumnoXCertificar;
 
-public class AlumnoDaoImpl extends HibernateTemplate implements AlumnoDao {
+@Repository("alumnoDao")
+public class AlumnoDaoImpl extends HibernateDaoSupport implements AlumnoDao {
 
+	@Autowired
+	public AlumnoDaoImpl(HibernateTemplate hibernateTemplate) {
+		super.setHibernateTemplate(hibernateTemplate);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List getAlumnosPorCriteria(AlumnoCriteria alumnoCriteria) {
 		Criteria criteria = getSession().createCriteria(Alumno.class);
 		if(alumnoCriteria.getId()!=null && alumnoCriteria.getId()!=0)
@@ -36,6 +46,7 @@ public class AlumnoDaoImpl extends HibernateTemplate implements AlumnoDao {
 		return criteria.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getAlumnosXCertificarPorCriteria(AlumnoCriteria alumnoCriteria) {
 		Criteria criteria = getSession().createCriteria(AlumnoXCertificar.class);
 		if(alumnoCriteria.getId()!=null && alumnoCriteria.getId()!=0)

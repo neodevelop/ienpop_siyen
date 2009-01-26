@@ -5,18 +5,27 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import edu.ienpop.dao.CursoDao;
 import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.model.CursoXCertificar;
 
+@Repository("cursoDao")
 public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 
+	@Autowired
+	public CursoDaoImpl(HibernateTemplate hibernateTemplate) {
+		super.setHibernateTemplate(hibernateTemplate);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List getCursoXCertificarPorCriteria(CursoCriteria cursoCriteria) {
 		Criteria criteria = getSession().createCriteria(CursoXCertificar.class);
 		if (cursoCriteria.getId() != null)
@@ -46,6 +55,7 @@ public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
 		return criteria.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List getCursosPorCriteria(CursoCriteria cursoCriteria) {
 		Criteria criteria = getSession().createCriteria(Curso.class);
 		if (cursoCriteria.getId() != null)
