@@ -3,6 +3,7 @@ package edu.ienpop;
 import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class TestAlumnoDao{
 	
 	@Test
 	@SuppressWarnings("unchecked")
-	public void _testAlumnoDao(){
+	public void testAlumnoDao(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		//alumnoCriteria.setId(new Long(33919));
 		//alumnoCriteria.setNumeroControl("II033919");
@@ -35,8 +36,9 @@ public class TestAlumnoDao{
 	}
 	
 	@Test
+	@Ignore
 	@SuppressWarnings("unchecked")
-	public void _testAlumnoDao2(){
+	public void testAlumnoDao2(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		alumnoCriteria.setFirstResult(20);
 		//alumnoCriteria.setId(new Long(33919));
