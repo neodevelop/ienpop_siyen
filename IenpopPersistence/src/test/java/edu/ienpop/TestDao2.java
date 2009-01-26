@@ -5,30 +5,27 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.dao.Dao;
 import edu.ienpop.model.Alumno;
 import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.Curso;
 
-public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
+@SuppressWarnings("unchecked")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
+public class TestDao2 {
 
+	@Autowired
 	Dao dao;
-	@Override
-	protected String[] getConfigLocations() {
-		// TODO Auto-generated method stub
-		return new String[]{"DataSourceAppCtx.xml"};
-	}
-	@Override
-	protected void onSetUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.onSetUp();
-		if(dao==null)
-			dao=(Dao)applicationContext.getBean("dao");
-	}
 
-	public void _testDao(){
+	@Test
+	public void testDao(){
 		Curso nuevoCurso = new Curso();
 		Calendar fechaInicio = Calendar.getInstance();
 		Calendar fechaFin = Calendar.getInstance();
@@ -46,7 +43,8 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(nuevoCurso);
 	}
 	
-	public void _testDao2(){
+	@Test
+	public void testDao2(){
 		Alumno alumnoNuevo = new Alumno();
 		Curso curso = (Curso)dao.getByPK(Curso.class, new Long(111893));
 		alumnoNuevo.setFechaHoraRegistro(Calendar.getInstance().getTime());
@@ -59,8 +57,8 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(alumnoNuevo);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void _testDao3(){
+	@Test
+	public void testDao3(){
 		Curso nuevoCurso = new Curso(); 
 		nuevoCurso = (Curso)dao.getByPK(Curso.class, new Long(111893));
 		
@@ -103,7 +101,8 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 		//dao.update(nuevoCurso);
 	}
 	
-	public void _testDao4(){
+	@Test
+	public void testDao4(){
 		Curso curso = (Curso)dao.getByPK(Curso.class, new Long(111893));
 		System.out.println(ToStringBuilder.reflectionToString(curso));
 		Set set = curso.getAlumnos();
@@ -113,6 +112,7 @@ public class TestDao2 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 	
+	@Test
 	public void testDao11(){
 		Alumno alumno = (Alumno)dao.getByPK(Alumno.class, new Long(33924));
 		System.out.println(alumno.getId());

@@ -1,30 +1,24 @@
 package edu.ienpop;
 
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.ConditionalTestCase;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.dao.UsuarioDao;
 
-public class TestUsuarioDao extends AbstractDependencyInjectionSpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
+public class TestUsuarioDao {
 
+	@Autowired
 	UsuarioDao usuarioDao;
 	
-	@Override
-	protected String[] getConfigLocations() {
-		// TODO Auto-generated method stub
-		return new String[] {"DataSourceAppCtx.xml"};
-	}
-	
-	@Override
-	protected void onSetUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.onSetUp();
-		if(usuarioDao==null)
-			usuarioDao=(UsuarioDao)applicationContext.getBean("usuarioDao");
-	}
-	
-	@SuppressWarnings("unchecked")
+	@Test
 	public void testUsuarioDao(){
-		assertEquals("COCO", usuarioDao.findSimpleUser("BORDA"));
+		ConditionalTestCase.assertEquals("COCO", usuarioDao.findSimpleUser("BORDA"));
 	}
 
 }

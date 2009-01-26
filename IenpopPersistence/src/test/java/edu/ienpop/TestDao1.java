@@ -8,35 +8,28 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.dao.Dao;
-import edu.ienpop.model.Alumno;
 import edu.ienpop.model.AlumnoXCertificar;
 import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.CatalogoPuerto;
-import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoXCertificar;
 import edu.ienpop.model.Usuario;
 
-public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
+@SuppressWarnings("unchecked")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
+public class TestDao1 {
 
+	@Autowired
 	Dao dao;
 
-	@Override
-	protected String[] getConfigLocations() {
-		// TODO Auto-generated method stub
-		return new String[] { "DataSourceAppCtx.xml" };
-	}
-
-	@Override
-	protected void onSetUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.onSetUp();
-		if (dao == null)
-			dao = (Dao) applicationContext.getBean("dao");
-	}
-
+	@Test
 	public void testDao() {
 		//List list = dao.getAll("Alumno");
 		//for (Iterator it = list.iterator(); it.hasNext();) {
@@ -47,6 +40,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		//}
 	}
 
+	@Test
 	public void testDao2() {
 		//List list = dao.getAll("Curso");
 		//for (Iterator it = list.iterator(); it.hasNext();) {
@@ -57,6 +51,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		//}
 	}
 
+	@Test
 	public void testDao3() {
 		Usuario usuario = new Usuario();
 		usuario = (Usuario)dao.getByPK(Usuario.class, "JUANG");
@@ -70,6 +65,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		System.out.println(puertos.getClass().getName());
 	}
 
+	@Test
 	public void testDao4() {
 		List list = dao.getAll("CatalogoCurso");
 		for (Iterator it = list.iterator(); it.hasNext();) {
@@ -79,6 +75,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 
+	@Test
 	public void testDao5() {
 		List list = dao.getAll("CatalogoPuerto");
 		for (Iterator it = list.iterator(); it.hasNext();) {
@@ -88,6 +85,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 
+	@Test
 	public void testDao6() {
 		CursoXCertificar nuevoCurso = new CursoXCertificar();
 		nuevoCurso.setIdPuerto("ACG");
@@ -102,6 +100,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(nuevoCurso);
 	}
 
+	@Test
 	public void testDao7() {
 		AlumnoXCertificar alumnoNuevo = new AlumnoXCertificar();
 		alumnoNuevo.setFechaHoraRegistro(new Date());
@@ -112,7 +111,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(alumnoNuevo);
 	}
 
-	@SuppressWarnings("unchecked")
+	@Test
 	public void testDao8() {
 		CursoXCertificar nuevoCurso = new CursoXCertificar();
 		nuevoCurso.setIdPuerto("ACG");
@@ -129,7 +128,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 
 	}
 
-	@SuppressWarnings("unchecked")
+	@Test
 	public void testDao9() {
 		CursoXCertificar nuevoCurso = (CursoXCertificar) dao.getByPK(
 				CursoXCertificar.class, new Long(7));
@@ -170,6 +169,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		dao.update(nuevoCurso);
 	}
 
+	@Test
 	public void testDao10() {
 		CursoXCertificar curso = (CursoXCertificar) dao.getByPK(
 				CursoXCertificar.class, new Long(1));
@@ -182,6 +182,7 @@ public class TestDao1 extends AbstractDependencyInjectionSpringContextTests {
 		}
 	}
 
+	@Test
 	public void testDao11() {
 		AlumnoXCertificar alumno = (AlumnoXCertificar) dao.getByPK(
 				AlumnoXCertificar.class, new Long(5));
