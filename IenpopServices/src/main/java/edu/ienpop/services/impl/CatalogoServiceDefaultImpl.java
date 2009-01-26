@@ -2,40 +2,38 @@ package edu.ienpop.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CatalogoService;
 import edu.ienpop.services.PersistenceService;
 
+@SuppressWarnings("unchecked")
+@Service("catalogoService")
 public class CatalogoServiceDefaultImpl implements CatalogoService {
 
+	@Autowired
 	PersistenceService persistenceService;
-	
-	public PersistenceService getPersistenceService() {
-		return persistenceService;
-	}
-
-	public void setPersistenceService(PersistenceService persistenceService) {
-		this.persistenceService = persistenceService;
-	}
 
 	public List getCatalogoCurso() throws BusinessException {
 		// TODO Auto-generated method stub
-		return getPersistenceService().getAllEntities("CatalogoCurso");
+		return persistenceService.getAllEntities("CatalogoCurso");
 	}
 
 	public List getCatalogoPuerto() throws BusinessException {
 		// TODO Auto-generated method stub
-		return getPersistenceService().getAllEntities("CatalogoPuerto");
+		return persistenceService.getAllEntities("CatalogoPuerto");
 	}
 
 	public List getCatalogoStatusAlumno() throws BusinessException {
 		// TODO Auto-generated method stub
-		return getPersistenceService().getAllEntities("CatalogoStatusAlumno");
+		return persistenceService.getAllEntities("CatalogoStatusAlumno");
 	}
 
 	public List getCatalogoStatusCurso() throws BusinessException {
 		// TODO Auto-generated method stub
-		return getPersistenceService().getAllEntities("CatalogoStatusCurso");
+		return persistenceService.getAllEntities("CatalogoStatusCurso");
 	}
 
 }

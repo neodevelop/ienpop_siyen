@@ -10,6 +10,8 @@ import java.util.Set;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.ienpop.dao.CatalogoDao;
 import edu.ienpop.dao.CursoDao;
@@ -25,59 +27,32 @@ import edu.ienpop.services.CursoService;
 import edu.ienpop.services.LlaveService;
 import edu.ienpop.services.PersistenceService;
 
+@Service("cursoService")
 public class CursoServiceDefaultImpl implements CursoService {
 
 	Logger log = Logger.getLogger(this.getClass());
+	@Autowired
 	PersistenceService persistenceService;
+	@Autowired
 	LlaveService llaveService;
+	@Autowired
 	CursoDao cursoDao;
+	@Autowired
 	CatalogoDao catalogoDao;
-	
-	public CatalogoDao getCatalogoDao() {
-		return catalogoDao;
-	}
-
-	public void setCatalogoDao(CatalogoDao catalogoDao) {
-		this.catalogoDao = catalogoDao;
-	}
-
-	public CursoDao getCursoDao() {
-		return cursoDao;
-	}
-
-	public void setCursoDao(CursoDao cursoDao) {
-		this.cursoDao = cursoDao;
-	}
-
-	public LlaveService getLlaveService() {
-		return llaveService;
-	}
-
-	public void setLlaveService(LlaveService llaveService) {
-		this.llaveService = llaveService;
-	}
-
-	public PersistenceService getPersistenceService() {
-		return persistenceService;
-	}
-
-	public void setPersistenceService(PersistenceService persistenceService) {
-		this.persistenceService = persistenceService;
-	}
 
 	@SuppressWarnings("unchecked")
 	public long addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException{
 		// TODO Auto-generated method stub
 		//Obtenemos el curso por certificar
-		CursoXCertificar cursoXCertificar = (CursoXCertificar)getPersistenceService().findById(CursoXCertificar.class, (long)idCursoXCertificar);
+		CursoXCertificar cursoXCertificar = (CursoXCertificar)persistenceService.findById(CursoXCertificar.class, (long)idCursoXCertificar);
 		//Si el curso no existe pues hay error
 		if(cursoXCertificar==null){
 			throw new BusinessException("El curso a certificar no existe");
 		}
 		//Buscamos la llave en nuestra base de llaves para certificar
-		LlaveCertificacion llaveCertificacion = getLlaveService().isValidaLlave(llave, idCursoXCertificar);
+		LlaveCertificacion llaveCertificacion = llaveService.isValidaLlave(llave, idCursoXCertificar);
 		//Obtenemos las caracterisiticas del curso, sobre todo la duraci√≥n
-		CatalogoCurso catalogoCurso = (CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class, cursoXCertificar.getIdTipoCurso());
+		CatalogoCurso catalogoCurso = (CatalogoCurso)persistenceService.findById(CatalogoCurso.class, cursoXCertificar.getIdTipoCurso());
 		//Creamos un nuevo curso
 		Curso curso = new Curso();
 		//Calculamos la fecha de termino del curso en base a la de inicio y al tipo de curso
@@ -91,16 +66,16 @@ public class CursoServiceDefaultImpl implements CursoService {
 		curso.setFechaHoraRegistro(Calendar.getInstance().getTime());
 		curso.setFechaFin(fechaFin.getTime());
 		curso.setIdPuerto(cursoXCertificar.getIdPuerto());
-		curso.setTipoCurso((CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class,cursoXCertificar.getIdTipoCurso()));
+		curso.setTipoCurso((CatalogoCurso)persistenceService.findById(CatalogoCurso.class,cursoXCertificar.getIdTipoCurso()));
 		curso.setIdUsuario(cursoXCertificar.getIdUsuario());
 		curso.setIdLlave(llaveCertificacion.getId());
 		curso.setIdStatusCurso(3);
 		//Lo guardamos
-		getPersistenceService().createEntity(curso);
+		persistenceService.createEntity(curso);
 		//Actualizamos el uso de la llave
 		llaveCertificacion.setFechaUtilizacion(Calendar.getInstance().getTime());
 		llaveCertificacion.setIdStatusLlave(1);
-		getPersistenceService().updateEntity(llaveCertificacion);
+		persistenceService.updateEntity(llaveCertificacion);
 		//Creamos el conjunto donde van a estar los alumnos certificados
 		Set alumnos = new HashSet();
 		Set alumnosXCertificar = cursoXCertificar.getAlumnos();
@@ -116,11 +91,11 @@ public class CursoServiceDefaultImpl implements CursoService {
 			//Establecemos la relacion con el curso
 			alumno.setCurso(curso);
 			//Guardamos el nuevo alumno
-			getPersistenceService().createEntity(alumno);
+			persistenceService.createEntity(alumno);
 			//Le Asignamos su numero de control
 			alumno.setNumeroControl("II0"+alumno.getId());
 			//Actualizamos toda la infromacion del alumno
-			getPersistenceService().updateEntity(alumno);
+			persistenceService.updateEntity(alumno);
 			//Agregamos el alumno al curso
 			alumnos.add(alumno);
 		}
@@ -128,16 +103,16 @@ public class CursoServiceDefaultImpl implements CursoService {
 		curso.setAlumnos(alumnos);
 		//Termina su uso el curso x certificar
 		cursoXCertificar.setIdStatusCurso(3);
-		getPersistenceService().updateEntity(cursoXCertificar);
+		persistenceService.updateEntity(cursoXCertificar);
 		//Guardamos los cambios
-		getPersistenceService().updateEntity(curso);
+		persistenceService.updateEntity(curso);
 		return curso.getId();
 	}
 
 	@SuppressWarnings("unchecked")
 	public Curso generateCertificadosXCurso(long idCurso) throws BusinessException {
 		// TODO Auto-generated method stub
-		Curso curso = (Curso)getPersistenceService().findById(Curso.class, idCurso);
+		Curso curso = (Curso)persistenceService.findById(Curso.class, idCurso);
 		if(curso==null){
 			throw new BusinessException("El curso no existe...");
 		}
@@ -149,9 +124,9 @@ public class CursoServiceDefaultImpl implements CursoService {
 		for(Iterator it = alumnos.iterator();it.hasNext();){
 			Alumno alumno = (Alumno)it.next();
 			alumno.setIdStatusAlumno(3);
-			getPersistenceService().updateEntity(alumno);
+			persistenceService.updateEntity(alumno);
 		}
-		getPersistenceService().updateEntity(curso);
+		persistenceService.updateEntity(curso);
 		return curso;
 	}
 
@@ -168,7 +143,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		cursoCriteria.setFechaDesde(desde);
 		cursoCriteria.setFechaHasta(hasta);
 		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
-		return getCursoDao().getCursosPorCriteria(cursoCriteria);
+		return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -179,13 +154,13 @@ public class CursoServiceDefaultImpl implements CursoService {
 		Calendar fechaHasta = Calendar.getInstance();
 		fechaHasta.set(anio, mes, 1);
 		fechaHasta.add(Calendar.DATE, -1);
-		String[] idTipoCursos = (String[])getCatalogoDao().getGrupoCursosXLibreta(libreta);
+		String[] idTipoCursos = (String[])catalogoDao.getGrupoCursosXLibreta(libreta);
 		CursoCriteria cursoCriteria = new CursoCriteria();
 		cursoCriteria.setFechaDesde(fechaDesde.getTime());
 		cursoCriteria.setFechaHasta(fechaHasta.getTime());
 		cursoCriteria.setIdTipoCurso(idTipoCursos);
 		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
-		return getCursoDao().getCursosPorCriteria(cursoCriteria);
+		return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -198,7 +173,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		cursoCriteria.setFechaHasta(fechaFin);
 		cursoCriteria.setIdPuerto(new String[] {idPuerto});
 		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
-		return getCursoDao().getCursosPorCriteria(cursoCriteria);
+		return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -220,7 +195,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 			String[] libretas = cursoCriteria.getLibretas(); 
 			for(int i=0;i<libretas.length;i++){
 				log.debug("Libreta: "+libretas[i]);
-				Object[] tipoCursos = getCatalogoDao().getGrupoCursosXLibreta(libretas[i]);
+				Object[] tipoCursos = catalogoDao.getGrupoCursosXLibreta(libretas[i]);
 				log.debug("Cursos de la libreta "+libretas[i]+": ");
 				//Pasamos los idTipoCurso al List para despues hacerlo array
 				for(int j=0;j<tipoCursos.length;j++){
@@ -234,27 +209,27 @@ public class CursoServiceDefaultImpl implements CursoService {
 			cursoCriteria.setIdTipoCurso(arraytipoCursos);
 		}
 		if(cursoCriteria.getIdStatusCurso()==CursoCriteria.NUEVO || cursoCriteria.getIdStatusCurso()==CursoCriteria.ABIERTO)
-			return getCursoDao().getCursoXCertificarPorCriteria(cursoCriteria);
+			return cursoDao.getCursoXCertificarPorCriteria(cursoCriteria);
 		else
-			return getCursoDao().getCursosPorCriteria(cursoCriteria);
+			return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}
 
 	public String getIdTipoCursoById(String idCurso) throws BusinessException {
-		return getCursoDao().getTipoCursoByIdCurso(idCurso);
+		return cursoDao.getTipoCursoByIdCurso(idCurso);
 	}
 
 	public Curso getCursoByTokenCertificado(String token)
 			throws BusinessException {
-		LlaveCertificacion llave = getLlaveService().getLlavebyToken(token);
+		LlaveCertificacion llave = llaveService.getLlavebyToken(token);
 		if(llave==null)
 			throw new BusinessException("El código es invalido...");
-		Curso curso = getCursoDao().getCursoByIdLlaveCertificada(llave.getId());
+		Curso curso = cursoDao.getCursoByIdLlaveCertificada(llave.getId());
 		return curso;
 	}
 
 	public Integer getCountCursosByCriteria(CursoCriteria cursoCriteria)
 			throws BusinessException {
-		return getCursoDao().getCountCursosPorCriteria(cursoCriteria);
+		return cursoDao.getCountCursosPorCriteria(cursoCriteria);
 	}
 
 }

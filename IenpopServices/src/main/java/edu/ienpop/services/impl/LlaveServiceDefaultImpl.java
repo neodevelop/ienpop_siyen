@@ -3,6 +3,8 @@ package edu.ienpop.services.impl;
 import java.util.Calendar;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.ienpop.dao.LlaveDao;
 import edu.ienpop.model.CursoXCertificar;
@@ -11,33 +13,20 @@ import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.LlaveService;
 import edu.ienpop.services.PersistenceService;
 
+@Service("llaveService")
 public class LlaveServiceDefaultImpl implements LlaveService {
 
 	static Logger log = Logger.getLogger(LlaveServiceDefaultImpl.class);
+	@Autowired
 	private PersistenceService persistenceService;
+	@Autowired
 	private LlaveDao llaveDao;
-
-	public LlaveDao getLlaveDao() {
-		return llaveDao;
-	}
-
-	public void setLlaveDao(LlaveDao llaveDao) {
-		this.llaveDao = llaveDao;
-	}
-
-	public PersistenceService getPersistenceService() {
-		return persistenceService;
-	}
-
-	public void setPersistenceService(PersistenceService persistenceService) {
-		this.persistenceService = persistenceService;
-	}
 
 	public String generateLlaveXCurso(long idCursoXCertificar)
 			throws BusinessException {
 		// TODO Auto-generated method stub
 		LlaveCertificacion llaveCertificacion = new LlaveCertificacion();
-		CursoXCertificar cursoXCertificar = (CursoXCertificar)getPersistenceService().findById(CursoXCertificar.class, idCursoXCertificar);
+		CursoXCertificar cursoXCertificar = (CursoXCertificar)persistenceService.findById(CursoXCertificar.class, idCursoXCertificar);
 		if(cursoXCertificar.getIdStatusCurso()==2){
 			throw new BusinessException("Este curso ya tiene asignada una llave...");
 		}
@@ -61,15 +50,15 @@ public class LlaveServiceDefaultImpl implements LlaveService {
 		llaveCertificacion.setIdCursoXCertificar(idCursoXCertificar);
 		llaveCertificacion.setFechaGeneracion(Calendar.getInstance().getTime());
 		cursoXCertificar.setIdStatusCurso(2);
-		getPersistenceService().updateEntity(cursoXCertificar);
-		getPersistenceService().createEntity(llaveCertificacion);
-		getPersistenceService().updateEntity(llaveCertificacion);
+		persistenceService.updateEntity(cursoXCertificar);
+		persistenceService.createEntity(llaveCertificacion);
+		persistenceService.updateEntity(llaveCertificacion);
 		return llave;
 	}
 
 	public LlaveCertificacion isValidaLlave(String llave, long IdCursoXCertificar) throws BusinessException {
 		// TODO Auto-generated method stub
-		LlaveCertificacion llaveCertificacion = (LlaveCertificacion)getLlaveDao().getLlaveByLlave(llave);
+		LlaveCertificacion llaveCertificacion = (LlaveCertificacion)llaveDao.getLlaveByLlave(llave);
 		if(llaveCertificacion==null){
 			throw new BusinessException("La llave no existe o es invalida!!!");
 		}else{
@@ -86,11 +75,11 @@ public class LlaveServiceDefaultImpl implements LlaveService {
 	}
 
 	public LlaveCertificacion getLlavebyIdCurso(long IdCursoXCertificar) throws BusinessException {
-		return (LlaveCertificacion)getLlaveDao().getLlaveByIdCurso(IdCursoXCertificar);
+		return (LlaveCertificacion)llaveDao.getLlaveByIdCurso(IdCursoXCertificar);
 	}
 
 	public LlaveCertificacion getLlavebyToken(String token) throws BusinessException {
-		return (LlaveCertificacion)getLlaveDao().getLlaveByLlave(token);
+		return (LlaveCertificacion)llaveDao.getLlaveByLlave(token);
 	}
 
 }

@@ -1,7 +1,10 @@
 package edu.ienpop.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import edu.ienpop.services.ErrorService;
 
+@Service("errorService")
 public class ErrorServiceDefaultImpl implements ErrorService {
 
 	public void throwDataAccessException(){

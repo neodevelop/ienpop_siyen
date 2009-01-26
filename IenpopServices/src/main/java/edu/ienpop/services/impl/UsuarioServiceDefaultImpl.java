@@ -1,24 +1,21 @@
 package edu.ienpop.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import edu.ienpop.dao.UsuarioDao;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.UsuarioService;
 
+@Service("usuarioService")
 public class UsuarioServiceDefaultImpl implements UsuarioService {
 
+	@Autowired
 	UsuarioDao usuarioDao;
-	
-	public UsuarioDao getUsuarioDao() {
-		return usuarioDao;
-	}
-
-	public void setUsuarioDao(UsuarioDao usuarioDao) {
-		this.usuarioDao = usuarioDao;
-	}
 
 	public boolean isValidUsuario(String idUsuario, String password)
 			throws BusinessException {
-		String bdPassword = getUsuarioDao().findSimpleUser(idUsuario);
+		String bdPassword = usuarioDao.findSimpleUser(idUsuario);
 		if(bdPassword==null)
 			throw new BusinessException("El usuario no existe...");
 		if(!bdPassword.equals(password))
@@ -27,7 +24,7 @@ public class UsuarioServiceDefaultImpl implements UsuarioService {
 	}
 
 	public String getNombreDelusuario(String usuario) throws BusinessException {
-		return getUsuarioDao().getNombreUsuario(usuario);
+		return usuarioDao.getNombreUsuario(usuario);
 	}
 
 }
