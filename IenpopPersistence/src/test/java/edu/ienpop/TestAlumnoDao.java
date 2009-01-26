@@ -3,31 +3,25 @@ package edu.ienpop;
 import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.dao.AlumnoDao;
 import edu.ienpop.model.Alumno;
 import edu.ienpop.model.AlumnoCriteria;
 import edu.ienpop.model.AlumnoXCertificar;
 
-public class TestAlumnoDao extends AbstractDependencyInjectionSpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"DataSourceAppCtx.xml"})
+public class TestAlumnoDao{
 
+	@Autowired
 	AlumnoDao alumnoDao;
 	
-	@Override
-	protected String[] getConfigLocations() {
-		// TODO Auto-generated method stub
-		return new String[] {"DataSourceAppCtx.xml"};
-	}
-	
-	@Override
-	protected void onSetUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.onSetUp();
-		if(alumnoDao==null)
-			alumnoDao=(AlumnoDao)applicationContext.getBean("alumnoDao");
-	}
-	
+	@Test
 	@SuppressWarnings("unchecked")
 	public void _testAlumnoDao(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
@@ -39,6 +33,8 @@ public class TestAlumnoDao extends AbstractDependencyInjectionSpringContextTests
 			System.out.println(ToStringBuilder.reflectionToString(alumno));
 		}
 	}
+	
+	@Test
 	@SuppressWarnings("unchecked")
 	public void _testAlumnoDao2(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
@@ -53,6 +49,7 @@ public class TestAlumnoDao extends AbstractDependencyInjectionSpringContextTests
 		}
 	}
 	
+	@Test
 	public void testAlumnoDao3(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		alumnoCriteria.setFirstResult(0);
