@@ -1,32 +1,30 @@
 package edu.ienpop;
 
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CatalogoService;
 
-public class TestThrowsAdvice extends
-		AbstractDependencyInjectionSpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
+		"/DataSourceAppCtx.xml" })
+public class TestThrowsAdvice {
 
 	//ErrorService errorService;
+	@Autowired
 	CatalogoService catalogoService;
-	protected String[] getConfigLocations() {
-		// TODO Auto-generated method stub
-		return new String[]{"ServicesAppCtx.xml","DataSourceAppCtx.xml"};
-	}
 	
-	@Override
-	protected void onSetUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.onSetUp();
-		//if(errorService==null)
-		//	errorService=(ErrorService)applicationContext.getBean("errorService");
-		if(catalogoService==null)
-			catalogoService=(CatalogoService)applicationContext.getBean("catalogoService");
-	}
-	
-	public void test() throws BusinessException{
+	@Test
+	public void test() {
 		//errorService.throwDataAccessException();
-		catalogoService.getCatalogoCurso();
+		try {
+			catalogoService.getCatalogoCurso();
+		} catch (BusinessException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 }
