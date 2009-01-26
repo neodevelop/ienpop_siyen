@@ -20,15 +20,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</value-->
 		</property>
 	</bean>
-
-	<!--bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="url" value="${jdbc.url}" />
-		<property name="driverClassName"
-			value="${jdbc.driverClassName}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-	</bean-->
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
