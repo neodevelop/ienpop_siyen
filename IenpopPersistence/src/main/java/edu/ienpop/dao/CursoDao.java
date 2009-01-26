@@ -9,6 +9,7 @@ import edu.ienpop.model.CursoCriteria;
  * @author ubuntu
  *
  */
+@SuppressWarnings("unchecked")
 public interface CursoDao {
 	/**
 	 * @param cursoCriteria

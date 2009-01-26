@@ -3,6 +3,7 @@ package edu.ienpop.dao;
 import java.io.Serializable;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public interface Dao {
 	Serializable save(Object o);
 	void update(Object o);
