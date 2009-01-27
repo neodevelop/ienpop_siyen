@@ -1,4 +1,5 @@
 var alumnoCriteriaCache;
+var cursoCriteriaCache;
 
 function buscarAlumnos(){
 	var numeroControl = document.busquedaAlumnos.numeroControl.value;
@@ -109,7 +110,161 @@ function buscarAlumnosCache(indice){
 }
 
 function buscarCursos(){
-	var cursoCriteria = {id:null,fechaDesde:null,fechaHasta:null,idPuerto:null,idTipoCurso:null,idUsuario:null,idStatusCurso:4,idLlave:null,libretas:null};
-	alert(cursoCriteria);
-	//alert("hola cursos");
+	//var puertos = "[";
+	var puertos = new Array();
+	var contadorInterno=0;
+	for(var i=0; i<document.busquedaCursos.idPuerto.length;i++){
+		if(document.busquedaCursos.idPuerto[i].checked){
+			//puertos += "'"+document.busquedaCursos.idPuerto[i].value + "',";
+			puertos[contadorInterno] = document.busquedaCursos.idPuerto[i].value;
+			contadorInterno++;
+		}
+	}
+	//var cursos = "[";
+	var cursos = new Array();
+	contadorInterno = 0;
+	for(var i=0; i<document.busquedaCursos.idTipoCurso.length;i++){
+		if(document.busquedaCursos.idTipoCurso[i].checked){
+			//cursos += "'"+document.busquedaCursos.idTipoCurso[i].value + "',";
+			cursos[contadorInterno] = document.busquedaCursos.idTipoCurso[i].value;
+			contadorInterno++;
+		}
+	}
+	var desdeCursos = document.busquedaCursos.desdeCurso.value;
+	var hastaCursos = document.busquedaCursos.hastaCurso.value;
+	var fechaDesde = null;
+	var fechaHasta = null;
+	if(desdeCursos)
+		fechaDesde = new Date(getDateFromFormat(desdeCursos,"dd-MM-y"));
+	if(hastaCursos)
+		fechaHasta = new Date(getDateFromFormat(hastaCursos,"dd-MM-y"));
+	//puertos = puertos.substr(0,puertos.length-1);
+	//puertos+="]";
+	//cursos = cursos.substr(0,cursos.length-1);
+	//cursos+="]";
+	if(document.busquedaCursos.idTipoCurso.length==0)
+		cursos = null; 
+	var cursoCriteria = {id:null,fechaDesde:fechaDesde,fechaHasta:fechaHasta,idPuerto:puertos,idTipoCurso:cursos,idStatusCurso:4};
+	cursoCriteria.paginado = true;
+	cursoCriteriaCache = cursoCriteria;
+	//alert(cursoCriteria);
+	CursoService.getCursosXStatus(cursoCriteria,function(cursos){
+		//alert(cursos.length);
+		dwr.util.removeAllRows("resultadoCursosBody",{
+			filter:function(tr){
+				return (tr.id != "patternCursoBusqueda");
+			}
+		}
+		);
+		
+		var curso, idCurso;
+		
+		for(var i=0;i<cursos.length;i++){
+			curso = cursos[i];
+			idCurso = curso.id;
+			//alert(idCurso);
+			if(idCurso!=0){
+				dwr.util.cloneNode("patternCursoBusqueda",{idSuffix:idCurso});
+				dwr.util.setValue("idCurso"+idCurso,curso.id);
+				dwr.util.setValue("idPuertoCurso"+idCurso,curso.idPuerto);
+				dwr.util.setValue("idCatalogoTipoCurso"+idCurso,curso.tipoCurso.idTipoCurso);
+				dwr.util.setValue("idUsuarioCurso"+idCurso,curso.idUsuario);
+				dwr.util.setValue("noAlumnos"+idCurso,curso.alumnos.length);
+				
+				var day=curso.fechaInicio.getDay();
+				var month=curso.fechaInicio.getMonth();
+				var daym=curso.fechaInicio.getDate();
+				var year=curso.fechaInicio.getYear();
+				year+=1900;
+				month++;//daym++;
+				var fechaInicio = daym+"/"+month+"/"+year;
+				dwr.util.setValue("fechaInicioCurso"+idCurso,fechaInicio);
+				
+				day=curso.fechaFin.getDay();
+				month=curso.fechaFin.getMonth();
+				daym=curso.fechaFin.getDate();
+				year=curso.fechaFin.getYear();
+				year+=1900;
+				month++;//daym++;
+				fechaFin = daym+"/"+month+"/"+year;
+				dwr.util.setValue("fechaFinCurso"+idCurso,fechaFin);
+				
+				if((i%2)==0)
+					$("patternCursoBusqueda"+idCurso).className = "rowNoFill";
+				else
+					$("patternCursoBusqueda"+idCurso).className = "rowFill";
+			}
+		}
+	});
+	CursoService.getCountCursosByCriteria(cursoCriteria,function(count){
+		var paginador = "<< < ";
+		var paginas = 0;
+		paginas+=(count/10);
+		if((count%10)!=0){
+			paginas++;
+		}
+		for(var i=1;i<=paginas;i++){
+			paginador+="<a href='javascript:buscarCursosCache("+((i*1)-1)+")'>"+(i*1)+"</a>&nbsp;";
+			if((i%25)==0){
+				paginador+="<br>";
+			}
+		}
+		paginador+=" > >>";
+		var pag = document.getElementById("paginadorCursos");
+		var mensaje = document.getElementById("mensajeResultadosCursos");
+		pag.innerHTML = paginador;
+		mensaje.innerHTML = ".: Se han encontrado "+count+" resultados :.";
+	});
+}
+
+function buscarCursosCache(indice){
+	cursoCriteriaCache.firstResult = indice*10;
+	CursoService.getCursosXStatus(cursoCriteriaCache,function(cursos){
+		//alert(cursos.length);
+		dwr.util.removeAllRows("resultadoCursosBody",{
+			filter:function(tr){
+				return (tr.id != "patternCursoBusqueda");
+			}
+		}
+		);
+		
+		var curso, idCurso;
+		
+		for(var i=0;i<cursos.length;i++){
+			curso = cursos[i];
+			idCurso = curso.id;
+			//alert(idCurso);
+			if(idCurso!=0){
+				dwr.util.cloneNode("patternCursoBusqueda",{idSuffix:idCurso});
+				dwr.util.setValue("idCurso"+idCurso,curso.id);
+				dwr.util.setValue("idPuertoCurso"+idCurso,curso.idPuerto);
+				dwr.util.setValue("idCatalogoTipoCurso"+idCurso,curso.tipoCurso.idTipoCurso);
+				dwr.util.setValue("idUsuarioCurso"+idCurso,curso.idUsuario);
+				dwr.util.setValue("noAlumnos"+idCurso,curso.alumnos.length);
+				
+				var day=curso.fechaInicio.getDay();
+				var month=curso.fechaInicio.getMonth();
+				var daym=curso.fechaInicio.getDate();
+				var year=curso.fechaInicio.getYear();
+				year+=1900;
+				month++;//daym++;
+				var fechaInicio = daym+"/"+month+"/"+year;
+				dwr.util.setValue("fechaInicioCurso"+idCurso,fechaInicio);
+				
+				day=curso.fechaFin.getDay();
+				month=curso.fechaFin.getMonth();
+				daym=curso.fechaFin.getDate();
+				year=curso.fechaFin.getYear();
+				year+=1900;
+				month++;//daym++;
+				fechaFin = daym+"/"+month+"/"+year;
+				dwr.util.setValue("fechaFinCurso"+idCurso,fechaFin);
+				
+				if((i%2)==0)
+					$("patternCursoBusqueda"+idCurso).className = "rowNoFill";
+				else
+					$("patternCursoBusqueda"+idCurso).className = "rowFill";
+			}
+		}
+	});
 }
