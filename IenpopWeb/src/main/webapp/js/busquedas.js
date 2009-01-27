@@ -109,6 +109,8 @@ function buscarAlumnosCache(indice){
 	});
 }
 
+//Busqueda de cursos
+
 function buscarCursos(){
 	//var puertos = "[";
 	var puertos = new Array();
