@@ -24,6 +24,11 @@
 		<!-- Agregamos la excepcion -->
 		<convert match="edu.ienpop.services.BusinessException" converter="exception"></convert>
 		<convert match="java.lang.IllegalArgumentException" converter="exception"></convert>
+		<convert match="org.directwebremoting.extend.MarshallException" converter="exception"></convert>
+		<convert match="java.lang.Exception" converter="exception">
+			<param name='include' value='message,lineNumber'/>
+		</convert>
+		<convert match="java.lang.StackTraceElement" converter="bean"/>
 		<!-- Hacemos accesible toda la estructura del modelo para DWR en todas las clases -->
 		<convert match="edu.ienpop.model.*" converter="bean"></convert>
 		<convert match="java.util.Calendar" converter="bean"></convert>
