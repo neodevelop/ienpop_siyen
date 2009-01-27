@@ -4,7 +4,7 @@
 	<groupId>edu.ienpop</groupId>
 	<artifactId>IenpopPersistence</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
+	<version>1.5</version>
 	<name>IenpopPersistence</name>
 	<url>http://maven.apache.org</url>
 	<!--
