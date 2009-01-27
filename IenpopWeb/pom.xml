@@ -8,13 +8,13 @@
 	<version>2.0</version>
 	<name>IenpopWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<repositories>
+	<!--repositories>
 		<repository>
 			<id>LocalRepo</id>
 			<name>LocalRepo</name>
 			<url>http://localhost/maven2</url>
 		</repository>
-	</repositories>
+	</repositories-->
 	<dependencies>
 		<!-- JUNIT -->
 		<dependency>
@@ -27,12 +27,12 @@
 		<dependency>
 			<groupId>edu.ienpop</groupId>
 			<artifactId>IenpopPersistence</artifactId>
-			<version>1.0</version>
+			<version>1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.ienpop</groupId>
 			<artifactId>IenpopServices</artifactId>
-			<version>1.0</version>
+			<version>1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.ienpop</groupId>
