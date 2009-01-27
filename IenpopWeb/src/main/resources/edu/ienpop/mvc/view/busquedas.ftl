@@ -171,3 +171,40 @@
  	 </table>
   	  </center>
 </form>
+<!-- Finaliza el segundo formulario y voy a colocar la tabla de resultados de cursos aqui abajo -->
+<table width="100%">
+	<thead>
+		<tr class="columnTables">
+			<th>No. Curso</th>
+			<th>Fecha Inicio</th>
+			<th>Fecha Fin</th>
+			<th>Puerto</th>
+			<th>Curso</th>
+			<th>Instructor</th>
+			<th>Alumnos</th>
+			<th>Modificar</th>
+		</tr>
+	</thead>
+	<tbody id="resultadoCursosBody">
+		<tr id="patternCursoBusqueda" class="rowNoFill">
+			<td><div id="idCurso">&nbsp;</div></td>
+			<td><div id="fechaInicioCurso">&nbsp;</div></td>
+			<td><div id="fechaFinCurso">&nbsp;</div></td>
+			<td><div id="idPuertoCurso">&nbsp;</div></td>
+			<td><div id="idCatalogoTipoCurso">&nbsp;</div></td>
+			<td><div id="idUsuarioCurso">&nbsp;</div></td>
+			<td><div id="noAlumnos">&nbsp;</div></td>
+			<td><div id="modificarCurso">&nbsp;</div></td>
+		</tr>
+	</tbody>
+</table>
+<!--Paginador-->
+<center>
+<div id="mensajeResultadosCursos" class="goodMessage">
+	.: Se han encontrado 0 resultados :.
+</div>
+<div id="paginadorCursos" class="userInfo">
+	Paginador
+</div>
+</center>
+<!--Paginador-->
