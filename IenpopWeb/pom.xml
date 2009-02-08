@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.ienpop</groupId>
@@ -8,21 +7,11 @@
 	<version>2.0</version>
 	<name>IenpopWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<!--repositories>
-		<repository>
-			<id>LocalRepo</id>
-			<name>LocalRepo</name>
-			<url>http://localhost/maven2</url>
-		</repository>
-	</repositories-->
+	<!--
+		repositories> <repository> <id>LocalRepo</id> <name>LocalRepo</name>
+		<url>http://localhost/maven2</url> </repository> </repositories
+	-->
 	<dependencies>
-		<!-- JUNIT -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- Ienpop -->
 		<dependency>
 			<groupId>edu.ienpop</groupId>
@@ -43,92 +32,78 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
-			<version>2.0.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-mock</artifactId>
-			<version>2.0.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-hibernate3</artifactId>
-			<version>2.0.7</version>
-			<exclusions>
-				<exclusion>
-					<groupId>asm</groupId>
-					<artifactId>asm</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>asm</groupId>
-					<artifactId>asm-attrs</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>cglib</groupId>
-					<artifactId>cglib</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>2.0.7</version>
+			<version>2.5.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>2.0.7</version>
+			<version>2.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.6.ga</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>2.5.6</version>
 		</dependency>
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.2a</version>
+			<version>1.5.3</version>
 		</dependency>
 		<!-- ASM para AOP -->
 		<dependency>
 			<groupId>asm</groupId>
 			<artifactId>asm-all</artifactId>
-			<version>2.2.3</version>
+			<version>3.1</version>
 		</dependency>
 		<!-- CGLIB para AOP -->
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
-			<version>2.1_3</version>
+			<version>2.2</version>
 		</dependency>
 		<!-- Commons -->
 		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.2</version>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 		<!-- LOG4j -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.13</version>
+			<version>1.2.15</version>
 		</dependency>
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.0.4</version>
+			<version>5.1.6</version>
 		</dependency>
 		<!-- WEB -->
 		<dependency>
@@ -146,21 +121,17 @@
 			<artifactId>velocity</artifactId>
 			<version>1.5</version>
 		</dependency>
-		<!--dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.4</version>
-			</dependency>
-			<dependency>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.0</version>
-			</dependency-->
-		<!--  Spring Web Flow -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webflow</artifactId>
-			<version>1.0.4</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.getahead</groupId>
@@ -228,36 +199,32 @@
 			</plugin>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty6-plugin</artifactId>
+				<artifactId>maven-jetty-plugin</artifactId>
 				<configuration>
-					<!--webApp>
+					<!--
+						webApp>
 						${project.build.directory}/${project.build.finalName}-${project.build.version}
-						</webApp-->
+						</webApp
+					-->
 					<connectors>
-						<connector
-							implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
 							<port>8081</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<contextPath>
-						/${project.artifactId}-${project.version}
+					<contextPath> /${project.artifactId}-${project.version} 
 					</contextPath>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 	<scm>
-		<connection>
-			scm:svn:http://192.168.1.253/svn/IenpopWeb
-		</connection>
-		<developerConnection>
-			scm:svn:http://192.168.1.253/svn/IenpopWeb
+		<connection> scm:svn:http://192.168.1.253/svn/IenpopWeb </connection>
+		<developerConnection> scm:svn:http://192.168.1.253/svn/IenpopWeb 
 		</developerConnection>
 		<tag>HEAD</tag>
-		<url>
-			scm:svn:http://neodevelop:volleyball@192.168.1.253/svn/IenpopWeb
+		<url> scm:svn:http://neodevelop:volleyball@192.168.1.253/svn/IenpopWeb 
 		</url>
 	</scm>
 	<developers>
@@ -273,4 +240,3 @@
 		</developer>
 	</developers>
 </project>
-
