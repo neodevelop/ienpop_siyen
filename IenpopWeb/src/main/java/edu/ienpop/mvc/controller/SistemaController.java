@@ -40,6 +40,14 @@ public class SistemaController extends AbstractController {
 		this.persistenceService = persistenceService;
 	}
 
+	public IenpopProducer getIenpopProducer() {
+		return ienpopProducer;
+	}
+
+	public void setIenpopProducer(IenpopProducer ienpopProducer) {
+		this.ienpopProducer = ienpopProducer;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
@@ -67,14 +75,6 @@ public class SistemaController extends AbstractController {
 			}
 			return new ModelAndView(view, model);
 		}
-	}
-
-	public IenpopProducer getIenpopProducer() {
-		return ienpopProducer;
-	}
-
-	public void setIenpopProducer(IenpopProducer ienpopProducer) {
-		this.ienpopProducer = ienpopProducer;
 	}
 
 }
