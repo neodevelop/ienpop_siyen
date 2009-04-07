@@ -32,7 +32,7 @@
           		<tr>
           			<td class="myLabel">Fecha Inicio:</td>
           			<td>
-          			<input type="text" readonly="true" id="fechaInicioCurso" name="fechaInicioCursoXCertificar" onfocus="return showCalendar('fechaInicioCurso', '%d-%m-%Y', '24', true);"><br>
+          			<input type="text" readonly="true" id="fechaInicioModificar" name="fechaInicioModificar" onfocus="return showCalendar('fechaInicioModificar', '%d-%m-%Y', '24', true);"><br>
           			</td>
           			<td class="myLabel">Puerto:</td>
           			<td>
