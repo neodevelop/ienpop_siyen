@@ -202,4 +202,16 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<developers>
+		<developer>
+			<id>neodevelop</id>
+			<email>juan.reyes@ienpop.net</email>
+			<organization>IENPOP</organization>
+			<name>José Juan Reyes Z.</name>
+			<roles>
+				<role>admin</role>
+				<role>develop</role>
+			</roles>
+		</developer>
+	</developers>
 </project>
