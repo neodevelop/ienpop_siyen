@@ -156,7 +156,10 @@
           		</tr>
           	</table>
         	<input type="hidden" name="idStatusCurso" value="4"/>
-			<center><input type="button" name="buscaCursos" value="Buscar" class="inputButton" onclick="buscarCursos()"/></center>
+			<center>
+				<input type="button" name="buscaCursos" value="Buscar" class="inputButton" onclick="buscarCursos()"/>
+				<input type="reset" name="reset" value="Limpiar" class="inputButton"/>
+			</center>
 	
 	
 			<!--Contenido del formulario-->
