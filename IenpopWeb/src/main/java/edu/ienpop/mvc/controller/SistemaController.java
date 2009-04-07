@@ -66,6 +66,7 @@ public class SistemaController extends AbstractController {
 				model.put("usuario", usuario);
 				model.put("catalogoCursos", getCatalogoService()
 						.getCatalogoCurso());
+				model.put("instructores",getPersistenceService().getAllEntities("Usuario"));
 				ienpopProducer.notificarAcceso(usuario);
 				if(usuario.getTipoUsuario()==3)
 					view="jefatura";
