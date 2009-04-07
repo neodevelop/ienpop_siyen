@@ -1,5 +1,6 @@
 package edu.ienpop;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
@@ -94,16 +95,37 @@ public class TestCursoService {
 	@Test
 	public void testRecoveryCurso(){
 		try {
-			Curso curso = (Curso)persistenceService.findById(Curso.class, 111893L);
+			Curso curso = (Curso)persistenceService.findById(Curso.class, 111894L);
 			System.out.println(ToStringBuilder.reflectionToString(curso));
 			curso.setIdStatusCurso(CursoCriteria.ABIERTO);
 			Set<Alumno> alumnos = curso.getAlumnos();
 			for(Alumno alumno : alumnos){
-				alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
+				if((alumno.getId()%2)==0){
+					alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
+				}
 			}
 			cursoService.recoveryCursoCertificado(curso);
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		} 
+	}
+	
+	@Test
+	public void testRecoveryOverloaded(){
+		try {
+			Curso curso = (Curso)persistenceService.findById(Curso.class, 111900L);
+			System.out.println(ToStringBuilder.reflectionToString(curso));
+			curso.setIdStatusCurso(CursoCriteria.ABIERTO);
+			Set<Alumno> alumnos = curso.getAlumnos();
+			List<Long> idsAlumnos = new ArrayList();
+			for(Alumno alumno : alumnos){
+				if((alumno.getId()%2)==0){
+					idsAlumnos.add(alumno.getId());
+				}
+			}
+			cursoService.recoveryCursoCertificado(curso,idsAlumnos);
+		} catch (BusinessException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 }
