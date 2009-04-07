@@ -186,7 +186,7 @@
 		</tr>
 	</thead>
 	<tbody id="resultadoCursosBody">
-		<tr id="patternCursoBusqueda" class="rowNoFill">
+		<tr id="patternCursoBusqueda" class="rowNoFill" style="display:none;">
 			<td><div id="idCurso">&nbsp;</div></td>
 			<td><div id="fechaInicioCurso">&nbsp;</div></td>
 			<td><div id="fechaFinCurso">&nbsp;</div></td>
@@ -194,7 +194,11 @@
 			<td><div id="idCatalogoTipoCurso">&nbsp;</div></td>
 			<td><div id="idUsuarioCurso">&nbsp;</div></td>
 			<td><div id="noAlumnos">&nbsp;</div></td>
-			<td><div id="modificarCurso">&nbsp;</div></td>
+			<td>
+				<div id="modificarCurso">
+					<input id="editCurso" type="button" value="Editar" onclick="editarCurso(this.id)"/>
+				</div>
+			</td>
 		</tr>
 	</tbody>
 </table>
