@@ -239,20 +239,21 @@ public class CursoServiceDefaultImpl implements CursoService {
 
 	@SuppressWarnings("unchecked")
 	public void recoveryCursoCertificado(Curso cursoModificar) throws BusinessException {
-		//Actualizamos primero la entidad modificada
+		log.debug("Actualizando la entidad modificada ð");
 		persistenceService.updateEntity(cursoModificar);
-		//Obtenemos la llave
+		log.debug("Obteniendo la llave del curso ð");
 		LlaveCertificacion llave = (LlaveCertificacion)persistenceService.findById(LlaveCertificacion.class, cursoModificar.getIdLlave());
-		//Para que este disponible nuevamente para impresion debemos de cambiar el status de la llave
+		log.debug("Cambio de status de la llave ð");
 		llave.setIdStatusLlave(0);
-		//Update del status de la llave
+		log.debug("Actualizando la llave ð");
 		persistenceService.updateEntity(llave);
-		//Recorremos la lista de alumnos
+		log.debug("Recorriendo la lista de alumnos ð");
 		Set<Alumno> alumnos = cursoModificar.getAlumnos();
 		for(Alumno alumno:alumnos){
-			//Si traemos un cambio en el status lo actualizamos y lo ponemos para impresion
-			if(alumno.getIdStatusAlumno()==AlumnoCriteria.EVALUADO);
+			if(alumno.getIdStatusAlumno()==AlumnoCriteria.EVALUADO){
+				log.debug(alumno.getId() + " modificado...");
 				persistenceService.updateEntity(alumno);
+			}
 		}
 	}
 
