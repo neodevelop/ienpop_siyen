@@ -1,3 +1,4 @@
+<div id="formaModificarCurso" style="display:none;">
 <form action="#" name="modificarCurso">
 	<center>
 		<table width="675" border="0" cellspacing="0" cellpadding="0">
@@ -103,11 +104,15 @@
           <td background="img/formulario_r6_c5.jpg">&nbsp;</td>
           <td><img src="img/formulario_r6_c17.jpg" width="36" height="36"></td>
         </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
 		</table>
 	</center>
 </form>
+</div>
+<center>
+<div id="mensajeInformacion" style="display:block;" class="goodMessage">
+	Por favor selecciona un curso o alumno a editar para poder hacer modificaciones, cuando lo hagas, regresa a esta parte del menu...
+</div>
+<div id="mensajeExcepcion" style="display:none;" class="errorMessage">
+	Mensaje de Error
+</div>
+</center>
