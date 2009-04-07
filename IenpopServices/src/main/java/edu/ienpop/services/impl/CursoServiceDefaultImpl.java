@@ -263,17 +263,32 @@ public class CursoServiceDefaultImpl implements CursoService {
 		log.debug("Obteniendo la llave del curso ð");
 		LlaveCertificacion llave = (LlaveCertificacion) persistenceService
 				.findById(LlaveCertificacion.class, cursoModificar.getIdLlave());
-		
-		// antes de actualizar hay que recalcular las fechas y no esta pasando
-		// bien el parametro que modifica el status de los alumnos
-		log.debug("Actualizando la entidad modificada ð");
-		persistenceService.updateEntity(cursoModificar);
-		
+
 		if (llave == null) {
 			throw new BusinessException(
 					"Este curso no tiene una llave asociada...");
 		}
-		
+
+		// Obtenemos las caracterisiticas del curso, sobre todo la duraciÃ³n
+		CatalogoCurso catalogoCurso = (CatalogoCurso) persistenceService
+				.findById(CatalogoCurso.class, cursoModificar.getTipoCurso()
+						.getIdTipoCurso());
+
+		// Calculamos la fecha de termino del curso en base a la de inicio y al
+		// tipo de curso
+		Calendar fechaInicio = Calendar.getInstance();
+		fechaInicio.setTime(cursoModificar.getFechaInicio());
+		Calendar fechaFin = Calendar.getInstance();
+		fechaFin.set(fechaInicio.get(Calendar.YEAR), fechaInicio
+				.get(Calendar.MONTH), fechaInicio.get(Calendar.DATE));
+		fechaFin.add(Calendar.DATE, catalogoCurso.getDuracion() - 1);
+		// Le asignamos sus propiedades y sus calculos de fecha
+		cursoModificar.setFechaHoraRegistro(Calendar.getInstance().getTime());
+		cursoModificar.setFechaFin(fechaFin.getTime());
+
+		log.debug("Actualizando la entidad modificada ð");
+		persistenceService.updateEntity(cursoModificar);
+
 		log.debug("Cambio de status de la llave ð");
 		llave.setIdStatusLlave(0);
 		log.debug("Actualizando la llave ð");
