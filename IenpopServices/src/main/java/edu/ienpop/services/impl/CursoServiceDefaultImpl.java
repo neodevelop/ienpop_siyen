@@ -236,4 +236,8 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return (Curso)persistenceService.findById(Curso.class, id);
 	}
 
+	public void updateCurso(Curso cursoModificar) throws BusinessException {
+		persistenceService.updateEntity(cursoModificar);
+	}
+
 }
