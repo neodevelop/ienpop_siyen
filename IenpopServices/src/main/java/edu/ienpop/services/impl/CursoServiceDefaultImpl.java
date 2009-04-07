@@ -232,4 +232,8 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return cursoDao.getCountCursosPorCriteria(cursoCriteria);
 	}
 
+	public Curso getCursoById(Long id) throws BusinessException {
+		return (Curso)persistenceService.findById(Curso.class, id);
+	}
+
 }
