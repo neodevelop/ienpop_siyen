@@ -303,4 +303,37 @@ public class CursoServiceDefaultImpl implements CursoService {
 		}
 
 	}
+
+	@SuppressWarnings("unchecked")
+	public long updateCursoCertificado(long idCursoXCertificar, String llave)
+			throws BusinessException {
+		//Validamos si la llave corresponde al curso
+		LlaveCertificacion llaveCertificacion = llaveService.isValidaLlave(llave, idCursoXCertificar);
+		
+		//Obtenemos el curso
+		Curso curso = (Curso)persistenceService.findById(Curso.class, idCursoXCertificar);
+		//Cambiamos el status y la fecha de registro
+		curso.setIdStatusCurso(CursoCriteria.APROBADO);
+		curso.setFechaHoraRegistro(Calendar.getInstance().getTime());
+		
+		//Actualizamos el curso
+		persistenceService.updateEntity(curso);
+		
+		//Actualizamos los alumnos a reimprimir
+		Set<Alumno> alumnos = curso.getAlumnos();
+		for(Alumno alumno:alumnos){
+			if(alumno.getIdStatusAlumno()==AlumnoCriteria.REIMPRESION){
+				alumno.setFechaHoraRegistro(Calendar.getInstance().getTime());
+				alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
+				persistenceService.updateEntity(alumno);
+			}
+		}
+		
+		// Actualizamos el uso de la llave
+		llaveCertificacion.setFechaUtilizacion(Calendar.getInstance().getTime());
+		llaveCertificacion.setIdStatusLlave(1);
+		persistenceService.updateEntity(llaveCertificacion);
+		
+		return curso.getId();
+	}
 }
