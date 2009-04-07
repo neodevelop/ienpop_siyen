@@ -242,6 +242,27 @@ function editarCurso(indice){
 		dwr.util.setValue("fechaFinModificar",formatoDeFecha(curso.fechaFin));
 		dwr.util.setValue("fechaRegistroModificar",formatoDeFecha(curso.fechaHoraRegistro));
 		
+		dwr.util.removeAllRows("alumnosCursoModificar",{
+			filter:function(tr){
+				return (tr.id != "patternAlumnoCursoModificar");
+			}
+		}
+		);
+		for(var i=0;i<curso.alumnos.length;i++){
+			alumno = curso.alumnos[i];
+			id = alumno.id;
+			//alert(id);
+			dwr.util.cloneNode("patternAlumnoCursoModificar",{idSuffix:id});
+			dwr.util.setValue("numeroControlCursoModificar"+id,alumno.numeroControl);
+			dwr.util.setValue("nombreCompletoCursoModificar"+id,alumno.nombreCompleto);
+			//dwr.util.setValue("reimprimir"+id,id);
+			dwr.util.setValue("fechaRegistroCursoModificar"+id,formatoDeFecha(alumno.fechaHoraRegistro));
+			if((i%2)==0)
+				$("patternAlumnoCursoModificar"+id).className = "rowNoFill";
+			else
+				$("patternAlumnoCursoModificar"+id).className = "rowFill";
+			$("patternAlumnoCursoModificar" + id).style.display = "table-row";
+		}
 	});	
 }
 
