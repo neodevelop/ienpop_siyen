@@ -313,8 +313,10 @@ public class CursoServiceDefaultImpl implements CursoService {
 		//Obtenemos la llave del token
 		LlaveCertificacion llaveToken = llaveService.getLlavebyToken(llave);
 		//comparamos la llave del curso y la llave que viene como parametro
-		if(llaveCurso.getId() != llaveToken.getId()){
-			log.debug("'"+llaveCurso.getLlave()+"' != '"+llaveToken.getLlave()+"'");
+		if(llaveCurso.getId().compareTo(llaveToken.getId()) != 0 ){
+			log.debug(ToStringBuilder.reflectionToString(llaveCurso));
+			log.debug(ToStringBuilder.reflectionToString(llaveToken));
+			log.debug("'"+llaveCurso.getId()+"' != '"+llaveToken.getId()+"'");
 			throw new BusinessException("La llave es incorrecta, por favor verificala...");
 		}else{
 			// Actualizamos el uso de la llave

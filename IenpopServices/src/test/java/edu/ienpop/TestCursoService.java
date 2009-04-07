@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.model.Alumno;
-import edu.ienpop.model.AlumnoCriteria;
 import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.services.BusinessException;
@@ -38,6 +38,7 @@ public class TestCursoService {
 	}
 	
 	@Test
+	@Ignore
 	public void testCursoService() {
 		try {
 			cursoService.addCursoCertificado(18, "IST5¡T036EPY¿+Q?R37K");
@@ -47,6 +48,7 @@ public class TestCursoService {
 	}
 
 	@Test
+	@Ignore
 	public void testSumaFechas() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
@@ -59,6 +61,7 @@ public class TestCursoService {
 	}
 
 	@Test
+	@Ignore
 	public void testCursoService2() {
 		// cursoService.generateCertificadosXCurso(111902);
 		// GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
@@ -84,6 +87,7 @@ public class TestCursoService {
 	}
 
 	@Test
+	@Ignore
 	public void testCursoService3(){
 		try {
 			cursoService.getCursoByTokenCertificado("2BVKRIPVC3GS5P6SA21U");
@@ -93,6 +97,7 @@ public class TestCursoService {
 	}
 	
 	@Test
+	@Ignore
 	public void testRecoveryOverloaded(){
 		try {
 			Curso curso = (Curso)persistenceService.findById(Curso.class, 105355L);
@@ -106,6 +111,15 @@ public class TestCursoService {
 				}
 			}
 			cursoService.recoveryCursoCertificado(curso,idsAlumnos);
+		} catch (BusinessException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testUpdateCursoCertificado(){
+		try {
+			System.out.println(cursoService.updateCursoCertificado(111906, "1INTNPJYZ0EZ1C8K19U9"));
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		}
