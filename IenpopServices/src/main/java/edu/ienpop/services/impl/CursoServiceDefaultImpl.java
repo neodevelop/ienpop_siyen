@@ -242,7 +242,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		//Actualizamos primero la entidad modificada
 		persistenceService.updateEntity(cursoModificar);
 		//Obtenemos la llave
-		LlaveCertificacion llave = (LlaveCertificacion)persistenceService.findById(LlaveService.class, cursoModificar.getIdLlave());
+		LlaveCertificacion llave = (LlaveCertificacion)persistenceService.findById(LlaveCertificacion.class, cursoModificar.getIdLlave());
 		//Para que este disponible nuevamente para impresion debemos de cambiar el status de la llave
 		llave.setIdStatusLlave(0);
 		//Update del status de la llave
