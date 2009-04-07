@@ -274,7 +274,7 @@ function editarCurso(indice){
 		}
 	});
 
-	dwr.util.setValue("mensajeInformacion","vamos a modificar...");
+	dwr.util.setValue("mensajeEdicion","Ahora revisa la seccion de modificaciones para cambiar los valores del curso que has seleccionado...");
 	xDisplay("mensajeExcepcion","none");
 	xDisplay("mensajeInformacion","none");
 	xDisplay("formaModificarCurso","block");
@@ -333,9 +333,11 @@ function actualizaCurso(){
 	dwr.engine.beginBatch();
 	CursoService.recoveryCursoCertificado(cursoModificar,idsAlumnos,function(){
 		dwr.util.setValue("mensajeInformacion","El curso "+ cursoModificar.id +" ha sido modificado, puedes escoger otro curso para modificar...");
+		dwr.util.setValue("mensajeEdicion","Presiona editar en algun curso para cambiar sus valores...");
 		xDisplay("mensajeExcepcion","none");
 		xDisplay("mensajeInformacion","block");
 		xDisplay("formaModificarCurso","none");
+		xDisplay("mensajeEdicion","block");
 	});
 	dwr.engine.endBatch();
 }
