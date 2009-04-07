@@ -300,7 +300,7 @@ function actualizaCurso(){
 	var idTipoCurso = dwr.util.getValue("idTipoCurso");
 	
 	if($("statusCurso").checked){
-		cursoModificar.idStatusCurso = 2;
+		cursoModificar.idStatusCurso = 6;
 	}
 	
 	var idsAlumnos = new Array();
