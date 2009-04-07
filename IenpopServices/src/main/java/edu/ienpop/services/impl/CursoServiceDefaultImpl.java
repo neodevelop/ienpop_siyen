@@ -335,7 +335,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 			throws BusinessException {
 		Curso curso = (Curso) persistenceService.findById(Curso.class, idCurso);
 		Curso cursoRecuperado = curso;
-		cursoRecuperado.setAlumnos(null);
+		//cursoRecuperado.setAlumnos(null);
 		if (curso == null) {
 			throw new BusinessException("El curso no existe...");
 		}
