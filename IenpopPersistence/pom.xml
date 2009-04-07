@@ -134,6 +134,7 @@
 			<roles>
 				<role>admin</role>
 				<role>develop</role>
+				<role>manager</role>
 			</roles>
 		</developer>
 	</developers>
