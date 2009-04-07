@@ -282,21 +282,37 @@ function formatoDeFecha(objetoFecha){
 
 function actualizaCurso(){
 	var idUsuarioCurso = dwr.util.getValue("idUsuarioCurso");
-	var fechaInicioModificar = dwr.util.getValue("fechaInicioModificar");
+	var fechaInicioModificar = new Date(getDateFromFormat(dwr.util.getValue("fechaInicioModificar"),"dd-MM-y"));
 	var idPuerto = dwr.util.getValue("idPuerto");
 	var idTipoCurso = dwr.util.getValue("idTipoCurso");
+	
+	if($("statusCurso").checked){
+		cursoModificar.idStatusCurso = 2;
+	}
+	
+	var idsAlumnos = new Array();
+	var j=0;
 	for(var i=0;i<cursoModificar.alumnos.length;i++){
 		alumno = cursoModificar.alumnos[i];
 		if($("reimprimir"+alumno.id).checked){
-			cursoModificar.alumnos[i].idStatusAlumno = 2;
+			idsAlumnos[j] =  alumno.id*1;
+			j++;
 		}
 	}
-	if($("statusCurso").checked){
-		cursoModificar.idStatusCurso = 3;
-	}
+	
 	cursoModificar.idUsuario = idUsuarioCurso;
 	cursoModificar.fechaInicio = fechaInicioModificar;
 	cursoModificar.idPuerto = idPuerto;
 	cursoModificar.tipoCurso.idTipoCurso = idTipoCurso;
 	
+	//alert(dwr.util.toDescriptiveString(idsAlumnos, 2));
+	
+	dwr.engine.beginBatch();
+	CursoService.recoveryCursoCertificado(cursoModificar,idsAlumnos,function(){
+		//alert(dwr.util.toDescriptiveString(data, 2));
+		alert("done!!!");
+	});
+	dwr.engine.endBatch({
+		errorHandler:function(errorString, exception) { alert(errorString+" - "+dwr.util.toDescriptiveString(exception, 2)); }
+	});
 }
