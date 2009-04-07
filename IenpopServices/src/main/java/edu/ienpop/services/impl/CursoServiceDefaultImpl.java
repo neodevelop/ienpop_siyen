@@ -239,6 +239,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 
 	@SuppressWarnings("unchecked")
 	public void recoveryCursoCertificado(Curso cursoModificar) throws BusinessException {
+		//antes de actualizar hjay que recalcular las fechas y no esta pasando bien el parametro que modifica el status de los alumnos
 		log.debug("Actualizando la entidad modificada ð");
 		persistenceService.updateEntity(cursoModificar);
 		log.debug("Obteniendo la llave del curso ð");
@@ -249,12 +250,32 @@ public class CursoServiceDefaultImpl implements CursoService {
 		persistenceService.updateEntity(llave);
 		log.debug("Recorriendo la lista de alumnos ð");
 		Set<Alumno> alumnos = cursoModificar.getAlumnos();
+		log.debug("Tama–o del curso: "+alumnos.size());
 		for(Alumno alumno:alumnos){
-			if(alumno.getIdStatusAlumno()==AlumnoCriteria.EVALUADO){
-				log.debug(alumno.getId() + " modificado...");
-				persistenceService.updateEntity(alumno);
-			}
+			log.debug(alumno.getId());
 		}
 	}
 
+	public void recoveryCursoCertificado(Curso cursoModificar, List<Long> alumnos)
+			throws BusinessException {
+		//antes de actualizar hjay que recalcular las fechas y no esta pasando bien el parametro que modifica el status de los alumnos
+		log.debug("Actualizando la entidad modificada ð");
+		persistenceService.updateEntity(cursoModificar);
+		log.debug("Obteniendo la llave del curso ð");
+		LlaveCertificacion llave = (LlaveCertificacion)persistenceService.findById(LlaveCertificacion.class, cursoModificar.getIdLlave());
+		if(llave==null){
+			throw new BusinessException("Este curso no tiene una llave asociada...");
+		}
+		log.debug("Cambio de status de la llave ð");
+		llave.setIdStatusLlave(0);
+		log.debug("Actualizando la llave ð");
+		persistenceService.updateEntity(llave);
+		log.debug("Recorriendo la lista de alumnos ð");
+		for(Long idAlumno:alumnos){
+			Alumno alumno = (Alumno)persistenceService.findById(Alumno.class, idAlumno);
+			alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
+			persistenceService.updateEntity(alumno);
+		}
+		
+	}
 }
