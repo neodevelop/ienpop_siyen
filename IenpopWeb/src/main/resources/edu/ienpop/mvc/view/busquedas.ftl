@@ -213,5 +213,8 @@
 <div id="paginadorCursos" class="userInfo">
 	Paginador
 </div>
+<div id="mensajeEdicion" style="display:block;" class="goodMessage">
+	Presiona editar en algœn curso para cambiar sus valores...
+</div>
 </center>
 <!--Paginador-->
