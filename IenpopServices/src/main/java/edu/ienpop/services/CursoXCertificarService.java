@@ -17,4 +17,5 @@ public interface CursoXCertificarService {
 	Set getAlumnosDeCursoXCertificar(Long idCursoXCertificar) throws BusinessException;
 	List getCursosXCertificarSinLlave(String[] idUsuario,String[] idPuerto)  throws BusinessException;
 	List getCursosXCertificarConLlave(String[] idUsuario,String[] idPuerto)  throws BusinessException;
+	List getCursosXCertificarReimpresion(String[] idUsuario,String[] idPuerto)  throws BusinessException;
 }
