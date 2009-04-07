@@ -51,7 +51,8 @@
 			<tx:method name="generate*" read-only="false" propagation="REQUIRES_NEW"/>
 			<tx:method name="remove*" read-only="false" propagation="REQUIRES_NEW"/>
 			<tx:method name="change*" read-only="false" propagation="REQUIRES_NEW"/>
-			<tx:method name="*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="recovery*" read-only="true" rollback-for="edu.ienpop.services.BusinessException"/>
+			<tx:method name="*" read-only="false" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 	
