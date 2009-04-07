@@ -13,6 +13,7 @@ public interface CursoService {
 	List getInformePeriodico(Date desde, Date hasta) throws BusinessException;
 	List getInformeXTipoLibreta(int mes, int anio, String libreta, String idPuerto) throws BusinessException;
 	long addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException;
+	long updateCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException;
 	String getIdTipoCursoById(String idCurso) throws BusinessException;
 	Curso getCursoByTokenCertificado(String token) throws BusinessException;
 	Integer getCountCursosByCriteria(CursoCriteria cursoCriteria) throws BusinessException;
