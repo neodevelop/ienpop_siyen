@@ -2,17 +2,23 @@ package edu.ienpop;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import edu.ienpop.model.Alumno;
+import edu.ienpop.model.AlumnoCriteria;
 import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CursoService;
+import edu.ienpop.services.PersistenceService;
 
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,7 +28,14 @@ public class TestCursoService {
 
 	@Autowired
 	CursoService cursoService;
+	@Autowired
+	PersistenceService persistenceService;
 
+	@Before
+	public void delimitadorDePrueba(){
+		System.out.println("נננננננננננננננננננננננננננננננננננננננננננננננננננננננננננננננננננננ");
+	}
+	
 	@Test
 	public void testCursoService() {
 		try {
@@ -76,5 +89,21 @@ public class TestCursoService {
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		}
+	}
+	
+	@Test
+	public void testRecoveryCurso(){
+		try {
+			Curso curso = (Curso)persistenceService.findById(Curso.class, 111893L);
+			System.out.println(ToStringBuilder.reflectionToString(curso));
+			curso.setIdStatusCurso(CursoCriteria.ABIERTO);
+			Set<Alumno> alumnos = curso.getAlumnos();
+			for(Alumno alumno : alumnos){
+				alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
+			}
+			cursoService.recoveryCursoCertificado(curso);
+		} catch (BusinessException e) {
+			System.err.println(e.getMessage());
+		} 
 	}
 }
