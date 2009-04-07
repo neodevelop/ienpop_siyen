@@ -106,7 +106,7 @@ function comprobarLlave(idCursoAprobado){
 function comprobarLlaveRenovada(idCursoAprobado){
 	idCursoCertificado=idCursoAprobado.substring(9);
 	token=dwr.util.getValue("llaveCertificada"+idCursoCertificado);
-	alert("Curso: "+idCursoCertificado+" Llave: "+token);
+	//alert("Curso: "+idCursoCertificado+" Llave: "+token);
 	dwr.engine.beginBatch();
 	CursoService.updateCursoCertificado(idCursoCertificado,token,function(idCurso){
 		//alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
