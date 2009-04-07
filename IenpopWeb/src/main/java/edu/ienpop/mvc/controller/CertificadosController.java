@@ -1,6 +1,7 @@
 package edu.ienpop.mvc.controller;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,10 +24,12 @@ public class CertificadosController{
 	@Autowired
 	PersistenceService persistenceService;
 	
+	Logger log = Logger.getLogger(this.getClass());
+	
 	@RequestMapping("/certificados*.pdf")
 	public String generaCertificados(@RequestParam(value="idCurso") long idCurso,ModelMap model) throws BusinessException {
 		Curso curso =  cursoService.generateCertificadosXCurso(idCurso);
-		System.out.println(ToStringBuilder.reflectionToString(curso));
+		log.debug(ToStringBuilder.reflectionToString(curso));
 		CatalogoPuerto puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, curso.getIdPuerto());
 		//CatalogoCurso tipoCurso = (CatalogoCurso)persistenceService.findById(CatalogoCurso.class, curso.getIdTipoCurso());
 		CatalogoCurso tipoCurso = curso.getTipoCurso();
@@ -41,4 +44,21 @@ public class CertificadosController{
 		return "constancias";
 	}
 
+	@RequestMapping("/reimprimirCertificados*.pdf")
+	public String generaReimpresionCertificados(@RequestParam(value="idCurso") long idCurso,ModelMap model) throws BusinessException {
+		Curso curso =  cursoService.generateCertificadosXCursoRecuperado(idCurso);
+		log.debug(ToStringBuilder.reflectionToString(curso));
+		CatalogoPuerto puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, curso.getIdPuerto());
+		//CatalogoCurso tipoCurso = (CatalogoCurso)persistenceService.findById(CatalogoCurso.class, curso.getIdTipoCurso());
+		CatalogoCurso tipoCurso = curso.getTipoCurso();
+		Usuario usuario = (Usuario)persistenceService.findById(Usuario.class, curso.getIdUsuario());
+		//model.put("idCurso", idCurso);
+		model.addAttribute("curso",curso);
+		model.addAttribute("puerto",puerto);
+		model.addAttribute("tipoCurso",tipoCurso);
+		model.addAttribute("usuario",usuario);
+		model.addAttribute("alumnos", curso.getAlumnos());
+		model.addAttribute("format", "pdf");
+		return "constancias";
+	}
 }
