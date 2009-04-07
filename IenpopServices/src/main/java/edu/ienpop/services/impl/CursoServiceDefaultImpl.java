@@ -336,4 +336,32 @@ public class CursoServiceDefaultImpl implements CursoService {
 		
 		return curso.getId();
 	}
+
+	@SuppressWarnings("unchecked")
+	public Curso generateCertificadosXCursoRecuperado(long idCurso)
+			throws BusinessException {
+		Curso curso = (Curso) persistenceService.findById(Curso.class, idCurso);
+		Curso cursoRecuperado = curso;
+		cursoRecuperado.setAlumnos(null);
+		if (curso == null) {
+			throw new BusinessException("El curso no existe...");
+		}
+		if (curso.getIdStatusCurso() != 3) {
+			throw new BusinessException(
+					"El curso no se puede certificar, por favor verifica los datos con la Oficina de Titulación...");
+		}
+		Set<Alumno> alumnos = curso.getAlumnos();
+		Set<Alumno> alumnosRecuperados = new HashSet<Alumno>();
+		curso.setIdStatusCurso(4);
+		for (Alumno alumno:alumnos) {
+			if(alumno.getIdStatusAlumno()==AlumnoCriteria.REIMPRESION){
+				alumno.setIdStatusAlumno(AlumnoCriteria.CERTIFICADO);
+				persistenceService.updateEntity(alumno);
+				alumnosRecuperados.add(alumno);
+			}
+		}
+		persistenceService.updateEntity(curso);
+		cursoRecuperado.setAlumnos(alumnosRecuperados);
+		return cursoRecuperado;
+	}
 }
