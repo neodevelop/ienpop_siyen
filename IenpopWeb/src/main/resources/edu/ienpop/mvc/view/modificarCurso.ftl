@@ -85,7 +85,7 @@
 							<td><div id="nombreCompletoCursoModificar">&nbsp;</div></td>
 							<td><div id="fechaRegistroCursoModificar">&nbsp;</div></td>
 							<td>
-								<input id="reimprimir" name="reimprimir"adiu type="checkbox"/>
+								<input id="reimprimir" name="reimprimir" type="checkbox" />
 							</td>
 						</tr>
 					</tbody>

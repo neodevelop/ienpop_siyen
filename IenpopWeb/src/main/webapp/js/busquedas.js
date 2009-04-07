@@ -275,7 +275,7 @@ function formatoDeFecha(objetoFecha){
 	var daym=objetoFecha.getDate();
 	var year=objetoFecha.getYear();
 	year+=1900;
-	month++;//daym++;
+	month++;
 	var fechaFormateada = daym+"/"+month+"/"+year;
 	return fechaFormateada;
 }
@@ -285,20 +285,18 @@ function actualizaCurso(){
 	var fechaInicioModificar = dwr.util.getValue("fechaInicioModificar");
 	var idPuerto = dwr.util.getValue("idPuerto");
 	var idTipoCurso = dwr.util.getValue("idTipoCurso");
-	var checks = "";
 	for(var i=0;i<cursoModificar.alumnos.length;i++){
 		alumno = cursoModificar.alumnos[i];
 		if($("reimprimir"+alumno.id).checked){
-			checks += alumno.id+" ";
+			cursoModificar.alumnos[i].idStatusAlumno = 2;
 		}
 	}
-	checks += "checked";
-	alert(checks);
-	//alert(dwr.util.toDescriptiveString(cursoModificar, 2));
+	if($("statusCurso").checked){
+		cursoModificar.idStatusCurso = 3;
+	}
 	cursoModificar.idUsuario = idUsuarioCurso;
 	cursoModificar.fechaInicio = fechaInicioModificar;
 	cursoModificar.idPuerto = idPuerto;
 	cursoModificar.tipoCurso.idTipoCurso = idTipoCurso;
-	cursoModificar.idStatusCurso = 3;
-	//alert(dwr.util.toDescriptiveString(cursoModificar, 2));
+	
 }
