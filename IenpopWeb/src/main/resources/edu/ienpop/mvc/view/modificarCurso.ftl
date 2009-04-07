@@ -30,7 +30,7 @@
           			<td>&nbsp;</td>
           		</tr>
           		<tr>
-          			<td class="myLabel">Fecha Inicio:</td>
+          			<td class="myLabel">Inicio:</td>
           			<td>
           			<input type="text" readonly="true" id="fechaInicioModificar" name="fechaInicioModificar" onfocus="return showCalendar('fechaInicioModificar', '%d-%m-%Y', '24', true);"><br>
           			</td>
@@ -52,14 +52,46 @@
 					</td>
           		</tr>
           		<tr>
-          			<td class="myLabel">Fecha fin:</td>
+          			<td class="myLabel">Finaliza:</td>
           			<td class="goodMessage"><span id="fechaFinModificar">fechaFinModificar</span></td>
+          			<td>&nbsp;</td>
+          			<td class="myLabel">Aprobar el curso:</td>
+          			<td><input type="checkbox" name="statusCurso" id="statusCurso" checked></td>
+          			<td>&nbsp;</td>
+          		</tr>
+          		<tr>
           			<td class="myLabel">Registrado:</td>
           			<td class="goodMessage"><span id="fechaRegistroModificar">fechaRegistroModificar</span></td>
+          			<td>&nbsp;</td>
           			<td class="myLabel">Alumnos:</td>
           			<td class="goodMessage"><span id=""><span id="numeroAlumnos">numeroAlumnos</span></span></td>
+          			<td>&nbsp;</td>
           		</tr>
           	</table>
+			<!-- DESPLEGADO DE ALUMNOS POR ESTE CURSO -->
+	          <center>
+	          <table width="80%">
+					<thead>
+						<tr class="columnTables">
+							<th>No. Control</th>
+							<th>Nombre</th>
+							<th>Fecha</th>
+							<th>Reimpresion</th>
+						</tr>
+					</thead>
+					<tbody id="alumnosCursoModificar">
+						<tr id="patternAlumnoCursoModificar" class="rowNoFill" style="display:none;">
+							<td><div id="numeroControlCursoModificar">&nbsp;</div></td>
+							<td><div id="nombreCompletoCursoModificar">&nbsp;</div></td>
+							<td><div id="fechaRegistroCursoModificar">&nbsp;</div></td>
+							<td>
+								<input id="reimprimir" name="reimprimir" type="checkbox" onClick="alert(this.id)"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</center>
+			<!-- DESPLEGADO DE ALUMNOS POR ESTE CURSO -->
           	<input type="hidden" id="idUsuario" name="idUsuario" value="${usuario.idUsuario}"/>
           </td>
           <td background="img/formulario_r4_c17.jpg">&nbsp;</td>	
