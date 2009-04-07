@@ -17,4 +17,5 @@ public interface CursoService {
 	Curso getCursoByTokenCertificado(String token) throws BusinessException;
 	Integer getCountCursosByCriteria(CursoCriteria cursoCriteria) throws BusinessException;
 	Curso getCursoById(Long id) throws BusinessException;
+	void updateCurso(Curso cursoModificar) throws BusinessException;
 }
