@@ -93,34 +93,16 @@ public class TestCursoService {
 	}
 	
 	@Test
-	public void testRecoveryCurso(){
-		try {
-			Curso curso = (Curso)persistenceService.findById(Curso.class, 111894L);
-			System.out.println(ToStringBuilder.reflectionToString(curso));
-			curso.setIdStatusCurso(CursoCriteria.ABIERTO);
-			Set<Alumno> alumnos = curso.getAlumnos();
-			for(Alumno alumno : alumnos){
-				if((alumno.getId()%2)==0){
-					alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
-				}
-			}
-			cursoService.recoveryCursoCertificado(curso);
-		} catch (BusinessException e) {
-			System.err.println(e.getMessage());
-		} 
-	}
-	
-	@Test
 	public void testRecoveryOverloaded(){
 		try {
-			Curso curso = (Curso)persistenceService.findById(Curso.class, 111900L);
+			Curso curso = (Curso)persistenceService.findById(Curso.class, 111931L);
 			System.out.println(ToStringBuilder.reflectionToString(curso));
 			curso.setIdStatusCurso(CursoCriteria.ABIERTO);
 			Set<Alumno> alumnos = curso.getAlumnos();
-			List<Long> idsAlumnos = new ArrayList();
+			List<String> idsAlumnos = new ArrayList();
 			for(Alumno alumno : alumnos){
-				if((alumno.getId()%2)==0){
-					idsAlumnos.add(alumno.getId());
+				if((alumno.getId()%1)==0){
+					idsAlumnos.add(alumno.getId().toString());
 				}
 			}
 			cursoService.recoveryCursoCertificado(curso,idsAlumnos);
