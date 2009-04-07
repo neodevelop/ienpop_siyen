@@ -236,11 +236,12 @@ function editarCurso(indice){
 		dwr.util.setValue("idCurso",curso.id);
 		dwr.util.setValue("idUsuarioCurso",curso.idUsuario);
 		dwr.util.setValue("numeroAlumnos",curso.alumnos.length);
+		dwr.util.setValue("idPuerto",curso.idPuerto);
+		dwr.util.setValue("idTipoCurso",curso.tipoCurso.idTipoCurso);
+		dwr.util.setValue("fechaInicioModificar",formatoDeFecha(curso.fechaInicio));
 		dwr.util.setValue("fechaFinModificar",formatoDeFecha(curso.fechaFin));
 		dwr.util.setValue("fechaRegistroModificar",formatoDeFecha(curso.fechaHoraRegistro));
-		//alert(formatoDeFecha(curso.fechaFin));
 		
-		//alert(dwr.util.toDescriptiveString(curso, 2));
 	});	
 }
 
