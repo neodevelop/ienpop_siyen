@@ -7,6 +7,7 @@ import java.util.Set;
 import edu.ienpop.model.AlumnoXCertificar;
 import edu.ienpop.model.CursoXCertificar;
 
+@SuppressWarnings("unchecked")
 public interface CursoXCertificarService {
 	Serializable createNuevoCurso(CursoXCertificar cursoXCertificar) throws BusinessException;
 	void addAlumnoACursoXCertificar(long idCursoXCertificar,AlumnoXCertificar alumnoXCertificar) throws BusinessException;
