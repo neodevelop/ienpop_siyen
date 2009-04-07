@@ -33,3 +33,31 @@
 		</tr>
 	</tbody>
 </table>
+<!-- Tabla para alumnos a recertificar -->
+<div id="cursosRecertificados" style="display:none;">
+<table width="100%">
+	<tr>
+		<td class="titleTables">Cursos Con Renovaci—n</td>
+	</tr>
+</table>
+<table width="100%">
+	<thead height="20">
+		<tr class="columnTables" height="20">
+			<th height="20">Curso</td>
+			<th>Inicio</td>
+			<!--th>Participantes</th-->
+			<th>Llave</th>
+			<th>Comprobar</th>
+		</tr>
+	</thead>
+	<tbody id="cursosRecertificadosBody">
+		<tr id="patternCursosRecertificados" style="display:none;" class="rowNoFill">
+			<td><span id="tipoCursoRecertificado">idCursoAprobado</span></td>
+			<td><span id="fechaCursoRecertificado">fechaCursoAprobado</span></td>
+			<!--td><span id="noParticipantesCursoAprobado">noParticipantesCursoAprobado</span></td-->
+			<td><input id="llaveCertificada" type="text" /></td>
+			<td><input id="comprobar" type="button" value="Comprobar" onclick="comprobarLlaveRenovada(this.id)"/></td>
+		</tr>
+	</tbody>
+</table>
+</div>
