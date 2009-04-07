@@ -1,5 +1,6 @@
 var alumnoCriteriaCache;
 var cursoCriteriaCache;
+var cursoModificar;
 //var cursosInCache = { };
 
 function buscarAlumnos(){
@@ -242,6 +243,8 @@ function editarCurso(indice){
 		dwr.util.setValue("fechaFinModificar",formatoDeFecha(curso.fechaFin));
 		dwr.util.setValue("fechaRegistroModificar",formatoDeFecha(curso.fechaHoraRegistro));
 		
+		cursoModificar = curso;
+		
 		dwr.util.removeAllRows("alumnosCursoModificar",{
 			filter:function(tr){
 				return (tr.id != "patternAlumnoCursoModificar");
@@ -255,7 +258,7 @@ function editarCurso(indice){
 			dwr.util.cloneNode("patternAlumnoCursoModificar",{idSuffix:id});
 			dwr.util.setValue("numeroControlCursoModificar"+id,alumno.numeroControl);
 			dwr.util.setValue("nombreCompletoCursoModificar"+id,alumno.nombreCompleto);
-			//dwr.util.setValue("reimprimir"+id,id);
+			dwr.util.setValue("reimprimir"+id,id);
 			dwr.util.setValue("fechaRegistroCursoModificar"+id,formatoDeFecha(alumno.fechaHoraRegistro));
 			if((i%2)==0)
 				$("patternAlumnoCursoModificar"+id).className = "rowNoFill";
@@ -275,4 +278,27 @@ function formatoDeFecha(objetoFecha){
 	month++;//daym++;
 	var fechaFormateada = daym+"/"+month+"/"+year;
 	return fechaFormateada;
+}
+
+function actualizaCurso(){
+	var idUsuarioCurso = dwr.util.getValue("idUsuarioCurso");
+	var fechaInicioModificar = dwr.util.getValue("fechaInicioModificar");
+	var idPuerto = dwr.util.getValue("idPuerto");
+	var idTipoCurso = dwr.util.getValue("idTipoCurso");
+	var checks = "";
+	for(var i=0;i<cursoModificar.alumnos.length;i++){
+		alumno = cursoModificar.alumnos[i];
+		if($("reimprimir"+alumno.id).checked){
+			checks += alumno.id+" ";
+		}
+	}
+	checks += "checked";
+	alert(checks);
+	//alert(dwr.util.toDescriptiveString(cursoModificar, 2));
+	cursoModificar.idUsuario = idUsuarioCurso;
+	cursoModificar.fechaInicio = fechaInicioModificar;
+	cursoModificar.idPuerto = idPuerto;
+	cursoModificar.tipoCurso.idTipoCurso = idTipoCurso;
+	cursoModificar.idStatusCurso = 3;
+	//alert(dwr.util.toDescriptiveString(cursoModificar, 2));
 }
