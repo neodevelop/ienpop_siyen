@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import edu.ienpop.dao.CatalogoDao;
 import edu.ienpop.dao.CursoDao;
 import edu.ienpop.model.Alumno;
+import edu.ienpop.model.AlumnoCriteria;
 import edu.ienpop.model.AlumnoXCertificar;
 import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.Curso;
@@ -236,8 +237,23 @@ public class CursoServiceDefaultImpl implements CursoService {
 		return (Curso)persistenceService.findById(Curso.class, id);
 	}
 
-	public void updateCurso(Curso cursoModificar) throws BusinessException {
+	@SuppressWarnings("unchecked")
+	public void recoveryCursoCertificado(Curso cursoModificar) throws BusinessException {
+		//Actualizamos primero la entidad modificada
 		persistenceService.updateEntity(cursoModificar);
+		//Obtenemos la llave
+		LlaveCertificacion llave = (LlaveCertificacion)persistenceService.findById(LlaveService.class, cursoModificar.getIdLlave());
+		//Para que este disponible nuevamente para impresion debemos de cambiar el status de la llave
+		llave.setIdStatusLlave(0);
+		//Update del status de la llave
+		persistenceService.updateEntity(llave);
+		//Recorremos la lista de alumnos
+		Set<Alumno> alumnos = cursoModificar.getAlumnos();
+		for(Alumno alumno:alumnos){
+			//Si traemos un cambio en el status lo actualizamos y lo ponemos para impresion
+			if(alumno.getIdStatusAlumno()==AlumnoCriteria.EVALUADO);
+				persistenceService.updateEntity(alumno);
+		}
 	}
 
 }
