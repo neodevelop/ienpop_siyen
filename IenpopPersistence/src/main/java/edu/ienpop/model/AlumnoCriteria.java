@@ -8,6 +8,7 @@ public class AlumnoCriteria extends Persistent{
 	public static final int INSCRITO=1;
 	public static final int EVALUADO=2;
 	public static final int CERTIFICADO=3;
+	public static final int REIMPRESION=4;
 	private int firstResult;
 	private String numeroControl;
 	private String nombreCompleto;

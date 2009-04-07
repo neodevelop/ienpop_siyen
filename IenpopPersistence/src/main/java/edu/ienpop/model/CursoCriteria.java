@@ -14,6 +14,7 @@ public class CursoCriteria extends Persistent{
 	public static final int APROBADO=3;
 	public static final int CONCLUIDO=4;
 	public static final int RECHAZADO=5;
+	public static final int REIMPRESION=6;
 	private int firstResult;
 	private Date fechaDesde;
 	private Date fechaHasta;
