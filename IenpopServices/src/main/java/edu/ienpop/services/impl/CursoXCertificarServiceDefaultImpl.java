@@ -105,11 +105,16 @@ public class CursoXCertificarServiceDefaultImpl implements
 		cursoCriteria.setIdStatusCurso(CursoCriteria.ABIERTO);
 		cursoCriteria.setIdUsuario(idUsuario);
 		cursoCriteria.setIdPuerto(idPuerto);
-		//Usamos una lista para obtener los cursos por certificar
-		List cursosXCertificar = cursoDao.getCursoXCertificarPorCriteria(cursoCriteria);
-		//Le a–adimos los cursos certificados pero que se recuperaron
-		cursosXCertificar.addAll(cursoDao.getCursosPorCriteria(cursoCriteria));
-		return cursosXCertificar;
+		return cursoDao.getCursoXCertificarPorCriteria(cursoCriteria);
+	}
+
+	public List getCursosXCertificarReimpresion(String[] idUsuario,
+			String[] idPuerto) throws BusinessException {
+		CursoCriteria cursoCriteria = new CursoCriteria();
+		cursoCriteria.setIdStatusCurso(CursoCriteria.REIMPRESION);
+		cursoCriteria.setIdUsuario(idUsuario);
+		cursoCriteria.setIdPuerto(idPuerto);
+		return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}
 
 }
