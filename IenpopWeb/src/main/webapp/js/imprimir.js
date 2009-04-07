@@ -111,7 +111,7 @@ function comprobarLlaveRenovada(idCursoAprobado){
 	CursoService.updateCursoCertificado(idCursoCertificado,token,function(idCurso){
 		//alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
 		window.open("reverso"+idCurso+".pdf?llave="+token+"&idCurso="+idCurso, "_blank", "width=800,height=600");
-		window.open("certificados"+idCurso+".pdf?idCurso="+idCurso, "_blank", "width=800,height=600");
+		window.open("reimprimirCertificados"+idCurso+".pdf?idCurso="+idCurso, "_blank", "width=800,height=600");
 		obtenerCursosConLlave();
 	});
 	dwr.engine.endBatch({
