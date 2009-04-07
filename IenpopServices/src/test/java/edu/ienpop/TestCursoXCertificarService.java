@@ -77,7 +77,7 @@ public class TestCursoXCertificarService {
 			alumnos.add(alumno);
 			alumnos.add(alumno2);
 			alumnos.add(alumno3);
-			cursoXCertificarService.addAlumnosACursoXCertificar(79, alumnos);
+			cursoXCertificarService.addAlumnosACursoXCertificar(curso.getId(), alumnos);
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		}
@@ -99,8 +99,8 @@ public class TestCursoXCertificarService {
 			alumno.setFechaHoraRegistro(Calendar.getInstance().getTime());
 			alumno.setNombreCompleto("MANITO1");
 			alumno.setObservaciones("NADA");
-			cursoXCertificarService.addAlumnoACursoXCertificar(79, alumno);
-			cursoXCertificarService.removeAlumnoACursoXCertificar(79, alumno);
+			cursoXCertificarService.addAlumnoACursoXCertificar(curso.getId(), alumno);
+			cursoXCertificarService.removeAlumnoACursoXCertificar(curso.getId(), alumno);
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			System.err.println(e.getMessage());
