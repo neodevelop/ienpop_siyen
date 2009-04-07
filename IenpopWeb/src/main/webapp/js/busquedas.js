@@ -3,6 +3,12 @@ var cursoCriteriaCache;
 var cursoModificar;
 //var cursosInCache = { };
 
+function errHandler(errorString, exception) {
+	dwr.util.setValue("mensajeExcepcion","Error: "+ dwr.util.toDescriptiveString(errorString, 2));
+	xDisplay("mensajeExcepcion","block");
+	xDisplay("mensajeInformacion","none");
+}
+
 function buscarAlumnos(){
 	var numeroControl = document.busquedaAlumnos.numeroControl.value;
 	var nombreCompleto = document.busquedaAlumnos.nombreCompleto.value;
@@ -266,7 +272,13 @@ function editarCurso(indice){
 				$("patternAlumnoCursoModificar"+id).className = "rowFill";
 			$("patternAlumnoCursoModificar" + id).style.display = "table-row";
 		}
-	});	
+	});
+
+	dwr.util.setValue("mensajeInformacion","vamos a modificar...");
+	xDisplay("mensajeExcepcion","none");
+	xDisplay("mensajeInformacion","none");
+	xDisplay("formaModificarCurso","block");
+	//alert("Visualizando...");
 }
 
 function formatoDeFecha(objetoFecha){
@@ -281,6 +293,7 @@ function formatoDeFecha(objetoFecha){
 }
 
 function actualizaCurso(){
+	dwr.engine.setErrorHandler(errHandler);
 	var idUsuarioCurso = dwr.util.getValue("idUsuarioCurso");
 	var fechaInicioModificar = new Date(getDateFromFormat(dwr.util.getValue("fechaInicioModificar"),"dd-MM-y"));
 	var idPuerto = dwr.util.getValue("idPuerto");
@@ -305,14 +318,12 @@ function actualizaCurso(){
 	cursoModificar.idPuerto = idPuerto;
 	cursoModificar.tipoCurso.idTipoCurso = idTipoCurso;
 	
-	//alert(dwr.util.toDescriptiveString(idsAlumnos, 2));
-	
 	dwr.engine.beginBatch();
 	CursoService.recoveryCursoCertificado(cursoModificar,idsAlumnos,function(){
-		//alert(dwr.util.toDescriptiveString(data, 2));
-		alert("done!!!");
+		dwr.util.setValue("mensajeInformacion","El curso "+ cursoModificar.id +" ha sido modificado, puedes escoger otro curso para modificar...");
+		xDisplay("mensajeExcepcion","none");
+		xDisplay("mensajeInformacion","block");
+		xDisplay("formaModificarCurso","none");
 	});
-	dwr.engine.endBatch({
-		errorHandler:function(errorString, exception) { alert(errorString+" - "+dwr.util.toDescriptiveString(exception, 2)); }
-	});
+	dwr.engine.endBatch();
 }
