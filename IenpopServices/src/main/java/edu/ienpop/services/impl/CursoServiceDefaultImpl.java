@@ -298,7 +298,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 			log.debug(idAlumno);
 			Alumno alumno = (Alumno) persistenceService.findById(Alumno.class,
 					Long.valueOf(idAlumno));
-			alumno.setIdStatusAlumno(AlumnoCriteria.EVALUADO);
+			alumno.setIdStatusAlumno(AlumnoCriteria.REIMPRESION);
 			persistenceService.updateEntity(alumno);
 		}
 
