@@ -95,7 +95,7 @@ public class TestCursoService {
 	@Test
 	public void testRecoveryOverloaded(){
 		try {
-			Curso curso = (Curso)persistenceService.findById(Curso.class, 111931L);
+			Curso curso = (Curso)persistenceService.findById(Curso.class, 105355L);
 			System.out.println(ToStringBuilder.reflectionToString(curso));
 			curso.setIdStatusCurso(CursoCriteria.ABIERTO);
 			Set<Alumno> alumnos = curso.getAlumnos();
