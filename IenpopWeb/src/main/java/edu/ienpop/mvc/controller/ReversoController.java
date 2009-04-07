@@ -24,7 +24,7 @@ public class ReversoController{
 	CursoService cursoService;
 	Logger log = Logger.getLogger(this.getClass());
 	
-	@RequestMapping("/reverso.ienpop")
+	@RequestMapping("/reverso*.pdf")
 	public String muestraReverso(@RequestParam(value="llave") String llave,@RequestParam(value="idCurso") String idCurso,ModelMap model) throws BusinessException {
 		LlaveCertificacion llaveCertificacion = llaveService.getLlavebyToken(llave);
 		String idTipoCurso = cursoService.getIdTipoCursoById(idCurso);

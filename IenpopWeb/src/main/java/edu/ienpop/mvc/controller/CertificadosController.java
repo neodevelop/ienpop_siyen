@@ -23,7 +23,7 @@ public class CertificadosController{
 	@Autowired
 	PersistenceService persistenceService;
 	
-	@RequestMapping("/certificados.ienpop")
+	@RequestMapping("/certificados*.pdf")
 	public String generaCertificados(@RequestParam(value="idCurso") long idCurso,ModelMap model) throws BusinessException {
 		Curso curso =  cursoService.generateCertificadosXCurso(idCurso);
 		System.out.println(ToStringBuilder.reflectionToString(curso));
