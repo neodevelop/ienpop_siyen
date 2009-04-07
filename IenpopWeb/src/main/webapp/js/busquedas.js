@@ -1,5 +1,6 @@
 var alumnoCriteriaCache;
 var cursoCriteriaCache;
+//var cursosInCache = { };
 
 function buscarAlumnos(){
 	var numeroControl = document.busquedaAlumnos.numeroControl.value;
@@ -35,15 +36,7 @@ function buscarAlumnos(){
 			dwr.util.setValue("numeroCurso"+id,alumno.curso.id);
 			dwr.util.setValue("idPuerto"+id,alumno.curso.idPuerto);
 			dwr.util.setValue("tipoCurso"+id,alumno.curso.tipoCurso.idTipoCurso);
-			
-			var day=alumno.fechaHoraRegistro.getDay();
-			var month=alumno.fechaHoraRegistro.getMonth();
-			var daym=alumno.fechaHoraRegistro.getDate();
-			var year=alumno.fechaHoraRegistro.getYear();
-			year+=1900;
-			month++;//daym++;
-			var fechaAlumno = daym+"/"+month+"/"+year;
-			dwr.util.setValue("fechaRegistro"+id,fechaAlumno);
+			dwr.util.setValue("fechaRegistro"+id,formatoDeFecha(alumno.fechaHoraRegistro));
 			if((i%2)==0)
 				$("patternAlumnoBusqueda"+id).className = "rowNoFill";
 			else
@@ -92,15 +85,7 @@ function buscarAlumnosCache(indice){
 			dwr.util.setValue("numeroCurso"+id,alumno.curso.id);
 			dwr.util.setValue("idPuerto"+id,alumno.curso.idPuerto);
 			dwr.util.setValue("tipoCurso"+id,alumno.curso.tipoCurso.idTipoCurso);
-			
-			var day=alumno.fechaHoraRegistro.getDay();
-			var month=alumno.fechaHoraRegistro.getMonth();
-			var daym=alumno.fechaHoraRegistro.getDate();
-			var year=alumno.fechaHoraRegistro.getYear();
-			year+=1900;
-			month++;//daym++;
-			var fechaAlumno = daym+"/"+month+"/"+year;
-			dwr.util.setValue("fechaRegistro"+id,fechaAlumno);
+			dwr.util.setValue("fechaRegistro"+id,formatoDeFecha(alumno.fechaHoraRegistro));
 			if((i%2)==0)
 				$("patternAlumnoBusqueda"+id).className = "rowNoFill";
 			else
@@ -152,6 +137,7 @@ function buscarCursos(){
 	//alert(cursoCriteria);
 	CursoService.getCursosXStatus(cursoCriteria,function(cursos){
 		//alert(cursos.length);
+		//cursosInCache = cursos;
 		dwr.util.removeAllRows("resultadoCursosBody",{
 			filter:function(tr){
 				return (tr.id != "patternCursoBusqueda");
@@ -166,30 +152,17 @@ function buscarCursos(){
 			idCurso = curso.id;
 			//alert(idCurso);
 			if(idCurso!=0){
+				//cursosInCache[idCurso] = cursos[i];
 				dwr.util.cloneNode("patternCursoBusqueda",{idSuffix:idCurso});
+				$("patternCursoBusqueda" + idCurso).style.display = "table-row";
 				dwr.util.setValue("idCurso"+idCurso,curso.id);
 				dwr.util.setValue("idPuertoCurso"+idCurso,curso.idPuerto);
 				dwr.util.setValue("idCatalogoTipoCurso"+idCurso,curso.tipoCurso.idTipoCurso);
 				dwr.util.setValue("idUsuarioCurso"+idCurso,curso.idUsuario);
 				dwr.util.setValue("noAlumnos"+idCurso,curso.alumnos.length);
 				
-				var day=curso.fechaInicio.getDay();
-				var month=curso.fechaInicio.getMonth();
-				var daym=curso.fechaInicio.getDate();
-				var year=curso.fechaInicio.getYear();
-				year+=1900;
-				month++;//daym++;
-				var fechaInicio = daym+"/"+month+"/"+year;
-				dwr.util.setValue("fechaInicioCurso"+idCurso,fechaInicio);
-				
-				day=curso.fechaFin.getDay();
-				month=curso.fechaFin.getMonth();
-				daym=curso.fechaFin.getDate();
-				year=curso.fechaFin.getYear();
-				year+=1900;
-				month++;//daym++;
-				fechaFin = daym+"/"+month+"/"+year;
-				dwr.util.setValue("fechaFinCurso"+idCurso,fechaFin);
+				dwr.util.setValue("fechaInicioCurso"+idCurso,formatoDeFecha(curso.fechaInicio));
+				dwr.util.setValue("fechaFinCurso"+idCurso,formatoDeFecha(curso.fechaFin));
 				
 				if((i%2)==0)
 					$("patternCursoBusqueda"+idCurso).className = "rowNoFill";
@@ -238,29 +211,15 @@ function buscarCursosCache(indice){
 			//alert(idCurso);
 			if(idCurso!=0){
 				dwr.util.cloneNode("patternCursoBusqueda",{idSuffix:idCurso});
+				$("patternCursoBusqueda" + idCurso).style.display = "table-row";
 				dwr.util.setValue("idCurso"+idCurso,curso.id);
 				dwr.util.setValue("idPuertoCurso"+idCurso,curso.idPuerto);
 				dwr.util.setValue("idCatalogoTipoCurso"+idCurso,curso.tipoCurso.idTipoCurso);
 				dwr.util.setValue("idUsuarioCurso"+idCurso,curso.idUsuario);
 				dwr.util.setValue("noAlumnos"+idCurso,curso.alumnos.length);
 				
-				var day=curso.fechaInicio.getDay();
-				var month=curso.fechaInicio.getMonth();
-				var daym=curso.fechaInicio.getDate();
-				var year=curso.fechaInicio.getYear();
-				year+=1900;
-				month++;//daym++;
-				var fechaInicio = daym+"/"+month+"/"+year;
-				dwr.util.setValue("fechaInicioCurso"+idCurso,fechaInicio);
-				
-				day=curso.fechaFin.getDay();
-				month=curso.fechaFin.getMonth();
-				daym=curso.fechaFin.getDate();
-				year=curso.fechaFin.getYear();
-				year+=1900;
-				month++;//daym++;
-				fechaFin = daym+"/"+month+"/"+year;
-				dwr.util.setValue("fechaFinCurso"+idCurso,fechaFin);
+				dwr.util.setValue("fechaInicioCurso"+idCurso,formatoDeFecha(curso.fechaInicio));
+				dwr.util.setValue("fechaFinCurso"+idCurso,formatoDeFecha(curso.fechaFin));
 				
 				if((i%2)==0)
 					$("patternCursoBusqueda"+idCurso).className = "rowNoFill";
@@ -269,4 +228,29 @@ function buscarCursosCache(indice){
 			}
 		}
 	});
+}
+
+function editarCurso(indice){
+	var cursoId = indice.substring(9);
+	CursoService.getCursoById(cursoId,function(curso){
+		dwr.util.setValue("idCurso",curso.id);
+		dwr.util.setValue("idUsuarioCurso",curso.idUsuario);
+		dwr.util.setValue("numeroAlumnos",curso.alumnos.length);
+		dwr.util.setValue("fechaFinModificar",formatoDeFecha(curso.fechaFin));
+		dwr.util.setValue("fechaRegistroModificar",formatoDeFecha(curso.fechaHoraRegistro));
+		//alert(formatoDeFecha(curso.fechaFin));
+		
+		//alert(dwr.util.toDescriptiveString(curso, 2));
+	});	
+}
+
+function formatoDeFecha(objetoFecha){
+	var day=objetoFecha.getDay();
+	var month=objetoFecha.getMonth();
+	var daym=objetoFecha.getDate();
+	var year=objetoFecha.getYear();
+	year+=1900;
+	month++;//daym++;
+	var fechaFormateada = daym+"/"+month+"/"+year;
+	return fechaFormateada;
 }
