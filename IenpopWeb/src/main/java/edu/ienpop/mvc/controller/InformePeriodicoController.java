@@ -1,53 +1,41 @@
 package edu.ienpop.mvc.controller;
 
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.ienpop.model.CatalogoPuerto;
+import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
+import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CursoService;
 import edu.ienpop.services.PersistenceService;
 
-public class InformePeriodicoController extends AbstractController {
+@Controller
+public class InformePeriodicoController{
 
 	Logger log = Logger.getLogger(this.getClass());
-	private CursoService cursoService;
-	private PersistenceService persistenceService;
+	@Autowired
+	CursoService cursoService;
+	@Autowired
+	PersistenceService persistenceService;
+
 	
-	public PersistenceService getPersistenceService() {
-		return persistenceService;
-	}
-
-	public void setPersistenceService(PersistenceService persistenceService) {
-		this.persistenceService = persistenceService;
-	}
-
-	public CursoService getCursoService() {
-		return cursoService;
-	}
-
-	public void setCursoService(CursoService cursoService) {
-		this.cursoService = cursoService;
-	}
-
 	@SuppressWarnings("unchecked")
-	@Override
-	protected ModelAndView handleRequestInternal(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	@RequestMapping("/informePeriodico.ienpop")
+	public String generaInformePeriodico(HttpServletRequest request, ModelMap model) throws BusinessException, ServletRequestBindingException{
 		log.debug("En InformePeriodicoController...");
 		CursoCriteria cursoCriteria = new CursoCriteria();
-		Map model = new HashMap();
 		//Todos estos cursos deben de estar concluidos
 		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		int tipo = ServletRequestUtils.getIntParameter(request, "tipo", 1);
@@ -55,7 +43,7 @@ public class InformePeriodicoController extends AbstractController {
 		String desde = ServletRequestUtils.getStringParameter(request, "desde", "none");
 		String hasta = ServletRequestUtils.getStringParameter(request, "hasta", "none");
 		cursoCriteria = setterFechas(desde, hasta, cursoCriteria);
-		List cursos = null;
+		List<Curso> cursos = null;
 		String idPuerto=null;
 		String libreta=null;
 		boolean verLibretas = false;
@@ -63,11 +51,11 @@ public class InformePeriodicoController extends AbstractController {
 		String[] libretas;
 		switch(tipo){
 		case 1:
-			cursos = getCursoService().getInformePeriodico(cursoCriteria.getFechaDesde(), cursoCriteria.getFechaHasta());
+			cursos = cursoService.getInformePeriodico(cursoCriteria.getFechaDesde(), cursoCriteria.getFechaHasta());
 			view = "informePeriodicoCursos";
 			break;
 		case 2:
-			cursos = getCursoService().getInformePeriodico(cursoCriteria.getFechaDesde(), cursoCriteria.getFechaHasta());
+			cursos = cursoService.getInformePeriodico(cursoCriteria.getFechaDesde(), cursoCriteria.getFechaHasta());
 			view = "informePeriodicoCursosAlumnos";
 			break;
 		case 3:
@@ -80,11 +68,11 @@ public class InformePeriodicoController extends AbstractController {
 			log.debug(ToStringBuilder.reflectionToString(libretas));
 			cursoCriteria.setIdPuerto(new String[] {idPuerto});
 			log.debug("Puerto: "+idPuerto);
-			puerto = (CatalogoPuerto)getPersistenceService().findById(CatalogoPuerto.class, idPuerto);
+			puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, idPuerto);
 			//Se lo ponemos a criteria
 			cursoCriteria.setLibretas(libretas);
 			//Lo mandamos al servicio
-			cursos = getCursoService().getCursosXStatus(cursoCriteria);
+			cursos = cursoService.getCursosXStatus(cursoCriteria);
 			view = "informePeriodicoCursos";
 			verLibretas=true;
 			break;
@@ -97,25 +85,25 @@ public class InformePeriodicoController extends AbstractController {
 			libretas = libreta.split(",");
 			log.debug(ToStringBuilder.reflectionToString(libretas));
 			cursoCriteria.setIdPuerto(new String[] {idPuerto});
-			puerto = (CatalogoPuerto)getPersistenceService().findById(CatalogoPuerto.class, idPuerto);
+			puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, idPuerto);
 			//Se lo ponemos a criteria
 			cursoCriteria.setLibretas(libretas);
 			//Lo mandamos al servicio
-			cursos = getCursoService().getCursosXStatus(cursoCriteria);
+			cursos = cursoService.getCursosXStatus(cursoCriteria);
 			view = "informePeriodicoCursosAlumnos";
 			verLibretas=true;
 			break;
 		default:
-			cursos = getCursoService().getInformePeriodico(cursoCriteria.getFechaDesde(), cursoCriteria.getFechaHasta());
+			cursos = cursoService.getInformePeriodico(cursoCriteria.getFechaDesde(), cursoCriteria.getFechaHasta());
 			view = "informePeriodicoCursos";
 			break;
 		}
-		model.put("puerto", puerto);
-		model.put("verLibretas",verLibretas);
-		model.put("cursos", cursos);
-		model.put("criteria",cursoCriteria);
+		model.addAttribute("puerto", puerto);
+		model.addAttribute("verLibretas",verLibretas);
+		model.addAttribute("cursos", cursos);
+		model.addAttribute("criteria",cursoCriteria);
 		log.debug("Enviando el Model: "+ToStringBuilder.reflectionToString(model)+" And View: "+ view);
-		return new ModelAndView(view,model);
+		return view;
 	}
 	
 	private CursoCriteria setterFechas(String desde, String hasta, CursoCriteria cc){

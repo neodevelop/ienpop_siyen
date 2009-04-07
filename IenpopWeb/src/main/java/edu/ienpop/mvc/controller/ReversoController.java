@@ -1,61 +1,41 @@
 package edu.ienpop.mvc.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.ienpop.model.LlaveCertificacion;
+import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CursoService;
 import edu.ienpop.services.LlaveService;
 
-public class ReversoController extends AbstractController {
+@Controller
+public class ReversoController{
 
+	@Autowired
 	LlaveService llaveService;
+	@Autowired
 	CursoService cursoService;
 	Logger log = Logger.getLogger(this.getClass());
 	
-	public LlaveService getLlaveService() {
-		return llaveService;
-	}
-
-	public void setLlaveService(LlaveService llaveService) {
-		this.llaveService = llaveService;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	protected ModelAndView handleRequestInternal(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		String llave = ServletRequestUtils.getStringParameter(request, "llave");
-		String idCurso = ServletRequestUtils.getStringParameter(request, "idCurso");
-		LlaveCertificacion llaveCertificacion = getLlaveService().getLlavebyToken(llave);
-		String idTipoCurso = getCursoService().getIdTipoCursoById(idCurso);
-		List list = new ArrayList();
+	@RequestMapping("/reverso.ienpop")
+	public String muestraReverso(@RequestParam(value="llave") String llave,@RequestParam(value="idCurso") String idCurso,ModelMap model) throws BusinessException {
+		LlaveCertificacion llaveCertificacion = llaveService.getLlavebyToken(llave);
+		String idTipoCurso = cursoService.getIdTipoCursoById(idCurso);
+		List<LlaveCertificacion> list = new ArrayList<LlaveCertificacion>();
 		list.add(llaveCertificacion);
 		log.debug("La llave es: "+llave);
 		log.debug("El idCurso es: "+idCurso);
 		log.debug("El idTipoCurso es: "+idTipoCurso);
-		Map model = new HashMap();
-		model.put("llaves", list);
-		model.put("format", "pdf");
-		return new ModelAndView(idTipoCurso,model);
-	}
-
-	public CursoService getCursoService() {
-		return cursoService;
-	}
-
-	public void setCursoService(CursoService cursoService) {
-		this.cursoService = cursoService;
+		model.addAttribute("llaves", list);
+		model.addAttribute("format", "pdf");
+		return idTipoCurso;
 	}
 
 }

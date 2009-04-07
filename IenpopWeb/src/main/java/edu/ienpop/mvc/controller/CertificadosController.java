@@ -1,59 +1,44 @@
 package edu.ienpop.mvc.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.CatalogoPuerto;
 import edu.ienpop.model.Curso;
 import edu.ienpop.model.Usuario;
+import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CursoService;
 import edu.ienpop.services.PersistenceService;
 
-public class CertificadosController extends AbstractController {
+@Controller
+public class CertificadosController{
 
+	@Autowired
 	CursoService cursoService;
+	@Autowired
 	PersistenceService persistenceService;
-	public PersistenceService getPersistenceService() {
-		return persistenceService;
-	}
-	public void setPersistenceService(PersistenceService persistenceService) {
-		this.persistenceService = persistenceService;
-	}
-	public CursoService getCursoService() {
-		return cursoService;
-	}
-	public void setCursoService(CursoService cursoService) {
-		this.cursoService = cursoService;
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	protected ModelAndView handleRequestInternal(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		long idCurso = ServletRequestUtils.getLongParameter(request, "idCurso");
-		Curso curso =  getCursoService().generateCertificadosXCurso(idCurso);
+	
+	@RequestMapping("/certificados.ienpop")
+	public String generaCertificados(@RequestParam(value="idCurso") long idCurso,ModelMap model) throws BusinessException {
+		Curso curso =  cursoService.generateCertificadosXCurso(idCurso);
 		System.out.println(ToStringBuilder.reflectionToString(curso));
-		CatalogoPuerto puerto = (CatalogoPuerto)getPersistenceService().findById(CatalogoPuerto.class, curso.getIdPuerto());
-		//CatalogoCurso tipoCurso = (CatalogoCurso)getPersistenceService().findById(CatalogoCurso.class, curso.getIdTipoCurso());
+		CatalogoPuerto puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, curso.getIdPuerto());
+		//CatalogoCurso tipoCurso = (CatalogoCurso)persistenceService.findById(CatalogoCurso.class, curso.getIdTipoCurso());
 		CatalogoCurso tipoCurso = curso.getTipoCurso();
-		Usuario usuario = (Usuario)getPersistenceService().findById(Usuario.class, curso.getIdUsuario());
-		Map model = new HashMap();
+		Usuario usuario = (Usuario)persistenceService.findById(Usuario.class, curso.getIdUsuario());
 		//model.put("idCurso", idCurso);
-		model.put("curso",curso);
-		model.put("puerto",puerto);
-		model.put("tipoCurso",tipoCurso);
-		model.put("usuario",usuario);
-		model.put("alumnos", curso.getAlumnos());
-		model.put("format", "pdf");
-		return new ModelAndView("constancias",model);
+		model.addAttribute("curso",curso);
+		model.addAttribute("puerto",puerto);
+		model.addAttribute("tipoCurso",tipoCurso);
+		model.addAttribute("usuario",usuario);
+		model.addAttribute("alumnos", curso.getAlumnos());
+		model.addAttribute("format", "pdf");
+		return "constancias";
 	}
 
 }

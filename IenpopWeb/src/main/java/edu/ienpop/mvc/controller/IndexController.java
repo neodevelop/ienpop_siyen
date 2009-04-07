@@ -1,18 +1,14 @@
 package edu.ienpop.mvc.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
+@Controller
+public class IndexController{
 
-public class IndexController extends AbstractController {
-
-	@Override
-	protected ModelAndView handleRequestInternal(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		//Solo un redireccionamiento
-		return new ModelAndView("main");
+	@RequestMapping("/index.ienpop")
+	public String index(){
+		return "main";
 	}
 
 }

@@ -5,29 +5,8 @@
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-           
-	<bean name="/index.ienpop" class="edu.ienpop.mvc.controller.IndexController">
-	</bean>
-	<bean name="/sistema.ienpop" class="edu.ienpop.mvc.controller.SistemaController">
-		<property name="persistenceService" ref="persistenceService"/>
-		<property name="catalogoService" ref="catalogoService"/>
-		<property name="ienpopProducer" ref="ienpopProducer"/>
-	</bean>
-	<bean name="/certificados.ienpop" class="edu.ienpop.mvc.controller.CertificadosController">
-		<property name="cursoService" ref="cursoService"/>
-		<property name="persistenceService" ref="persistenceService"/>
-	</bean>
-	<bean name="/reverso.ienpop" class="edu.ienpop.mvc.controller.ReversoController">
-		<property name="llaveService" ref="llaveService"/>
-		<property name="cursoService" ref="cursoService"/>
-	</bean>
-	<bean name="/oficio.ienpop" class="edu.ienpop.mvc.controller.OficioController">
-		<property name="cursoService" ref="cursoService"/>
-		<property name="persistenceService" ref="persistenceService"/>
-		<property name="usuarioService" ref="usuarioService"/>
-	</bean>
-	<bean name="/informePeriodico.ienpop" class="edu.ienpop.mvc.controller.InformePeriodicoController">
-		<property name="cursoService" ref="cursoService"/>
-		<property name="persistenceService" ref="persistenceService"/>
-	</bean>
+
+	<!-- Refactor: cambio de esquema, uso de anotaciones... -->
+	<context:component-scan base-package="edu.ienpop.mvc" />
+	
 </beans>
