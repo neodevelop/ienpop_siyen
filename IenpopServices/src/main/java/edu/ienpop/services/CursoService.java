@@ -8,6 +8,7 @@ import edu.ienpop.model.CursoCriteria;
 @SuppressWarnings("unchecked")
 public interface CursoService {
 	Curso generateCertificadosXCurso(long idCurso) throws BusinessException;
+	Curso generateCertificadosXCursoRecuperado(long idCurso) throws BusinessException;
 	List getCursosXStatus(CursoCriteria cursoCriteria) throws BusinessException;
 	List getOficio(Date fechaInicio,Date fechaFin, String idPuerto) throws BusinessException;
 	List getInformePeriodico(Date desde, Date hasta) throws BusinessException;
