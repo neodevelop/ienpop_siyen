@@ -94,8 +94,8 @@ function comprobarLlave(idCursoAprobado){
 	dwr.engine.beginBatch();
 	CursoService.addCursoCertificado(idCursoCertificado,token,function(idCurso){
 		//alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
-		window.open("reverso.ienpop?llave="+token+"&idCurso="+idCurso, "_blank", "width=800,height=600");
-		window.open("certificados.ienpop?idCurso="+idCurso, "_blank", "width=800,height=600");
+		window.open("reverso"+idCurso+".pdf?llave="+token+"&idCurso="+idCurso, "_blank", "width=800,height=600");
+		window.open("certificados"+idCurso+".pdf?idCurso="+idCurso, "_blank", "width=800,height=600");
 		obtenerCursosConLlave();
 	});
 	dwr.engine.endBatch({
@@ -110,8 +110,8 @@ function comprobarLlaveRenovada(idCursoAprobado){
 	dwr.engine.beginBatch();
 	CursoService.updateCursoCertificado(idCursoCertificado,token,function(idCurso){
 		//alert("El curso "+idCurso+" se ha certificado, imprimir los diplomas...");
-		window.open("reverso.ienpop?llave="+token+"&idCurso="+idCurso, "_blank", "width=800,height=600");
-		window.open("certificados.ienpop?idCurso="+idCurso, "_blank", "width=800,height=600");
+		window.open("reverso"+idCurso+".pdf?llave="+token+"&idCurso="+idCurso, "_blank", "width=800,height=600");
+		window.open("certificados"+idCurso+".pdf?idCurso="+idCurso, "_blank", "width=800,height=600");
 		obtenerCursosConLlave();
 	});
 	dwr.engine.endBatch({
