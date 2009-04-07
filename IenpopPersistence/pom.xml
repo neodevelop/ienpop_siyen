@@ -7,12 +7,20 @@
 	<version>1.5</version>
 	<name>IenpopPersistence</name>
 	<url>http://maven.apache.org</url>
-	<!--
-		repositories> <repository> <id>Red Local</id>
-		<url>http://inspiron600m/maven2</url> </repository> <repository>
-		<id>JBoss</id> <url>http://repository.jboss.com/maven2</url>
-		</repository> </repositories
-	-->
+	<repositories>
+		<repository>
+			<id>Red Local</id>
+			<url>http://inspiron600m/maven2</url>
+		</repository>
+		<repository>
+			<id>JBoss</id>
+			<url>http://repository.jboss.com/maven2</url>
+		</repository>
+		<repository>
+			<id>k-int</id>
+			<url>http://developer.k-int.com/maven2/</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- JUNIT -->
 		<dependency>
@@ -117,4 +125,16 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<developers>
+		<developer>
+			<id>neodevelop</id>
+			<email>juan.reyes@ienpop.net</email>
+			<organization>IENPOP</organization>
+			<name>José Juan Reyes Z.</name>
+			<roles>
+				<role>admin</role>
+				<role>develop</role>
+			</roles>
+		</developer>
+	</developers>
 </project>
