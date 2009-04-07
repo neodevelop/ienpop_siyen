@@ -85,11 +85,13 @@
 							<td><div id="nombreCompletoCursoModificar">&nbsp;</div></td>
 							<td><div id="fechaRegistroCursoModificar">&nbsp;</div></td>
 							<td>
-								<input id="reimprimir" name="reimprimir" type="checkbox" onClick="alert(this.id)"/>
+								<input id="reimprimir" name="reimprimir"adiu type="checkbox"/>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				<br/>
+				<input type="button" name="actualizarCurso" onClick="actualizaCurso()" value="Guardar Cambios" class="inputButton" />
 				</center>
 			<!-- DESPLEGADO DE ALUMNOS POR ESTE CURSO -->
           	<input type="hidden" id="idUsuario" name="idUsuario" value="${usuario.idUsuario}"/>
