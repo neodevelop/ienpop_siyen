@@ -313,9 +313,14 @@ public class CursoServiceDefaultImpl implements CursoService {
 		//Obtenemos la llave del token
 		LlaveCertificacion llaveToken = llaveService.getLlavebyToken(llave);
 		//comparamos la llave del curso y la llave que viene como parametro
-		if(llaveCurso != llaveToken){
-			throw new BusinessException("Las llave es incorrecta, por favor verificala...");
+		if(llaveCurso.getId() != llaveToken.getId()){
+			log.debug(llaveCurso.getLlave()+" != "+llaveToken.getLlave());
+			throw new BusinessException("La llave es incorrecta, por favor verificala...");
 		}else{
+			// Actualizamos el uso de la llave
+			llaveCurso.setFechaUtilizacion(Calendar.getInstance().getTime());
+			llaveCurso.setIdStatusLlave(1);
+			persistenceService.updateEntity(llaveCurso);
 			//actualizamos el status del curso para mandarlo a reimpresion
 			curso.setIdStatusCurso(CursoCriteria.APROBADO);
 			persistenceService.updateEntity(curso);
