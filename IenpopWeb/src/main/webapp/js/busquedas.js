@@ -282,13 +282,25 @@ function editarCurso(indice){
 }
 
 function formatoDeFecha(objetoFecha){
-	var day=objetoFecha.getDay();
 	var month=objetoFecha.getMonth();
 	var daym=objetoFecha.getDate();
 	var year=objetoFecha.getYear();
 	year+=1900;
 	month++;
-	var fechaFormateada = daym+"/"+month+"/"+year;
+	var fechaFormateada = "";
+	if(daym<10){
+		fechaFormateada = fechaFormateada+"0"+daym;
+	}else{
+		fechaFormateada= fechaFormateada+daym;
+	}
+	fechaFormateada = fechaFormateada+"-";
+	if(month<10){
+		fechaFormateada = fechaFormateada+"0"+month;
+	}else{
+		fechaFormateada = fechaFormateada+month;
+	}
+	fechaFormateada = fechaFormateada+"-";
+	fechaFormateada = fechaFormateada+year;
 	return fechaFormateada;
 }
 
