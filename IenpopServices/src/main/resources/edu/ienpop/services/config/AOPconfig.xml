@@ -41,6 +41,13 @@
 		</aop:aspect>
 	</aop:config>
 	
+	<aop:config>
+		<aop:pointcut id="ioThrowsPointcut" expression="execution(* edu.ienpop.services.*.Chart*(..))"/>
+		<aop:aspect id="ioThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="ioThrowsPointcut" throwing="ioException" method="doRecoveryIOException"/>
+		</aop:aspect>
+	</aop:config>
+	
 	<tx:advice id="tx-advice" transaction-manager="txManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true" propagation="NOT_SUPPORTED"/>
