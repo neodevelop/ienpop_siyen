@@ -7,8 +7,8 @@
 	<version>2.0</version>
 	<name>IenpopWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<repositories> <repository> <id>LocalRepo</id> <name>LocalRepo</name>
-		<url>http://MBPJJRZ/maven2</url> </repository> </repositories>
+	<!--repositories> <repository> <id>LocalRepo</id> <name>LocalRepo</name>
+		<url>http://MBPJJRZ/maven2</url> </repository> </repositories-->
 	<dependencies>
 		<!-- Ienpop -->
 		<dependency>
@@ -164,7 +164,7 @@
 		<dependency>
 			<groupId>jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>2.0.4</version>
+			<version>3.5.2</version>
 		</dependency>
 		<!-- iReport para Barcode -->
 		<dependency>
