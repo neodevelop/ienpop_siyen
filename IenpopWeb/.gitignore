@@ -3,3 +3,4 @@
 target
 activemq-data
 .project
+.classpath
