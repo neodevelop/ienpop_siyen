@@ -1,5 +1,7 @@
 package edu.ienpop.advices;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.hibernate.LazyInitializationException;
 import org.hibernate.exception.GenericJDBCException;
@@ -32,4 +34,8 @@ public class ServiceThrowsAdvice{
 		throw new BusinessException("Error en Persistencia: ",lazyException);
 	}
 	
+	public void doRecoveryIOException(IOException ioException) throws BusinessException{
+		log.debug(ioException.getMessage());
+		throw new BusinessException("Error de entrada/salida: ",ioException);
+	}
 }
