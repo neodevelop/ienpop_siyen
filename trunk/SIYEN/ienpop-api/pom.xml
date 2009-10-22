@@ -83,11 +83,11 @@
 			<artifactId>mail</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>poi</groupId>
+			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>freemarker</groupId>
+			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 		</dependency>
 		<!-- Jms -->
@@ -102,7 +102,7 @@
 		</dependency>
 		<!-- XStream -->
 		<dependency>
-			<groupId>xstream</groupId>
+			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
 		</dependency>
 		<!-- JFreeChart -->
