@@ -152,6 +152,11 @@
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag</artifactId>
 		</dependency>
+		<!-- JFreeChart -->
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+		</dependency>
 	</dependencies>
 	
 	<build>
