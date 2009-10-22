@@ -20,7 +20,7 @@ import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CursoService;
 
 @Service("chartService")
-public class ChartServiceImpl{
+public class ChartServiceImpl {
 
 	@Autowired
 	CursoService cursoService;
@@ -77,21 +77,23 @@ public class ChartServiceImpl{
 
 	private JFreeChart crearGraficaBarras3D(String titulo, String ejeX,
 			String ejeY, DefaultCategoryDataset dataset) {
-		//JFreeChart chart = ChartFactory.createBarChart3D(titulo, // title
-		//		ejeX, // x-axis label
-		//		ejeY, // y-axis label
-		//		dataset, PlotOrientation.VERTICAL, true, // legend displayed
-		//		true, // tooltips displayed
-		//		false); // no URLs*/
+		JFreeChart chart = ChartFactory.createBarChart3D(titulo, // title
+				ejeX, // x-axis label
+				ejeY, // y-axis label
+				dataset, PlotOrientation.VERTICAL, true, // legend displayed
+				true, // tooltips displayed
+				false); // no URLs*/
 
-		//CategoryItemRenderer renderer = new BarRenderer3D();
-		//DecimalFormat decimalformat1 = new DecimalFormat("##,###");
-		//renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator("{2}", decimalformat1));
-		//renderer.setBaseItemLabelsVisible(true);
-		//chart.getCategoryPlot().setRenderer(renderer);
+		CategoryItemRenderer renderer = new BarRenderer3D();
+		DecimalFormat decimalformat1 = new DecimalFormat("##,###");
+		renderer
+				.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator(
+						"{2}", decimalformat1));
+		renderer.setBaseItemLabelsVisible(true);
+		chart.getCategoryPlot().setRenderer(renderer);
 
-		//return chart;
-		return null;
+		return chart;
+		// return null;
 	}
 
 }
