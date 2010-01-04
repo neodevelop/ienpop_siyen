@@ -1,134 +1,110 @@
-package edu.ienpop.dao.impl;
+package edu.ienpop.dao.impl
 
-import java.util.List;
+import java.util.List
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.springframework.stereotype.Repository;
+import javax.jms.Session;
 
-import edu.ienpop.dao.CursoDao;
-import edu.ienpop.model.Curso;
-import edu.ienpop.model.CursoCriteria;
-import edu.ienpop.model.CursoXCertificar;
+import org.hibernate.Criteria
+import org.hibernate.Query
+import org.hibernate.criterion.Order
+import org.hibernate.criterion.Projections
+import org.hibernate.criterion.Restrictions
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.orm.hibernate3.HibernateTemplate
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport
+import org.springframework.stereotype.Repository
+
+import edu.ienpop.dao.CursoDao
+import edu.ienpop.model.Curso
+import edu.ienpop.model.CursoCriteria
+import edu.ienpop.model.CursoXCertificar
 
 @Repository("cursoDao")
-public class CursoDaoImpl extends HibernateDaoSupport implements CursoDao {
+class CursoDaoImpl extends HibernateDaoSupport implements CursoDao{
 
 	@Autowired
-	public CursoDaoImpl(HibernateTemplate hibernateTemplate) {
-		super.setHibernateTemplate(hibernateTemplate);
+	CursoDaoImpl(HibernateTemplate hibernateTemplate) {
+		super.setHibernateTemplate(hibernateTemplate)
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List getCursoXCertificarPorCriteria(CursoCriteria cursoCriteria) {
-		Criteria criteria = getSession().createCriteria(CursoXCertificar.class);
-		if (cursoCriteria.getId() != null)
-			criteria.add(Restrictions.eq("id", cursoCriteria.getId()));
-		if (cursoCriteria.getIdPuerto() != null)
-			criteria.add(Restrictions.in("idPuerto", cursoCriteria
-					.getIdPuerto()));
-		if (cursoCriteria.getIdTipoCurso() != null)
-			criteria.add(Restrictions.in("idTipoCurso", cursoCriteria
-					.getIdTipoCurso()));
-		if (cursoCriteria.getIdUsuario() != null)
-			criteria.add(Restrictions.in("idUsuario", cursoCriteria
-					.getIdUsuario()));
-		if (cursoCriteria.getIdStatusCurso() != 0)
-			criteria.add(Restrictions.eq("idStatusCurso", cursoCriteria
-					.getIdStatusCurso()));
-		if (cursoCriteria.getFechaDesde() != null
-				&& cursoCriteria.getFechaHasta() != null)
-			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
-					.getFechaDesde(), cursoCriteria.getFechaHasta()));
-
-		if (cursoCriteria.isPaginado()) {
-			criteria.setFirstResult(cursoCriteria.getFirstResult());
-			criteria.setMaxResults(CursoCriteria.MAX_RESULTS);
+	List getCursoXCertificarPorCriteria(CursoCriteria cursoCriteria) {
+		def criteria = getSession().createCriteria(CursoXCertificar.class)
+		if (cursoCriteria.id)
+			criteria.add(Restrictions.eq("id", cursoCriteria.id))
+		if (cursoCriteria.getIdPuerto())
+			criteria.add(Restrictions.in("idPuerto", cursoCriteria.idPuerto))
+		if (cursoCriteria.idTipoCurso)
+			criteria.add(Restrictions.in("idTipoCurso", cursoCriteria.idTipoCurso))
+		if (cursoCriteria.getIdUsuario())
+			criteria.add(Restrictions.in("idUsuario", cursoCriteria.idUsuario))
+		if (cursoCriteria.idStatusCurso)
+			criteria.add(Restrictions.eq("idStatusCurso", cursoCriteria.idStatusCurso))
+		if (cursoCriteria.fechaDesde && cursoCriteria.fechaHasta)
+			criteria.add(Restrictions.between("fechaInicio", cursoCriteria.fechaDesde, cursoCriteria.fechaHasta))
+		if (cursoCriteria.paginado) {
+			criteria.firstResult = cursoCriteria.firstResult
+			criteria.maxResults = CursoCriteria.MAX_RESULTS
 		}
-		criteria.addOrder(Order.asc("id"));
-		return criteria.list();
+		criteria.addOrder(Order.asc("id"))
+		criteria.list()
 	}
 
 	@SuppressWarnings("unchecked")
-	public List getCursosPorCriteria(CursoCriteria cursoCriteria) {
-		Criteria criteria = getSession().createCriteria(Curso.class);
-		if (cursoCriteria.getId() != null)
-			criteria.add(Restrictions.eq("id", cursoCriteria.getId()));
-		if (cursoCriteria.getIdPuerto() != null)
-			criteria.add(Restrictions.in("idPuerto", cursoCriteria
-					.getIdPuerto()));
-		if (cursoCriteria.getIdTipoCurso() != null)
-			criteria.createCriteria("tipoCurso").add(
-					Restrictions.in("idTipoCurso", cursoCriteria
-							.getIdTipoCurso()));
-		if (cursoCriteria.getIdUsuario() != null)
-			criteria.add(Restrictions.in("idUsuario", cursoCriteria
-					.getIdUsuario()));
-		if (cursoCriteria.getIdStatusCurso() != 0)
-			criteria.add(Restrictions.eq("idStatusCurso", cursoCriteria
-					.getIdStatusCurso()));
-		if (cursoCriteria.getIdLlave() != 0)
-			criteria
-					.add(Restrictions.eq("idLlave", cursoCriteria.getIdLlave()));
-		if (cursoCriteria.getFechaDesde() != null
-				&& cursoCriteria.getFechaHasta() != null)
-			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
-					.getFechaDesde(), cursoCriteria.getFechaHasta()));
-
-		if (cursoCriteria.isPaginado()) {
-			criteria.setFirstResult(cursoCriteria.getFirstResult());
-			criteria.setMaxResults(CursoCriteria.MAX_RESULTS);
+	List getCursosPorCriteria(CursoCriteria cursoCriteria) {
+		def criteria = getSession().createCriteria(Curso.class)
+		if (cursoCriteria.id)
+			criteria.add(Restrictions.eq("id", cursoCriteria.id))
+		if (cursoCriteria.idPuerto)
+			criteria.add(Restrictions.in("idPuerto", cursoCriteria.idPuerto))
+		if (cursoCriteria.idTipoCurso)
+			criteria.createCriteria("tipoCurso").add(Restrictions.in("idTipoCurso", cursoCriteria.idTipoCurso))
+		if (cursoCriteria.idUsuario)
+			criteria.add(Restrictions.in("idUsuario", cursoCriteria.idUsuario))
+		if (cursoCriteria.idStatusCurso)
+			criteria.add(Restrictions.eq("idStatusCurso", cursoCriteria.idStatusCurso))
+		if (cursoCriteria.idLlave)
+			criteria.add(Restrictions.eq("idLlave", cursoCriteria.idLlave))
+		if (cursoCriteria.fechaDesde && cursoCriteria.fechaHasta)
+			criteria.add(Restrictions.between("fechaInicio", cursoCriteria.fechaDesde, cursoCriteria.fechaHasta))
+		if (cursoCriteria.paginado) {
+			criteria.firstResult = cursoCriteria.firstResult
+			criteria.maxResults = CursoCriteria.MAX_RESULTS
 		}
-		criteria.addOrder(Order.asc("id"));
-		return criteria.list();
+		criteria.addOrder(Order.asc("id"))
+		criteria.list()
 	}
 
-	public String getTipoCursoByIdCurso(String idCurso) {
-		String sql = "select t.idTipoCurso from Curso c left join c.tipoCurso t  where idCurso=:idCurso";
-		Query query = getSession().createQuery(sql);
-		query.setString("idCurso", idCurso);
-		return (String) query.uniqueResult();
+	String getTipoCursoByIdCurso(String idCurso) {
+		def sql = "select t.idTipoCurso from Curso c left join c.tipoCurso t  where idCurso=:idCurso"
+		def query = getSession().createQuery(sql)
+		query.setString("idCurso", idCurso)
+		(String) query.uniqueResult()
 	}
 
-	public Curso getCursoByIdLlaveCertificada(long id) {
-		String sql = "from Curso c where c.idLlave=:id";
-		Query query = getSession().createQuery(sql);
-		query.setLong("id", id);
-		return (Curso) query.uniqueResult();
+	Curso getCursoByIdLlaveCertificada(long id) {
+		def sql = "from Curso c where c.idLlave=:id"
+		def query = getSession().createQuery(sql)
+		query.setLong("id", id)
+		(Curso) query.uniqueResult()
 	}
 
-	public Integer getCountCursosPorCriteria(CursoCriteria cursoCriteria) {
-		Criteria criteria = getSession().createCriteria(Curso.class);
-		if (cursoCriteria.getId() != null)
-			criteria.add(Restrictions.eq("id", cursoCriteria.getId()));
-		if (cursoCriteria.getIdPuerto() != null)
-			criteria.add(Restrictions.in("idPuerto", cursoCriteria
-					.getIdPuerto()));
-		if (cursoCriteria.getIdTipoCurso() != null)
-			criteria.createCriteria("tipoCurso").add(
-					Restrictions.in("idTipoCurso", cursoCriteria
-							.getIdTipoCurso()));
-		if (cursoCriteria.getIdUsuario() != null)
-			criteria.add(Restrictions.in("idUsuario", cursoCriteria
-					.getIdUsuario()));
-		if (cursoCriteria.getIdStatusCurso() != 0)
-			criteria.add(Restrictions.eq("idStatusCurso", cursoCriteria
-					.getIdStatusCurso()));
-		if (cursoCriteria.getIdLlave() != 0)
-			criteria
-					.add(Restrictions.eq("idLlave", cursoCriteria.getIdLlave()));
-		if (cursoCriteria.getFechaDesde() != null
-				&& cursoCriteria.getFechaHasta() != null)
-			criteria.add(Restrictions.between("fechaInicio", cursoCriteria
-					.getFechaDesde(), cursoCriteria.getFechaHasta()));
-		criteria.setProjection(Projections.rowCount());
-		return (Integer)criteria.uniqueResult();
+	Integer getCountCursosPorCriteria(CursoCriteria cursoCriteria) {
+		def criteria = getSession().createCriteria(CursoXCertificar.class)
+		if (cursoCriteria.id)
+			criteria.add(Restrictions.eq("id", cursoCriteria.id))
+		if (cursoCriteria.getIdPuerto())
+			criteria.add(Restrictions.in("idPuerto", cursoCriteria.idPuerto))
+		if (cursoCriteria.idTipoCurso)
+			criteria.add(Restrictions.in("idTipoCurso", cursoCriteria.idTipoCurso))
+		if (cursoCriteria.getIdUsuario())
+			criteria.add(Restrictions.in("idUsuario", cursoCriteria.idUsuario))
+		if (cursoCriteria.idStatusCurso)
+			criteria.add(Restrictions.eq("idStatusCurso", cursoCriteria.idStatusCurso))
+		if (cursoCriteria.fechaDesde && cursoCriteria.fechaHasta)
+			criteria.add(Restrictions.between("fechaInicio", cursoCriteria.fechaDesde, cursoCriteria.fechaHasta))
+		criteria.projection = Projections.rowCount()
+		(Integer)criteria.uniqueResult()
 	}
 
 }
