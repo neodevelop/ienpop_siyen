@@ -25,7 +25,7 @@ public class IenpopProducerImpl implements IenpopProducer{
 	public void sendMessage(String m) throws BusinessException{
 		final String message = m;
 		log.debug("Enviando el mensaje...");
-		this.jmsTemplate.send(this.getDestination(),[
+		this.jmsTemplate.send(this.destination,[
 			createMessage:{ session -> 
 				TextMessage textMessage = session.createTextMessage();
 				textMessage.setText(message);
@@ -37,7 +37,7 @@ public class IenpopProducerImpl implements IenpopProducer{
 	public void generarLLaveQueue(long idCursoXCertificar,String email) throws BusinessException{ 
 		final String message = idCursoXCertificar+" "+email;
 		log.debug("Enviando el mensaje para certificación ...");
-		this.jmsTemplate.send(this.getDestination(), [
+		this.jmsTemplate.send(this.destination, [
 			createMessage:{ session ->
 				TextMessage textMessage = session.createTextMessage();
 				textMessage.setText(message);
@@ -50,7 +50,7 @@ public class IenpopProducerImpl implements IenpopProducer{
 		XStream xstream = new XStream(new DomDriver());
 		final String xml = xstream.toXML(usuario);
 		log.debug("Enviando el mensaje para notificación ...");
-		this.jmsTemplate.send(this.getDestination(), [
+		this.jmsTemplate.send(this.destination, [
 			createMessage:{ session ->
 				TextMessage textMessage = session.createTextMessage();
 				textMessage.setText(xml);
