@@ -32,11 +32,7 @@ public class TestCatalogoDao {
 	@Test
 	public void testDao2(){
 		Object[] cursos = catalogoDao.getGrupoCursosXLibreta("A");
-		String[] cursosArray = []
-		for(int i=0;i<cursos.length;i++){
-			cursosArray[i] = (String)cursos[i];
-			System.out.println(cursosArray[i]);
-		}
+		String[] cursosArray = cursos.collect { (String)it }
 		CursoCriteria cursoCriteria = new CursoCriteria();
 		cursoCriteria.setIdTipoCurso(cursosArray);
 		cursoDao.getCursoXCertificarPorCriteria(cursoCriteria);
