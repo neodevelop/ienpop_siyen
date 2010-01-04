@@ -123,7 +123,12 @@
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.codehaus.groovy.maven.runtime</groupId>
+			<artifactId>gmaven-runtime-default</artifactId>
+			<version>1.0-rc-3</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<scm>
@@ -134,25 +139,25 @@
 		<tag>HEAD</tag>
 		<url>http://192.168.1.253/svn/trunk/SIYEN/ienpop-api</url>
 	</scm>
-	
+
 	<build>
-	    <plugins>
-	        <plugin>
-	            <groupId>org.codehaus.groovy.maven</groupId>
-	            <artifactId>gmaven-plugin</artifactId>
-	            <executions>
-	                <execution>
-	                    <goals>
-	                        <goal>generateStubs</goal>
-	                        <goal>compile</goal>
-	                        <goal>generateTestStubs</goal>
-	                        <goal>testCompile</goal>
-	                    </goals>
-	                </execution>
-	            </executions>
-	        </plugin>
-	    </plugins>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.groovy.maven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>generateTestStubs</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
-	
+
 
 </project>
