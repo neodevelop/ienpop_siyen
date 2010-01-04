@@ -14,7 +14,7 @@ import edu.ienpop.model.CatalogoPuerto;
 import edu.ienpop.model.Usuario;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
+@ContextConfiguration(locations=["/DataSourceAppCtx.xml"])
 public class TestPersistenceDao {
 
 	@Autowired

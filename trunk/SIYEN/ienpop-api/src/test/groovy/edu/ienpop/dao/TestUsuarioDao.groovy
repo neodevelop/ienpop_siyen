@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import edu.ienpop.dao.UsuarioDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
+@ContextConfiguration(locations=["/DataSourceAppCtx.xml"])
 public class TestUsuarioDao {
 
 	@Autowired

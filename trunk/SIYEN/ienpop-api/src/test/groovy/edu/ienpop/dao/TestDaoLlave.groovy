@@ -14,7 +14,7 @@ import edu.ienpop.dao.LlaveDao;
 import edu.ienpop.model.LlaveCertificacion;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/DataSourceAppCtx.xml"})
+@ContextConfiguration(locations=["/DataSourceAppCtx.xml"])
 public class TestDaoLlave {
 
 	@Autowired
