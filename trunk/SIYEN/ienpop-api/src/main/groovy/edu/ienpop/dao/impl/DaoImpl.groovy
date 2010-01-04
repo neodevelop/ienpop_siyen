@@ -1,48 +1,41 @@
-package edu.ienpop.dao.impl;
+package edu.ienpop.dao.impl
 
-import java.io.Serializable;
-import java.util.List;
+import java.io.Serializable
+import java.util.List
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.orm.hibernate3.HibernateTemplate
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport
+import org.springframework.stereotype.Repository
 
-import edu.ienpop.dao.Dao;
+import edu.ienpop.dao.Dao
 
 @Repository("dao")
-public class DaoImpl extends HibernateDaoSupport implements Dao {
+class DaoImpl extends HibernateDaoSupport implements Dao {
 
 	@Autowired
-	public DaoImpl(HibernateTemplate hibernateTemplate) {
-		super.setHibernateTemplate(hibernateTemplate);
+	DaoImpl(HibernateTemplate hibernateTemplate) {
+		super.setHibernateTemplate(hibernateTemplate)
 	}
 	
-	public void delete(Object o) {
-		// TODO Auto-generated method stub
-		getHibernateTemplate().delete(o);
+	void delete(Object o) {
+		hibernateTemplate.delete o
 	}
 
-	@SuppressWarnings("unchecked")
-	public List getAll(String entity) {
-		// TODO Auto-generated method stub
-		return getHibernateTemplate().find("from "+entity);
+	List getAll(String entity) {
+		hibernateTemplate.find "from $entity"
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getByPK(Class clazz, Serializable pk) {
-		// TODO Auto-generated method stub
-		return getHibernateTemplate().get(clazz, pk);
+	Object getByPK(Class clazz, Serializable pk) {
+		hibernateTemplate.get clazz, pk
 	}
 
-	public Serializable save(Object o) {
-		// TODO Auto-generated method stub
-		return getHibernateTemplate().save(o);
+	Serializable save(Object o) {
+		hibernateTemplate.save o
 	}
 
-	public void update(Object o) {
-		// TODO Auto-generated method stub
-		getHibernateTemplate().update(o);
+	void update(Object o) {
+		hibernateTemplate.update o
 	}
 
 }
