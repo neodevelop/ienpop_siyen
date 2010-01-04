@@ -186,7 +186,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		CursoCriteria cursoCriteria = new CursoCriteria();
 		cursoCriteria.setFechaDesde(fechaInicio);
 		cursoCriteria.setFechaHasta(fechaFin);
-		cursoCriteria.setIdPuerto(new String[] { idPuerto });
+		cursoCriteria.setIdPuerto({ idPuerto });
 		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}

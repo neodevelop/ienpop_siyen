@@ -53,9 +53,9 @@ public class ChartServiceImpl {
 		localCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		if (cursoCriteria.getIdUsuario() != null) {
 			for (String idUsuario : cursoCriteria.getIdUsuario()) {
-				localCriteria.setIdUsuario(new String[] { idUsuario });
+				localCriteria.setIdUsuario({ idUsuario });
 				for (String idTipoCurso : cursoCriteria.getIdTipoCurso()) {
-					localCriteria.setIdTipoCurso(new String[] { idTipoCurso });
+					localCriteria.setIdTipoCurso({ idTipoCurso });
 					dataset.addValue(cursoService
 							.getCountCursosByCriteria(localCriteria),
 							idTipoCurso, idUsuario);
