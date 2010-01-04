@@ -38,7 +38,7 @@
 	</bean>
 
 	<bean id="ienpopProducer"
-		class="edu.ienpop.integration.jms.impl.IenpopProducer">
+		class="edu.ienpop.integration.jms.impl.IenpopProducerImpl">
 		<property name="destination" ref="destination" />
 		<property name="jmsTemplate" ref="jmsTemplate" />
 	</bean>
