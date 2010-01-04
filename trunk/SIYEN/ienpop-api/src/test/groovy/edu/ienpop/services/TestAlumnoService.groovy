@@ -17,10 +17,8 @@ import edu.ienpop.services.BusinessException;
 
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
-		"/DataSourceAppCtx.xml" })
-public class TestAlumnoService extends
-		AbstractDependencyInjectionSpringContextTests {
+@ContextConfiguration(locations = ["/ServicesAppCtx.xml","/DataSourceAppCtx.xml"] )
+public class TestAlumnoService {
 
 	@Autowired
 	AlumnoService alumnoService;

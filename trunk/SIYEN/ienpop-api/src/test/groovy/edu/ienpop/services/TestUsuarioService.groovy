@@ -12,10 +12,8 @@ import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.UsuarioService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
-		"/DataSourceAppCtx.xml" })
-public class TestUsuarioService extends
-		AbstractDependencyInjectionSpringContextTests {
+@ContextConfiguration(locations = ["/ServicesAppCtx.xml","/DataSourceAppCtx.xml"] )
+public class TestUsuarioService {
 
 	@Autowired
 	UsuarioService usuarioService;

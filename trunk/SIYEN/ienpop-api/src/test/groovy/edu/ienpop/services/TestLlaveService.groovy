@@ -12,8 +12,7 @@ import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.LlaveService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
-		"/DataSourceAppCtx.xml" })
+@ContextConfiguration(locations = ["/ServicesAppCtx.xml","/DataSourceAppCtx.xml"])
 public class TestLlaveService {
 
 	@Autowired
@@ -31,8 +30,7 @@ public class TestLlaveService {
 	@Test
 	public void testLlaveService2() {
 		try {
-			LlaveCertificacion llave = llaveService.isValidaLlave(
-					"AP#J33¡T¡D$NVC!K*J&%", 2);
+			LlaveCertificacion llave = llaveService.isValidaLlave("AP#J33¡T¡DRJKL!K*J&%", 2);
 			System.out.println(ToStringBuilder.reflectionToString(llave));
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());

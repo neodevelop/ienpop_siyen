@@ -18,8 +18,7 @@ import edu.ienpop.services.PersistenceService;
 
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
-		"/DataSourceAppCtx.xml" })
+@ContextConfiguration(locations = ["/ServicesAppCtx.xml","/DataSourceAppCtx.xml" ])
 public class TestCursoXCertificarService {
 
 	@Autowired
@@ -110,8 +109,8 @@ public class TestCursoXCertificarService {
 	@Test
 	public void testCursoXCertificar5() {
 		try {
-			String[] usuarios = { "JUANG" };
-			String[] puertos = { "ACG", "ATL", "DF" };
+			String[] usuarios = [ "JUANG" ];
+			String[] puertos = [ "ACG", "ATL", "DF" ];
 			List cursos;
 			cursos = cursoXCertificarService.getCursosXCertificarSinLlave(
 					usuarios, puertos);

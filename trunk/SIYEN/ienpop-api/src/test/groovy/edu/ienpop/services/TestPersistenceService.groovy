@@ -6,25 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import edu.ienpop.model.CursoXCertificar;
 import edu.ienpop.services.BusinessException;
-import edu.ienpop.services.CatalogoService;
+import edu.ienpop.services.PersistenceService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
-		"/DataSourceAppCtx.xml" })
-public class TestThrowsAdvice {
+@ContextConfiguration(locations = ["/ServicesAppCtx.xml","/DataSourceAppCtx.xml"])
+public class TestPersistenceService {
 
-	//ErrorService errorService;
 	@Autowired
-	CatalogoService catalogoService;
-	
+	PersistenceService persistenceService;
+
 	@Test
-	public void test() {
-		//errorService.throwDataAccessException();
+	public void testPersistenceService() {
 		try {
-			catalogoService.getCatalogoCurso();
+			String m = "69 juan.reyes@ienpop.net";
+			String[] datos = m.split(" ");
+			String id = datos[0];
+			persistenceService.findById(CursoXCertificar.class, Long.parseLong(id));
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		}
 	}
+
 }

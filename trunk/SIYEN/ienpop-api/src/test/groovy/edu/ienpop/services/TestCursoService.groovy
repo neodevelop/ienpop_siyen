@@ -23,8 +23,7 @@ import edu.ienpop.services.PersistenceService;
 
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/ServicesAppCtx.xml",
-		"/DataSourceAppCtx.xml" })
+@ContextConfiguration(locations = ["/ServicesAppCtx.xml","/DataSourceAppCtx.xml"])
 public class TestCursoService {
 
 	@Autowired
@@ -48,7 +47,6 @@ public class TestCursoService {
 	}
 
 	@Test
-	@Ignore
 	public void testSumaFechas() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
@@ -61,16 +59,17 @@ public class TestCursoService {
 	}
 
 	@Test
-	@Ignore
 	public void testCursoService2() {
 		// cursoService.generateCertificadosXCurso(111902);
 		// GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
 		// GregorianCalendar cal2 = new GregorianCalendar(2008,7,30);
 		CursoCriteria cursoCriteria = new CursoCriteria();
-		cursoCriteria.setIdPuerto(new String[] { "ACG" });
+		String[] puertos = ["ACG"]
+		cursoCriteria.setIdPuerto(puertos);
 		// cursoCriteria.setIdTipoCurso(new
 		// String[]{"CAPATCO3232"," CAPMOT332_P"});
-		cursoCriteria.setLibretas(new String[] { "A", "B" });
+		String[] libretas = ["A", "B"]
+		cursoCriteria.setLibretas(libretas);
 		cursoCriteria.setIdStatusCurso(4);
 		cursoCriteria.setPaginado(true);
 		// cursoCriteria.setFechaDesde(cal1.getTime());
@@ -87,7 +86,6 @@ public class TestCursoService {
 	}
 
 	@Test
-	@Ignore
 	public void testCursoService3(){
 		try {
 			cursoService.getCursoByTokenCertificado("2BVKRIPVC3GS5P6SA21U");

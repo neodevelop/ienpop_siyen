@@ -15,7 +15,7 @@ import edu.ienpop.services.CatalogoService;
 
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/ServicesAppCtx.xml","/DataSourceAppCtx.xml"})
+@ContextConfiguration(locations=["/ServicesAppCtx.xml","/DataSourceAppCtx.xml"])
 public class TestCatalogoService {
 
 	@Autowired
