@@ -7,7 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.ienpop.integration.jms.impl.IenpopProducer;
+import edu.ienpop.integration.jms.IenpopProducer;
 import edu.ienpop.model.Usuario;
 import edu.ienpop.services.BusinessException;
 import edu.ienpop.services.CatalogoService;

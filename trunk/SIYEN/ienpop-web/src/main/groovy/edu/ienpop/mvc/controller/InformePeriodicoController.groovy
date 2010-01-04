@@ -66,7 +66,8 @@ public class InformePeriodicoController{
 			//Separamos en un arreglo
 			libretas = libreta.split(",");
 			log.debug(ToStringBuilder.reflectionToString(libretas));
-			cursoCriteria.setIdPuerto(new String[] {idPuerto});
+			String[] puertos = [idPuerto]
+			cursoCriteria.setIdPuerto(puertos);
 			log.debug("Puerto: "+idPuerto);
 			puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, idPuerto);
 			//Se lo ponemos a criteria
@@ -84,7 +85,8 @@ public class InformePeriodicoController{
 			//Separamos en un arreglo
 			libretas = libreta.split(",");
 			log.debug(ToStringBuilder.reflectionToString(libretas));
-			cursoCriteria.setIdPuerto(new String[] {idPuerto});
+			String[] puertos = [idPuerto]
+			cursoCriteria.setIdPuerto(puertos);
 			puerto = (CatalogoPuerto)persistenceService.findById(CatalogoPuerto.class, idPuerto);
 			//Se lo ponemos a criteria
 			cursoCriteria.setLibretas(libretas);
