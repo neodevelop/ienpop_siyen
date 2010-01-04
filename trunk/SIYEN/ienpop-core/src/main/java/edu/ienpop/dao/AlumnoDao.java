@@ -7,6 +7,6 @@ import edu.ienpop.model.AlumnoCriteria;
 @SuppressWarnings("unchecked")
 public interface AlumnoDao {
 	List getAlumnosPorCriteria(AlumnoCriteria alumnoCriteria);
-	int getCountAlumnosPorCriteria(AlumnoCriteria alumnoCriteria);
+	Integer getCountAlumnosPorCriteria(AlumnoCriteria alumnoCriteria);
 	List getAlumnosXCertificarPorCriteria(AlumnoCriteria alumnoCriteria);
 }
