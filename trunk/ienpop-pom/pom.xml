@@ -133,11 +133,6 @@
 			<name>Liberaciones de terceros</name>
 			<url>http://192.168.1.253:8081/archiva/repository/third.party</url>
 		</repository>
-		<repository>
-                        <id>neodevelopy</id>
-                        <name>Mi Repo</name>
-                        <url>http://192.168.1.67/maven2</url>
-                </repository>
 	</repositories>
 
 	<pluginRepositories>
