@@ -15,27 +15,35 @@ class ServiceThrowsAdvice{
 	Logger log = Logger.getLogger(this.getClass())
 	
 	void doRecoveryActionDataAccess(DataAccessException dataAccessEx) throws BusinessException{
-		log.debug(dataAccessEx.message)
+		showMessageOrStacktrace(dataAccessEx)
 		throw new BusinessException("Error en Persistencia: ",dataAccessEx)
 	}
 	
 	void doRecoveryActionGenericJDBC(GenericJDBCException jdbcException) throws BusinessException{
-		log.debug(jdbcException.message)
+		showMessageOrStacktrace(jdbcException)
 		throw new BusinessException("Error en Persistencia: ",jdbcException)
 	}
 	
 	void doRecoveryActionNetConnection(UncategorizedJmsException jmsException) throws BusinessException{
-		log.debug(jmsException.message)
+		showMessageOrStacktrace(jmsException)
 		throw new BusinessException("Error de Comunicaci—n: ",jmsException)
 	}
 	
 	void doRecoveryActionLazy(LazyInitializationException lazyException) throws BusinessException{
-		log.debug(lazyException.message)
+		showMessageOrStacktrace(lazyException)
 		throw new BusinessException("Error en Persistencia: ",lazyException)
 	}
 	
 	void doRecoveryIOException(IOException ioException) throws BusinessException{
-		log.debug(ioException.message)
+		showMessageOrStacktrace(ioException)
 		throw new BusinessException("Error de entrada/salida: ",ioException)
+	}
+	
+	private void showMessageOrStacktrace(ex){
+		if(log.isDebugEnabled()){
+			log.debug(ex.message)
+		}else{
+			ex.printStackTrace()
+		}
 	}
 }
