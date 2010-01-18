@@ -9,15 +9,15 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>
+			<!--value>
 				classpath:edu/ienpop/persistence/environment/development.properties
-			</value>
+			</value-->
 			<!--value>
 				classpath:edu/ienpop/persistence/environment/testing.properties
 			</value-->
-			<!--value>
+			<value>
 				classpath:edu/ienpop/persistence/environment/production.properties
-			</value-->
+			</value>
 		</property>
 	</bean>
 	
