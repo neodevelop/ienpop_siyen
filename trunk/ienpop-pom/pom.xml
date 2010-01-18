@@ -133,6 +133,11 @@
 			<name>Liberaciones de terceros</name>
 			<url>http://192.168.1.253:8081/archiva/repository/third.party</url>
 		</repository>
+		<repository>
+                        <id>neodevelopy</id>
+                        <name>Mi Repo</name>
+                        <url>http://192.168.1.67/maven2</url>
+                </repository>
 	</repositories>
 
 	<pluginRepositories>
@@ -227,7 +232,7 @@
 			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
-				<version>1.2.15</version>
+				<version>1.2.14</version>
 			</dependency>
 			<dependency>
 				<groupId>mysql</groupId>
@@ -343,7 +348,7 @@
 	<properties>
 		<spring.version>2.5.6</spring.version>
 		<hibernate.version>3.2.7.ga</hibernate.version>
-		<mysql.version>5.1.10</mysql.version>
+		<mysql.version>5.1.9</mysql.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<jsp-api.version>2.1</jsp-api.version>
 		<dwr.version>2.0.3</dwr.version>
