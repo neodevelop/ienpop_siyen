@@ -44,6 +44,16 @@ public class TestCursoService {
 			System.err.println(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void testGeneraOficio(){
+		def date1 = new Date() - 90
+		def date2 = new Date()
+		println date1
+		println date2
+		def cursos = cursoService.getOficio(date1, date2 , "GYS")
+		assert cursos.size()>0
+	}
 
 	@Test
 	@Ignore

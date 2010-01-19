@@ -4,6 +4,8 @@ import java.util.List
 
 import javax.jms.Session;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria
 import org.hibernate.Query
 import org.hibernate.criterion.Order
@@ -21,6 +23,8 @@ import edu.ienpop.model.CursoXCertificar
 
 @Repository("cursoDao")
 class CursoDaoImpl extends HibernateDaoSupport implements CursoDao{
+	
+	Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	CursoDaoImpl(HibernateTemplate hibernateTemplate) {
@@ -52,6 +56,9 @@ class CursoDaoImpl extends HibernateDaoSupport implements CursoDao{
 
 	@SuppressWarnings("unchecked")
 	List getCursosPorCriteria(CursoCriteria cursoCriteria) {
+		if(log.isDebugEnabled()){
+			log.debug(ToStringBuilder.reflectionToString(cursoCriteria));
+		}
 		def criteria = getSession().createCriteria(Curso.class)
 		if (cursoCriteria.id)
 			criteria.add(Restrictions.eq("id", cursoCriteria.id))

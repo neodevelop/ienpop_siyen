@@ -181,11 +181,12 @@ public class CursoServiceDefaultImpl implements CursoService {
 			throws BusinessException {
 		if (idPuerto == null)
 			throw new BusinessException(
-					"No se ha especificado un puerto, posiblemente expir√≥ la sesi√≥n o el valor es incorrecto...");
+					"No se ha especificado un puerto, posiblemente expiró la sesión o el valor es incorrecto...");
 		CursoCriteria cursoCriteria = new CursoCriteria();
 		cursoCriteria.setFechaDesde(fechaInicio);
 		cursoCriteria.setFechaHasta(fechaFin);
-		cursoCriteria.setIdPuerto({ idPuerto });
+		def puertos = [ "$idPuerto" ] as String[] 
+		cursoCriteria.setIdPuerto(puertos);
 		cursoCriteria.setIdStatusCurso(CursoCriteria.CONCLUIDO);
 		return cursoDao.getCursosPorCriteria(cursoCriteria);
 	}
