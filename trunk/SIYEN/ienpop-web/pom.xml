@@ -10,12 +10,12 @@
 	<artifactId>ienpop-web</artifactId>
 	<packaging>war</packaging>
 	<name>ienpop-web</name>
-	<repositories>
+	<!--repositories>
 		<repository>
 			<id>neodevelop</id>
 			<url>http://192.168.1.67/maven2</url>
 		</repository>
-	</repositories>
+	</repositories-->
 	<dependencies>
 		<!-- Ienpop -->
 		<dependency>

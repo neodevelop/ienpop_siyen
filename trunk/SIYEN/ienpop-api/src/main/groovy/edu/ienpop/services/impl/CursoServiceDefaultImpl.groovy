@@ -46,8 +46,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 			throws BusinessException {
 		// TODO Auto-generated method stub
 		// Obtenemos el curso por certificar
-		CursoXCertificar cursoXCertificar = (CursoXCertificar) persistenceService
-				.findById(CursoXCertificar.class, (long) idCursoXCertificar);
+		CursoXCertificar cursoXCertificar = (CursoXCertificar) persistenceService.findById(CursoXCertificar.class, idCursoXCertificar);
 		// Si el curso no existe pues hay error
 		if (cursoXCertificar == null) {
 			throw new BusinessException("El curso a certificar no existe");

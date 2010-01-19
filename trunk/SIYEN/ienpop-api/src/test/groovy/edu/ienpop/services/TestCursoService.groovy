@@ -37,16 +37,16 @@ public class TestCursoService {
 	}
 	
 	@Test
-	@Ignore
 	public void testCursoService() {
 		try {
-			cursoService.addCursoCertificado(18, "IST5¡T036EPY¿+Q?R37K");
+			cursoService.addCursoCertificado(1, "JHPPK2XLQLN9UCYQH9");
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		}
 	}
 
 	@Test
+	@Ignore
 	public void testSumaFechas() {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
@@ -59,6 +59,7 @@ public class TestCursoService {
 	}
 
 	@Test
+	@Ignore
 	public void testCursoService2() {
 		// cursoService.generateCertificadosXCurso(111902);
 		// GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
@@ -86,6 +87,7 @@ public class TestCursoService {
 	}
 
 	@Test
+	@Ignore
 	public void testCursoService3(){
 		try {
 			cursoService.getCursoByTokenCertificado("2BVKRIPVC3GS5P6SA21U");
@@ -115,6 +117,7 @@ public class TestCursoService {
 	}
 	
 	@Test
+	@Ignore
 	public void testUpdateCursoCertificado(){
 		try {
 			System.out.println(cursoService.updateCursoCertificado(111906, "1INTNPJYZ0EZ1C8K19U9"));
