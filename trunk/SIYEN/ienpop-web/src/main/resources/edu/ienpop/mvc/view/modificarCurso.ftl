@@ -83,7 +83,13 @@
 					<tbody id="alumnosCursoModificar">
 						<tr id="patternAlumnoCursoModificar" class="rowNoFill" style="display:none;">
 							<td><div id="numeroControlCursoModificar">&nbsp;</div></td>
-							<td><div id="nombreCompletoCursoModificar">&nbsp;</div></td>
+							<td>
+								<!--div id="nombreCompletoCursoModificar">&nbsp;</div-->
+								<div>
+									<input type="text" id="nombreCompletoAModificar" size="40" disabled="disabled" />
+									<input type="button" id="edicionAlumno" name="edicionAlumno" onclick="habilitaParaEdicion(this.id)" value="Editar" class="inputButton">
+								</div>
+							</td>
 							<td><div id="fechaRegistroCursoModificar">&nbsp;</div></td>
 							<td>
 								<input id="reimprimir" name="reimprimir" type="checkbox" />
@@ -92,7 +98,7 @@
 					</tbody>
 				</table>
 				<br/>
-				<input type="button" name="actualizarCurso" onClick="actualizaCurso()" value="Guardar Cambios" class="inputButton" />
+				<input type="button" name="actualizarCurso" onClick="actualizaCurso()" value="Guardar Cambios" class="inputButton"  />
 				</center>
 			<!-- DESPLEGADO DE ALUMNOS POR ESTE CURSO -->
           	<input type="hidden" id="idUsuario" name="idUsuario" value="${usuario.idUsuario}"/>
