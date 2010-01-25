@@ -8,4 +8,5 @@ public interface AlumnoService {
 	@SuppressWarnings("unchecked")
 	List getAlumnosByCriteria(AlumnoCriteria alumnoCriteria) throws BusinessException;
 	int getCountAlumnosByCriteria(AlumnoCriteria alumnoCriteria) throws BusinessException;
+	void cambiaNombreDelAlumno(Long alumnoId,String nombre) throws BusinessException;
 }
