@@ -350,7 +350,11 @@ function habilitaParaEdicion(indice){
 		$("nombreCompletoAModificar"+id).disabled = false;
 		$("edicionAlumno"+id).value = "guardar";
 	}else{
-		$("nombreCompletoAModificar"+id).disabled = true;
-		$("edicionAlumno"+id).value = "editar";
+		dwr.engine.beginBatch();
+		AlumnoService.cambiaNombreDelAlumno(id,$("nombreCompletoAModificar"+id).value, function(){
+			$("nombreCompletoAModificar"+id).disabled = true;
+			$("edicionAlumno"+id).value = "editar";
+		});
+		dwr.engine.endBatch();
 	}
 }
