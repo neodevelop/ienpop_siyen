@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[2.0.3.v200802061800]]></pluginVersion>
+	<pluginVersion><![CDATA[2.2.7.200910202224-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -12,6 +12,7 @@
 		<config>src/main/resources/edu/ienpop/mvc/config/ViewResolver.xml</config>
 		<config>src/main/resources/edu/ienpop/mvc/config/Views.xml</config>
 		<config>src/main/resources/WebAppCtx.xml</config>
+		<config>src/main/resources/edu/ienpop/mvc/config/Reversos.xml</config>
 	</configs>
 	<configSets>
 		<configSet>
@@ -19,21 +20,12 @@
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
-				<config>/IenpopPersistence/src/main/resources/DataSourceAppCtx.xml</config>
-				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataAccessObjects.xml</config>
-				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/DataSource.xml</config>
-				<config>/IenpopPersistence/src/main/resources/edu/ienpop/persistence/config/SessionFactory.xml</config>
-				<config>/IenpopServices/src/main/resources/edu/ienpop/services/config/AOPconfig.xml</config>
-				<config>/IenpopServices/src/main/resources/edu/ienpop/services/config/Services.xml</config>
-				<config>/IenpopServices/src/main/resources/edu/ienpop/services/config/TxManager.xml</config>
-				<config>/IenpopServices/src/main/resources/ServicesAppCtx.xml</config>
 				<config>src/main/resources/edu/ienpop/mvc/config/Controllers.xml</config>
 				<config>src/main/resources/edu/ienpop/mvc/config/HandlerMapping.xml</config>
 				<config>src/main/resources/edu/ienpop/mvc/config/ViewResolver.xml</config>
 				<config>src/main/resources/edu/ienpop/mvc/config/Views.xml</config>
 				<config>src/main/resources/WebAppCtx.xml</config>
-				<config>/IenpopMail/src/main/resources/mailAppCtx.xml</config>
-				<config>/IenpopServices/src/main/resources/IntegrationAppCtx.xml</config>
+				<config>src/main/resources/edu/ienpop/mvc/config/Reversos.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
