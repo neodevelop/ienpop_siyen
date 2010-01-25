@@ -263,8 +263,9 @@ function editarCurso(indice){
 			//alert(id);
 			dwr.util.cloneNode("patternAlumnoCursoModificar",{idSuffix:id});
 			dwr.util.setValue("numeroControlCursoModificar"+id,alumno.numeroControl);
-			dwr.util.setValue("nombreCompletoCursoModificar"+id,alumno.nombreCompleto);
+			//dwr.util.setValue("nombreCompletoCursoModificar"+id,alumno.nombreCompleto);
 			dwr.util.setValue("nombreCompletoAModificar"+id,alumno.nombreCompleto);
+			$("nombreCompletoAModificar"+id).disabled = true;
 			dwr.util.setValue("reimprimir"+id,id);
 			dwr.util.setValue("fechaRegistroCursoModificar"+id,formatoDeFecha(alumno.fechaHoraRegistro));
 			if((i%2)==0)
@@ -344,5 +345,12 @@ function actualizaCurso(){
 }
 
 function habilitaParaEdicion(indice){
-	alert(indice);
+	var id = indice.substring(13);
+	if($("edicionAlumno"+id).value == "editar"){
+		$("nombreCompletoAModificar"+id).disabled = false;
+		$("edicionAlumno"+id).value = "guardar";
+	}else{
+		$("nombreCompletoAModificar"+id).disabled = true;
+		$("edicionAlumno"+id).value = "editar";
+	}
 }
