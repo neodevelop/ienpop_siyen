@@ -264,6 +264,7 @@ function editarCurso(indice){
 			dwr.util.cloneNode("patternAlumnoCursoModificar",{idSuffix:id});
 			dwr.util.setValue("numeroControlCursoModificar"+id,alumno.numeroControl);
 			dwr.util.setValue("nombreCompletoCursoModificar"+id,alumno.nombreCompleto);
+			dwr.util.setValue("nombreCompletoAModificar"+id,alumno.nombreCompleto);
 			dwr.util.setValue("reimprimir"+id,id);
 			dwr.util.setValue("fechaRegistroCursoModificar"+id,formatoDeFecha(alumno.fechaHoraRegistro));
 			if((i%2)==0)
@@ -340,4 +341,8 @@ function actualizaCurso(){
 		xDisplay("mensajeEdicion","block");
 	});
 	dwr.engine.endBatch();
+}
+
+function habilitaParaEdicion(indice){
+	alert(indice);
 }
