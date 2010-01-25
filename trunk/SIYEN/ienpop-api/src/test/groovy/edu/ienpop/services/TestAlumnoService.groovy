@@ -39,4 +39,20 @@ public class TestAlumnoService {
 			System.err.println(e.getMessage());
 		}
 	}
+	
+	@Test
+	public void testServiceAlumno2() {
+		assert alumnoService
+		alumnoService.cambiaNombreDelAlumno(62543L, "JJRZ")
+	}
+	
+	@Test
+	public void testServiceAlumno3() {
+		assert alumnoService
+		try{
+			alumnoService.cambiaNombreDelAlumno(62543L, "")
+		}catch(BusinessException e){
+			println e.getMessage()
+		}
+	}
 }
