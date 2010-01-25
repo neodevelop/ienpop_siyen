@@ -86,8 +86,8 @@
 							<td>
 								<!--div id="nombreCompletoCursoModificar">&nbsp;</div-->
 								<div>
-									<input type="text" id="nombreCompletoAModificar" size="40" disabled="disabled" />
-									<input type="button" id="edicionAlumno" name="edicionAlumno" onclick="habilitaParaEdicion(this.id)" value="Editar" class="inputButton">
+									<input type="text" id="nombreCompletoAModificar" size="40" />
+									<input type="button" id="edicionAlumno" name="edicionAlumno" onclick="habilitaParaEdicion(this.id)" value="editar" class="inputButton">
 								</div>
 							</td>
 							<td><div id="fechaRegistroCursoModificar">&nbsp;</div></td>
