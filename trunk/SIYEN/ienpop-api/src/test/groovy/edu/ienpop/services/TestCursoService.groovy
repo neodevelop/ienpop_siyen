@@ -37,6 +37,7 @@ public class TestCursoService {
 	}
 	
 	@Test
+	@Ignore
 	public void testCursoService() {
 		try {
 			cursoService.addCursoCertificado(1, "JHPPK2XLQLN9UCYQH9");
@@ -46,6 +47,7 @@ public class TestCursoService {
 	}
 	
 	@Test
+	@Ignore
 	public void testGeneraOficio(){
 		def date1 = new Date() - 90
 		def date2 = new Date()
@@ -134,5 +136,11 @@ public class TestCursoService {
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 		}
+	}
+	
+	@Test
+	public void testCountPorCriteria(){
+		CursoCriteria cursoCriteria = new CursoCriteria(idStatusCurso:4)
+		assert cursoService.getCountCursosByCriteria(cursoCriteria) > 0
 	}
 }
