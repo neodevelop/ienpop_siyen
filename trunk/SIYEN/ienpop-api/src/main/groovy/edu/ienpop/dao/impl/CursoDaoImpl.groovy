@@ -97,7 +97,10 @@ class CursoDaoImpl extends HibernateDaoSupport implements CursoDao{
 	}
 
 	Integer getCountCursosPorCriteria(CursoCriteria cursoCriteria) {
-		def criteria = getSession().createCriteria(CursoXCertificar.class)
+		if(log.isDebugEnabled()){
+			log.debug(ToStringBuilder.reflectionToString(cursoCriteria));
+		}
+		def criteria = getSession().createCriteria(Curso.class)
 		if (cursoCriteria.id)
 			criteria.add(Restrictions.eq("id", cursoCriteria.id))
 		if (cursoCriteria.getIdPuerto())
