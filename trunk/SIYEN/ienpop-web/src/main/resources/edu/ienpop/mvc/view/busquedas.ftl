@@ -70,7 +70,9 @@
 			<td><div id="tipoCurso">&nbsp;</div></td>
 			<td><div id="idPuerto">&nbsp;</div></td>
 			<td><div id="fechaRegistro">&nbsp;</div></td>
-			<td><div id="modificarAlumno">&nbsp;</div></td>
+			<td>
+				<span id="modificarAlumno"></span>
+			</td>
 		</tr>
 	</tbody>
 </table>
