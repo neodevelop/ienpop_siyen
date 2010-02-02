@@ -44,6 +44,7 @@ function buscarAlumnos(){
 			dwr.util.setValue("idPuerto"+id,alumno.curso.idPuerto);
 			dwr.util.setValue("tipoCurso"+id,alumno.curso.tipoCurso.idTipoCurso);
 			dwr.util.setValue("fechaRegistro"+id,formatoDeFecha(alumno.fechaHoraRegistro));
+			dwr.util.setValue("modificarAlumno"+id,"<a href='javascript:editarAlumnoXCurso("+alumno.curso.id+")'>Editar</a>", { escapeHtml:false });
 			if((i%2)==0)
 				$("patternAlumnoBusqueda"+id).className = "rowNoFill";
 			else
@@ -138,7 +139,16 @@ function buscarCursos(){
 	//cursos+="]";
 	if(document.busquedaCursos.idTipoCurso.length==0)
 		cursos = null; 
-	var cursoCriteria = {id:null,fechaDesde:fechaDesde,fechaHasta:fechaHasta,idPuerto:puertos,idTipoCurso:cursos,idStatusCurso:4};
+	var cursoCriteria = {
+		id:null,
+		fechaDesde:fechaDesde,
+		fechaHasta:fechaHasta,
+		idPuerto:puertos,
+		idTipoCurso:cursos,
+		idStatusCurso:4,
+		idUsuario:null,
+		libretas:null
+	};
 	cursoCriteria.paginado = true;
 	cursoCriteriaCache = cursoCriteria;
 	//alert(cursoCriteria);
@@ -235,6 +245,10 @@ function buscarCursosCache(indice){
 			}
 		}
 	});
+}
+
+function editarAlumnoXCurso(idCurso){
+	editarCurso("editCurso"+idCurso);
 }
 
 function editarCurso(indice){
