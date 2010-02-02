@@ -106,7 +106,7 @@ class CursoDaoImpl extends HibernateDaoSupport implements CursoDao{
 		if (cursoCriteria.getIdPuerto())
 			criteria.add(Restrictions.in("idPuerto", cursoCriteria.idPuerto))
 		if (cursoCriteria.idTipoCurso)
-			criteria.add(Restrictions.in("idTipoCurso", cursoCriteria.idTipoCurso))
+			criteria.createCriteria("tipoCurso").add(Restrictions.in("idTipoCurso", cursoCriteria.idTipoCurso))
 		if (cursoCriteria.getIdUsuario())
 			criteria.add(Restrictions.in("idUsuario", cursoCriteria.idUsuario))
 		if (cursoCriteria.idStatusCurso)
