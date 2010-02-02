@@ -196,7 +196,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 			throws BusinessException {
 		if (cursoCriteria.getIdPuerto() == null) {
 			throw new BusinessException(
-					"No se ha especificado un puerto, posiblemente expir√≥ la sesi√≥n o el valor es incorrecto...");
+					"No se ha especificado un puerto, posiblemente expiró la sesión o el valor es incorrecto...");
 		} else {
 			log.debug(ToStringBuilder.reflectionToString(cursoCriteria
 					.getIdPuerto()));
@@ -205,7 +205,7 @@ public class CursoServiceDefaultImpl implements CursoService {
 		}
 		if (cursoCriteria.getIdStatusCurso() == 0)
 			throw new BusinessException(
-					"El status del curso no es vaƒ∫ido para la b√∫squeda...");
+					"El status del curso no es válido para la búsqueda...");
 		// Recorremos las libretas para determinar los puertos a buscar
 		// Si las libretas en cirteria vienen con algo
 		if (cursoCriteria.getLibretas() != null) {
