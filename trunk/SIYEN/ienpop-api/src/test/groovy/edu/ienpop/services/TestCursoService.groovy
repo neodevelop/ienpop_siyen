@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
+import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Before;
@@ -71,22 +72,21 @@ public class TestCursoService {
 	}
 
 	@Test
-	@Ignore
 	public void testCursoService2() {
 		// cursoService.generateCertificadosXCurso(111902);
-		// GregorianCalendar cal1 = new GregorianCalendar(2008,0,1);
-		// GregorianCalendar cal2 = new GregorianCalendar(2008,7,30);
 		CursoCriteria cursoCriteria = new CursoCriteria();
-		String[] puertos = ["ACG"]
-		cursoCriteria.setIdPuerto(puertos);
+		String[] puertos = [] as String[]
+		cursoCriteria.setIdPuerto();
 		// cursoCriteria.setIdTipoCurso(new
 		// String[]{"CAPATCO3232"," CAPMOT332_P"});
-		String[] libretas = ["A", "B"]
-		cursoCriteria.setLibretas(libretas);
+		//String[] libretas = ["A", "B"]
+		//cursoCriteria.setLibretas(libretas);
 		cursoCriteria.setIdStatusCurso(4);
-		cursoCriteria.setPaginado(true);
-		// cursoCriteria.setFechaDesde(cal1.getTime());
-		// cursoCriteria.setFechaHasta(cal2.getTime());
+		cursoCriteria.setPaginado(true)
+		String[] idTipoCursos = ["INICIA","INICIA1"] as String[]
+		cursoCriteria.setIdTipoCurso(idTipoCursos)
+		cursoCriteria.setFechaDesde(new Date()-60);
+		cursoCriteria.setFechaHasta(new Date()-30);
 		List<Curso> cursos;
 		try {
 			cursos = cursoService.getCursosXStatus(cursoCriteria);
