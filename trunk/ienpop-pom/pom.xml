@@ -34,7 +34,8 @@
 	</scm>
 
 	<organization>
-		<name>Instituto de Educacion Nautica y Portuaria Oceano Pacifico</name>
+		<name>Instituto de Educacion Nautica y Portuaria Oceano Pacifico
+		</name>
 		<url>http://ienpop.edu</url>
 	</organization>
 
@@ -127,27 +128,56 @@
 		</plugins>
 	</reporting>
 
-	<!--repositories>
-		<repository>
-			<id>archiva.third-party</id>
-			<name>Liberaciones de terceros</name>
-			<url>http://192.168.1.253:8081/archiva/repository/third.party</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>archiva.third-party</id>
-			<name>Liberaciones de terceros</name>
-			<url>http://192.168.1.253:8081/archiva/repository/third.party</url>
-		</pluginRepository>
-	</pluginRepositories-->
+	<!--
+		repositories> <repository> <id>archiva.third-party</id>
+		<name>Liberaciones de terceros</name>
+		<url>http://192.168.1.253:8081/archiva/repository/third.party</url>
+		</repository> </repositories> <pluginRepositories> <pluginRepository>
+		<id>archiva.third-party</id> <name>Liberaciones de terceros</name>
+		<url>http://192.168.1.253:8081/archiva/repository/third.party</url>
+		</pluginRepository> </pluginRepositories
+	-->
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring</artifactId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
@@ -163,6 +193,11 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
@@ -237,7 +272,7 @@
 			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
-				<version>2.3.9</version>
+				<version>2.3.16</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.poi</groupId>
@@ -326,12 +361,13 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>archiva.default</id>
 			<name>Liberaciones Internas</name>
-			<url>http://192.168.1.253:8081/archiva/repository/internal.releases</url>
+			<url>http://192.168.1.253:8081/archiva/repository/internal.releases
+			</url>
 		</repository>
 		<snapshotRepository>
 			<id>archiva.snapshots</id>
@@ -341,7 +377,7 @@
 	</distributionManagement>
 
 	<properties>
-		<spring.version>2.5.6</spring.version>
+		<spring.version>3.0.0.RELEASE</spring.version>
 		<hibernate.version>3.2.7.ga</hibernate.version>
 		<mysql.version>5.1.9</mysql.version>
 		<servlet-api.version>2.5</servlet-api.version>
@@ -351,8 +387,8 @@
 		<jms.version>1.1</jms.version>
 		<activemq.version>5.3.0</activemq.version>
 		<jasper.version>3.5.3</jasper.version>
-		<junit.version>4.4</junit.version>
-		<groovy.version>1.7-beta-2</groovy.version>
+		<junit.version>4.7</junit.version>
+		<groovy.version>1.7.0</groovy.version>
 	</properties>
 
 
