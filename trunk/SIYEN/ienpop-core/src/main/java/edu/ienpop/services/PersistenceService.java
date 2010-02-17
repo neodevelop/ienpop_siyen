@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 @SuppressWarnings("unchecked")
 public interface PersistenceService {
-	Serializable createEntity(Object o) throws BusinessException;
-	void updateEntity(Object o) throws BusinessException;
-	void deleteEntity(Object o) throws BusinessException;
-	List getAllEntities(String entity) throws BusinessException;
-	Object findById(Class clazz,Serializable pk) throws BusinessException;
+	Serializable createEntity(Object o);
+	void updateEntity(Object o);
+	void deleteEntity(Object o);
+	List getAllEntities(String entity);
+	Object findById(Class clazz,Serializable pk);
 }

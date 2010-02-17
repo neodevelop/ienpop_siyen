@@ -7,17 +7,17 @@ import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
 @SuppressWarnings("unchecked")
 public interface CursoService {
-	Curso generateCertificadosXCurso(long idCurso) throws BusinessException;
-	Curso generateCertificadosXCursoRecuperado(long idCurso) throws BusinessException;
-	List getCursosXStatus(CursoCriteria cursoCriteria) throws BusinessException;
-	List getOficio(Date fechaInicio,Date fechaFin, String idPuerto) throws BusinessException;
-	List getInformePeriodico(Date desde, Date hasta) throws BusinessException;
-	List getInformeXTipoLibreta(int mes, int anio, String libreta, String idPuerto) throws BusinessException;
-	long addCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException;
-	long updateCursoCertificado(long idCursoXCertificar, String llave) throws BusinessException;
-	String getIdTipoCursoById(String idCurso) throws BusinessException;
-	Curso getCursoByTokenCertificado(String token) throws BusinessException;
-	Integer getCountCursosByCriteria(CursoCriteria cursoCriteria) throws BusinessException;
-	Curso getCursoById(Long id) throws BusinessException;
-	void recoveryCursoCertificado(Curso cursoModificar, List<String> alumnos) throws BusinessException;
+	Curso generateCertificadosXCurso(long idCurso);
+	Curso generateCertificadosXCursoRecuperado(long idCurso);
+	List getCursosXStatus(CursoCriteria cursoCriteria);
+	List getOficio(Date fechaInicio,Date fechaFin, String idPuerto);
+	List getInformePeriodico(Date desde, Date hasta);
+	List getInformeXTipoLibreta(int mes, int anio, String libreta, String idPuerto);
+	long addCursoCertificado(long idCursoXCertificar, String llave);
+	long updateCursoCertificado(long idCursoXCertificar, String llave);
+	String getIdTipoCursoById(String idCurso);
+	Curso getCursoByTokenCertificado(String token);
+	Integer getCountCursosByCriteria(CursoCriteria cursoCriteria);
+	Curso getCursoById(Long id);
+	void recoveryCursoCertificado(Curso cursoModificar, List<String> alumnos);
 }

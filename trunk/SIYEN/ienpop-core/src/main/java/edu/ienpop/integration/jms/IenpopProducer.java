@@ -1,10 +1,9 @@
 package edu.ienpop.integration.jms;
 
 import edu.ienpop.model.Usuario;
-import edu.ienpop.services.BusinessException;
 
 public interface IenpopProducer {
-	public void sendMessage(String m) throws BusinessException;
-	public void generarLLaveQueue(long idCursoXCertificar,String email) throws BusinessException;
-	public void notificarAcceso(Usuario usuario) throws BusinessException;
+	public void sendMessage(String m);
+	public void generarLLaveQueue(long idCursoXCertificar,String email);
+	public void notificarAcceso(Usuario usuario);
 }

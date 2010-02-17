@@ -9,13 +9,13 @@ import edu.ienpop.model.CursoXCertificar;
 
 @SuppressWarnings("unchecked")
 public interface CursoXCertificarService {
-	Serializable createNuevoCurso(CursoXCertificar cursoXCertificar) throws BusinessException;
-	void addAlumnoACursoXCertificar(long idCursoXCertificar,AlumnoXCertificar alumnoXCertificar) throws BusinessException;
-	void removeAlumnoACursoXCertificar(long idCursoXCertificar,AlumnoXCertificar alumnoXCertificar) throws BusinessException;
-	void addAlumnosACursoXCertificar(long idCursoXCertificar,Set alumnosXCertificar) throws BusinessException;
-	void changeAlumnoACursoXCertificar(AlumnoXCertificar alumnoXCertificar) throws BusinessException;
-	Set getAlumnosDeCursoXCertificar(Long idCursoXCertificar) throws BusinessException;
-	List getCursosXCertificarSinLlave(String[] idUsuario,String[] idPuerto)  throws BusinessException;
-	List getCursosXCertificarConLlave(String[] idUsuario,String[] idPuerto)  throws BusinessException;
-	List getCursosXCertificarReimpresion(String[] idUsuario,String[] idPuerto)  throws BusinessException;
+	Serializable createNuevoCurso(CursoXCertificar cursoXCertificar);
+	void addAlumnoACursoXCertificar(long idCursoXCertificar,AlumnoXCertificar alumnoXCertificar);
+	void removeAlumnoACursoXCertificar(long idCursoXCertificar,AlumnoXCertificar alumnoXCertificar);
+	void addAlumnosACursoXCertificar(long idCursoXCertificar,Set alumnosXCertificar);
+	void changeAlumnoACursoXCertificar(AlumnoXCertificar alumnoXCertificar);
+	Set getAlumnosDeCursoXCertificar(Long idCursoXCertificar);
+	List getCursosXCertificarSinLlave(String[] idUsuario,String[] idPuerto);
+	List getCursosXCertificarConLlave(String[] idUsuario,String[] idPuerto);
+	List getCursosXCertificarReimpresion(String[] idUsuario,String[] idPuerto);
 }
