@@ -10,13 +10,6 @@
 	<artifactId>ienpop-core</artifactId>
 	<packaging>jar</packaging>
 	<name>ienpop-core</name>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-		</dependency>
-	</dependencies>
 
 	<scm>
 		<connection>http://192.168.1.253/svn/trunk/SIYEN/ienpop-core</connection>
