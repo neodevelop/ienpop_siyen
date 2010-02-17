@@ -57,7 +57,7 @@ public class MailServiceDefaultImpl implements MailService {
 	}
 
 	public void sendMailWithAttach(String email, String message,
-			String subject, FileSystemResource attach) {
+			String subject, String attach) {
 		try {
 			MimeMessage mimeMessage = getJavaMailSender().createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
@@ -65,7 +65,8 @@ public class MailServiceDefaultImpl implements MailService {
 			helper.setFrom("siyen@ienpop.net");
 			helper.setText(message);
 			helper.setSubject(subject);
-			helper.addAttachment(attach.getFilename(), attach);
+			def file = new FileSystemResource(attach);
+			helper.addAttachment(file.getFilename(), file);
 			getJavaMailSender().send(mimeMessage);
 		} catch (MessagingException e) {
 			//throw new BusinessException("No se puede enviar el correo", e);
@@ -73,7 +74,7 @@ public class MailServiceDefaultImpl implements MailService {
 	}
 
 	public void sendMailWithInline(String email, String message,
-			String subject, FileSystemResource inline) {
+			String subject, String inline) {
 		try {
 			MimeMessage mimeMessage = getJavaMailSender().createMimeMessage();
 			MimeMessageHelper helper;
@@ -82,7 +83,8 @@ public class MailServiceDefaultImpl implements MailService {
 			helper.setFrom("siyen@ienpop.net");
 			helper.setSubject(subject);
 			helper.setText(message, true);
-			helper.addInline("identifier1", inline);
+			def file = new FileSystemResource(inline);
+			helper.addInline("identifier1", file);
 			getJavaMailSender().send(mimeMessage);
 		} catch (MessagingException e) {
 			//throw new BusinessException("No se puede enviar el correo", e);
