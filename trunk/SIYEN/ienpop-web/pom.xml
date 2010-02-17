@@ -10,12 +10,10 @@
 	<artifactId>ienpop-web</artifactId>
 	<packaging>war</packaging>
 	<name>ienpop-web</name>
-	<!--repositories>
-		<repository>
-			<id>neodevelop</id>
-			<url>http://192.168.1.67/maven2</url>
-		</repository>
-	</repositories-->
+	<!--
+		repositories> <repository> <id>neodevelop</id>
+		<url>http://192.168.1.67/maven2</url> </repository> </repositories
+	-->
 	<dependencies>
 		<!-- Ienpop -->
 		<dependency>
@@ -31,7 +29,35 @@
 		<!-- SPRING FRAMEWORK -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -42,12 +68,13 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
+		</dependency>
+		<!-- HIBERNATE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
 		</dependency>
 		<!-- AspectJ -->
 		<dependency>
@@ -183,11 +210,11 @@
 				</configuration>
 			</plugin>
 			<plugin>
-			        <groupId>org.codehaus.mojo</groupId>
-			        <artifactId>tomcat-maven-plugin</artifactId>
-			        <configuration>
-						<path>/siyen</path>
-			        </configuration>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<configuration>
+					<path>/siyen</path>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.groovy.maven</groupId>
