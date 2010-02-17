@@ -78,7 +78,7 @@ public class TestCursoDao {
 	@Test
 	public void testCursoDao3() {
 		AbstractDependencyInjectionSpringContextTests.assertEquals(
-				"CAPACO3234", cursoDao.getTipoCursoByIdCurso("111894"));
+				"PATMAR", cursoDao.getTipoCursoByIdCurso("111894"));
 	}
 
 	@Test

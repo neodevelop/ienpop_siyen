@@ -35,7 +35,7 @@ public class TestDaoLlave {
 	@Test
 	public void testDao2() throws InterruptedException{
 		Thread.sleep(2000);
-		LlaveCertificacion llave = (LlaveCertificacion)dao.getByPK(LlaveCertificacion.class, new Long(11));
+		LlaveCertificacion llave = (LlaveCertificacion)dao.getByPK(LlaveCertificacion.class, new Long(30));
 		llave.setFechaUtilizacion(Calendar.getInstance().getTime());
 		llave.setIdStatusLlave(1);
 		//dao.update(llave);
