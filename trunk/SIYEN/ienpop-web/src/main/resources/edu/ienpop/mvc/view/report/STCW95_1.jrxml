@@ -1,201 +1,314 @@
-<?xml version="1.0" encoding="UTF-8"  ?>
-<!-- Created with iReport - A designer for JasperReports -->
-<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-<jasperReport
-		 name="STCW95_1"
-		 columnCount="1"
-		 printOrder="Vertical"
-		 orientation="Landscape"
-		 pageWidth="792"
-		 pageHeight="612"
-		 columnWidth="732"
-		 columnSpacing="0"
-		 leftMargin="30"
-		 rightMargin="30"
-		 topMargin="20"
-		 bottomMargin="20"
-		 whenNoDataType="NoPages"
-		 isTitleNewPage="false"
-		 isSummaryNewPage="false">
-	<property name="ireport.scriptlethandling" value="2" />
-	<property name="ireport.encoding" value="UTF-8" />
-	<import value="java.util.*" />
-	<import value="net.sf.jasperreports.engine.*" />
-	<import value="net.sf.jasperreports.engine.data.*" />
-
-
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="STCW95" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="732" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="2"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
 	<field name="llave" class="java.lang.String"/>
-
-		<background>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</background>
-		<title>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</title>
-		<pageHeader>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</pageHeader>
-		<columnHeader>
-			<band height="1"  isSplitAllowed="true" >
-			</band>
-		</columnHeader>
-		<detail>
-			<band height="571"  isSplitAllowed="true" >
-				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						mode="Opaque"
-						x="22"
-						y="507"
-						width="207"
-						height="58"
-						forecolor="#000000"
-						backcolor="#FFFFFF"
-						key="barcode-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<graphicElement stretchType="NoStretch" pen="None" fill="Solid" />
-					<imageExpression class="java.awt.Image"><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$F{llave},false,false,null,0,0)]]></imageExpression>
-				</image>
-				<staticText>
-					<reportElement
-						x="443"
-						y="505"
-						width="283"
-						height="58"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
-					</textElement>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="572" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-1" x="445" y="507" width="283" height="58"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
 				<text><![CDATA[INSTITUCIÓN EDUCATIVA AUTORIZADA POR LA SCT/DGMM  OFICIO 109.202.0582003 DEL 16 DE ABRIL DE 2003 ]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="426"
-						y="174"
-						width="299"
-						height="145"
-						key="staticText-3"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
-					</textElement>
-				<text><![CDATA[CONSTANCY OF REFRESHER AND UPDATING BASIC SAFETY TRAINING COURSE (BST) INSTRUCTION COMPLETED UNDER THE PROVISIONS OF THE INTERNATIONAL CONVENTION ON STANDARDS OF TRAINING, CERTIFICATION AND WATCHKEEPING FOR SEAFARERS 1978, AS AMENDED IN 1995, SECTION A-VI/1 IN FOUR AREAS; PERSONAL SURVIVAL TECHNIQUES; FIRE PREVENTION AND FIRE FIGHTING; ELEMENTARY FIRTS AID; AND, PERSONAL SAFETY AND SOCIAL RESPONSIBILITY.
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="0" y="448" width="732" height="57"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CONSTANCY OF FISHING VESSEL INSTRUCTION (FVI)  COURSE COMPLETED UNDER THE PROVISIONS OF THE INTERNATIONAL CONVENTION ON STANDARDS OF TRAINING, CERTIFICATION AND WATCHKEEPING FOR FISHING VESSEL PERSONNEL, 1995, RULE 2, APPENDIX, PARAGRAPH 12, APPLICABLE TO  VESSELS LESS OF 24 MTS LENGTH. IN AREA OF EMERGENCY PROCEDURES AND SAFETY LABOR PRACTICE OF FISHING VESSEL PERSONNEL.
 MEXICO MERCHANT MARINE GENERAL DIRECTION COURSE APROVAL 109.403.0530 (26.I.99)]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="426"
-						y="340"
-						width="300"
-						height="82"
-						key="staticText-4"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
-					</textElement>
-				<text><![CDATA[THIS CONSTANCY IS VALID ACCOMPANIED BY A VALID MERCHANT MARINERS’ ENDORSEMENT, CERTIFICATE OR DOCUMENT ISSUED BY MEXICO MARITIME ADMINISTRATION UNDER THE PROVISION OF THE STCW78, AS AMENDED IN 1995, RULE I/2.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="5"
-						y="175"
-						width="186"
-						height="17"
-						key="staticText-5"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[CONTENIDO:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="5"
-						y="192"
-						width="399"
-						height="56"
-						key="staticText-6"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[CURSO DE REPASO Y ACTUALIZACIÓN
-REFRESHER AND UPDATING COURSES
-1. TECNICAS DE SUPERVIVENCIA PERSONAL.  A-VI/1-1    C-STCW 95
-
-]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="21"
-						y="237"
-						width="389"
-						height="151"
-						key="staticText-7"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
-					</textElement>
-				<text><![CDATA[
-       FIRE PREVENTI9ON AND FIRE FIGHTING
-
-       ELEMENTARY FIRST AID
-
-       PERSONAL SAFETY AND SOCIAL RESPONSIBILITIES
-]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="5"
-						y="192"
-						width="379"
-						height="56"
-						key="staticText-8"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Oblique" isItalic="true"/>
-					</textElement>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-3" x="2" y="44" width="372" height="397"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<text><![CDATA[
 
 
+       Introducción, seguridad y supervivencia
 
+       Situaciones de emergencia  
+
+       Abandono
+
+       Embarcaciones de supervivencia y botes de rescate.
+
+       Equipo de supervivencia personal
+
+       Supervivencia en el mar
+
+       Equipo de radio comunicación de emergencia
+
+
+
+       Reducción de los riesgos de incendio
+
+       Mantener un estado de preparación que permita responder a situaciones de emergencia en las que se produzcan incendios
+
+       Extinción y lucha contra incendios
+
+
+
+       Principios generales
+
+       Estructura y funciones del organismo  humano.
+
+       Colocación del accidentado.
+
+       Accidentado inconsciente.
+
+       Reanimación.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-5" x="2" y="29" width="360" height="11"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CONTENIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="2" y="44" width="372" height="307"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TECNICAS DE SUPERVIVENCIA PERSONAL.  A-VI/1-1    C-STCW 95
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PREVENCION Y LUCHA CONTRA INCENDIOS.  A-VI/1-2        C-STCW 95
+
+
+
+
+
+
+
+
+COMPETENCIA EN PRIMEROS AUXILIOS (BASICO). A.VI/1-3        C-STCW 95
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="2" y="44" width="372" height="392"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[
 PROFICINECY IN PERSONAL SURVIVAL TECHNIQUES
+1.1  Introduction, safety and survival
+
+1.2. Emergency situations
+
+1.3. Evacuation
+
+1.4. Survival craft and rescue boats
+
+1.5. Personal life-saving appliances
+
+1.6. Survival at sea
+
+1.7. Emergency radio equipment
+
+
+FIRE PREVENTION AND FIRE FIGHTING
+2.1. Minimize the risk of fire
+
+2.2. Mantain a state of readiness to respond to emergency situations involving fire
+
+
+2.3. Fight and extinguish fires
+
+
+ELEMENTARY FIRST AID
+3.1. General principles
+
+3.2. Body structure and fuctions
+
+3.3. Positioning of casualty
+
+3.4. The unconscious casualty
+
+3.5. Resuscitation
+
 ]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="21"
-						y="237"
-						width="400"
-						height="107"
-						key="staticText-9"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[1.1. PREVENCION Y LUCHA CONTRA INCENDIOS.  A-VI/1-2     C-STCW 95
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-8" x="382" y="44" width="350" height="394"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[
+       Hemorragia.
 
-2.1. COMPETENCIA EN PRIMEROS AUXILIOS (BASICO). A.VI/1-3     C-STCW 95
+       Medidas en caso de shock.
 
-3.1. SEGURIDAD PERSONAL Y RESPONSABILIDAD SOCIAL (AVI/1-4)
+       Quemaduras y escaldaduras, accidentes, causados por corriente eléctrica.
+
+       Salvamento y transporte de la víctima
+
+
+
+       Observar las prácticas de seguridad en el trabajo
+
+       Relaciones humanas a bordo
+
+
+       Comprender las órdenes y hacerse entender en relación con las tareas de abordo.
+
+       Cumplir con los procedimientos de emergencia
+
+       Tomar precauciones para prevenir la contaminacion del medio marítimo
+
+       Contribuir a que las relaciones humanas a bordo del buque sean buenas
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-9" x="380" y="44" width="307" height="302"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[3.6. Bleeding
+
+3.7. Management of shock
+
+3.8. Burns and scalds, and accident causes by electricity
+
+3.9. Rescue and transport of casuality
+
+
+PERSONAL SAFETY AND SOCIAL RESPONSIBILITIES
+4.1. Observe safety working practices
+
+4.2. Human relationships on board ship
+
+4.3. Understand orders and be understood in relation to shipboard duties
+
+
+4.4. Comply with emergency procedures
+
+4.5. Take precautions to prevent pollution of the marine environment
+
+4.6. Contribute to effective human relationships on board ship
 
 ]]></text>
-				</staticText>
-			</band>
-		</detail>
-		<columnFooter>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</columnFooter>
-		<pageFooter>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</pageFooter>
-		<summary>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-		</summary>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-10" x="382" y="44" width="346" height="345"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="9" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[
+
+
+
+
+
+
+
+SEGURIDAD PERSONAL Y RESPONSABILIDAD SOCIAL (AVI/1-4)
+
+
+
+]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="9" y="505" width="215" height="65"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="130">
+					<jr:codeExpression><![CDATA[$F{llave}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>
