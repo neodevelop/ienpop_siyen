@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="CAPACO3234" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPACO3234.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPASOC3236" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPASOC3236.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+
+	<bean id="CAPATCO3232" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPATCO3232.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPATLI3231" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPATLI3231.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPATPES3235" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPATPES3235.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPCAM311" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPCAM311.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPCOC312" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPCOC312.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPCON322" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPCON322.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMOT331" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMOT331.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMOT331_P" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMOT331_P.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMOT332_P" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMOT332_P.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMOT332" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMOT332.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMOT333_P" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMOT333_P.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMOT333" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMOT333.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPTIM321" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPTIM321.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="FAMBT1" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/FAMBT1.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="INICIA1_D" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/INICIA1_D.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="INICIA1_P" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/INICIA1_P.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="INICIA1" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/INICIA1.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="INICIA" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/INICIA.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="MOTPESOC" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/MOTPESOC.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="OPBOTS1" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/OPBOTS1.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="PATMAR" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/PATMAR.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="PATRON_DE_YATE_I" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/PATRON_DE_YATE_I.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="PATRON_DE_YATE_II" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/PATRON_DE_YATE_II.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="PATRON_DE_YATE_III" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/PATRON_DE_YATE_III.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="RI-11" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/RI-11.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="SEGBAPES" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/SEGBAPES.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="SEGBATUR" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/SEGBATUR.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="SEPLAC4.1" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/SEPLAC4.1.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="SMODU95" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/SMODU95.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="STCW95_1" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95_1.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="STCW95_2" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95_2.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="STCW95_P1" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95_P1.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="STCW95_P2" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95_P2.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="STCW95_R" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95_R.jrxml"/>
+		<property name="reportDataKey" value="llaves"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="STCW95" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="reportDataKey" value="llaves"/>
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/STCW95.jrxml"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+	
+	<bean id="CAPMAY313" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+		<property name="reportDataKey" value="llaves"/>
+		<property name="url" value="classpath:/edu/ienpop/mvc/view/report/CAPMAY313.jrxml"/>
+		<property name="formatKey" value="format"/>
+	</bean>
+</beans>

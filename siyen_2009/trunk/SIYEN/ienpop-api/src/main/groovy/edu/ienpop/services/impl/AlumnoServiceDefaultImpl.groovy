@@ -45,5 +45,9 @@ public class AlumnoServiceDefaultImpl implements AlumnoService {
 			throw new BusinessException("El nombre no puede ser vac’o o nulo...");
 		}		
 	}
-
+	
+	Alumno getAlumnoPorNumeroControl(String numeroControl){
+		Long id = numeroControl.substring(2) as Long
+		dao.getByPK(Alumno.class, id) as Alumno
+	}
 }

@@ -1,4 +1,9 @@
-package edu.ienpop.services.impl;
+package edu.ienpop.services;
+
+import java.util.List;
+
+import edu.ienpop.model.Alumno;
+import edu.ienpop.model.Curso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -357,4 +362,32 @@ public class CursoServiceDefaultImpl implements CursoService {
 		cursoRecuperado.setAlumnos(alumnosRecuperados);
 		return cursoRecuperado;
 	}
+	
+	void cambiarAgregarAlumnosACurso(List<Alumno> alumnos,Curso curso){
+		log.debug("Validando si el curso o los alumnos no son null...")
+		if(!curso || !alumnos)
+			throw new BusinessException("No se admiten cursos vac’os...")
+		log.debug("Validando si el curso ya existe, si no es as’ entonces se crea....")
+		if(!curso.id){
+			curso.setAlzumnos(new HashSet())
+			persistenceService.createEntity(curso)
+		}
+		log.debug("iterando la lista de alumnos")
+		alumnos.each{ alumno -> 
+			log.debug("Asignando alumno ${ToStringBuilder.reflectionToString(alumno)} al curso $curso.id")
+			alumno.curso = curso
+			if(!alumno.id){
+				log.debug("Creando el alumno que no tiene id = $alumno.id ...")
+				persistenceService.createEntity(alumno)
+				persistenceService.updateEntity(alumno)
+			}else{
+				log.debug("Actualizando el alumno con id $alumno.id ...")
+				persistenceService.updateEntity(alumno)
+			}
+			log.debug("Agregamos el alumno al curso $curso.id")
+			curso.getAlumnos().add(alumno)
+		}
+		persistenceService.updateEntity(curso)
+	}
+	
 }

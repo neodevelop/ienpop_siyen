@@ -7,15 +7,18 @@ import java.util.Set;
 import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.velocity.app.event.NullSetEventHandler.ShouldLogOnNullSetExecutor;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.ExpectedException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ienpop.model.Alumno;
+import edu.ienpop.model.CatalogoCurso;
 import edu.ienpop.model.Curso;
 import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.services.BusinessException;
@@ -72,6 +75,7 @@ public class TestCursoService {
 	}
 
 	@Test
+	@Ignore
 	public void testCursoService2() {
 		// cursoService.generateCertificadosXCurso(111902);
 		CursoCriteria cursoCriteria = new CursoCriteria();
@@ -139,8 +143,30 @@ public class TestCursoService {
 	}
 	
 	@Test
+	@Ignore
 	public void testCountPorCriteria(){
 		CursoCriteria cursoCriteria = new CursoCriteria(idStatusCurso:4)
 		assert cursoService.getCountCursosByCriteria(cursoCriteria) > 0
+	}
+	
+	@Test
+	@ExpectedException(BusinessException)
+	void pruebaCambiarAgregarAlumnosACurso(){
+		cursoService.cambiarAgregarAlumnosACurso null, null
+	}
+	
+	@Test
+	void pruebaCambiarAgregarAlumnosACurso2(){
+		def curso = new Curso(fechaHoraRegistro:new Date(),idPuerto:'ACG',idUsuario:'RAMIREZ',idStatusCurso:4,idLlave:0)
+		curso.tipoCurso = persistenceService.findById(CatalogoCurso.class, "INICIA")
+		curso.fechaHoraRegistro = new Date()
+		curso.idPuerto = 'ACG'
+		curso.idUsuario = 'RAMIREZ'
+		curso.idStatusCurso = 4
+		curso.idLlave = 0
+		def alumnos = []
+		alumnos << new Alumno(nombreCompleto:'JOSE JUAN REYES ZU„IGA',idStatusAlumno:3,fechaHoraRegistro:new Date())
+		alumnos << persistenceService.findById(Alumno.class, 63031L)
+		cursoService.cambiarAgregarAlumnosACurso(alumnos, curso)
 	}
 }

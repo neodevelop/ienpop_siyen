@@ -24,7 +24,6 @@ public class TestAlumnoDao{
 	AlumnoDao alumnoDao;
 	
 	@Test
-	@SuppressWarnings("unchecked")
 	public void testAlumnoDao(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		//alumnoCriteria.setId(new Long(33919));
@@ -38,7 +37,7 @@ public class TestAlumnoDao{
 	
 	@Test
 	//@Ignore
-	@SuppressWarnings("unchecked")
+	
 	public void testAlumnoDao2(){
 		AlumnoCriteria alumnoCriteria = new AlumnoCriteria();
 		alumnoCriteria.setFirstResult(20);
