@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<!--value>
+				classpath:edu/ienpop/persistence/environment/development.properties
+			</value-->
+			<!--value>
+				classpath:edu/ienpop/persistence/environment/testing.properties
+			</value-->
+			<value>
+				classpath:edu/ienpop/persistence/environment/production.properties
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${jdbc.url}" />
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<!-- Al final de la aplicación, se hará un escalado a un recurso JNDI del AppServer para el dataSource -->
+	
+</beans>

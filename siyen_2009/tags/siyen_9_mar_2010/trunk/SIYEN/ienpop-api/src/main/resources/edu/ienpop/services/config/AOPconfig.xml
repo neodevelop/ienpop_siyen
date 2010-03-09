@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	
+	<bean id="serviceThrowsAdvice" class="edu.ienpop.advices.ServiceThrowsAdvice">
+	</bean>
+
+	<aop:aspectj-autoproxy/>
+		
+	<aop:config>
+		<aop:pointcut id="dataAccessThrowsPointcut" expression="execution(* edu.ienpop.services.*.*(..))"/>
+		<aop:aspect id="dataAccessThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="dataAccessThrowsPointcut" throwing="dataAccessEx" method="doRecoveryActionDataAccess"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="lazyThrowsPointcut" expression="execution(* edu.ienpop.dao.*.*(..))"/>
+		<aop:aspect id="lazyThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="lazyThrowsPointcut" throwing="lazyException" method="doRecoveryActionLazy"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="jdbcGenericThrowsPointcut" expression="execution(* edu.ienpop.services.*.*(..))"/>
+		<aop:aspect id="jdbcGenericThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="jdbcGenericThrowsPointcut" throwing="jdbcException" method="doRecoveryActionGenericJDBC"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="netConnectionThrowsPointcut" expression="execution(* edu.ienpop.integration.jms.impl..*(..))"/>
+		<aop:aspect id="netConnectionThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="netConnectionThrowsPointcut" throwing="jmsException" method="doRecoveryActionNetConnection"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="ioThrowsPointcut" expression="execution(* edu.ienpop.services.*.Chart*(..))"/>
+		<aop:aspect id="ioThrowsAspect" ref="serviceThrowsAdvice">
+			<aop:after-throwing pointcut-ref="ioThrowsPointcut" throwing="ioException" method="doRecoveryIOException"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<tx:advice id="tx-advice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="NOT_SUPPORTED"/>
+			<tx:method name="find*" read-only="true" propagation="NOT_SUPPORTED"/>
+			<tx:method name="is*" read-only="true" propagation="NOT_SUPPORTED"/>
+			<tx:method name="add*" read-only="false" propagation="REQUIRES_NEW"/>
+			<tx:method name="create*" read-only="false" propagation="REQUIRES_NEW"/>
+			<tx:method name="generate*" read-only="false" propagation="REQUIRES_NEW"/>
+			<tx:method name="remove*" read-only="false" propagation="REQUIRES_NEW"/>
+			<tx:method name="change*" read-only="false" propagation="REQUIRES_NEW"/>
+			<tx:method name="*" read-only="false" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="businessServicesPointcut" expression="execution(* edu.ienpop.services.*.*(..))"/>
+		<aop:advisor advice-ref="tx-advice" pointcut-ref="businessServicesPointcut"/>
+	</aop:config>
+	
+</beans>
