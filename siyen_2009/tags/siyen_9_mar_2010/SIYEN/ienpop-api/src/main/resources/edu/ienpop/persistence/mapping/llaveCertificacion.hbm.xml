@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="edu.ienpop.model.LlaveCertificacion" table="llave_certificacion">
+		<id name="id" column="idLlave">
+			<generator class="increment"/>
+		</id>
+		<property name="llave" insert="true"/>
+		<property name="idCursoXCertificar" insert="true"/>
+		<property name="fechaGeneracion" insert="false"/>
+		<property name="fechaUtilizacion" insert="false"/>
+		<property name="idStatusLlave" insert="false"/>
+	</class>
+</hibernate-mapping>
