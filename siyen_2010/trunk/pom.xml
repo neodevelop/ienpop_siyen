@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.ienpop</groupId>
+		<artifactId>ienpop-parent</artifactId>
+		<version>1-SNAPSHOT</version>
+		<relativePath>../ienpop-parent/pom.xml</relativePath>
+	</parent>
+	<name>SIYEN</name>
+	<groupId>edu.ienpop</groupId>
+	<artifactId>siyen</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<description>
+		El SIYEN es el sistema de información del IENPOP, el cual, administra el manejo de cursos, sus validaciones, la generación de constancias y de informes varios para la operación de la organización
+	</description>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<modules>
+		<module>skin</module>
+		<module>modules</module>
+		<module>documentation</module>
+  </modules>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
