@@ -4,8 +4,12 @@
 	<pluginVersion><![CDATA[2.3.2.201003220227-RELEASE]]></pluginVersion>
 	<configs>
 		<config>
-			<file>src/main/webapp/WEB-INF/cursoSinCertificar/crea-flow.xml</file>
-			<name><![CDATA[crea-flow]]></name>
+			<file>src/main/webapp/WEB-INF/alumnoSinCertificar/alumnoSinCertificar.xml</file>
+			<name><![CDATA[alumnoSinCertificar]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/cursoSinCertificar/crearCursoSinCertificar.xml</file>
+			<name><![CDATA[crearCursoSinCertificar]]></name>
 		</config>
 	</configs>
 </webflow-project-description>

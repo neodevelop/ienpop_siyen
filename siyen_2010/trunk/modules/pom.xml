@@ -363,7 +363,7 @@
 		<org.springframework.version>3.0.3.RELEASE
 		</org.springframework.version>
 		<org.hibernate.version>3.2.7.ga</org.hibernate.version>
-		<org.hibernate.annotations.version>3.3.1.ga</org.hibernate.annotations.version>
+		<org.hibernate.annotations.version>3.3.1.GA</org.hibernate.annotations.version>
 		<org.springframework.webflow.version>2.1.0.RELEASE</org.springframework.webflow.version>
 		<org.springframework.security.version>3.0.2.RELEASE</org.springframework.security.version>
 	</properties>
