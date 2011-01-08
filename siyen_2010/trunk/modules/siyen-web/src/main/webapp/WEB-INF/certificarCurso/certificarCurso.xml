@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="cursoCriteria" class="edu.ienpop.model.CursoCriteria" />
+
+	<view-state id="verCursos" view="certificarCurso/lista">
+		<on-render>
+			<evaluate
+				expression="cursoSinCertificarService.obtenerCursosConCriteria(cursoCriteria)"
+				result="viewScope.cursosSinCertificar" />
+			<evaluate
+				expression="cursoSinCertificarService.obtenerContadorDeCursosSinCertificar(cursoCriteria)"
+				result="viewScope.contadorCursosSinCertificar" />
+		</on-render>
+		<transition on="pagina" to="verCursos" validate="false">
+			<set name="cursoCriteria.maxSize" value="requestParameters.maxSize" />
+			<set name="cursoCriteria.offset" value="requestParameters.offset" />
+		</transition>
+		<transition on="preparaCurso" to="preparaCurso">
+			<set name="flashScope.idCursoSinCertificar" value="requestParameters.idCursoSinCertificar"/>
+		</transition>
+	</view-state>
+
+	<action-state id="preparaCurso">
+		<evaluate
+			expression="cursoSinCertificarService.obtenerCursoSinCertificarConAlumnos(flashScope.idCursoSinCertificar)"
+			result="flashScope.cursoSinCertificar" />
+		<transition to="muestraCurso"/>
+	</action-state>
+	
+	<view-state id="muestraCurso" view="certificarCurso/muestra">
+		<on-entry>
+			<set name="viewScope.cursoSinCertificar" value="flashScope.cursoSinCertificar"/>
+		</on-entry>
+		<transition on="verCursos" to="verCursos"/>
+		<transition on="certificar" to="certificar"/>
+	</view-state>
+	
+	<decision-state id="certificar">
+		<if then="miPopup" test="true"/>
+	</decision-state>
+	
+	<view-state id="miPopup" popup="true" view="certificarCurso/popup">
+	</view-state>
+
+</flow>
