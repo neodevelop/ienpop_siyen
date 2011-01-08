@@ -81,7 +81,7 @@
 					</li>
 					</ul>
 					<br/>
-					<h1>Opciones para oficina de titulacion</h1>
+					<!-- h1>Opciones para oficina de titulacion</h1>
 					<ul>
 						<li>
 							Buscar cursos
@@ -113,7 +113,7 @@
 						<li>
 							Asignar puertos a usuarios
 						</li>
-					</ul>
+					</ul-->
 					<!-- ELEMENTOS DEL MENU -->
 				</div>
 			</div>
