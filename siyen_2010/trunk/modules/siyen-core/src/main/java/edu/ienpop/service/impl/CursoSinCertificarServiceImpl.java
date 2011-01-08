@@ -1,7 +1,7 @@
 package edu.ienpop.service.impl;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import edu.ienpop.dao.AlumnoSinCertificarDao;
 import edu.ienpop.dao.CursoSinCertificarDao;
@@ -12,45 +12,59 @@ import edu.ienpop.service.CursoSinCertificarService;
 public class CursoSinCertificarServiceImpl implements CursoSinCertificarService {
 
 	private CursoSinCertificarDao cursoSinCertificarDao;
-	private AlumnoSinCertificarDao alumnoSinCertificarDao;
+	private AlumnoSinCertificarDao alumnoSinCertificaroDao;
 
 	public CursoSinCertificarServiceImpl(
 			CursoSinCertificarDao cursoSinCertificarDao,
-			AlumnoSinCertificarDao alumnoSinCertificarDao) {
+			AlumnoSinCertificarDao alumnoSinCertificaroDao) {
 		this.cursoSinCertificarDao = cursoSinCertificarDao;
-		this.alumnoSinCertificarDao = alumnoSinCertificarDao;
+		this.alumnoSinCertificaroDao = alumnoSinCertificaroDao;
 	}
 
-	public void actualizaCursoSinCertificar(
-			CursoSinCertificar cursoSinCertificar,
-			Set<AlumnoSinCertificar> alumnosSinCertificar) {
-		
+	public void actualizaCursoSinCertificar(CursoSinCertificar cursoSinCertificar) {
+		cursoSinCertificarDao.update(cursoSinCertificar);
 	}
 
 	public void borraCursoSinCertificar(Long idCurso) {
-		// TODO Auto-generated method stub
-
+		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
+				.read(idCurso);
+		cursoSinCertificarDao.delete(cursoSinCertificar);
 	}
 
 	public void crearCursoSinCertificar(CursoSinCertificar cursoSinCertificar,
-			Set<AlumnoSinCertificar> alumnosSinCertificar) {
-		
-		if(!(alumnosSinCertificar.size()>0)){
-			throw new BusinessException("No se puede crear un curso sin alumnos registrados...");
+			List<AlumnoSinCertificar> alumnosSinCertificar) {
+
+		if (!(alumnosSinCertificar.size() > 0)) {
+			throw new BusinessException(
+					"No se puede crear un curso sin alumnos registrados...");
 		}
-		
-		for(AlumnoSinCertificar alumno:alumnosSinCertificar){
+
+		for (AlumnoSinCertificar alumno : alumnosSinCertificar) {
 			alumno.setFechaHoraRegistro(new Date());
 			alumno.setCursoSinCertificar(cursoSinCertificar);
 		}
-		
+
 		cursoSinCertificar.setFechaHoraRegistro(new Date());
 		cursoSinCertificar.setAlumnosSinCertificar(alumnosSinCertificar);
 		cursoSinCertificarDao.create(cursoSinCertificar);
+		for (AlumnoSinCertificar alumnoSinCertificar : cursoSinCertificar
+				.getAlumnosSinCertificar()) {
+			alumnoSinCertificaroDao.create(alumnoSinCertificar);
+		}
 	}
 
 	public CursoSinCertificar obtenerCursoSinCertificarConAlumnos(Long idCurso) {
-		return cursoSinCertificarDao.obtenerAlumnosSinCertificarPorIdCurso(idCurso);
+		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
+				.read(idCurso);
+		List<AlumnoSinCertificar> alumnosSinCertificar = alumnoSinCertificaroDao
+				.obtenerAlumnosSinCertificarPorIdCurso(idCurso);
+		cursoSinCertificar.setAlumnosSinCertificar(alumnosSinCertificar);
+		return cursoSinCertificar;
+	}
+
+	@Override
+	public CursoSinCertificar obtenerCursoSinCertificarPorId(Long idCurso) {
+		return cursoSinCertificarDao.read(idCurso);
 	}
 
 }
