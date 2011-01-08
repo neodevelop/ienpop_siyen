@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:/PersistenceAnnotated-AppCtx.xml"})
+@ContextConfiguration(locations={"classpath:/Annotated-AppCtx.xml"})
 public abstract class AbstractJavaConfigBaseClass {
 	
 }
