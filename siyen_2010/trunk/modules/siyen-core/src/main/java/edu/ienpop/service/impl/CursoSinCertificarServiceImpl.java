@@ -6,6 +6,7 @@ import java.util.List;
 import edu.ienpop.dao.AlumnoSinCertificarDao;
 import edu.ienpop.dao.CursoSinCertificarDao;
 import edu.ienpop.model.AlumnoSinCertificar;
+import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.model.CursoSinCertificar;
 import edu.ienpop.service.CursoSinCertificarService;
 
@@ -65,6 +66,17 @@ public class CursoSinCertificarServiceImpl implements CursoSinCertificarService 
 	@Override
 	public CursoSinCertificar obtenerCursoSinCertificarPorId(Long idCurso) {
 		return cursoSinCertificarDao.read(idCurso);
+	}
+
+	@Override
+	public List<CursoSinCertificar> obtenerCursosConCriteria(
+			CursoCriteria cursoCriteria, int offset, int maxSize) {
+		return cursoSinCertificarDao.obtenerCursosSinCertificarConRelaciones(cursoCriteria, offset, maxSize);
+	}
+
+	@Override
+	public int obtenerContadorDeCursosSinCertificar(CursoCriteria cursoCriteria) {
+		return cursoSinCertificarDao.obtenerContadorDeCursosSinCertificar(cursoCriteria);
 	}
 
 }

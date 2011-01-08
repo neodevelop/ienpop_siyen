@@ -17,13 +17,13 @@ import edu.ienpop.model.CursoCriteria;
 class CursoSinCertificarDaoSpockTest extends Specification {
 	
 	@Autowired
-	CursoSinCertificarDao cursoSinCertificarDao;
-
+	CursoSinCertificarDao cursoSinCertificarDao
+	
 	def "encontrar los registros indicados"(){
 		setup:"creando un objeto criteria"
-			def cursoCriteria = new CursoCriteria();
+			def cursoCriteria = new CursoCriteria()
 		when:"buscamos con criteria y paginaci—n"
-			def cursos = cursoSinCertificarDao.obtenerCursosSinCertificarConRelaciones(cursoCriteria, a, b);
+			def cursos = cursoSinCertificarDao.obtenerCursosSinCertificarConRelaciones(cursoCriteria, a, b)
 		then:"la lista del resultado no viene vac’a y sus objetos dependientes tampoco"
 			cursos.size() >= 0
 			cursos.each{ curso ->
