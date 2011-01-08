@@ -16,6 +16,7 @@ import edu.ienpop.dao.CursoCertificadoDao;
 import edu.ienpop.dao.CursoSinCertificarDao;
 import edu.ienpop.dao.InstructorDao;
 import edu.ienpop.dao.LlaveCertificacionDao;
+import edu.ienpop.dao.PuertoDao;
 import edu.ienpop.dao.TipoCursoDao;
 import edu.ienpop.dao.impl.AlumnoCertificadoDaoHibernateImpl;
 import edu.ienpop.dao.impl.AlumnoSinCertificarDaoHibernateImpl;
@@ -23,6 +24,7 @@ import edu.ienpop.dao.impl.CursoCertificadoDaoHibernateImpl;
 import edu.ienpop.dao.impl.CursoSinCertificarDaoHibernateImpl;
 import edu.ienpop.dao.impl.InstructorDaoHibernateImpl;
 import edu.ienpop.dao.impl.LlaveCertificacionDaoHibernateImpl;
+import edu.ienpop.dao.impl.PuertoDaoHibernateImpl;
 import edu.ienpop.dao.impl.TipoCursoDaoHibernateImpl;
 
 /**
@@ -116,7 +118,17 @@ public class PersistenceConfiguration {
 		return new InstructorDaoHibernateImpl(hibernateTemplate());
 	}
 	
+	/**
+	 * @return el dao de la LLaveCertificacion
+	 */
 	public @Bean LlaveCertificacionDao llaveCertificacionDao(){
 		return new LlaveCertificacionDaoHibernateImpl(hibernateTemplate());
+	}
+	
+	/**
+	 * @return el dao de Puerto
+	 */
+	public @Bean PuertoDao puertoDao(){
+		return new PuertoDaoHibernateImpl(hibernateTemplate());
 	}
 }
