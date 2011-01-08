@@ -44,7 +44,6 @@ public class ServiceDefaultConfiguration implements ServiceConfiguration {
 	public @Bean
 	CursoSinCertificarService cursoSinCertificarService() {
 		return new CursoSinCertificarServiceImpl(persistenceConfiguration
-				.cursoSinCertificarDao(), persistenceConfiguration
-				.alumnoSinCertificarDao());
+				.cursoSinCertificarDao(),persistenceConfiguration.alumnoSinCertificarDao());
 	}
 }
