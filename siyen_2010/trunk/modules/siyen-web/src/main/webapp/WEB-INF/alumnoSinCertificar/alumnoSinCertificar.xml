@@ -6,7 +6,7 @@
 
 	<var name="listaAlumnosSinCertificar" class="java.util.ArrayList" />
 
-	<view-state id="capturaAlumnoSinCertificar" model="alumnoSinCertificar">
+	<view-state id="capturaAlumnoSinCertificar" model="alumnoSinCertificar" view="alumnoSinCertificar/capturaAlumnoSinCertificar">
 		<on-render>
 			<evaluate expression="new edu.ienpop.model.AlumnoSinCertificar()"
 				result="viewScope.alumnoSinCertificar" />

@@ -14,7 +14,7 @@
 		<evaluate expression="tipoCursoDao.findAll()" result="flowScope.tiposCursos" />
 	</on-start>
 
-	<view-state id="creaCursoSinCertificar" model="cursoSinCertificar">
+	<view-state id="creaCursoSinCertificar" model="cursoSinCertificar" view="cursoSinCertificar/creaCursoSinCertificar">
 		<on-entry>
 			<evaluate
 				expression="cursoSinCertificarFlow.preparaCursoSinCertificar(cursoSinCertificar)" />
@@ -33,7 +33,7 @@
 		</transition>
 	</subflow-state>
 
-	<view-state id="confirmar">
+	<view-state id="confirmar" view="cursoSinCertificar/confirmar">
 		<transition on="finalizar" to="persistir" />
 	</view-state>
 

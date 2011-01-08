@@ -12,7 +12,7 @@
 
 	<mvc:view-controller path="/principal" view-name="principal" />
 
-	<bean id="viewResolver"
+	<bean id="urlBasedViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="3" />
 		<property name="viewClass"
@@ -20,6 +20,8 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
 	
 	<import resource="Flow-AppCtx.xml"/>
 

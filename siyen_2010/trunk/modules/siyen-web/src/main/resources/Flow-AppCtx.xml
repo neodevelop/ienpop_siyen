@@ -19,7 +19,8 @@
 		<constructor-arg ref="transactionManager" />
 	</bean>
 
-	<flow:flow-registry id="flowRegistry" base-path="/WEB-INF">
+	<flow:flow-registry id="flowRegistry" base-path="/WEB-INF"
+		flow-builder-services="flowBuilderServices">
 		<flow:flow-location-pattern value="/cursoSinCertificar/*.xml" />
 		<flow:flow-location-pattern value="/alumnoSinCertificar/*.xml" />
 	</flow:flow-registry>
@@ -29,5 +30,18 @@
 			<flow:listener ref="hibernateFlowExecutionListener" />
 		</flow:flow-execution-listeners>
 	</flow:flow-executor>
+
+	<flow:flow-builder-services id="flowBuilderServices"
+		view-factory-creator="mvcViewFactoryCreator" development="true" />
+
+	<bean id="mvcViewFactoryCreator"
+		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers">
+			<list>
+				<ref bean="urlBasedViewResolver"/>
+				<ref bean="beanNameViewResolver"/>
+			</list>
+		</property>
+	</bean>
 
 </beans>
