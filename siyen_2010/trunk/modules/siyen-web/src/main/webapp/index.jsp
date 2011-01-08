@@ -1,4 +1,4 @@
-<jsp:forward page="principal.ienpop"/>
+<jsp:forward page="/siyen/principal"/>
 <html>
 <body>
 <h2>Hello World!</h2>

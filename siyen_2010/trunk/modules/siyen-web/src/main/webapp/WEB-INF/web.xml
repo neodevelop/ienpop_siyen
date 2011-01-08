@@ -1,55 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app id="siyen" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                             http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
 
-	<display-name>Aplicacion Web SIYEN</display-name>
+	<display-name>AppWeb del IENPOP</display-name>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:/Annotated-AppCtx.xml
-			classpath*:/AOP-AppCtx.xml
-			classpath*:/Security-AppCtx.xml
+			classpath:/Persistence-AppCtx.xml
 		</param-value>
 	</context-param>
 
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener
-		</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<servlet>
 		<servlet-name>siyen</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:/Web-AppCtx.xml</param-value>
+			<param-value>classpath:/Web-AppCtx.xml</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 
+	<!-- El mapping de lo que va a atender -->
 	<servlet-mapping>
 		<servlet-name>siyen</servlet-name>
+		<url-pattern>/siyen/*</url-pattern>
 		<url-pattern>*.ienpop</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>siyen</servlet-name>
-		<url-pattern>*.pdf</url-pattern>
-	</servlet-mapping>
-
+	<!-- Lista de archivos de inicio -->
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>

@@ -4,8 +4,8 @@
 	<pluginVersion><![CDATA[2.3.2.201003220227-RELEASE]]></pluginVersion>
 	<configs>
 		<config>
-			<file>src/main/webapp/WEB-INF/cursoSinCertificar/nuevo/nuevo-flow.xml</file>
-			<name><![CDATA[nuevo-flow]]></name>
+			<file>src/main/webapp/WEB-INF/cursoSinCertificar/crea-flow.xml</file>
+			<name><![CDATA[crea-flow]]></name>
 		</config>
 	</configs>
 </webflow-project-description>

@@ -11,8 +11,9 @@
 	<artifactId>siyen-web</artifactId>
 	<packaging>war</packaging>
 	<name>Aplicacion Web del SIYEN</name>
+	
 	<build>
-		<finalName>siyen</finalName>
+		<finalName>siyen-web</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -20,7 +21,9 @@
 			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
+
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>siyen-api</artifactId>
@@ -122,6 +125,16 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 		</dependency>
@@ -146,4 +159,5 @@
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
 	</dependencies>
+
 </project>
