@@ -11,5 +11,9 @@
 			<file>src/main/webapp/WEB-INF/cursoSinCertificar/crearCursoSinCertificar.xml</file>
 			<name><![CDATA[crearCursoSinCertificar]]></name>
 		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/certificarCurso/certificarCurso.xml</file>
+			<name><![CDATA[certificarCurso]]></name>
+		</config>
 	</configs>
 </webflow-project-description>

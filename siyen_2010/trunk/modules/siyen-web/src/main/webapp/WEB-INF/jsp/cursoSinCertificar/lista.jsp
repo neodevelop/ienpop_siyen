@@ -38,7 +38,7 @@
 					</c:if>
 					<c:if test="${!cursoSinCertificar.listoParaCertificar}">
 						<a href="${pageContext.request.contextPath}/siyen/cursoSinCertificar/ver/${cursoSinCertificar.idCurso}">
-						Certificar
+						Generar llave
 						</a>
 					</c:if>
 				</td>

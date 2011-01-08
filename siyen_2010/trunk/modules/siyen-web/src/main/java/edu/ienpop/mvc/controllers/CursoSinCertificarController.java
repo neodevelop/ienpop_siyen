@@ -46,10 +46,12 @@ public class CursoSinCertificarController {
 			@RequestParam(defaultValue = "10", required = true, value = "maxSize") int maxSize,
 			ModelMap model) {
 		CursoCriteria cursoCriteria = new CursoCriteria();
+		cursoCriteria.setOffset(offset);
+		cursoCriteria.setMaxSize(maxSize);
 		//Hay que cambiar la llamada al metodo que toma todos los cursos
 		//y poner la que llama los cursos de cierto usuario
 		List<CursoSinCertificar> cursos = cursoSinCertificarService
-				.obtenerCursosConCriteria(cursoCriteria, offset, maxSize);
+				.obtenerCursosConCriteria(cursoCriteria);
 		model.addAttribute("cursosSinCertificar", cursos);
 		model.addAttribute("contadorCursosSinCertificar",
 				cursoSinCertificarService
