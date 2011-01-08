@@ -3,6 +3,7 @@ package edu.ienpop.service;
 import java.util.List;
 
 import edu.ienpop.model.AlumnoSinCertificar;
+import edu.ienpop.model.CursoCriteria;
 import edu.ienpop.model.CursoSinCertificar;
 
 /**
@@ -30,7 +31,7 @@ public interface CursoSinCertificarService {
 	 *         respectivos alumnos
 	 */
 	CursoSinCertificar obtenerCursoSinCertificarConAlumnos(Long idCurso);
-	
+
 	/**
 	 * @param idCurso
 	 * @return CursoSinCertificar solamente por el Id
@@ -51,5 +52,21 @@ public interface CursoSinCertificarService {
 	 *            Corrobora el cursoSinCertificar a borrar y ejecuta el borrado
 	 */
 	void borraCursoSinCertificar(Long idCurso);
-	
+
+	/**
+	 * @param cursoCriteria
+	 * @param offset
+	 * @param maxSize
+	 * @return Con este mñetodo obtenemos un conjunto de cursos paginados a
+	 *         nuestro gusto
+	 */
+	List<CursoSinCertificar> obtenerCursosConCriteria(
+			CursoCriteria cursoCriteria, int offset, int maxSize);
+
+	/**
+	 * @param cursoCriteria
+	 * @return Este método complementa a obtenerCursosConCriteria(...) para
+	 *         obtener el total de cursos con los mismo parametros
+	 */
+	int obtenerContadorDeCursosSinCertificar(CursoCriteria cursoCriteria);
 }
