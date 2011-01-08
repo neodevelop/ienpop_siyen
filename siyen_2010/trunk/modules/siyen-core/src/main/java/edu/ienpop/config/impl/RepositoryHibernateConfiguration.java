@@ -1,4 +1,4 @@
-package edu.ienpop.config;
+package edu.ienpop.config.impl;
 
 import javax.sql.DataSource;
 
@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+import edu.ienpop.config.RepositoryConfiguration;
 import edu.ienpop.dao.AlumnoCertificadoDao;
 import edu.ienpop.dao.AlumnoSinCertificarDao;
 import edu.ienpop.dao.CursoCertificadoDao;
@@ -32,7 +33,7 @@ import edu.ienpop.dao.impl.TipoCursoDaoHibernateImpl;
  * 
  */
 @Configuration
-public class PersistenceConfiguration {
+public class RepositoryHibernateConfiguration implements RepositoryConfiguration {
 
 	/**
 	 * Inyeccion del sessionFactory que viene de la configuracion xml
