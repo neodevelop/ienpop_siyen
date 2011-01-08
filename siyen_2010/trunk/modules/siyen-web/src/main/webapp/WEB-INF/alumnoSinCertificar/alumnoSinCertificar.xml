@@ -4,17 +4,39 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-	<var name="alumnoSinCertificar" class="edu.ienpop.model.AlumnoSinCertificar"/>
-	<input name="cursoSinCertificar" value="cursoSinCertificar"/>
+	<var name="listaAlumnosSinCertificar" class="java.util.ArrayList" />
 
 	<view-state id="capturaAlumnoSinCertificar" model="alumnoSinCertificar">
-		<transition on="alumnoCreado" to="alumnoCreado"/>
+		<on-render>
+			<evaluate expression="new edu.ienpop.model.AlumnoSinCertificar()"
+				result="viewScope.alumnoSinCertificar" />
+		</on-render>
+		<transition on="agregaAlumno" to="agregaAlumno">
+			<set name="requestScope.alumnoSinCertificar" value="viewScope.alumnoSinCertificar"/>
+		</transition>
 		<transition on="cancelar" to="cancelar" />
+		<transition on="terminar" to="terminar" />
+		<transition on="borrar" to="capturaAlumnoSinCertificar">
+			<set name="requestScope.participante" value="requestParameters.participante" type="int" />
+			<evaluate
+				expression="alumnoSinCertificarFlow.quitaAlumnoSinCertificar(requestScope.participante,flowRequestContext)" />
+		</transition>
 	</view-state>
+	
+	<action-state id="agregaAlumno">
+		<evaluate
+				expression="listaAlumnosSinCertificar.add(requestScope.alumnoSinCertificar)" />
+		<transition to="capturaAlumnoSinCertificar"/>
+	</action-state>
 
 	<end-state id="alumnoCreado" view="externalRedirect:/">
-		<output name="alumnoSinCertificar" value="alumnoSinCertificar"/>
+		<output name="alumnoSinCertificar" value="alumnoSinCertificar" />
 	</end-state>
-	<end-state id="cancelar" view="externalRedirect:/"/>
+
+	<end-state id="terminar" view="externalRedirect:/">
+		<output name="listaAlumnosSinCertificar" value="listaAlumnosSinCertificar" />
+	</end-state>
+
+	<end-state id="cancelar" view="externalRedirect:/" />
 
 </flow>

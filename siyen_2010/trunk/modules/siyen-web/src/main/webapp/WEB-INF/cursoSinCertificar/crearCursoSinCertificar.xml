@@ -4,11 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+	<persistence-context />
+
 	<var name="cursoSinCertificar" class="edu.ienpop.model.CursoSinCertificar" />
 
 	<on-start>
 		<evaluate expression="puertoDao.findAll()" result="flowScope.puertos" />
 		<evaluate expression="instructorDao.findAll()" result="flowScope.instructores" />
+		<evaluate expression="tipoCursoDao.findAll()" result="flowScope.tiposCursos" />
 	</on-start>
 
 	<view-state id="creaCursoSinCertificar" model="cursoSinCertificar">
@@ -17,21 +20,37 @@
 				expression="cursoSinCertificarFlow.preparaCursoSinCertificar(cursoSinCertificar)" />
 		</on-entry>
 		<transition on="agregarAlumnos" to="agregarAlumnos"
-			validate="false" />
-		<transition on="cancelar" to="cancelar" validate="false" />
-
+			validate="false">
+			<evaluate
+				expression="cursoSinCertificarFlow.preparaRelaciones(cursoSinCertificar,flowRequestContext)" />
+		</transition>
 	</view-state>
 
 	<subflow-state id="agregarAlumnos" subflow="alumnoSinCertificar">
-		<input name="cursoSinCertificar" value="cursoSinCertificar" />
-		<transition on="alumnoCreado" to="agregarAlumnos">
-			<evaluate expression="cursoSinCertificar.alumnosSinCertificar.add(currentEvent.attributes.alumnoSinCertificar)" />
+		<transition on="terminar" to="confirmar">
+			<evaluate
+				expression="cursoSinCertificar.setAlumnosSinCertificar(currentEvent.attributes.listaAlumnosSinCertificar)" />
 		</transition>
-		<transition on="cancelar" to="cancelar" />
 	</subflow-state>
 
-	<view-state id="cancelar">
-		
+	<view-state id="confirmar">
+		<transition on="finalizar" to="persistir" />
 	</view-state>
+
+	<action-state id="persistir">
+		<evaluate
+			expression="cursoSinCertificarService.crearCursoSinCertificar(cursoSinCertificar,cursoSinCertificar.alumnosSinCertificar)" />
+		<transition to="finalizar" />
+	</action-state>
+
+	<end-state id="salir" view="externalRedirect:contextRelative:/" />
+	
+	<end-state id="finalizar" view="externalRedirect:contextRelative:/"
+		commit="true">
+	</end-state>
+
+	<global-transitions>
+		<transition on="cancelar" to="salir" />
+	</global-transitions>
 
 </flow>
