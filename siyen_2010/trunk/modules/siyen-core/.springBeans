@@ -7,8 +7,18 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/resources/Persistence-AppCtx.xml</config>
+		<config>src/main/resources/AOP-AppCtx.xml</config>
+		<config>src/main/resources/Annotated-AppCtx.xml</config>
 	</configs>
 	<configSets>
+		<configSet>
+			<name><![CDATA[core_config]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/Annotated-AppCtx.xml</config>
+				<config>src/main/resources/AOP-AppCtx.xml</config>
+			</configs>
+		</configSet>
 	</configSets>
 </beansProjectDescription>
