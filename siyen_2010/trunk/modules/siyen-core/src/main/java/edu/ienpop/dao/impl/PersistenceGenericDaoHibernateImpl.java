@@ -62,5 +62,10 @@ public abstract class PersistenceGenericDaoHibernateImpl<T, PK extends Serializa
 		this.getHibernateTemplate().update(transientObject);
 	}
 
-
+	//public void merge(T transientObject){
+	//	this.getHibernateTemplate().merge(transientObject);
+	//}
+	public void flush(){
+		this.getHibernateTemplate().flush();
+	}
 }
