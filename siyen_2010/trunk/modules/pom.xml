@@ -187,6 +187,28 @@
 				<version>${org.springframework.version}</version>
 				<scope>test</scope>
 			</dependency>
+
+			<!--
+				Spring Web Flow is the module of Spring for implementing flows. The
+				Web Flow engine plugs into the Spring Web MVC platform and provides
+				declarative flow definition language
+			-->
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-binding</artifactId>
+				<version>${org.springframework.webflow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-js</artifactId>
+				<version>${org.springframework.webflow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-webflow</artifactId>
+				<version>${org.springframework.webflow.version}</version>
+			</dependency>
+
 			<!--
 				Hibernate is a powerful, high performance object/relational
 				persistence and query service
@@ -272,6 +294,26 @@
 				<artifactId>javassist</artifactId>
 				<version>3.8.0.GA</version>
 			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.5.11</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>taglibs</groupId>
+				<artifactId>standard</artifactId>
+				<version>1.1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.el</groupId>
+				<artifactId>com.springsource.org.jboss.el</artifactId>
+				<version>2.0.0.GA</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -281,6 +323,7 @@
 		<org.hibernate.version>3.2.7.ga</org.hibernate.version>
 		<org.hibernate.annotations.version>3.4.0.GA
 		</org.hibernate.annotations.version>
+		<org.springframework.webflow.version>2.0.8.RELEASE</org.springframework.webflow.version>
 	</properties>
 
 	<reporting>
