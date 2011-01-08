@@ -2,7 +2,6 @@ package edu.ienpop.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 /**
  * @author neodevelop
@@ -43,8 +41,6 @@ public abstract class Curso implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idInstructor")
 	private Instructor instructor;
-	@Transient
-	private Set<Alumno> alumnos;
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idLlave")
 	private LlaveCertificacion llaveCertificacion;
@@ -103,13 +99,5 @@ public abstract class Curso implements Serializable {
 
 	public void setInstructor(Instructor instructor) {
 		this.instructor = instructor;
-	}
-
-	public Set<Alumno> getAlumnos() {
-		return alumnos;
-	}
-
-	public void setAlumnos(Set<Alumno> alumnos) {
-		this.alumnos = alumnos;
 	}
 }
