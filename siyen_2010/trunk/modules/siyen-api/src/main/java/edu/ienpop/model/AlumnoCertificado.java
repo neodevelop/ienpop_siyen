@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "alumnoCertificado")
+@Table(name = "alumno_certificado")
 public class AlumnoCertificado extends Alumno {
 
 	/**

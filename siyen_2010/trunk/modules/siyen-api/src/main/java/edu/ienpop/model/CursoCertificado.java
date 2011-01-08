@@ -11,7 +11,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="cursoCertificado")
+@Table(name="curso_certificado")
 public class CursoCertificado extends Curso {
 
 	/**
@@ -19,7 +19,7 @@ public class CursoCertificado extends Curso {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Column private Date fechaFin;
-	@Column private Boolean certificado;
+	@Column private boolean certificado;
 	
 	public Date getFechaFin() {
 		return fechaFin;
@@ -27,10 +27,11 @@ public class CursoCertificado extends Curso {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	public Boolean getCertificado() {
+	public boolean isCertificado() {
 		return certificado;
 	}
-	public void setCertificado(Boolean certificado) {
+	public void setCertificado(boolean certificado) {
 		this.certificado = certificado;
 	}
+	
 }

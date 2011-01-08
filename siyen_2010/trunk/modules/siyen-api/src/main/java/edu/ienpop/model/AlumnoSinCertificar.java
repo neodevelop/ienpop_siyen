@@ -15,7 +15,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="alumnoSinCertificar")
+@Table(name="alumno_sin_certificar")
 @AttributeOverrides( {
 		@AttributeOverride(name = "idAlumno", column = @Column(name = "idAlumnoSinCertificar"))
 })

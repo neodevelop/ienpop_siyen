@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Transient;
 
 /**
@@ -46,8 +45,8 @@ public abstract class Curso implements Serializable {
 	private Instructor instructor;
 	@Transient
 	private Set<Alumno> alumnos;
-	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name = "idLlave")
 	private LlaveCertificacion llaveCertificacion;
 
 	public LlaveCertificacion getLlaveCertificacion() {

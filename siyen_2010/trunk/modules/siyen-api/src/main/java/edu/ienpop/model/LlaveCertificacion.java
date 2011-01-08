@@ -20,18 +20,18 @@ public class LlaveCertificacion implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id private Long idLlaveCertificacion;
+	@Id private Long idLlave;
 	@Transient private String llave;
 	@Transient private Curso curso;
 	@Transient private Date fechaGeneracion;
 	@Transient private Date fechaUtilizacion;
 	@Transient private Boolean activo;
 	
-	public Long getIdLlaveCertificacion() {
-		return idLlaveCertificacion;
+	public Long getIdLlave() {
+		return idLlave;
 	}
-	public void setIdLlaveCertificacion(Long idLlaveCertificacion) {
-		this.idLlaveCertificacion = idLlaveCertificacion;
+	public void setIdLlave(Long idLlave) {
+		this.idLlave = idLlave;
 	}
 	public String getLlave() {
 		return llave;
