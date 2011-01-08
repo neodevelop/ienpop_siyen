@@ -15,24 +15,22 @@
 		<module>siyen-core</module>
 		<module>siyen-web</module>
 	</modules>
-	<dependencies>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>5.11</version>
-			<classifier>jdk15</classifier>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 	<dependencyManagement>
-		<!-- Dependencia del nucleo del modelo e interfaces sel SIYEN -->
 		<dependencies>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>5.11</version>
+				<classifier>jdk15</classifier>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.7</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- Dependencia del nucleo del modelo e interfaces sel SIYEN -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>siyen-api</artifactId>
@@ -249,13 +247,20 @@
 				<artifactId>commons-logging</artifactId>
 				<version>1.1.1</version>
 			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.15</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<properties>
-		<org.springframework.version>3.0.1.RELEASE</org.springframework.version>
+		<org.springframework.version>3.0.1.RELEASE
+		</org.springframework.version>
 		<org.hibernate.version>3.2.7.ga</org.hibernate.version>
-		<org.hibernate.annotations.version>3.4.0.GA</org.hibernate.annotations.version>
+		<org.hibernate.annotations.version>3.4.0.GA
+		</org.hibernate.annotations.version>
 	</properties>
 
 	<reporting>
