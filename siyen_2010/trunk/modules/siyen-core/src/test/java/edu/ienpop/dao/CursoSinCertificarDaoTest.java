@@ -96,14 +96,4 @@ public class CursoSinCertificarDaoTest extends AbstractJavaConfigBaseClass {
 				.read(cursoSinCertificarPrueba.getIdCurso());
 		Assert.isNull(curso);
 	}
-
-	/**
-	 * Prueba de una relaci—n entre entidades
-	 */
-	@Test
-	public void pruebaObtenerCursoAlumnosPorIdCurso() {
-		CursoSinCertificar curso = cursoSinCertificarDao.obtenerAlumnosSinCertificarPorIdCurso(4L);
-		Assert.notNull(curso,"El curso es null, resultado no esperado...");
-		Assert.notEmpty(curso.getAlumnosSinCertificar(),"La lista de alumnos esta vacia o es null, resultado no esperado...");
-	}
 }

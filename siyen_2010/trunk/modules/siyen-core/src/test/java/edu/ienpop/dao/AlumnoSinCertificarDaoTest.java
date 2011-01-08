@@ -2,6 +2,7 @@ package edu.ienpop.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,5 +92,14 @@ public class AlumnoSinCertificarDaoTest extends AbstractJavaConfigBaseClass {
 		AlumnoSinCertificar alumno = alumnoSinCertificarDao
 				.read(alumnoSinCertificarPrueba.getIdAlumno());
 		Assert.isNull(alumno);
+	}
+	
+	/**
+	 * Prueba del manejo de un la do de una relaci—n basado en el bojeto CursoSinCertificar
+	 */
+	@Test
+	public void pruebaObtenerAlumnosSinCertificarPorIdCurso(){
+		List<AlumnoSinCertificar> alumnos = alumnoSinCertificarDao.obtenerAlumnosSinCertificarPorIdCurso(4L);
+		Assert.notEmpty(alumnos);
 	}
 }
