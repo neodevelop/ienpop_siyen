@@ -61,7 +61,7 @@ public interface CursoSinCertificarService {
 	 *         nuestro gusto
 	 */
 	List<CursoSinCertificar> obtenerCursosConCriteria(
-			CursoCriteria cursoCriteria, int offset, int maxSize);
+			CursoCriteria cursoCriteria);
 
 	/**
 	 * @param cursoCriteria

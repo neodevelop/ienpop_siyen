@@ -14,7 +14,26 @@ public class CursoCriteria extends Curso {
 	private List<Instructor> instructores;
 	private List<Puerto> puertos;
 	private List<TipoCurso> tiposCursos;
+	private int maxSize;
+	private int offset;
 	
+	public CursoCriteria(){
+		this.offset = 0;
+		this.maxSize = 10;
+	}
+	
+	public int getMaxSize() {
+		return maxSize;
+	}
+	public void setMaxSize(int maxSize) {
+		this.maxSize = maxSize;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	public Date getFechaFin() {
 		return fechaFin;
 	}

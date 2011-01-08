@@ -7,7 +7,7 @@ import edu.ienpop.model.CursoSinCertificar;
 
 public interface CursoSinCertificarDao extends
 		PersistenceGenericDao<CursoSinCertificar, Long> {
-	public List<CursoSinCertificar> obtenerCursosSinCertificarConRelaciones(CursoCriteria cursoCriteria,int offset,int maxSize);
+	public List<CursoSinCertificar> obtenerCursosSinCertificarConRelaciones(CursoCriteria cursoCriteria);
 	public CursoSinCertificar obtenerCursoSinCertificarConRelaciones(long idCursoSinCertificar);
 	public int obtenerContadorDeCursosSinCertificar(CursoCriteria cursoCriteria);
 }

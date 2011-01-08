@@ -12,7 +12,7 @@ public interface LlaveCertificacionService {
 	 * 
 	 *         Valida si una llave existe, es valida y no ha sido usada
 	 */
-	LlaveCertificacion esLlaveValida(String codigo);
+	boolean obtenerValidacionDeCursoConLlave(String codigo,long idCursoSinCertificar);
 
 	/**
 	 * @param llaveCertificacion
