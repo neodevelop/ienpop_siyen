@@ -24,12 +24,12 @@ public class CursoSinCertificarDaoHibernateImpl extends
 
 	@SuppressWarnings("unchecked")
 	public List<CursoSinCertificar> obtenerCursosSinCertificarConRelaciones(
-			CursoCriteria cursoCriteria, int offset, int maxSize) {
+			CursoCriteria cursoCriteria) {
 		Criteria criteria = creaCriteriaConRelaciones();
 		establecerCondiciones(criteria, cursoCriteria);
 		criteria.addOrder(Order.desc("idCurso"));
-		criteria.setMaxResults(maxSize);
-		criteria.setFirstResult(offset);
+		criteria.setMaxResults(cursoCriteria.getMaxSize());
+		criteria.setFirstResult(cursoCriteria.getOffset());
 		return criteria.list();
 	}
 

@@ -22,7 +22,7 @@ public class LlaveCertificacionDaoHibernateImpl extends
 	}
 
 	public LlaveCertificacion obtenerLlaveConCodigo(String codigo) {
-		String sql = "from LlaveCertificacion lc where lc.llave = :codigo ";
+		String sql = "from LlaveCertificacion lc join fetch lc.cursoSinCertificar where lc.llave = :codigo ";
 		Query query = getSession().createQuery(sql);
 		query.setString("codigo", codigo);
 		return (LlaveCertificacion)query.uniqueResult();

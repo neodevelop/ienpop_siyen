@@ -64,15 +64,14 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 		//Actualizar la llave???
 	}
 
-	public LlaveCertificacion esLlaveValida(String codigo) {
-		// Buscamos la llave
+	public boolean obtenerValidacionDeCursoConLlave(String codigo,long idCursoSinCertificar){
+		// Buscamos la llave y el curso
 		LlaveCertificacion llaveCertificacion = llaveCertificacionDao.obtenerLlaveConCodigo(codigo);
-		// Si no se encontro entonces arrojamos un error
-		if(llaveCertificacion==null){
-			throw new BusinessException("No existe una llave con ese c—digo...");
-		}
-		// Encontrada la llave es el valor que regresamos
-		return llaveCertificacion;
+		//Corroboramos que esta llave pertenece a este curso
+		if(llaveCertificacion.getCursoSinCertificar().getIdCurso() == idCursoSinCertificar)
+			return true;
+		else
+			return false;
 	}
 
 	@Override

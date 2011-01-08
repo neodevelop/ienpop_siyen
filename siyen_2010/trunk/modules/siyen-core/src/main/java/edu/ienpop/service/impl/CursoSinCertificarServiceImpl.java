@@ -22,15 +22,17 @@ public class CursoSinCertificarServiceImpl implements CursoSinCertificarService 
 		this.alumnoSinCertificaroDao = alumnoSinCertificaroDao;
 	}
 
-	public void actualizaCursoSinCertificar(CursoSinCertificar cursoSinCertificar) {
+	public void actualizaCursoSinCertificar(
+			CursoSinCertificar cursoSinCertificar) {
 		cursoSinCertificarDao.update(cursoSinCertificar);
 	}
 
 	public void borraCursoSinCertificar(Long idCurso) {
 		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
 				.read(idCurso);
-		if(cursoSinCertificar.isListoParaCertificar()){
-			throw new BusinessException("No se puede borrar este curso por que ya esta listo para certificarse...");
+		if (cursoSinCertificar.isListoParaCertificar()) {
+			throw new BusinessException(
+					"No se puede borrar este curso por que ya esta listo para certificarse...");
 		}
 		cursoSinCertificarDao.delete(cursoSinCertificar);
 	}
@@ -73,13 +75,15 @@ public class CursoSinCertificarServiceImpl implements CursoSinCertificarService 
 
 	@Override
 	public List<CursoSinCertificar> obtenerCursosConCriteria(
-			CursoCriteria cursoCriteria, int offset, int maxSize) {
-		return cursoSinCertificarDao.obtenerCursosSinCertificarConRelaciones(cursoCriteria, offset, maxSize);
+			CursoCriteria cursoCriteria) {
+		return cursoSinCertificarDao
+				.obtenerCursosSinCertificarConRelaciones(cursoCriteria);
 	}
 
 	@Override
 	public int obtenerContadorDeCursosSinCertificar(CursoCriteria cursoCriteria) {
-		return cursoSinCertificarDao.obtenerContadorDeCursosSinCertificar(cursoCriteria);
+		return cursoSinCertificarDao
+				.obtenerContadorDeCursosSinCertificar(cursoCriteria);
 	}
 
 }

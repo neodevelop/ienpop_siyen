@@ -50,8 +50,10 @@ public class CursoSinCertificarDaoQueryTest extends AbstractJavaConfigBaseClass 
 	@Test
 	public void pruebaObtenerCursosSinCertificarConRelacione() {
 		CursoCriteria cursoCriteria = new CursoCriteria();
+		cursoCriteria.setOffset(15);
+		cursoCriteria.setMaxSize(15);
 		List<CursoSinCertificar> cursos = cursoSinCertificarDao
-				.obtenerCursosSinCertificarConRelaciones(cursoCriteria, 25, 15);
+				.obtenerCursosSinCertificarConRelaciones(cursoCriteria);
 		Assert.notEmpty(cursos);
 		Assert.isTrue(cursos.size() == 15,
 				"El tama–o de la consulta es incorrecto...");
@@ -69,7 +71,7 @@ public class CursoSinCertificarDaoQueryTest extends AbstractJavaConfigBaseClass 
 	public void pruebaObtenerCursosSinCertificarConRelacionesCondiciones() {
 		List<CursoSinCertificar> cursos = cursoSinCertificarDao
 				.obtenerCursosSinCertificarConRelaciones(
-						formulaCursoCriteria(), 0, 15);
+						formulaCursoCriteria());
 		Assert.notEmpty(cursos);
 	}
 
@@ -108,6 +110,8 @@ public class CursoSinCertificarDaoQueryTest extends AbstractJavaConfigBaseClass 
 		cursoCriteria.setFechaInicio(calendar.getTime());
 		calendar.set(2010, 11, 31);
 		cursoCriteria.setFechaFin(calendar.getTime());
+		cursoCriteria.setOffset(0);
+		cursoCriteria.setMaxSize(15);
 		return cursoCriteria;
 	}
 }

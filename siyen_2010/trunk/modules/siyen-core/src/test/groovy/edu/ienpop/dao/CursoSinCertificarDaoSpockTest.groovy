@@ -23,7 +23,8 @@ class CursoSinCertificarDaoSpockTest extends Specification {
 		setup:"creando un objeto criteria"
 			def cursoCriteria = new CursoCriteria()
 		when:"buscamos con criteria y paginaci—n"
-			def cursos = cursoSinCertificarDao.obtenerCursosSinCertificarConRelaciones(cursoCriteria, a, b)
+			cursoCriteria = new CursoCriteria([offset:a,maxSize:b])
+			def cursos = cursoSinCertificarDao.obtenerCursosSinCertificarConRelaciones(cursoCriteria)
 		then:"la lista del resultado no viene vac’a y sus objetos dependientes tampoco"
 			cursos.size() >= 0
 			cursos.each{ curso ->

@@ -10,8 +10,7 @@ import edu.ienpop.config.AbstractJavaConfigBaseClass;
  * @author neodevelop
  * 
  */
-public class LlaveCertificacionServiceTest extends
-		AbstractJavaConfigBaseClass {
+public class LlaveCertificacionServiceTest extends AbstractJavaConfigBaseClass {
 
 	/**
 	 * Inyeccion del servicio
@@ -26,6 +25,12 @@ public class LlaveCertificacionServiceTest extends
 	@Test
 	public void pruebaIoC() {
 		Assert.notNull(llaveCertifiacionService);
+	}
+
+	@Test
+	public void testObtenerValidacionDeCursoConLlave() {
+		llaveCertifiacionService.obtenerValidacionDeCursoConLlave(
+				"US5WZXBKYGCTMUL5CZOX", 295L);
 	}
 
 }
