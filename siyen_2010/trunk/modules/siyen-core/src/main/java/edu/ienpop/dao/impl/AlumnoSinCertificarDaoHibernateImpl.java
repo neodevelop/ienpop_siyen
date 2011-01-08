@@ -16,7 +16,6 @@ public class AlumnoSinCertificarDaoHibernateImpl extends
 	public AlumnoSinCertificarDaoHibernateImpl(
 			HibernateTemplate hibernateTemplate) {
 		super(hibernateTemplate);
-		// TODO Auto-generated constructor stub
 	}
 
 }

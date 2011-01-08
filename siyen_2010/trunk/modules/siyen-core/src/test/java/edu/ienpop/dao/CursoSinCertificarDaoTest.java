@@ -15,7 +15,7 @@ import edu.ienpop.model.CursoSinCertificar;
  * 
  */
 public class CursoSinCertificarDaoTest extends AbstractJavaConfigBaseClass {
-	
+
 	/**
 	 * Inyeccion del DAO
 	 */
@@ -61,7 +61,8 @@ public class CursoSinCertificarDaoTest extends AbstractJavaConfigBaseClass {
 	 */
 	@Test
 	public void pruebaRead() {
-		CursoSinCertificar curso = cursoSinCertificarDao.read(cursoSinCertificarPrueba.getIdCurso());
+		CursoSinCertificar curso = cursoSinCertificarDao
+				.read(cursoSinCertificarPrueba.getIdCurso());
 		Assert.notNull(curso);
 	}
 
@@ -70,13 +71,19 @@ public class CursoSinCertificarDaoTest extends AbstractJavaConfigBaseClass {
 	 */
 	@Test
 	public void pruebaUpdate() {
-		CursoSinCertificar cursoAntes = cursoSinCertificarDao.read(cursoSinCertificarPrueba.getIdCurso());
+		CursoSinCertificar cursoAntes = cursoSinCertificarDao
+				.read(cursoSinCertificarPrueba.getIdCurso());
 		cursoSinCertificarPrueba.setListoParaCertificar(true);
 		cursoSinCertificarPrueba.setFechaHoraRegistro(new Date());
 		cursoSinCertificarDao.update(cursoSinCertificarPrueba);
-		CursoSinCertificar cursoDespues = cursoSinCertificarDao.read(cursoSinCertificarPrueba.getIdCurso());
-		Assert.isTrue(cursoAntes.isListoParaCertificar()!=cursoDespues.isListoParaCertificar(),"El valor 'listoParaCertificar' debe ser diferente en esta aserci—n");
-		Assert.isTrue(cursoAntes.getIdCurso()==cursoDespues.getIdCurso(),"Los nœmeros de curso deben ser los mismos");
+		CursoSinCertificar cursoDespues = cursoSinCertificarDao
+				.read(cursoSinCertificarPrueba.getIdCurso());
+		Assert
+				.isTrue(cursoAntes.isListoParaCertificar() != cursoDespues
+						.isListoParaCertificar(),
+						"El valor 'listoParaCertificar' debe ser diferente en esta aserci—n");
+		Assert.isTrue(cursoAntes.getIdCurso() == cursoDespues.getIdCurso(),
+				"Los nœmeros de curso deben ser los mismos");
 	}
 
 	/**
@@ -85,7 +92,18 @@ public class CursoSinCertificarDaoTest extends AbstractJavaConfigBaseClass {
 	@Test
 	public void pruebaDelete() {
 		cursoSinCertificarDao.delete(cursoSinCertificarPrueba);
-		CursoSinCertificar curso = cursoSinCertificarDao.read(cursoSinCertificarPrueba.getIdCurso());
+		CursoSinCertificar curso = cursoSinCertificarDao
+				.read(cursoSinCertificarPrueba.getIdCurso());
 		Assert.isNull(curso);
+	}
+
+	/**
+	 * Prueba de una relaci—n entre entidades
+	 */
+	@Test
+	public void pruebaObtenerCursoAlumnosPorIdCurso() {
+		CursoSinCertificar curso = cursoSinCertificarDao.obtenerAlumnosSinCertificarPorIdCurso(4L);
+		Assert.notNull(curso,"El curso es null, resultado no esperado...");
+		Assert.notEmpty(curso.getAlumnosSinCertificar(),"La lista de alumnos esta vacia o es null, resultado no esperado...");
 	}
 }

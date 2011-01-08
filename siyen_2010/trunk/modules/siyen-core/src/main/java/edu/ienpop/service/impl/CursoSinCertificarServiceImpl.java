@@ -34,20 +34,23 @@ public class CursoSinCertificarServiceImpl implements CursoSinCertificarService 
 
 	public void crearCursoSinCertificar(CursoSinCertificar cursoSinCertificar,
 			Set<AlumnoSinCertificar> alumnosSinCertificar) {
+		
 		if(!(alumnosSinCertificar.size()>0)){
 			throw new BusinessException("No se puede crear un curso sin alumnos registrados...");
 		}
+		
 		for(AlumnoSinCertificar alumno:alumnosSinCertificar){
 			alumno.setFechaHoraRegistro(new Date());
-			alumnoSinCertificarDao.create(alumno);
+			alumno.setCursoSinCertificar(cursoSinCertificar);
 		}
+		
+		cursoSinCertificar.setFechaHoraRegistro(new Date());
 		cursoSinCertificar.setAlumnosSinCertificar(alumnosSinCertificar);
-		cursoSinCertificarDao.update(cursoSinCertificar);
+		cursoSinCertificarDao.create(cursoSinCertificar);
 	}
 
 	public CursoSinCertificar obtenerCursoSinCertificarConAlumnos(Long idCurso) {
-		// TODO Auto-generated method stub
-		return null;
+		return cursoSinCertificarDao.obtenerAlumnosSinCertificarPorIdCurso(idCurso);
 	}
 
 }
