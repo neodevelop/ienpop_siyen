@@ -2,7 +2,6 @@ package edu.ienpop.dao;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
