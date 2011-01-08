@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="alumnoSinCertificar" class="edu.ienpop.model.AlumnoSinCertificar"/>
+	<input name="cursoSinCertificar" value="cursoSinCertificar"/>
+
+	<view-state id="capturaAlumnoSinCertificar" model="alumnoSinCertificar">
+		<transition on="alumnoCreado" to="alumnoCreado"/>
+		<transition on="cancelar" to="cancelar" />
+	</view-state>
+
+	<end-state id="alumnoCreado" view="externalRedirect:/">
+		<output name="alumnoSinCertificar" value="alumnoSinCertificar"/>
+	</end-state>
+	<end-state id="cancelar" view="externalRedirect:/"/>
+
+</flow>

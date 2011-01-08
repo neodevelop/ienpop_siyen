@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="cursoSinCertificar" class="edu.ienpop.model.CursoSinCertificar" />
+
+	<on-start>
+		<evaluate expression="puertoDao.findAll()" result="flowScope.puertos" />
+		<evaluate expression="instructorDao.findAll()" result="flowScope.instructores" />
+	</on-start>
+
+	<view-state id="creaCursoSinCertificar" model="cursoSinCertificar">
+		<on-entry>
+			<evaluate
+				expression="cursoSinCertificarFlow.preparaCursoSinCertificar(cursoSinCertificar)" />
+		</on-entry>
+		<transition on="agregarAlumnos" to="agregarAlumnos"
+			validate="false" />
+		<transition on="cancelar" to="cancelar" validate="false" />
+
+	</view-state>
+
+	<subflow-state id="agregarAlumnos" subflow="alumnoSinCertificar">
+		<input name="cursoSinCertificar" value="cursoSinCertificar" />
+		<transition on="alumnoCreado" to="agregarAlumnos">
+			<evaluate expression="cursoSinCertificar.alumnosSinCertificar.add(currentEvent.attributes.alumnoSinCertificar)" />
+		</transition>
+		<transition on="cancelar" to="cancelar" />
+	</subflow-state>
+
+	<view-state id="cancelar">
+		
+	</view-state>
+
+</flow>
