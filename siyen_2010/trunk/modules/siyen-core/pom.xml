@@ -90,5 +90,10 @@
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+		
 	</dependencies>
 </project>
