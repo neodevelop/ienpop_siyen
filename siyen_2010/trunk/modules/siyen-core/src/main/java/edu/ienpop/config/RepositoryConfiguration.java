@@ -14,6 +14,7 @@ import edu.ienpop.dao.InstructorDao;
 import edu.ienpop.dao.LlaveCertificacionDao;
 import edu.ienpop.dao.PuertoDao;
 import edu.ienpop.dao.TipoCursoDao;
+import edu.ienpop.dao.UsuarioDao;
 
 @Configuration
 public interface RepositoryConfiguration {
@@ -82,4 +83,10 @@ public interface RepositoryConfiguration {
 	 */
 	@Bean
 	PuertoDao puertoDao();
+	
+	/**
+	 * @return el dao del Usuario
+	 */
+	@Bean
+	UsuarioDao usuarioDao();
 }

@@ -19,6 +19,7 @@ import edu.ienpop.dao.InstructorDao;
 import edu.ienpop.dao.LlaveCertificacionDao;
 import edu.ienpop.dao.PuertoDao;
 import edu.ienpop.dao.TipoCursoDao;
+import edu.ienpop.dao.UsuarioDao;
 import edu.ienpop.dao.impl.AlumnoCertificadoDaoHibernateImpl;
 import edu.ienpop.dao.impl.AlumnoSinCertificarDaoHibernateImpl;
 import edu.ienpop.dao.impl.CursoCertificadoDaoHibernateImpl;
@@ -27,6 +28,7 @@ import edu.ienpop.dao.impl.InstructorDaoHibernateImpl;
 import edu.ienpop.dao.impl.LlaveCertificacionDaoHibernateImpl;
 import edu.ienpop.dao.impl.PuertoDaoHibernateImpl;
 import edu.ienpop.dao.impl.TipoCursoDaoHibernateImpl;
+import edu.ienpop.dao.impl.UsuarioDaoHibernateImpl;
 
 /**
  * @author neodevelop
@@ -131,5 +133,9 @@ public class RepositoryHibernateConfiguration implements RepositoryConfiguration
 	 */
 	public @Bean PuertoDao puertoDao(){
 		return new PuertoDaoHibernateImpl(hibernateTemplate());
+	}
+	
+	public @Bean UsuarioDao usuarioDao(){
+		return new UsuarioDaoHibernateImpl(hibernateTemplate());
 	}
 }

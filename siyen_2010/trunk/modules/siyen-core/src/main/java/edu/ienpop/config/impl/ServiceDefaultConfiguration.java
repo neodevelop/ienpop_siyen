@@ -10,8 +10,10 @@ import edu.ienpop.config.ServiceConfiguration;
 import edu.ienpop.service.CursoCertificadoService;
 import edu.ienpop.service.CursoSinCertificarService;
 import edu.ienpop.service.LlaveCertificacionService;
+import edu.ienpop.service.UsuarioService;
 import edu.ienpop.service.impl.CursoSinCertificarServiceImpl;
 import edu.ienpop.service.impl.LlaveCertificacionServiceImpl;
+import edu.ienpop.service.impl.UsuarioServiceImpl;
 
 /**
  * @author neodevelop
@@ -44,6 +46,12 @@ public class ServiceDefaultConfiguration implements ServiceConfiguration {
 	public @Bean
 	CursoSinCertificarService cursoSinCertificarService() {
 		return new CursoSinCertificarServiceImpl(persistenceConfiguration
-				.cursoSinCertificarDao(),persistenceConfiguration.alumnoSinCertificarDao());
+				.cursoSinCertificarDao(), persistenceConfiguration
+				.alumnoSinCertificarDao());
+	}
+
+	public @Bean
+	UsuarioService usuarioService() {
+		return new UsuarioServiceImpl(persistenceConfiguration.usuarioDao());
 	}
 }
