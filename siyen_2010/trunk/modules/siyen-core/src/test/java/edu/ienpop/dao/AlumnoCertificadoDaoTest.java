@@ -3,6 +3,7 @@ package edu.ienpop.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -68,6 +69,7 @@ public class AlumnoCertificadoDaoTest extends AbstractJavaConfigBaseClass {
 	 * Prueba de update de la entidad
 	 */
 	@Test
+	@Ignore
 	public void pruebaUpdate(){
 		AlumnoCertificado alumno = alumnoCertificadoDao.read(alumnoCertificadoPrueba.getIdAlumno());
 		alumno.setNumeroControl("II0"+alumno.getIdAlumno());

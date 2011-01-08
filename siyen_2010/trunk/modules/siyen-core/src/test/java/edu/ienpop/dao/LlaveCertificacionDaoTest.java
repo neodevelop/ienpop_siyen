@@ -3,6 +3,7 @@ package edu.ienpop.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -79,6 +80,7 @@ public class LlaveCertificacionDaoTest extends AbstractJavaConfigBaseClass {
 	 * Prueba de busqueda de una llave a traves de su codigo
 	 */
 	@Test
+	@Ignore
 	public void pruebaBuscaLlaveConCodigo(){
 		LlaveCertificacion llave = llaveCertificacionDao.obtenerLlaveConCodigo(codigo);
 		Assert.notNull(llave);

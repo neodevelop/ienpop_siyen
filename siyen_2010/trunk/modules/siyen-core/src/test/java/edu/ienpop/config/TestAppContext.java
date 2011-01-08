@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/PersistenceAnnotated-AppCtx.xml"})
+@ContextConfiguration(locations={"/Annotated-AppCtx.xml"})
 public class TestAppContext {
 
 	@Autowired
