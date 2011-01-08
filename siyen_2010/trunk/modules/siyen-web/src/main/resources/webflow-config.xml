@@ -4,30 +4,35 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<!--
-		Maps request paths to flows in the flowRegistry; e.g. a path of
-		/hotels/booking looks for a flow with id "hotels/booking"
-	-->
-	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
-		<property name="order" value="0" />
-		<property name="flowRegistry" ref="flowRegistry" />
+	<!-- Spring MVC -->
+	<!-- Recordar que existe un FlowHandlerMapping, hay que afinarlo con web.xml -->
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>/miFlujo.ienpop=flowController</value>
+		</property>
+		<property name="order" value="0"/>
+	</bean>
+
+	<bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowController">
+		<property name="flowExecutor" ref="flowExecutor" />
 	</bean>
 
 	<!--
 		Maps request paths to @Controller classes; e.g. a path of /hotels
 		looks for a controller named HotelsController
 	-->
-	<bean
+	<!--bean
 		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
 		<property name="order" value="1" />
-		<property name="defaultHandler">
+		<property name="defaultHandler"-->
 			<!--
 				If no @Controller match, map path to a view to render; e.g. the
 				"/intro" path would map to the view named "intro"
 			-->
-			<bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+			<!--bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
 		</property>
-	</bean>
+	</bean-->
 
 	<!-- Dispatches requests mapped to POJO @Controllers implementations -->
 	<bean
@@ -55,23 +60,24 @@
 	</webflow:flow-executor>
 
 	<!-- The registry of executable flow definitions -->
-	<webflow:flow-registry id="flowRegistry"
-		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
-		<webflow:flow-location-pattern value="/**/*-flow.xml" />
+	<!--webflow:flow-registry id="flowRegistry"
+		flow-builder-services="flowBuilderServices" base-path="/WEB-INF"-->
+	<webflow:flow-registry id="flowRegistry" base-path="/WEB-INF">
+		<webflow:flow-location id="miFlujo" path="cursoSinCertificar/nuevo/nuevo-flow.xml"/>
 	</webflow:flow-registry>
 
 	<!-- Plugs in a custom creator for Web Flow views -->
-	<webflow:flow-builder-services id="flowBuilderServices"
-		view-factory-creator="mvcViewFactoryCreator" development="true" />
+	<!-- webflow:flow-builder-services id="flowBuilderServices"
+		view-factory-creator="mvcViewFactoryCreator" development="true" /-->
 
 	<!--
 		Configures Web Flow to use jspViewResolver to create views for rendering
 	-->
-	<bean id="mvcViewFactoryCreator"
+	<!--bean id="mvcViewFactoryCreator"
 		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 		<property name="viewResolvers" ref="jspViewResolver" />
 		<property name="useSpringBeanBinding" value="true" />
-	</bean>
+	</bean-->
 
 	<!--
 		Installs a listener that manages JPA persistence contexts for flows
