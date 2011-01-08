@@ -10,6 +10,7 @@ import edu.ienpop.config.ServiceConfiguration;
 import edu.ienpop.service.CursoCertificadoService;
 import edu.ienpop.service.CursoSinCertificarService;
 import edu.ienpop.service.LlaveCertificacionService;
+import edu.ienpop.service.impl.CursoSinCertificarServiceImpl;
 import edu.ienpop.service.impl.LlaveCertificacionServiceImpl;
 
 /**
@@ -35,15 +36,15 @@ public class ServiceDefaultConfiguration implements ServiceConfiguration {
 				.cursoSinCertificarDao());
 	}
 
-	@Override
-	public CursoCertificadoService cursoCertificadoService() {
-		// TODO Auto-generated method stub
+	public @Bean
+	CursoCertificadoService cursoCertificadoService() {
 		return null;
 	}
 
-	@Override
-	public CursoSinCertificarService cursoSinCertificarService() {
-		// TODO Auto-generated method stub
-		return null;
+	public @Bean
+	CursoSinCertificarService cursoSinCertificarService() {
+		return new CursoSinCertificarServiceImpl(persistenceConfiguration
+				.cursoSinCertificarDao(), persistenceConfiguration
+				.alumnoSinCertificarDao());
 	}
 }

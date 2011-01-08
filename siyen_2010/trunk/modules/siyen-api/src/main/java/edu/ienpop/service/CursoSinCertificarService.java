@@ -3,6 +3,7 @@ package edu.ienpop.service;
 import java.util.Set;
 
 import edu.ienpop.model.Alumno;
+import edu.ienpop.model.AlumnoSinCertificar;
 import edu.ienpop.model.CursoSinCertificar;
 
 /**
@@ -20,7 +21,7 @@ public interface CursoSinCertificarService {
 	 * 
 	 */
 	void crearCursoSinCertificar(CursoSinCertificar cursoSinCertificar,
-			Set<Alumno> alumnosSinCertificar);
+			Set<AlumnoSinCertificar> alumnosSinCertificar);
 
 	/**
 	 * @param idCurso
@@ -39,7 +40,7 @@ public interface CursoSinCertificarService {
 	 *            validarse o generar una llave
 	 */
 	void actualizaCursoSinCertificar(CursoSinCertificar cursoSinCertificar,
-			Set<Alumno> alumnosSinCertificar);
+			Set<AlumnoSinCertificar> alumnosSinCertificar);
 
 	/**
 	 * @param idCurso
