@@ -217,11 +217,19 @@
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate</artifactId>
 				<version>${org.hibernate.version}</version>
+				<!--
+					exclusions> <exclusion> <groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId> </exclusion> </exclusions
+				-->
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-annotations</artifactId>
 				<version>${org.hibernate.annotations.version}</version>
+				<!--
+					exclusions> <exclusion> <groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId> </exclusion> </exclusions
+				-->
 			</dependency>
 			<!--
 				The Java Persistence API provides a POJO persistence model for
@@ -254,11 +262,40 @@
 				<artifactId>mysql-connector-java</artifactId>
 				<version>5.1.12</version>
 			</dependency>
+			<!--
+				Contains core authentication and access-contol classes and
+				interfaces, remoting support and basic provisioning APIs.Required by
+				any application which uses Spring Security. Supports standalone
+				applications, remote clients, method (service layer) security and
+				JDBC user provisioning
+			-->
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>1.5.2</version>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>${org.springframework.security.version}</version>
 			</dependency>
+			<!--
+				Contains filters and related web-security infrastructure code.
+				Anything with a servlet API dependency. You'll need it if you
+				require Spring Security web authentication services and URL-based
+				access-control.
+			-->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${org.springframework.security.version}</version>
+			</dependency>
+			<!--
+				Contains the security namespace parsing code (and hence nothing that
+				you are likely yo use directly in your application). You need it if
+				you are using the Spring Security XML namespace for configuration.
+			-->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${org.springframework.security.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>cglib</groupId>
 				<artifactId>cglib-nodep</artifactId>
@@ -290,16 +327,6 @@
 				<version>3.2.1</version>
 			</dependency>
 			<dependency>
-				<groupId>javassist</groupId>
-				<artifactId>javassist</artifactId>
-				<version>3.8.0.GA</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>1.5.11</version>
-			</dependency>
-			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>jstl</artifactId>
 				<version>1.2</version>
@@ -321,9 +348,9 @@
 		<org.springframework.version>3.0.1.RELEASE
 		</org.springframework.version>
 		<org.hibernate.version>3.2.7.ga</org.hibernate.version>
-		<org.hibernate.annotations.version>3.4.0.GA
-		</org.hibernate.annotations.version>
+		<org.hibernate.annotations.version>3.3.1.ga</org.hibernate.annotations.version>
 		<org.springframework.webflow.version>2.0.8.RELEASE</org.springframework.webflow.version>
+		<org.springframework.security.version>3.0.2.RELEASE</org.springframework.security.version>
 	</properties>
 
 	<reporting>
