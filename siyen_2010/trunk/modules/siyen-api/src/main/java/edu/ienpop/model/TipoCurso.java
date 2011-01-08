@@ -11,6 +11,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+
 /**
  * @author neodevelop
  * 
@@ -38,15 +40,21 @@ public class TipoCurso implements Serializable {
 
 	@PrePersist
 	@PreUpdate
-	protected void prePersist(){
+	protected void prePersist() {
 		libreta = this.tipoLibreta.getId();
 	}
-	
+
 	@PostLoad
-	protected void postLoad(){
+	protected void postLoad() {
 		tipoLibreta = Libreta.valueOf(libreta);
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		EqualsBuilder builder = new EqualsBuilder().append(this.getIdTipoCurso(), ((TipoCurso)obj).getIdTipoCurso());
+		return builder.isEquals();
+	}
+
 	public Libreta getTipoLibreta() {
 		return tipoLibreta;
 	}

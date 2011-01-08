@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+
 /**
  * @author neodevelop
  * 
@@ -30,6 +32,12 @@ public class Puerto implements Serializable {
 	@Column
 	private boolean activo;
 
+	@Override
+	public boolean equals(Object obj) {
+		EqualsBuilder builder = new EqualsBuilder().append(this.getIdPuerto(), ((Puerto)obj).getIdPuerto());
+		return builder.isEquals();
+	}
+	
 	public String getIdPuerto() {
 		return idPuerto;
 	}
