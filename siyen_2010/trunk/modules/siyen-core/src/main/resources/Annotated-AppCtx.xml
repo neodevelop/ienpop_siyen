@@ -25,6 +25,8 @@
 				<value>edu.ienpop.model.Instructor</value>
 				<value>edu.ienpop.model.LlaveCertificacion</value>
 				<value>edu.ienpop.model.Puerto</value>
+				<value>edu.ienpop.model.Usuario</value>
+				<value>edu.ienpop.model.Autoridad</value>
 			</util:list>
 		</property>
 	</bean>
