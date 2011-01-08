@@ -32,16 +32,16 @@ public abstract class Curso implements Serializable {
 	private Date fechaInicio;
 	@Column
 	private Date fechaHoraRegistro;
-	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idPuerto")
 	private Puerto puerto;
-	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idTipoCurso")
 	private TipoCurso tipoCurso;
-	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idInstructor")
 	private Instructor instructor;
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idLlave")
 	private LlaveCertificacion llaveCertificacion;
 
