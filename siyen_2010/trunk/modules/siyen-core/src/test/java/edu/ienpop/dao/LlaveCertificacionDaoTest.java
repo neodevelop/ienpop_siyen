@@ -23,6 +23,7 @@ public class LlaveCertificacionDaoTest extends AbstractJavaConfigBaseClass {
 	LlaveCertificacionDao llaveCertificacionDao;
 	
 	static LlaveCertificacion llaveCertificacionPrueba;
+	String codigo = "12345678901234567890";
 	
 	/**
 	 * Prueba de la inyeccion(esto prueba el DataSource, SessionFactory y
@@ -50,7 +51,7 @@ public class LlaveCertificacionDaoTest extends AbstractJavaConfigBaseClass {
 		llaveCertificacionPrueba = new LlaveCertificacion();
 		llaveCertificacionPrueba.setActivo(false);
 		llaveCertificacionPrueba.setFechaGeneracion(new Date());
-		llaveCertificacionPrueba.setLlave("12345678901234567890");
+		llaveCertificacionPrueba.setLlave(codigo);
 		llaveCertificacionDao.create(llaveCertificacionPrueba);
 		Assert.isTrue(llaveCertificacionPrueba.getIdLlave() > 0);
 	}
@@ -72,6 +73,15 @@ public class LlaveCertificacionDaoTest extends AbstractJavaConfigBaseClass {
 		llaveCertificacionPrueba.setActivo(true);
 		llaveCertificacionPrueba.setFechaUtilizacion(new Date());
 		llaveCertificacionDao.update(llaveCertificacionPrueba);
+	}
+	
+	/**
+	 * Prueba de busqueda de una llave a traves de su codigo
+	 */
+	@Test
+	public void pruebaBuscaLlaveConCodigo(){
+		LlaveCertificacion llave = llaveCertificacionDao.obtenerLlaveConCodigo(codigo);
+		Assert.notNull(llave);
 	}
 	
 	/**
