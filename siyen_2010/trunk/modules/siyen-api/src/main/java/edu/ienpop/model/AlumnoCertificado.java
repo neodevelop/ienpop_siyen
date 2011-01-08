@@ -25,6 +25,16 @@ public class AlumnoCertificado extends Alumno {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "idCurso")
 	private CursoCertificado cursoCertificado;
+	@Column
+	private boolean certificado;
+
+	public boolean isCertificado() {
+		return certificado;
+	}
+
+	public void setCertificado(boolean certificado) {
+		this.certificado = certificado;
+	}
 
 	public CursoCertificado getCursoCertificado() {
 		return cursoCertificado;
