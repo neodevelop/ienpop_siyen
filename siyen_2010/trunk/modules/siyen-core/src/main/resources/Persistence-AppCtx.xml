@@ -24,6 +24,13 @@
 		<property name="annotatedClasses">
 			<util:list>
 				<value>edu.ienpop.model.TipoCurso</value>
+				<value>edu.ienpop.model.AlumnoCertificado</value>
+				<value>edu.ienpop.model.AlumnoSinCertificar</value>
+				<value>edu.ienpop.model.CursoCertificado</value>
+				<value>edu.ienpop.model.CursoSinCertificar</value>
+				<value>edu.ienpop.model.Instructor</value>
+				<value>edu.ienpop.model.LlaveCertificacion</value>
+				<value>edu.ienpop.model.Puerto</value>
 			</util:list>
 		</property>
 	</bean>
