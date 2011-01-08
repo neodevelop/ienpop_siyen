@@ -19,4 +19,8 @@ public interface PersistenceGenericDao<T, PK extends Serializable> {
 	void delete(T persistentObject);
 
 	List<T> findAll();
+	
+	//void merge(T transientObject);
+	
+	void flush();
 }
