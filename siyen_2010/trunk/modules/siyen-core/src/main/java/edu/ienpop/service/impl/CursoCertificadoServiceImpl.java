@@ -49,28 +49,45 @@ public class CursoCertificadoServiceImpl implements CursoCertificadoService {
 		cursoCertificado.setTipoCurso(cursoSinCertificar.getTipoCurso());
 		// Iteramos la lista de alumnos del cursoSinCertificar y los asignamos
 		// al cursoCertificado
-		cursoCertificado.setAlumnosCertificados(new HashSet<AlumnoCertificado>());
+		cursoCertificado
+				.setAlumnosCertificados(new HashSet<AlumnoCertificado>());
 		for (AlumnoSinCertificar alumnoSinCertificar : cursoSinCertificar
 				.getAlumnosSinCertificar()) {
 			// Creamos el alumno certificado para agregarlo a la lista
 			AlumnoCertificado alumnoCertificado = new AlumnoCertificado();
 			// Emparejamos sus propiedades
-			alumnoCertificado.setNombreCompleto(alumnoSinCertificar.getNombreCompleto());
-			alumnoCertificado.setObservaciones(alumnoSinCertificar.getObservaciones());
+			alumnoCertificado.setNombreCompleto(alumnoSinCertificar
+					.getNombreCompleto());
+			alumnoCertificado.setObservaciones(alumnoSinCertificar
+					.getObservaciones());
 			// Establecemos la relaci—n
 			alumnoCertificado.setCursoCertificado(cursoCertificado);
 			// Lo agregamos a la lista
 			cursoCertificado.getAlumnosCertificados().add(alumnoCertificado);
 		}
-		//Finalmente persistimos el cursoCertificado
+		// Finalmente persistimos el cursoCertificado
 		cursoCertificadoDao.create(cursoCertificado);
 		return cursoCertificado.getIdCurso();
 	}
 
 	@Override
 	public CursoCertificado imprimirConstanciasCurso(Long idCursoCertificado) {
-		// TODO Auto-generated method stub
-		return null;
+		// Obtenemos el CursoCertificado
+		CursoCertificado cursoCertificado = cursoCertificadoDao
+				.obtenerCursoCertificadoConAlumnos(idCursoCertificado);
+		// Verificamos si el curso ya esta certificado, esto por multiples consultas del mismo tipo y evitar varios update
+		if(!cursoCertificado.isCertificado()){
+			// Indicamos que el curso se ha certificado
+			cursoCertificado.setCertificado(true);
+			// Iteramos la lista de alumnos
+			// Debemos crear los numeros de control si es necesario
+			for(AlumnoCertificado alumnoCertificado:cursoCertificado.getAlumnosCertificados()){
+				alumnoCertificado.setCertificado(true);
+				alumnoCertificado.setNumeroControl("II0"+alumnoCertificado.getIdAlumno());
+			}
+			cursoCertificadoDao.update(cursoCertificado);
+		}
+		return cursoCertificado;
 	}
 
 	@Override
