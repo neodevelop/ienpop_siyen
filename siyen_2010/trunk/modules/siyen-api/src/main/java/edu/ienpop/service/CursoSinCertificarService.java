@@ -1,8 +1,7 @@
 package edu.ienpop.service;
 
-import java.util.Set;
+import java.util.List;
 
-import edu.ienpop.model.Alumno;
 import edu.ienpop.model.AlumnoSinCertificar;
 import edu.ienpop.model.CursoSinCertificar;
 
@@ -21,7 +20,7 @@ public interface CursoSinCertificarService {
 	 * 
 	 */
 	void crearCursoSinCertificar(CursoSinCertificar cursoSinCertificar,
-			Set<AlumnoSinCertificar> alumnosSinCertificar);
+			List<AlumnoSinCertificar> alumnosSinCertificar);
 
 	/**
 	 * @param idCurso
@@ -31,6 +30,12 @@ public interface CursoSinCertificarService {
 	 *         respectivos alumnos
 	 */
 	CursoSinCertificar obtenerCursoSinCertificarConAlumnos(Long idCurso);
+	
+	/**
+	 * @param idCurso
+	 * @return CursoSinCertificar solamente por el Id
+	 */
+	CursoSinCertificar obtenerCursoSinCertificarPorId(Long idCurso);
 
 	/**
 	 * @param cursoSinCertificar
@@ -39,12 +44,12 @@ public interface CursoSinCertificarService {
 	 *            se ejecutara la actualizacion de dicha lista antes de
 	 *            validarse o generar una llave
 	 */
-	void actualizaCursoSinCertificar(CursoSinCertificar cursoSinCertificar,
-			Set<AlumnoSinCertificar> alumnosSinCertificar);
+	void actualizaCursoSinCertificar(CursoSinCertificar cursoSinCertificar);
 
 	/**
 	 * @param idCurso
 	 *            Corrobora el cursoSinCertificar a borrar y ejecuta el borrado
 	 */
 	void borraCursoSinCertificar(Long idCurso);
+	
 }
