@@ -4,7 +4,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-	<view-state id="start" view="listar.jsp">
+	<var name="cursoSinCertificar" class="edu.ienpop.model.CursoSinCertificar"/>
+	
+	<on-start>
+		<evaluate expression="puertoDao.findAll()" result="flowScope.puertos"/>
+		<evaluate expression="instructorDao.findAll()" result="flowScope.instructores"/>
+	</on-start>
+
+	<view-state id="creaCursoSinCertificar" model="cursoSinCertificar">
+		<on-entry>
+			<evaluate expression="cursoSinCertificar.setPuerto(new edu.ienpop.model.Puerto())"/>
+			<evaluate expression="cursoSinCertificar.setTipoCurso(new edu.ienpop.model.TipoCurso())"/>
+			<evaluate expression="cursoSinCertificar.setInstructor(new edu.ienpop.model.Instructor())"/>
+		</on-entry>
+		<transition on="agregarAlumnos" to="agregarAlumnos" validate="false" bind="false"/>
+		<transition on="cancelar" to="cancelar" validate="false" bind="false"/>
+	</view-state>
+	
+	<view-state id="agregarAlumnos">
+	</view-state>
+	
+	<view-state id="cancelar">
 	</view-state>
 
 </flow>
