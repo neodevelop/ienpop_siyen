@@ -25,11 +25,7 @@ public class CursoSinCertificarDaoHibernateImpl extends
 	@SuppressWarnings("unchecked")
 	public List<CursoSinCertificar> obtenerCursosSinCertificarConRelaciones(
 			CursoCriteria cursoCriteria, int offset, int maxSize) {
-		Criteria criteria = getSession().createCriteria(
-				CursoSinCertificar.class);
-		criteria.setFetchMode("puerto", FetchMode.JOIN);
-		criteria.setFetchMode("tipoCurso", FetchMode.JOIN);
-		criteria.setFetchMode("instructor", FetchMode.JOIN);
+		Criteria criteria = creaCriteriaConRelaciones();
 		establecerCondiciones(criteria, cursoCriteria);
 		criteria.addOrder(Order.desc("idCurso"));
 		criteria.setMaxResults(maxSize);
@@ -73,6 +69,28 @@ public class CursoSinCertificarDaoHibernateImpl extends
 			criteria.add(Restrictions.in("tipoCurso", cursoCriteria
 					.getTiposCursos()));
 		}
+	}
+
+	/**
+	 * @return Criteria 
+	 * Este método prepara las relaciones entre objetos
+	 *         dependientes del cursoSinCertificar
+	 */
+	private Criteria creaCriteriaConRelaciones() {
+		Criteria criteria = getSession().createCriteria(
+				CursoSinCertificar.class);
+		criteria.setFetchMode("puerto", FetchMode.JOIN);
+		criteria.setFetchMode("tipoCurso", FetchMode.JOIN);
+		criteria.setFetchMode("instructor", FetchMode.JOIN);
+		return criteria;
+	}
+
+	@Override
+	public CursoSinCertificar obtenerCursoSinCertificarConRelaciones(
+			long idCursoSinCertificar) {
+		Criteria criteria = creaCriteriaConRelaciones();
+		criteria.add(Restrictions.eq("idCurso", idCursoSinCertificar));
+		return (CursoSinCertificar) criteria.uniqueResult();
 	}
 
 }

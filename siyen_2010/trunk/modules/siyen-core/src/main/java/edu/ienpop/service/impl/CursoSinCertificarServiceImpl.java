@@ -29,6 +29,9 @@ public class CursoSinCertificarServiceImpl implements CursoSinCertificarService 
 	public void borraCursoSinCertificar(Long idCurso) {
 		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
 				.read(idCurso);
+		if(cursoSinCertificar.isListoParaCertificar()){
+			throw new BusinessException("No se puede borrar este curso por que ya esta listo para certificarse...");
+		}
 		cursoSinCertificarDao.delete(cursoSinCertificar);
 	}
 
@@ -56,7 +59,7 @@ public class CursoSinCertificarServiceImpl implements CursoSinCertificarService 
 
 	public CursoSinCertificar obtenerCursoSinCertificarConAlumnos(Long idCurso) {
 		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
-				.read(idCurso);
+				.obtenerCursoSinCertificarConRelaciones(idCurso);
 		List<AlumnoSinCertificar> alumnosSinCertificar = alumnoSinCertificaroDao
 				.obtenerAlumnosSinCertificarPorIdCurso(idCurso);
 		cursoSinCertificar.setAlumnosSinCertificar(alumnosSinCertificar);

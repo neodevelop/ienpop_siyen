@@ -1,5 +1,5 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -21,6 +21,11 @@
 				<div id="yui-main">
 					<div class="yui-b">
 						<div class="yui-g">
+							<div id="message">
+								<c:if test="${message != null}">
+									${message}
+								</c:if>
+							</div>
 							<decorator:body/>
 						</div>
 					</div>
@@ -36,16 +41,11 @@
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/siyen/cursoSinCertificar/ver">
-							Ver cursos para certificar
+							Ver cursos / Generar llaves
 						</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/siyen/obtenerLlave">
-							Obtener una llave
-						</a>
-					</li>
-					<li>
-						<a href="${pageContext.request.contextPath}/siyen/llaves">
+						<a href="${pageContext.request.contextPath}/siyen/llave/enListaParaUsar">
 							Ver mis llaves de certificación
 						</a>
 					</li>
@@ -118,7 +118,9 @@
 				</div>
 			</div>
 		<div id="ft" role="contentinfo">
-			<p>Footer</p>
+			<div id="contentFooter">
+				. : Derechos reservados - ienpop.net >> Creado por IngenieriaHS.com : .
+			</div>
 		</div>
 	</div>
 	</body>

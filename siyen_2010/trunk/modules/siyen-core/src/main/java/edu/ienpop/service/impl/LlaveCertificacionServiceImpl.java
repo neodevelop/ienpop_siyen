@@ -1,11 +1,13 @@
 package edu.ienpop.service.impl;
 
 import java.util.Calendar;
+import java.util.List;
 
 import edu.ienpop.dao.CursoSinCertificarDao;
 import edu.ienpop.dao.LlaveCertificacionDao;
 import edu.ienpop.model.CursoSinCertificar;
 import edu.ienpop.model.LlaveCertificacion;
+import edu.ienpop.model.Usuario;
 import edu.ienpop.service.LlaveCertificacionService;
 
 public class LlaveCertificacionServiceImpl implements LlaveCertificacionService {
@@ -30,6 +32,8 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 		// Obtenemos el cursoSinCertificar
 		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
 				.read(idCursoSinCertificar);
+		//Cambiamos el status del curso
+		cursoSinCertificar.setListoParaCertificar(true);
 		//Comenzamos la creaci—n de la llave
 		int LONG = 20;
 		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -69,6 +73,17 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 		}
 		// Encontrada la llave es el valor que regresamos
 		return llaveCertificacion;
+	}
+
+	@Override
+	public List<LlaveCertificacion> obtenerLlavesConCursosSinCertificarAsociados() {
+		return llaveCertificacionDao.obtenerLlavesConCursosSinCertificar();
+	}
+
+	@Override
+	public List<LlaveCertificacion> obtenerLlavesPorUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
