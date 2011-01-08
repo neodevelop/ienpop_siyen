@@ -2,4 +2,4 @@ target
 .classpath
 .project
 .settings
-modules/siyen-api/.classpath
+*.classpath*
