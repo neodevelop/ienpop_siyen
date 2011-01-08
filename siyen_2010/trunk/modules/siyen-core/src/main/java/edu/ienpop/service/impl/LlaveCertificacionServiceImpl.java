@@ -2,8 +2,6 @@ package edu.ienpop.service.impl;
 
 import java.util.Calendar;
 
-import org.apache.log4j.Logger;
-
 import edu.ienpop.dao.CursoSinCertificarDao;
 import edu.ienpop.dao.LlaveCertificacionDao;
 import edu.ienpop.model.CursoSinCertificar;
@@ -11,8 +9,6 @@ import edu.ienpop.model.LlaveCertificacion;
 import edu.ienpop.service.LlaveCertificacionService;
 
 public class LlaveCertificacionServiceImpl implements LlaveCertificacionService {
-
-	static Logger log = Logger.getLogger(LlaveCertificacionServiceImpl.class);
 
 	private LlaveCertificacionDao llaveCertificacionDao;
 	private CursoSinCertificarDao cursoSinCertificarDao;
@@ -42,17 +38,11 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 		int number;
 		for (int i = 0; i < LONG; i++) {
 			seed = Math.random() * (CHARACTERS.length() + 1);
-			if (log.isDebugEnabled())
-				log.debug("Seed = " + seed);
 			number = (int) seed;
-			if (log.isDebugEnabled())
-				log.debug("Number = " + number);
 			if (number == CHARACTERS.length())
 				llave += CHARACTERS.substring(number);
 			else
 				llave += CHARACTERS.substring(number, number + 1);
-			if (log.isDebugEnabled())
-				log.debug("Llave: " + llave);
 		}
 		// Finalizamos la creaci—n de la llave
 		// Establecemos el valor de la llave al objeto
