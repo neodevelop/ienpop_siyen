@@ -12,9 +12,15 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import edu.ienpop.dao.AlumnoCertificadoDao;
 import edu.ienpop.dao.AlumnoSinCertificarDao;
+import edu.ienpop.dao.CursoCertificadoDao;
+import edu.ienpop.dao.CursoSinCertificarDao;
+import edu.ienpop.dao.InstructorDao;
 import edu.ienpop.dao.TipoCursoDao;
 import edu.ienpop.dao.impl.AlumnoCertificadoDaoHibernateImpl;
 import edu.ienpop.dao.impl.AlumnoSinCertificarDaoHibernateImpl;
+import edu.ienpop.dao.impl.CursoCertificadoDaoHibernateImpl;
+import edu.ienpop.dao.impl.CursoSinCertificarDaoHibernateImpl;
+import edu.ienpop.dao.impl.InstructorDaoHibernateImpl;
 import edu.ienpop.dao.impl.TipoCursoDaoHibernateImpl;
 
 /**
@@ -82,5 +88,29 @@ public class PersistenceConfiguration {
 	public @Bean
 	AlumnoSinCertificarDao alumnoSinCertificarDao() {
 		return new AlumnoSinCertificarDaoHibernateImpl(hibernateTemplate());
+	}
+
+	/**
+	 * @return el dao del CursoCerticado
+	 */
+	public @Bean
+	CursoCertificadoDao cursoCertificadoDao() {
+		return new CursoCertificadoDaoHibernateImpl(hibernateTemplate());
+	}
+
+	/**
+	 * @return el dao del CursoSinCertificar
+	 */
+	public @Bean
+	CursoSinCertificarDao cursoSinCertificarDao() {
+		return new CursoSinCertificarDaoHibernateImpl(hibernateTemplate());
+	}
+
+	/**
+	 * @return el dao del Instructor
+	 */
+	public @Bean
+	InstructorDao instructorDao() {
+		return new InstructorDaoHibernateImpl(hibernateTemplate());
 	}
 }
