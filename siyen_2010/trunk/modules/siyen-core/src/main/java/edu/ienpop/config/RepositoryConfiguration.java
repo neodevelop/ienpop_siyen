@@ -16,6 +16,12 @@ import edu.ienpop.dao.PuertoDao;
 import edu.ienpop.dao.TipoCursoDao;
 import edu.ienpop.dao.UsuarioDao;
 
+/**
+ * @author neodevelop
+ * 
+ * Tal vez cambiar esto por component-scan
+ *
+ */
 @Configuration
 public interface RepositoryConfiguration {
 	/**
