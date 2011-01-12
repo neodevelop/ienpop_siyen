@@ -1,13 +1,12 @@
-package edu.ienpop.dao;
+package edu.ienpop.spec
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.test.context.ContextConfiguration
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import spock.lang.Specification
 
-import spock.lang.Specification;
-
-import edu.ienpop.model.CursoCriteria;
+import edu.ienpop.dao.CursoSinCertificarDao 
+import edu.ienpop.model.CursoCriteria
 
 /**
  * @author neodevelop

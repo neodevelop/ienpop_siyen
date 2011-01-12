@@ -1,9 +1,11 @@
-package edu.ienpop.service
+package edu.ienpop.spec
 
 import edu.ienpop.dao.InstructorDao 
 import edu.ienpop.dao.PuertoDao 
 import edu.ienpop.dao.TipoCursoDao 
 import edu.ienpop.model.CursoSinCertificar 
+import edu.ienpop.service.CursoCertificadoService 
+import edu.ienpop.service.CursoSinCertificarService 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -32,15 +34,13 @@ class EscenarioCertificacionCursoSpecification extends Specification {
 	
 	def "Crear un curso para certificar y agregar participantes"(){
 		setup:"Creamos un CursoSinCertificar"
-			
+		
 		when:"Persistimos el CursoSinCertificar"
-			
+		
 		then:"El curso debe tener un numero asignado y sus participantes tambien"
-			
+		
 		expect:"un tama–o definido en la lista"
-			
+		
 		where:"tenemos estos valores de offset y paginaci—n..."
-			
 	}
-	
 }
