@@ -15,3 +15,9 @@ org.eclipse.wst.common.project.facet.core.xml
 **/.classpath
 **/.project
 **/.settings
+/modules/siyen-api/.settings/org.eclipse.jdt.core.prefs
+/modules/siyen-core/.classpath
+/modules/siyen-core/.project
+/modules/siyen-core/.settings/org.eclipse.jdt.core.prefs
+/modules/siyen-core/.settings/org.eclipse.wst.common.component
+/modules/siyen-web/.project
