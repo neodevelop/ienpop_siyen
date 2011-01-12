@@ -15,7 +15,7 @@ import spock.lang.Specification;
  * 
  */
 @ContextConfiguration(locations = "classpath:/Annotated-AppCtx.xml")
-class EscenarioCertificacionCursoSpockTest extends Specification {
+class EscenarioCertificacionCursoSpecification extends Specification {
 	
 	@Autowired
 	CursoCertificadoService cursoCertificadoService

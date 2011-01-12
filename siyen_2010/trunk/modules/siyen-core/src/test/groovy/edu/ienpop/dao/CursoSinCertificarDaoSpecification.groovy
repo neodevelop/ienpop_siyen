@@ -14,7 +14,7 @@ import edu.ienpop.model.CursoCriteria;
  * 
  */
 @ContextConfiguration(locations = "classpath:/Annotated-AppCtx.xml")
-class CursoSinCertificarDaoSpockTest extends Specification {
+class CursoSinCertificarDaoSpecification extends Specification {
 	
 	@Autowired
 	CursoSinCertificarDao cursoSinCertificarDao

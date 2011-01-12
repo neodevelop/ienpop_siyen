@@ -10,7 +10,7 @@ import edu.ienpop.model.LlaveCertificacion;
 
 /**
  * @author neodevelop
- *
+ * 
  */
 public class LlaveCertificacionDaoHibernateImpl extends
 		PersistenceGenericDaoHibernateImpl<LlaveCertificacion, Long> implements
@@ -22,16 +22,16 @@ public class LlaveCertificacionDaoHibernateImpl extends
 	}
 
 	public LlaveCertificacion obtenerLlaveConCodigo(String codigo) {
-		String sql = "from LlaveCertificacion lc join fetch lc.cursoSinCertificar where lc.llave = :codigo ";
+		String sql = "from LlaveCertificacion lc join fetch lc.cursoSinCertificar where lc.llave = :codigo order by lc.cursoSinCertificar.fechaInicio desc";
 		Query query = getSession().createQuery(sql);
 		query.setString("codigo", codigo);
-		return (LlaveCertificacion)query.uniqueResult();
+		return (LlaveCertificacion) query.uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<LlaveCertificacion> obtenerLlavesConCursosSinCertificar() {
-		String sql = "from LlaveCertificacion lc join fetch lc.cursoSinCertificar join fetch lc.cursoSinCertificar.puerto join fetch lc.cursoSinCertificar.tipoCurso join fetch lc.cursoSinCertificar.instructor  ";
+		String sql = "from LlaveCertificacion lc join fetch lc.cursoSinCertificar join fetch lc.cursoSinCertificar.puerto join fetch lc.cursoSinCertificar.tipoCurso join fetch lc.cursoSinCertificar.instructor order by lc.cursoSinCertificar.fechaInicio desc";
 		Query query = getSession().createQuery(sql);
 		return query.list();
 	}
