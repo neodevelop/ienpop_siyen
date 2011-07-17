@@ -2,6 +2,7 @@ package edu.ienpop.service;
 
 import java.util.List;
 
+import edu.ienpop.model.AlumnoCertificado;
 import edu.ienpop.model.CursoCertificado;
 import edu.ienpop.model.CursoCriteria;
 
@@ -41,4 +42,15 @@ public interface CursoCertificadoService {
 	 *         para conssultarlos o modificarlos...
 	 */
 	List<CursoCertificado> obtenerCursosCertificados(CursoCriteria cursoCriteria);
+
+	/**
+	 * @param idCursoCertifcado
+	 * @param alumnosCertificados
+	 * 
+	 *            Este nétodo agregará alumnos después de que el curso se
+	 *            certifique debido a los múñtiples errores de captura que están
+	 *            ocurriendo...
+	 */
+	CursoCertificado agregarAlumnosACursoCertificado(long idCursoCertificado,
+			List<AlumnoCertificado> alumnosCertificados);
 }

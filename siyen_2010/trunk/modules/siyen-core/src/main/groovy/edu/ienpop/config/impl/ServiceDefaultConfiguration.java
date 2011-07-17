@@ -21,7 +21,7 @@ import edu.ienpop.service.impl.UsuarioServiceImpl;
  * 
  */
 @Configuration
-@Import( { RepositoryHibernateConfiguration.class })
+@Import({ RepositoryHibernateConfiguration.class })
 public class ServiceDefaultConfiguration implements ServiceConfiguration {
 
 	@Autowired
@@ -34,23 +34,25 @@ public class ServiceDefaultConfiguration implements ServiceConfiguration {
 
 	public @Bean
 	LlaveCertificacionService llaveCertificacionService() {
-		return new LlaveCertificacionServiceImpl(persistenceConfiguration
-				.llaveCertificacionDao(), persistenceConfiguration
-				.cursoSinCertificarDao());
+		return new LlaveCertificacionServiceImpl(
+				persistenceConfiguration.llaveCertificacionDao(),
+				persistenceConfiguration.cursoSinCertificarDao());
 	}
 
 	public @Bean
 	CursoCertificadoService cursoCertificadoService() {
-		return new CursoCertificadoServiceImpl(persistenceConfiguration
-				.cursoSinCertificarDao(), persistenceConfiguration
-				.cursoCertificadoDao(),persistenceConfiguration.tipoCursoDao());
+		return new CursoCertificadoServiceImpl(
+				persistenceConfiguration.cursoSinCertificarDao(),
+				persistenceConfiguration.cursoCertificadoDao(),
+				persistenceConfiguration.tipoCursoDao(),
+				persistenceConfiguration.alumnoCertificadoDao());
 	}
 
 	public @Bean
 	CursoSinCertificarService cursoSinCertificarService() {
-		return new CursoSinCertificarServiceImpl(persistenceConfiguration
-				.cursoSinCertificarDao(), persistenceConfiguration
-				.alumnoSinCertificarDao());
+		return new CursoSinCertificarServiceImpl(
+				persistenceConfiguration.cursoSinCertificarDao(),
+				persistenceConfiguration.alumnoSinCertificarDao());
 	}
 
 	public @Bean

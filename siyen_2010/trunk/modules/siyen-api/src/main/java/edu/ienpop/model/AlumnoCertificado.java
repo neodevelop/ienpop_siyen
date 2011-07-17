@@ -22,7 +22,7 @@ public class AlumnoCertificado extends Alumno {
 	private static final long serialVersionUID = 1L;
 	@Column
 	private String numeroControl;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "idCurso")
 	private CursoCertificado cursoCertificado;
 	@Column

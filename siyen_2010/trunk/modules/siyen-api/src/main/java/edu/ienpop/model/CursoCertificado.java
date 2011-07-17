@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 /**
  * @author neodevelop
  *
@@ -24,7 +26,9 @@ public class CursoCertificado extends Curso {
 	private static final long serialVersionUID = 1L;
 	@Column private Date fechaFin;
 	@Column private boolean certificado;
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="cursoCertificado")
+	@OneToMany(cascade=CascadeType.MERGE,fetch=FetchType.LAZY,mappedBy="cursoCertificado")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+          org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private Set<AlumnoCertificado> alumnosCertificados;
 	
 	public Set<AlumnoCertificado> getAlumnosCertificados() {

@@ -5,6 +5,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -25,6 +29,7 @@ import edu.ienpop.model.CursoSinCertificar;
  */
 public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 
+	private static final Log logger = LogFactory.getLog(CursoCertificadoServiceTest.class);
 	/**
 	 * Inyeccion del servicio
 	 */
@@ -39,8 +44,8 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 	@Autowired
 	PuertoDao puertoDao;
 
-	private CursoSinCertificar cursoSinCertificar;
-	private List<AlumnoSinCertificar> alumnosSinCertificar;
+	private static CursoSinCertificar cursoSinCertificar;
+	private static List<AlumnoSinCertificar> alumnosSinCertificar;
 	private static long idCursoCertificadoParaDiplomas;
 
 	/**
@@ -54,67 +59,97 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 
 	@Test
 	public void testObtenerValidacionDeCursoConLlave() {
+		logger.debug("************* testObtenerValidacionDeCursoConLlave *************");
 		creaCursoSinCertificarDePrueba();
 		long idCursoCertificado = cursoCertificadoService
 				.certificarCurso(cursoSinCertificar.getIdCurso());
-		// El curso tiene un id asignado
-		assert idCursoCertificado > 0;
-		CursoCertificado cursoCertificado = cursoCertificadoService
-				.obtenerCursoCertificadoConAlumnos(idCursoCertificado);
-		// El curso existe
-		assert cursoCertificado != null;
-		// El curso tiene alumnos
-		assert cursoCertificado.getAlumnosCertificados().size() > 0;
+		logger.debug("El curso tiene un id asignado");
+		Assert.isTrue(idCursoCertificado > 0,"El curso est‡ vac’o...");
+		CursoCertificado cursoCertificado = cursoCertificadoService.obtenerCursoCertificadoConAlumnos(idCursoCertificado);
+		logger.debug("El curso existe");
+		Assert.isTrue(cursoCertificado != null,"No se ha encontrado el curso...");
+		logger.debug("El curso tiene alumnos");
+		Assert.isTrue(cursoCertificado.getAlumnosCertificados().size() > 0,"El curso no tiene alumnos...");
 		for (AlumnoCertificado alumno : cursoCertificado
 				.getAlumnosCertificados()) {
-			// Todos los alumnos tienen un identificador asignado
-			assert alumno.getIdAlumno() > 0;
+			logger.debug("Todos los alumnos tienen un identificador asignado");
+			Assert.isTrue(alumno.getIdAlumno() > 0);
 		}
-		// La fecha de Inicio es menor a la fecha Final
-		assert cursoCertificado.getFechaFin().after(
-				cursoCertificado.getFechaInicio());
-		// Es el mismo instructor antes y despœes de certificar
-		assert cursoCertificado.getInstructor() == cursoSinCertificar
-				.getInstructor();
-		// Es el mismo puerto antes y despues de certificar
-		assert cursoCertificado.getPuerto() == cursoSinCertificar.getPuerto();
-		// Es el mismo puerto antes y despues de certificar
-		assert cursoCertificado.getTipoCurso() == cursoSinCertificar
-				.getTipoCurso();
-		// Las fechas de inicio y fin corresponden al tipo de curso
-		GregorianCalendar diff = new GregorianCalendar();
-		diff.setTime(cursoCertificado.getFechaFin());
-		diff.add(Calendar.DATE, (-1) * (cursoCertificado.getTipoCurso().getDuracion() + 1));
-		assert cursoSinCertificar.getFechaInicio().getTime() == diff.getTimeInMillis();
-		// Corroborar que el curso no se ha certificado
-		assert cursoCertificado.isCertificado() == false;
-		// El curso debe tener alumnos
-		System.out.println("Tama–o:"
-				+ cursoCertificado.getAlumnosCertificados().size());
-		assert cursoCertificado.getAlumnosCertificados().size() > 0;
+		logger.debug("La fecha de Inicio es menor a la fecha Final");
+		Assert.isTrue(cursoCertificado.getFechaFin().after(cursoCertificado.getFechaInicio()),"Las fechas de inicio y fin no son correctas...");
+		logger.debug("Es el mismo instructor antes y despœes de certificar");
+		Assert.isTrue(cursoCertificado.getInstructor().getIdInstructor().equals(cursoSinCertificar.getInstructor().getIdInstructor()) ,"Los instructores no son los mismos...");
+		logger.debug("Es el mismo puerto antes y despues de certificar");
+		Assert.isTrue(cursoCertificado.getPuerto().getIdPuerto().equals(cursoSinCertificar.getPuerto().getIdPuerto()),"Los puertos no son los mismos....");
+		logger.debug("Es el mismo puerto antes y despues de certificar");
+		Assert.isTrue(cursoCertificado.getTipoCurso().getIdTipoCurso().equals(cursoSinCertificar.getTipoCurso().getIdTipoCurso()),"El tipo de curso no es el mismo...");
+		logger.debug("Las fechas de inicio y fin corresponden al tipo de curso, y su diferencia es como se solicita...");
+		Calendar inicio = new GregorianCalendar();
+		Calendar fin = new GregorianCalendar();
+		inicio.setTime(cursoCertificado.getFechaInicio());
+		fin.setTime(cursoCertificado.getFechaFin());
+		double diferencia = fin.getTime().getTime() - inicio.getTime().getTime();
+		long dias = Math.round((diferencia/(1000*60*60*24))+1);
+		Assert.isTrue(dias == cursoCertificado.getTipoCurso().getDuracion(),"La duraci—n del curso no corresponde...");
+		logger.debug("Corroborar que el curso no se ha certificado");
+		Assert.isTrue(cursoCertificado.isCertificado() == false,"Por alguna raz—n el curso se certific— antes de lo planeado...");
+		logger.debug("El curso debe tener alumnos");
+		Assert.isTrue(cursoCertificado.getAlumnosCertificados().size() > 0,"El curso no tiene alumnos...");
 		Assert.notNull(cursoCertificado.getAlumnosCertificados(),
 				"No hay alumnos...");
-		// Ningun alumno se ha certificado aun
+		logger.debug("Ningun alumno se ha certificado aun");
 		for (AlumnoCertificado alumno : cursoCertificado.getAlumnosCertificados()) {
-			assert alumno.isCertificado() == false;
+			Assert.isTrue(alumno.isCertificado() == false,"Un alumno ya viene certificado, mal comportamiento...");
 		}
 		idCursoCertificadoParaDiplomas = idCursoCertificado;
 	}
 
 	@Test
 	public void testImprimirConstanciasCurso() {
-		CursoCertificado curso = cursoCertificadoService
-				.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
-		// El curso ya se ha certificado
-		assert curso.isCertificado() == true;
-		// Como ya se ha certificado el curso, los alumnos deben de contar con
-		// un numero de control y el valor de su certificado debe ser true
+		logger.debug("************* testImprimirConstanciasCurso *************");
+		CursoCertificado curso = cursoCertificadoService.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
+		logger.debug("El curso ya se ha certificado");
+		Assert.isTrue(curso.isCertificado() == true,"El curso no se certific—...");
+		logger.debug("Como ya se ha certificado el curso, los alumnos deben de contar con un numero de control y el valor de su certificado debe ser true");
 		for (AlumnoCertificado alumno : curso
 				.getAlumnosCertificados()) {
-			assert alumno.isCertificado() == true;
-			assert alumno.getNumeroControl() != null;
-			assert alumno.getNumeroControl().startsWith("II0");
+			Assert.isTrue(alumno.isCertificado() == true,"El alumno no se certific—...");
+			Assert.isTrue(alumno.getNumeroControl() != null,"No se gener— el numero de control para el alumno...");
+			Assert.isTrue(alumno.getNumeroControl().startsWith("II0"),"El nœmero de control no comienza con II0...");
 		}
+		
+	}
+	
+	@Test
+	public void testAgregarAlumnosACursoCertificado(){
+		logger.debug("************* testAgregarAlumnosACursoCertificado *************");
+		CursoCertificado curso = cursoCertificadoService.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
+		Assert.notNull(curso);
+		logger.debug("Determinamos el tama–o de los cursos");
+		Assert.isTrue(curso.getAlumnosCertificados().size() > 0);
+		logger.debug("Agregamos algunos alumnos que no estaban contemplados en el curso");
+		List<AlumnoCertificado> alumnos = new ArrayList<AlumnoCertificado>();
+		int n = (int) (Math.random() * 10);
+		if(n == 0) 
+			n = 1;
+		for (int i = 0; i < n; i++) {
+			AlumnoCertificado alumno = new AlumnoCertificado();
+			alumno.setNombreCompleto(GeneradorDatos.getNombreCompletoAleatorio().toUpperCase());
+			alumno.setObservaciones(GeneradorDatos.creaObservcacionesSinSentido());
+			alumnos.add(alumno);
+		}
+		logger.debug("Obtenemos nuevamente el curso en otro objeto");
+		CursoCertificado nuevoCurso =  cursoCertificadoService.agregarAlumnosACursoCertificado(idCursoCertificadoParaDiplomas, alumnos);
+		logger.debug("Corroboramos que el curso anterior tiene menos alumnos que el nuevo");
+		Assert.isTrue(curso.getAlumnosCertificados().size() < nuevoCurso.getAlumnosCertificados().size(), "El nœmero de alumnos no cambio...");
+		logger.debug("El nuevo curso no debe de estar certificado");
+		Assert.isTrue(nuevoCurso.isCertificado() == false,"El curso se qued— en el estado original...");
+	}
+	
+	@Test
+	public void reimprimirConstancias(){
+		logger.debug("************* reimprimirConstancias *************");
+		testImprimirConstanciasCurso();
 	}
 
 	private void creaCursoSinCertificarDePrueba() {
@@ -122,27 +157,21 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 		cursoSinCertificar = new CursoSinCertificar();
 		cursoSinCertificar.setFechaInicio(GeneradorDatos.getDateAleatorio());
 		cursoSinCertificar.setListoParaCertificar(false);
-		cursoSinCertificar.setPuerto(puertoDao.read(GeneradorDatos
-				.getPuertoAleatorio()));
-		cursoSinCertificar.setTipoCurso(tipoCursoDao.read(GeneradorDatos
-				.getCursoAleatorio()));
-		cursoSinCertificar.setInstructor(instructorDao.read(GeneradorDatos
-				.getInstructorAleatorio()));
+		cursoSinCertificar.setPuerto(puertoDao.read(GeneradorDatos.getPuertoAleatorio()));
+		cursoSinCertificar.setTipoCurso(tipoCursoDao.read(GeneradorDatos.getCursoAleatorio()));
+		cursoSinCertificar.setInstructor(instructorDao.read(GeneradorDatos.getInstructorAleatorio()));
 
 		int n = (int) (Math.random() * 10);
 		if(n == 0) 
 			n = 1;
 		for (int i = 0; i < n; i++) {
 			AlumnoSinCertificar alumno = new AlumnoSinCertificar();
-			alumno.setNombreCompleto(GeneradorDatos
-					.getNombreCompletoAleatorio().toUpperCase());
-			alumno.setObservaciones(GeneradorDatos
-					.creaObservcacionesSinSentido());
+			alumno.setNombreCompleto(GeneradorDatos.getNombreCompletoAleatorio().toUpperCase());
+			alumno.setObservaciones(GeneradorDatos.creaObservcacionesSinSentido());
 			alumnosSinCertificar.add(alumno);
 		}
 
-		cursoSinCertificarService.crearCursoSinCertificar(cursoSinCertificar,
-				alumnosSinCertificar);
+		cursoSinCertificarService.crearCursoSinCertificar(cursoSinCertificar,alumnosSinCertificar);
 	}
 
 }

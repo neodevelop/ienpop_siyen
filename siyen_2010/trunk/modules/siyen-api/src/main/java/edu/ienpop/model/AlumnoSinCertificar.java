@@ -25,7 +25,7 @@ public class AlumnoSinCertificar extends Alumno {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idCursoSinCertificar")
 	private CursoSinCertificar cursoSinCertificar;
 	
