@@ -16,7 +16,7 @@
 		<th>Tipo de curso</th>
 		<th>Clave del instructor</th>
 		<th>Listo para certificar</th>
-		<td colspan="2">Operaciones</td>
+		<td>Operaciones</td>
 	</thead>
 	<tbody>
 		<c:forEach items="${cursosSinCertificar}" var="cursoSinCertificar">
@@ -27,11 +27,11 @@
 				<td>${cursoSinCertificar.tipoCurso.idTipoCurso}</td>
 				<td>${cursoSinCertificar.instructor.idInstructor}</td>
 				<td>${cursoSinCertificar.listoParaCertificar}</td>
-				<td>
+				<!-- td>
 					<a href="${pageContext.request.contextPath}/siyen/cursoSinCertificar/ver/${cursoSinCertificar.idCurso}">
 						Ver detalle
 					</a>
-				</td>
+				</td-->
 				<td>
 					<c:if test="${cursoSinCertificar.listoParaCertificar}">
 						Con llave

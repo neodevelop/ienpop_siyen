@@ -15,12 +15,6 @@ public interface LlaveCertificacionService {
 	boolean obtenerValidacionDeCursoConLlave(String codigo,long idCursoSinCertificar);
 
 	/**
-	 * @param llaveCertificacion
-	 *            Cambia el estado de la llave para saber que se ha usado
-	 */
-	void cambiarEstadoDeLaLlave(LlaveCertificacion llaveCertificacion);
-
-	/**
 	 * @param idCurso
 	 *            Este metodo crea la llave de Certificacion para un curso
 	 *            especifico...

@@ -82,6 +82,7 @@ public class CursoSinCertificarDaoHibernateImpl extends
 		criteria.setFetchMode("puerto", FetchMode.JOIN);
 		criteria.setFetchMode("tipoCurso", FetchMode.JOIN);
 		criteria.setFetchMode("instructor", FetchMode.JOIN);
+		criteria.setFetchMode("llaveCertificacion", FetchMode.JOIN);
 		return criteria;
 	}
 

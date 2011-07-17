@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Hola mundo!!!
+	Se autorizo? ${autorizado}
 </body>
 </html>

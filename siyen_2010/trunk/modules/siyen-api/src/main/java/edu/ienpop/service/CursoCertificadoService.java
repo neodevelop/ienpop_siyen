@@ -24,7 +24,7 @@ public interface CursoCertificadoService {
 	 *         que ya se imprimi— y cambia los status de los alumnos de dicho
 	 *         curso
 	 */
-	CursoCertificado imprimirConstanciasCurso(Long idCursoCertificado);
+	void imprimirConstanciasCurso(Long idCursoCertificado);
 
 	/**
 	 * @param idCurso
@@ -51,6 +51,5 @@ public interface CursoCertificadoService {
 	 *            certifique debido a los mœ–tiples errores de captura que est‡n
 	 *            ocurriendo...
 	 */
-	CursoCertificado agregarAlumnosACursoCertificado(long idCursoCertificado,
-			List<AlumnoCertificado> alumnosCertificados);
+	void agregarAlumnosACursoCertificado(List<AlumnoCertificado> alumnosCertificados, long idCursoCertificado);
 }

@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+
 /**
  * @author neodevelop
  * 
@@ -41,8 +43,9 @@ public abstract class Curso implements Serializable {
 	@ManyToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idInstructor")
 	private Instructor instructor;
-	@OneToOne(cascade=CascadeType.MERGE,fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.PERSIST,fetch=FetchType.LAZY)
 	@JoinColumn(name = "idLlave")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	private LlaveCertificacion llaveCertificacion;
 
 	public LlaveCertificacion getLlaveCertificacion() {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/modules.iml" filepath="$PROJECT_DIR$/modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/siyen-api/siyen-api.iml" filepath="$PROJECT_DIR$/siyen-api/siyen-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/siyen-core/siyen-core.iml" filepath="$PROJECT_DIR$/siyen-core/siyen-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/siyen-web/siyen-web.iml" filepath="$PROJECT_DIR$/siyen-web/siyen-web.iml" />
+    </modules>
+  </component>
+</project>
+

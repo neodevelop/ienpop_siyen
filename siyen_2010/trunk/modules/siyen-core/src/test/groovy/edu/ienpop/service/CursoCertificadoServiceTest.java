@@ -7,14 +7,13 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import edu.ienpop.GeneradorDatos;
 import edu.ienpop.config.AbstractJavaConfigBaseClass;
+import edu.ienpop.config.AbstractTransactionalJavaConfigBaseClass;
 import edu.ienpop.dao.InstructorDao;
 import edu.ienpop.dao.PuertoDao;
 import edu.ienpop.dao.TipoCursoDao;
@@ -37,6 +36,8 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 	CursoCertificadoService cursoCertificadoService;
 	@Autowired
 	CursoSinCertificarService cursoSinCertificarService;
+	@Autowired
+	LlaveCertificacionService llaveCertificacionService;
 	@Autowired
 	InstructorDao instructorDao;
 	@Autowired
@@ -61,8 +62,7 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 	public void testObtenerValidacionDeCursoConLlave() {
 		logger.debug("************* testObtenerValidacionDeCursoConLlave *************");
 		creaCursoSinCertificarDePrueba();
-		long idCursoCertificado = cursoCertificadoService
-				.certificarCurso(cursoSinCertificar.getIdCurso());
+		long idCursoCertificado = cursoCertificadoService.certificarCurso(cursoSinCertificar.getIdCurso());
 		logger.debug("El curso tiene un id asignado");
 		Assert.isTrue(idCursoCertificado > 0,"El curso est‡ vac’o...");
 		CursoCertificado cursoCertificado = cursoCertificadoService.obtenerCursoCertificadoConAlumnos(idCursoCertificado);
@@ -76,6 +76,7 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 			Assert.isTrue(alumno.getIdAlumno() > 0);
 		}
 		logger.debug("La fecha de Inicio es menor a la fecha Final");
+		logger.debug("Fecha inicio: " + cursoCertificado.getFechaInicio() + " -- FechaFin: " + cursoCertificado.getFechaFin());
 		Assert.isTrue(cursoCertificado.getFechaFin().after(cursoCertificado.getFechaInicio()),"Las fechas de inicio y fin no son correctas...");
 		logger.debug("Es el mismo instructor antes y despœes de certificar");
 		Assert.isTrue(cursoCertificado.getInstructor().getIdInstructor().equals(cursoSinCertificar.getInstructor().getIdInstructor()) ,"Los instructores no son los mismos...");
@@ -101,15 +102,18 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 		for (AlumnoCertificado alumno : cursoCertificado.getAlumnosCertificados()) {
 			Assert.isTrue(alumno.isCertificado() == false,"Un alumno ya viene certificado, mal comportamiento...");
 		}
+		logger.debug("Corroborando que traemos la llave de certificacion");
+		Assert.notNull(cursoCertificado.getLlaveCertificacion(),"No tiene la llave de certificaci—n asignada...");
+		logger.debug("Verificando que la llave de certificacion ya tiene un curso asociado");
+		Assert.notNull(cursoCertificado.getLlaveCertificacion().getCursoCertificado(), "No hay un curso relacionado con esta llave...");
 		idCursoCertificadoParaDiplomas = idCursoCertificado;
 	}
 
 	@Test
 	public void testImprimirConstanciasCurso() {
 		logger.debug("************* testImprimirConstanciasCurso *************");
-		CursoCertificado curso = cursoCertificadoService.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
-		logger.debug("El curso ya se ha certificado");
-		Assert.isTrue(curso.isCertificado() == true,"El curso no se certific—...");
+		cursoCertificadoService.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
+		CursoCertificado curso = cursoCertificadoService.obtenerCursoCertificadoConAlumnos(idCursoCertificadoParaDiplomas);
 		logger.debug("Como ya se ha certificado el curso, los alumnos deben de contar con un numero de control y el valor de su certificado debe ser true");
 		for (AlumnoCertificado alumno : curso
 				.getAlumnosCertificados()) {
@@ -117,13 +121,18 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 			Assert.isTrue(alumno.getNumeroControl() != null,"No se gener— el numero de control para el alumno...");
 			Assert.isTrue(alumno.getNumeroControl().startsWith("II0"),"El nœmero de control no comienza con II0...");
 		}
-		
+		logger.debug("El curso ya se ha certificado");
+		Assert.isTrue(curso.isCertificado() == true,"El curso no se certific—...");
+		logger.debug("La llave de certificac—n ya se uso...");
+		Assert.notNull(curso.getLlaveCertificacion().getFechaUtilizacion(), "No se ha utilizado la llave");
+		Assert.isTrue(curso.getLlaveCertificacion().isActivo(), "La llave no esta activa...");
 	}
 	
 	@Test
 	public void testAgregarAlumnosACursoCertificado(){
 		logger.debug("************* testAgregarAlumnosACursoCertificado *************");
-		CursoCertificado curso = cursoCertificadoService.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
+		//cursoCertificadoService.imprimirConstanciasCurso(idCursoCertificadoParaDiplomas);
+		CursoCertificado curso = cursoCertificadoService.obtenerCursoCertificadoConAlumnos(idCursoCertificadoParaDiplomas);
 		Assert.notNull(curso);
 		logger.debug("Determinamos el tama–o de los cursos");
 		Assert.isTrue(curso.getAlumnosCertificados().size() > 0);
@@ -139,7 +148,8 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 			alumnos.add(alumno);
 		}
 		logger.debug("Obtenemos nuevamente el curso en otro objeto");
-		CursoCertificado nuevoCurso =  cursoCertificadoService.agregarAlumnosACursoCertificado(idCursoCertificadoParaDiplomas, alumnos);
+		cursoCertificadoService.agregarAlumnosACursoCertificado(alumnos,idCursoCertificadoParaDiplomas);
+		CursoCertificado nuevoCurso = cursoCertificadoService.obtenerCursoCertificadoConAlumnos(idCursoCertificadoParaDiplomas);
 		logger.debug("Corroboramos que el curso anterior tiene menos alumnos que el nuevo");
 		Assert.isTrue(curso.getAlumnosCertificados().size() < nuevoCurso.getAlumnosCertificados().size(), "El nœmero de alumnos no cambio...");
 		logger.debug("El nuevo curso no debe de estar certificado");
@@ -148,8 +158,8 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 	
 	@Test
 	public void reimprimirConstancias(){
-		logger.debug("************* reimprimirConstancias *************");
-		testImprimirConstanciasCurso();
+		// Maldita prueba
+		
 	}
 
 	private void creaCursoSinCertificarDePrueba() {
@@ -171,7 +181,10 @@ public class CursoCertificadoServiceTest extends AbstractJavaConfigBaseClass {
 			alumnosSinCertificar.add(alumno);
 		}
 
+		logger.debug("Creaci—n del curso para certificar");
 		cursoSinCertificarService.crearCursoSinCertificar(cursoSinCertificar,alumnosSinCertificar);
+		logger.debug("Creaci—n de la llave de certificaci—n");
+		llaveCertificacionService.crearLlaveParaCertificacion(cursoSinCertificar.getIdCurso());
 	}
 
 }

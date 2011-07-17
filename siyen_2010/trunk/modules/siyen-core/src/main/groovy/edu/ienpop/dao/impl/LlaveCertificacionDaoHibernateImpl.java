@@ -36,4 +36,13 @@ public class LlaveCertificacionDaoHibernateImpl extends
 		return query.list();
 	}
 
+	@Override
+	public LlaveCertificacion obtenerLlaveDeCursoCertificado(
+			long idCursoCertificado) {
+		String sql = "from LlaveCertificacion lc where lc.cursoCertificado.idCurso = :idCursoCertificado";
+		Query query = getSession().createQuery(sql);
+		query.setLong("idCursoCertificado", idCursoCertificado);
+		return (LlaveCertificacion)query.uniqueResult();
+	}
+
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="siyen-web:war">
+    <output-path>$PROJECT_DIR$/siyen-web/target</output-path>
+    <root id="archive" name="siyen-web.war">
+      <element id="artifact" artifact-name="siyen-web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -45,7 +45,8 @@ public class ServiceDefaultConfiguration implements ServiceConfiguration {
 				persistenceConfiguration.cursoSinCertificarDao(),
 				persistenceConfiguration.cursoCertificadoDao(),
 				persistenceConfiguration.tipoCursoDao(),
-				persistenceConfiguration.alumnoCertificadoDao());
+				persistenceConfiguration.alumnoCertificadoDao(),
+				persistenceConfiguration.llaveCertificacionDao());
 	}
 
 	public @Bean

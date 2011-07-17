@@ -20,30 +20,41 @@
 			<set name="cursoCriteria.offset" value="requestParameters.offset" />
 		</transition>
 		<transition on="preparaCurso" to="preparaCurso">
-			<set name="flashScope.idCursoSinCertificar" value="requestParameters.idCursoSinCertificar"/>
+			<set name="flashScope.idCursoSinCertificar" value="requestParameters.idCursoSinCertificar" />
 		</transition>
 	</view-state>
 
 	<action-state id="preparaCurso">
 		<evaluate
 			expression="cursoSinCertificarService.obtenerCursoSinCertificarConAlumnos(flashScope.idCursoSinCertificar)"
-			result="flashScope.cursoSinCertificar" />
-		<transition to="muestraCurso"/>
+			result="flowScope.cursoSinCertificar" />
+		<transition to="muestraCurso" />
+	</action-state>
+
+	<view-state id="muestraCurso" view="certificarCurso/muestra">
+		<transition on="verCursos" to="verCursos" />
+		<transition on="certificar" to="certificar">
+			<set name="flashScope.llaveCertificacion" value="requestParameters.llaveCertificacion" />
+		</transition>
+	</view-state>
+
+	<action-state id="certificar">
+		<evaluate
+			expression="llaveCertificacionService.obtenerValidacionDeCursoConLlave(llaveCertificacion,cursoSinCertificar.idCurso)"
+			result="flashScope.autorizado" />
+		<transition to="certificado" />
 	</action-state>
 	
-	<view-state id="muestraCurso" view="certificarCurso/muestra">
-		<on-entry>
-			<set name="viewScope.cursoSinCertificar" value="flashScope.cursoSinCertificar"/>
-		</on-entry>
-		<transition on="verCursos" to="verCursos"/>
-		<transition on="certificar" to="certificar"/>
-	</view-state>
-	
-	<decision-state id="certificar">
-		<if then="miPopup" test="true"/>
+	<decision-state id="certificado">
+		<if test="autorizado" then="autorizar" else="muestraCurso" />
 	</decision-state>
 	
-	<view-state id="miPopup" popup="true" view="certificarCurso/popup">
+	<action-state id="autorizar">
+		<evaluate expression="do"/>
+		<transition to="autorizado"/>
+	</action-state>
+
+	<view-state id="autorizado" view="certificarCurso/autorizado">
 	</view-state>
 
 </flow>

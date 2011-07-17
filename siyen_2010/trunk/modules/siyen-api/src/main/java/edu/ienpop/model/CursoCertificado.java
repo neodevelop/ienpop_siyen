@@ -24,9 +24,11 @@ public class CursoCertificado extends Curso {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column private Date fechaFin;
-	@Column private boolean certificado;
-	@OneToMany(cascade=CascadeType.MERGE,fetch=FetchType.LAZY,mappedBy="cursoCertificado")
+	@Column
+	private Date fechaFin;
+	@Column
+	private boolean certificado;
+	@OneToMany(cascade={ CascadeType.MERGE },fetch=FetchType.LAZY,mappedBy="cursoCertificado")
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
           org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private Set<AlumnoCertificado> alumnosCertificados;

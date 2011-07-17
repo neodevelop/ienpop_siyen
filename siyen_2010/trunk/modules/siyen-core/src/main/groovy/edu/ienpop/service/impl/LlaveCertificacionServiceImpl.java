@@ -30,8 +30,7 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 		// Iniciamos el objeto
 		LlaveCertificacion llaveCertificacion = new LlaveCertificacion();
 		// Obtenemos el cursoSinCertificar
-		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao
-				.read(idCursoSinCertificar);
+		CursoSinCertificar cursoSinCertificar = cursoSinCertificarDao.read(idCursoSinCertificar);
 		//Cambiamos el status del curso
 		cursoSinCertificar.setListoParaCertificar(true);
 		//Comenzamos la creaci—n de la llave
@@ -57,11 +56,10 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 		llaveCertificacion.setFechaGeneracion(Calendar.getInstance().getTime());
 		// El curso esta listo para certificarse
 		cursoSinCertificar.setListoParaCertificar(true);
-		// Actualizar el curso
-		cursoSinCertificarDao.update(cursoSinCertificar);
+		// Cerramos la relaci—n para la llave de este curso
+		cursoSinCertificar.setLlaveCertificacion(llaveCertificacion);
 		// Crear la llave
 		llaveCertificacionDao.create(llaveCertificacion);
-		//Actualizar la llave???
 	}
 
 	public boolean obtenerValidacionDeCursoConLlave(String codigo,long idCursoSinCertificar){
