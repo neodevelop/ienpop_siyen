@@ -67,6 +67,9 @@ public class LlaveCertificacionServiceImpl implements LlaveCertificacionService 
 	public boolean obtenerValidacionDeCursoConLlave(String codigo,long idCursoSinCertificar){
 		// Buscamos la llave y el curso
 		LlaveCertificacion llaveCertificacion = llaveCertificacionDao.obtenerLlaveConCodigo(codigo);
+		// Si no se encuentra la llave regresamos false
+		if(llaveCertificacion == null)
+			return false;
 		//Corroboramos que esta llave pertenece a este curso
 		if(llaveCertificacion.getCursoSinCertificar().getIdCurso() == idCursoSinCertificar)
 			return true;
